@@ -1,0 +1,188 @@
+{
+  "measurement": "2026-11-14, checkpoint plus first incremental compile; exact canonical baseline from CRC-verified project ZIP",
+  "baseline_editable_project_bytes": 3682572146,
+  "baseline_folder_bytes": {
+    ".gitattributes": 607,
+    ".gitignore": 323,
+    "MyProject.uproject": 450,
+    "README.md": 919,
+    "Build": 1034612,
+    "Config": 12418,
+    "Content": 1296398355,
+    "Docs": 241016,
+    "GameJam 2026": 4113,
+    "Scripts": 181419,
+    "Source": 859768,
+    "SourceArt": 2383838146
+  },
+  "current_folder_bytes": {
+    ".gitattributes": 607,
+    ".gitignore": 323,
+    "MyProject.uproject": 450,
+    "README.md": 919,
+    ".git": 3620507429,
+    "Binaries": 719285853,
+    "Build": 1034612,
+    "Config": 12418,
+    "Content": 1296398355,
+    "DerivedDataCache": 1627828,
+    "Docs": 241016,
+    "GameJam 2026": 4113,
+    "Intermediate": 4817020655,
+    "Saved": 10827399940,
+    "Scripts": 181419,
+    "Source": 894135,
+    "SourceArt": 4119999739
+  },
+  "current_file_counts": {
+    ".gitattributes": 1,
+    ".gitignore": 1,
+    "MyProject.uproject": 1,
+    "README.md": 1,
+    ".git": 2851,
+    "Binaries": 13,
+    "Build": 2,
+    "Config": 5,
+    "Content": 670,
+    "DerivedDataCache": 5,
+    "Docs": 23,
+    "GameJam 2026": 3,
+    "Intermediate": 887,
+    "Saved": 4474,
+    "Scripts": 40,
+    "Source": 108,
+    "SourceArt": 563
+  },
+  "current_including_generated_excluding_git_bytes": 21784102382,
+  "largest_content_files": [
+    {
+      "bytes": 52692514,
+      "path": "Content\\OneManStudio\\Cosmetics\\ProductionArt\\Head\\Cowboy\\T_Cowboy_Color.uasset"
+    },
+    {
+      "bytes": 50353498,
+      "path": "Content\\OneManStudio\\Cosmetics\\ProductionArt\\Head\\Beanie\\SM_Beanie.uasset"
+    },
+    {
+      "bytes": 41281232,
+      "path": "Content\\OneManStudio\\Environment\\Bank\\T_Bank_BaseColor.uasset"
+    },
+    {
+      "bytes": 41058616,
+      "path": "Content\\OneManStudio\\Environment\\Bank\\SM_MeshyBank.uasset"
+    },
+    {
+      "bytes": 26850103,
+      "path": "Content\\OneManStudio\\Cosmetics\\ProductionArt\\Head\\Beanie\\T_Beanie_Color.uasset"
+    },
+    {
+      "bytes": 25388355,
+      "path": "Content\\OneManStudio\\Cosmetics\\ProductionArt\\Head\\Crown\\T_Crown_Color.uasset"
+    },
+    {
+      "bytes": 22844223,
+      "path": "Content\\OneManStudio\\Environment\\Bank\\ProductionArt\\Planta_3\\SM_Planta_3.uasset"
+    },
+    {
+      "bytes": 20999487,
+      "path": "Content\\Characters\\Mannequins\\Textures\\Manny\\T_Manny_02_BN.uasset"
+    },
+    {
+      "bytes": 17115620,
+      "path": "Content\\OneManStudio\\Cosmetics\\ProductionArt\\Face\\Glasses\\T_Glasses_Color.uasset"
+    },
+    {
+      "bytes": 17057558,
+      "path": "Content\\Characters\\Mannequins\\Rigs\\CR_Mannequin_Body.uasset"
+    },
+    {
+      "bytes": 16986070,
+      "path": "Content\\OneManStudio\\Cosmetics\\ProductionArt\\Head\\PoliceCap\\T_PoliceCap_Color.uasset"
+    },
+    {
+      "bytes": 16898123,
+      "path": "Content\\OneManStudio\\Audio\\Music\\SW_BasslineGetaway.uasset"
+    },
+    {
+      "bytes": 16808537,
+      "path": "Content\\OneManStudio\\Environment\\Bank\\ProductionArt\\Libros_Estanteria2\\T_Libros_Estanteria2_Color.uasset"
+    },
+    {
+      "bytes": 16371293,
+      "path": "Content\\OneManStudio\\Cosmetics\\ProductionArt\\Face\\RobberMask\\T_RobberMask_Color.uasset"
+    },
+    {
+      "bytes": 16252577,
+      "path": "Content\\Characters\\Mannequins\\Meshes\\SKM_Quinn_Simple.uasset"
+    },
+    {
+      "bytes": 16140501,
+      "path": "Content\\OneManStudio\\Environment\\Bank\\ProductionArt\\Libros_Estanteria2\\T_Libros_Estanteria2_Normal.uasset"
+    },
+    {
+      "bytes": 15828339,
+      "path": "Content\\Characters\\Mannequins\\Meshes\\SKM_Manny_Simple.uasset"
+    },
+    {
+      "bytes": 15656461,
+      "path": "Content\\OneManStudio\\Audio\\Music\\SW_DressingRoomFrolic.uasset"
+    },
+    {
+      "bytes": 15323370,
+      "path": "Content\\OneManStudio\\Cosmetics\\ProductionArt\\Body\\Outfit_b29c29ff\\T_Outfit_b29c29ff_Normal.uasset"
+    },
+    {
+      "bytes": 15140374,
+      "path": "Content\\OneManStudio\\Environment\\FilmEquipment\\ProductionArt\\Camara1_Alta\\SM_Camara1_Alta.uasset"
+    },
+    {
+      "bytes": 14998132,
+      "path": "Content\\OneManStudio\\Cosmetics\\ProductionArt\\Head\\Chicken\\T_Chicken_Color.uasset"
+    },
+    {
+      "bytes": 14823539,
+      "path": "Content\\OneManStudio\\Cosmetics\\ProductionArt\\Body\\Outfit_4f3481c9\\T_Outfit_4f3481c9_Normal.uasset"
+    },
+    {
+      "bytes": 14815683,
+      "path": "Content\\OneManStudio\\Cosmetics\\ProductionArt\\Head\\PoliceCap\\SM_PoliceCap.uasset"
+    },
+    {
+      "bytes": 13869149,
+      "path": "Content\\OneManStudio\\Cosmetics\\ProductionArt\\Body\\Outfit_0629c304\\T_Outfit_0629c304_Normal.uasset"
+    },
+    {
+      "bytes": 13824780,
+      "path": "Content\\OneManStudio\\Environment\\FilmEquipment\\ProductionArt\\Silla_Director\\SM_Silla_Director.uasset"
+    },
+    {
+      "bytes": 12276112,
+      "path": "Content\\OneManStudio\\Cosmetics\\ProductionArt\\Head\\Cowboy\\SM_Cowboy.uasset"
+    },
+    {
+      "bytes": 11849571,
+      "path": "Content\\OneManStudio\\Cosmetics\\ProductionArt\\Face\\RobberMask\\T_RobberMask_Normal.uasset"
+    },
+    {
+      "bytes": 11687101,
+      "path": "Content\\OneManStudio\\Environment\\FilmEquipment\\ProductionArt\\Clapperboard\\SM_Clapperboard.uasset"
+    },
+    {
+      "bytes": 11624938,
+      "path": "Content\\OneManStudio\\Cosmetics\\ProductionArt\\Head\\Crown\\SM_Crown.uasset"
+    },
+    {
+      "bytes": 11339331,
+      "path": "Content\\OneManStudio\\Environment\\Bank\\ProductionArt\\Escritorio\\SM_Escritorio.uasset"
+    }
+  ],
+  "protected_playable_backup": {
+    "excluded": "Local Saved test data",
+    "configuration": "Development",
+    "engine": "5.6.1",
+    "directory": "C:\\Users\\diego\\OneDrive\\Documentos\\ChatGPT\\gamejam\\output\\release\\FINAL_TAKE_PreGameplayUpdate_2026-11-14\\Windows",
+    "bytes": 907054547.0,
+    "protectedBackup": true
+  },
+  "deletions_performed": []
+}
