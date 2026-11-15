@@ -1,0 +1,186 @@
+[
+  {
+    "case": "FinalBankReadyPolice",
+    "result": {
+      "passed": true,
+      "scenario": "Police",
+      "turns": 6,
+      "wardrobes": 3,
+      "physicalThrow": false,
+      "moviePlaybacks": 2,
+      "message": "Normal HUB, script introduction, wardrobe, six turns, two films, new movie and return to interactive HUB verified"
+    }
+  },
+  {
+    "case": "FinalBankReadyCivilian",
+    "result": {
+      "passed": true,
+      "scenario": "Civilian",
+      "turns": 6,
+      "wardrobes": 3,
+      "physicalThrow": true,
+      "moviePlaybacks": 2,
+      "message": "Normal HUB, script introduction, wardrobe, six turns, two films, new movie and return to interactive HUB verified"
+    }
+  },
+  {
+    "case": "FinalBankReadyFailure",
+    "result": {
+      "passed": true,
+      "scenario": "Failure",
+      "turns": 6,
+      "wardrobes": 3,
+      "physicalThrow": false,
+      "moviePlaybacks": 2,
+      "message": "Normal HUB, script introduction, wardrobe, six turns, two films, new movie and return to interactive HUB verified"
+    }
+  },
+  {
+    "case": "FinalBankExitVerifiedEscape",
+    "result": {
+      "passed": true,
+      "scenario": "Escape",
+      "turns": 6,
+      "wardrobes": 3,
+      "physicalThrow": false,
+      "moviePlaybacks": 2,
+      "message": "Normal HUB, script introduction, wardrobe, six turns, two films, new movie and return to interactive HUB verified"
+    }
+  },
+  {
+    "case": "FinalBankPackagedPolice",
+    "result": {
+      "passed": true,
+      "scenario": "Police",
+      "turns": 6,
+      "wardrobes": 3,
+      "physicalThrow": false,
+      "moviePlaybacks": 2,
+      "message": "Normal HUB, script introduction, wardrobe, six turns, two films, new movie and return to interactive HUB verified"
+    }
+  },
+  {
+    "case": "FinalBankPackagedCivilian",
+    "result": {
+      "passed": true,
+      "scenario": "Civilian",
+      "turns": 6,
+      "wardrobes": 3,
+      "physicalThrow": true,
+      "moviePlaybacks": 2,
+      "message": "Normal HUB, script introduction, wardrobe, six turns, two films, new movie and return to interactive HUB verified"
+    }
+  },
+  {
+    "case": "FinalBankPackagedEscape",
+    "result": {
+      "passed": true,
+      "scenario": "Escape",
+      "turns": 6,
+      "wardrobes": 3,
+      "physicalThrow": false,
+      "moviePlaybacks": 2,
+      "message": "Normal HUB, script introduction, wardrobe, six turns, two films, new movie and return to interactive HUB verified"
+    }
+  },
+  {
+    "case": "FinalBankPackagedFailure",
+    "result": {
+      "passed": true,
+      "scenario": "Failure",
+      "turns": 6,
+      "wardrobes": 3,
+      "physicalThrow": false,
+      "moviePlaybacks": 2,
+      "message": "Normal HUB, script introduction, wardrobe, six turns, two films, new movie and return to interactive HUB verified"
+    }
+  },
+  {
+    "case": "StartupPackagedAuto",
+    "result": {
+      "passed": true,
+      "scenario": "Auto",
+      "studioPlayback": true,
+      "gamePlayback": true,
+      "hubPlayback": true,
+      "hubLoops": true,
+      "optionsContinuous": true,
+      "skipConsumed": false,
+      "missingAndFailedMedia": false,
+      "fadeBlack": true,
+      "levelLoaded": true,
+      "mediaStopped": true,
+      "gameplayInput": true,
+      "message": "Video order, skip shield, HUB loop/options, black fade, real level travel and gameplay input verified"
+    }
+  },
+  {
+    "case": "StartupPackagedSkipStudio",
+    "result": {
+      "passed": true,
+      "scenario": "SkipStudio",
+      "studioPlayback": true,
+      "gamePlayback": false,
+      "hubPlayback": true,
+      "hubLoops": true,
+      "optionsContinuous": true,
+      "skipConsumed": true,
+      "missingAndFailedMedia": false,
+      "fadeBlack": true,
+      "levelLoaded": true,
+      "mediaStopped": true,
+      "gameplayInput": true,
+      "message": "Video order, skip shield, HUB loop/options, black fade, real level travel and gameplay input verified"
+    }
+  },
+  {
+    "case": "StartupPackagedSkipGame",
+    "result": {
+      "passed": true,
+      "scenario": "SkipGame",
+      "studioPlayback": true,
+      "gamePlayback": true,
+      "hubPlayback": true,
+      "hubLoops": true,
+      "optionsContinuous": true,
+      "skipConsumed": true,
+      "missingAndFailedMedia": false,
+      "fadeBlack": true,
+      "levelLoaded": true,
+      "mediaStopped": true,
+      "gameplayInput": true,
+      "message": "Video order, skip shield, HUB loop/options, black fade, real level travel and gameplay input verified"
+    }
+  },
+  {
+    "case": "StartupPackagedFailures",
+    "result": {
+      "passed": true,
+      "scenario": "Failures",
+      "studioPlayback": false,
+      "gamePlayback": false,
+      "hubPlayback": true,
+      "hubLoops": false,
+      "optionsContinuous": true,
+      "skipConsumed": false,
+      "missingAndFailedMedia": true,
+      "fadeBlack": true,
+      "levelLoaded": true,
+      "mediaStopped": true,
+      "gameplayInput": true,
+      "message": "Video order, skip shield, HUB loop/options, black fade, real level travel and gameplay input verified"
+    }
+  },
+  {
+    "case": "FinalBankFinalCameraPolice",
+    "result": {
+      "passed": true,
+      "scenario": "Police",
+      "turns": 6,
+      "wardrobes": 3,
+      "physicalThrow": false,
+      "moviePlaybacks": 2,
+      "message": "Normal HUB, script introduction, wardrobe, six turns, two films, new movie and return to interactive HUB verified"
+    }
+  }
+]

@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FinalTake\n"
-"POT-Creation-Date: 2026-11-15 20:39\n"
-"PO-Revision-Date: 2026-11-15 20:39\n"
+"POT-Creation-Date: 2026-11-15 23:01\n"
+"PO-Revision-Date: 2026-11-15 23:01\n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -112,29 +112,29 @@ msgid "Improvise this role for the camera. Make every action clear."
 msgstr "Improvise this role for the camera. Make every action clear."
 
 #. Key:	MovieManager.c044757d96
-#. SourceLocation:	Source/MyProject/Private/MovieManager.cpp(635)
-#: Source/MyProject/Private/MovieManager.cpp(635)
+#. SourceLocation:	Source/MyProject/Private/MovieManager.cpp(639)
+#: Source/MyProject/Private/MovieManager.cpp(639)
 msgctxt "FinalTakeUI,MovieManager.c044757d96"
 msgid "Could not prepare a replay actor."
 msgstr "Could not prepare a replay actor."
 
 #. Key:	MovieManager.b15fe70bee
-#. SourceLocation:	Source/MyProject/Private/MovieManager.cpp(640)
-#: Source/MyProject/Private/MovieManager.cpp(640)
+#. SourceLocation:	Source/MyProject/Private/MovieManager.cpp(644)
+#: Source/MyProject/Private/MovieManager.cpp(644)
 msgctxt "FinalTakeUI,MovieManager.b15fe70bee"
 msgid "Could not apply the role's default outfit."
 msgstr "Could not apply the role's default outfit."
 
 #. Key:	MovieManager.41c1dd63d7
-#. SourceLocation:	Source/MyProject/Private/MovieManager.cpp(649)
-#: Source/MyProject/Private/MovieManager.cpp(649)
+#. SourceLocation:	Source/MyProject/Private/MovieManager.cpp(653)
+#: Source/MyProject/Private/MovieManager.cpp(653)
 msgctxt "FinalTakeUI,MovieManager.41c1dd63d7"
 msgid "Could not create the wardrobe UI or preview camera."
 msgstr "Could not create the wardrobe UI or preview camera."
 
 #. Key:	MovieManager.b88070a5df
-#. SourceLocation:	Source/MyProject/Private/MovieManager.cpp(664)
-#: Source/MyProject/Private/MovieManager.cpp(664)
+#. SourceLocation:	Source/MyProject/Private/MovieManager.cpp(668)
+#: Source/MyProject/Private/MovieManager.cpp(668)
 msgctxt "FinalTakeUI,MovieManager.b88070a5df"
 msgid "Could not start synchronized recording/playback."
 msgstr "Could not start synchronized recording/playback."
@@ -161,8 +161,8 @@ msgid "Police Officer"
 msgstr "Police Officer"
 
 #. Key:	MovieManager.4a12f3f98a
-#. SourceLocation:	Source/MyProject/Private/MovieManager.cpp(672)
-#: Source/MyProject/Private/MovieManager.cpp(672)
+#. SourceLocation:	Source/MyProject/Private/MovieManager.cpp(676)
+#: Source/MyProject/Private/MovieManager.cpp(676)
 msgctxt "FinalTakeUI,MovieManager.4a12f3f98a"
 msgid "Could not start synchronized playback."
 msgstr "Could not start synchronized playback."
@@ -189,22 +189,22 @@ msgid "React to the chaos in the shop. Make your surprise impossible to miss."
 msgstr "React to the chaos in the shop. Make your surprise impossible to miss."
 
 #. Key:	MovieManager.61435e5eb7
-#. SourceLocation:	Source/MyProject/Private/MovieManager.cpp(708)
-#: Source/MyProject/Private/MovieManager.cpp(708)
+#. SourceLocation:	Source/MyProject/Private/MovieManager.cpp(712)
+#: Source/MyProject/Private/MovieManager.cpp(712)
 msgctxt "FinalTakeUI,MovieManager.61435e5eb7"
 msgid "The recorder returned invalid data or ended before the configured take duration."
 msgstr "The recorder returned invalid data or ended before the configured take duration."
 
 #. Key:	MovieManager.e0bbde121f
-#. SourceLocation:	Source/MyProject/Private/MovieManager.cpp(770)
-#: Source/MyProject/Private/MovieManager.cpp(770)
+#. SourceLocation:	Source/MyProject/Private/MovieManager.cpp(774)
+#: Source/MyProject/Private/MovieManager.cpp(774)
 msgctxt "FinalTakeUI,MovieManager.e0bbde121f"
 msgid "The movie's live performer or player possession was lost."
 msgstr "The movie's live performer or player possession was lost."
 
 #. Key:	MovieManager.bc55d9c9ee
-#. SourceLocation:	Source/MyProject/Private/MovieManager.cpp(799)
-#: Source/MyProject/Private/MovieManager.cpp(799)
+#. SourceLocation:	Source/MyProject/Private/MovieManager.cpp(803)
+#: Source/MyProject/Private/MovieManager.cpp(803)
 msgctxt "FinalTakeUI,MovieManager.bc55d9c9ee"
 msgid "The movie recorder was cancelled by another system."
 msgstr "The movie recorder was cancelled by another system."
@@ -853,275 +853,303 @@ msgctxt "FinalTake,RecorderCancelled"
 msgid "Another system cancelled the recording."
 msgstr "Another system cancelled the recording."
 
+#. Key:	CloseVault
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(207)
+#: Source/MyProject/Private/StorySessionWorld.cpp(207)
+msgctxt "FinalRelease,CloseVault"
+msgid "[E] Close vault"
+msgstr "[E] Close vault"
+
+#. Key:	DoorClear
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(207)
+#: Source/MyProject/Private/StorySessionWorld.cpp(207)
+msgctxt "FinalRelease,DoorClear"
+msgid "Keep the doorway clear"
+msgstr "Keep the doorway clear"
+
+#. Key:	OpenVault
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(207)
+#: Source/MyProject/Private/StorySessionWorld.cpp(207)
+msgctxt "FinalRelease,OpenVault"
+msgid "[E] Open vault"
+msgstr "[E] Open vault"
+
 #. Key:	PromptEscape
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(192)
-#: Source/MyProject/Private/StorySessionWorld.cpp(192)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(208)
+#: Source/MyProject/Private/StorySessionWorld.cpp(208)
 msgctxt "FinalTake,PromptEscape"
 msgid "[E] Leave with the money"
 msgstr "[E] Leave with the money"
 
 #. Key:	PromptSecure
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(193)
-#: Source/MyProject/Private/StorySessionWorld.cpp(193)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(209)
+#: Source/MyProject/Private/StorySessionWorld.cpp(209)
 msgctxt "FinalTake,PromptSecure"
 msgid "[E] Secure the money"
 msgstr "[E] Secure the money"
 
 #. Key:	PromptConfiscate
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(195)
-#: Source/MyProject/Private/StorySessionWorld.cpp(195)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(211)
+#: Source/MyProject/Private/StorySessionWorld.cpp(211)
 msgctxt "FinalTake,PromptConfiscate"
 msgid "[E] Confiscate money"
 msgstr "[E] Confiscate money"
 
 #. Key:	PromptTakeMoney
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(195)
-#: Source/MyProject/Private/StorySessionWorld.cpp(195)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(211)
+#: Source/MyProject/Private/StorySessionWorld.cpp(211)
 msgctxt "FinalTake,PromptTakeMoney"
 msgid "[E] Take the money"
 msgstr "[E] Take the money"
 
 #. Key:	PromptAssist
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(196)
-#: Source/MyProject/Private/StorySessionWorld.cpp(196)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(212)
+#: Source/MyProject/Private/StorySessionWorld.cpp(212)
 msgctxt "FinalTake,PromptAssist"
 msgid "[E] Help the police"
 msgstr "[E] Help the police"
 
 #. Key:	PromptDistract
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(196)
-#: Source/MyProject/Private/StorySessionWorld.cpp(196)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(212)
+#: Source/MyProject/Private/StorySessionWorld.cpp(212)
 msgctxt "FinalTake,PromptDistract"
 msgid "[E] Distract the guard"
 msgstr "[E] Distract the guard"
 
 #. Key:	PromptGuardInfo
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(196)
-#: Source/MyProject/Private/StorySessionWorld.cpp(196)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(212)
+#: Source/MyProject/Private/StorySessionWorld.cpp(212)
 msgctxt "FinalTake,PromptGuardInfo"
 msgid "[E] Talk to the guard"
 msgstr "[E] Talk to the guard"
 
 #. Key:	PromptTeller
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(197)
-#: Source/MyProject/Private/StorySessionWorld.cpp(197)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(213)
+#: Source/MyProject/Private/StorySessionWorld.cpp(213)
 msgctxt "FinalTake,PromptTeller"
 msgid "[E] Talk to the teller"
 msgstr "[E] Talk to the teller"
 
 #. Key:	PromptCoordinate
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(198)
-#: Source/MyProject/Private/StorySessionWorld.cpp(198)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(214)
+#: Source/MyProject/Private/StorySessionWorld.cpp(214)
 msgctxt "FinalTake,PromptCoordinate"
 msgid "[E] Coordinate a distraction"
 msgstr "[E] Coordinate a distraction"
 
 #. Key:	PromptIntercept
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(198)
-#: Source/MyProject/Private/StorySessionWorld.cpp(198)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(214)
+#: Source/MyProject/Private/StorySessionWorld.cpp(214)
 msgctxt "FinalTake,PromptIntercept"
 msgid "[E] Intercept"
 msgstr "[E] Intercept"
 
 #. Key:	PromptGrab
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(199)
-#: Source/MyProject/Private/StorySessionWorld.cpp(199)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(215)
+#: Source/MyProject/Private/StorySessionWorld.cpp(215)
 msgctxt "FinalTake,PromptGrab"
 msgid "[E] Grab object · [Click] Throw · [Q] Drop"
 msgstr "[E] Grab object · [Click] Throw · [Q] Drop"
 
 #. Key:	PromptWitness
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(200)
-#: Source/MyProject/Private/StorySessionWorld.cpp(200)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(216)
+#: Source/MyProject/Private/StorySessionWorld.cpp(216)
 msgctxt "FinalTake,PromptWitness"
 msgid "[E] Ask the witness"
 msgstr "[E] Ask the witness"
 
 #. Key:	EndingEscape
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(30)
-#: Source/MyProject/Private/StorySessionWorld.cpp(30)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(32)
+#: Source/MyProject/Private/StorySessionWorld.cpp(32)
 msgctxt "FinalTake,EndingEscape"
 msgid "The robber escaped with the loot."
 msgstr "The robber escaped with the loot."
 
 #. Key:	EndingPolice
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(31)
-#: Source/MyProject/Private/StorySessionWorld.cpp(31)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(33)
+#: Source/MyProject/Private/StorySessionWorld.cpp(33)
 msgctxt "FinalTake,EndingPolice"
 msgid "The police recovered the money."
 msgstr "The police recovered the money."
 
 #. Key:	EndingCivilian
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(32)
-#: Source/MyProject/Private/StorySessionWorld.cpp(32)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(34)
+#: Source/MyProject/Private/StorySessionWorld.cpp(34)
 msgctxt "FinalTake,EndingCivilian"
 msgid "The civilian was the real robber!"
 msgstr "The civilian was the real robber!"
 
 #. Key:	EndingFailed
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(33)
-#: Source/MyProject/Private/StorySessionWorld.cpp(33)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(35)
+#: Source/MyProject/Private/StorySessionWorld.cpp(35)
 msgctxt "FinalTake,EndingFailed"
 msgid "The robbery failed before it began."
 msgstr "The robbery failed before it began."
 
 #. Key:	EndingChaos
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(34)
-#: Source/MyProject/Private/StorySessionWorld.cpp(34)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(36)
+#: Source/MyProject/Private/StorySessionWorld.cpp(36)
 msgctxt "FinalTake,EndingChaos"
 msgid "Nobody understood the plan. The money is still in the bank."
 msgstr "Nobody understood the plan. The money is still in the bank."
 
 #. Key:	ObjectiveEscape
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(368)
-#: Source/MyProject/Private/StorySessionWorld.cpp(368)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(386)
+#: Source/MyProject/Private/StorySessionWorld.cpp(386)
 msgctxt "FinalTake,ObjectiveEscape"
 msgid "Escape with the money: distract the guard and reach the exit."
 msgstr "Escape with the money: distract the guard and reach the exit."
 
 #. Key:	ObjectiveAfterRobbery
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(369)
-#: Source/MyProject/Private/StorySessionWorld.cpp(369)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(387)
+#: Source/MyProject/Private/StorySessionWorld.cpp(387)
 msgctxt "FinalTake,ObjectiveAfterRobbery"
 msgid "Ask a witness how your brilliant plan ended."
 msgstr "Ask a witness how your brilliant plan ended."
 
 #. Key:	ObjectiveDroppedMoney
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(370)
-#: Source/MyProject/Private/StorySessionWorld.cpp(370)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(388)
+#: Source/MyProject/Private/StorySessionWorld.cpp(388)
 msgctxt "FinalTake,ObjectiveDroppedMoney"
 msgid "Find the dropped money and pick it up."
 msgstr "Find the dropped money and pick it up."
 
+#. Key:	VaultObjective
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(389)
+#: Source/MyProject/Private/StorySessionWorld.cpp(389)
+msgctxt "FinalRelease,VaultObjective"
+msgid "Get the vault money: open its door with E, or ask the teller."
+msgstr "Get the vault money: open its door with E, or ask the teller."
+
 #. Key:	ObjectiveGetMoney
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(371)
-#: Source/MyProject/Private/StorySessionWorld.cpp(371)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(389)
+#: Source/MyProject/Private/StorySessionWorld.cpp(389)
 msgctxt "FinalTake,ObjectiveGetMoney"
 msgid "Get the money from the counter or talk to the teller."
 msgstr "Get the money from the counter or talk to the teller."
 
 #. Key:	ObjectiveRecoverMoney
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(371)
-#: Source/MyProject/Private/StorySessionWorld.cpp(371)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(389)
+#: Source/MyProject/Private/StorySessionWorld.cpp(389)
 msgctxt "FinalTake,ObjectiveRecoverMoney"
 msgid "Recover the money from whoever is carrying it."
 msgstr "Recover the money from whoever is carrying it."
 
 #. Key:	ObjectiveSecureMoney
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(375)
-#: Source/MyProject/Private/StorySessionWorld.cpp(375)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(393)
+#: Source/MyProject/Private/StorySessionWorld.cpp(393)
 msgctxt "FinalTake,ObjectiveSecureMoney"
 msgid "Give the money to the guard to secure it."
 msgstr "Give the money to the guard to secure it."
 
 #. Key:	ObjectiveGuardDebrief
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(376)
-#: Source/MyProject/Private/StorySessionWorld.cpp(376)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(394)
+#: Source/MyProject/Private/StorySessionWorld.cpp(394)
 msgctxt "FinalTake,ObjectiveGuardDebrief"
 msgid "Talk to the guard and secure the scene."
 msgstr "Talk to the guard and secure the scene."
 
 #. Key:	ObjectiveConfiscate
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(377)
-#: Source/MyProject/Private/StorySessionWorld.cpp(377)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(395)
+#: Source/MyProject/Private/StorySessionWorld.cpp(395)
 msgctxt "FinalTake,ObjectiveConfiscate"
 msgid "Approach the money holder and confiscate it."
 msgstr "Approach the money holder and confiscate it."
 
 #. Key:	ObjectivePoliceCollect
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(377)
-#: Source/MyProject/Private/StorySessionWorld.cpp(377)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(395)
+#: Source/MyProject/Private/StorySessionWorld.cpp(395)
 msgctxt "FinalTake,ObjectivePoliceCollect"
 msgid "Pick up the money before someone else takes it."
 msgstr "Pick up the money before someone else takes it."
 
 #. Key:	ObjectiveCivilEscape
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(381)
-#: Source/MyProject/Private/StorySessionWorld.cpp(381)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(399)
+#: Source/MyProject/Private/StorySessionWorld.cpp(399)
 msgctxt "FinalTake,ObjectiveCivilEscape"
 msgid "Leave the bank with your unexpected loot."
 msgstr "Leave the bank with your unexpected loot."
 
 #. Key:	ObjectiveCivilWitness
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(385)
-#: Source/MyProject/Private/StorySessionWorld.cpp(385)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(403)
+#: Source/MyProject/Private/StorySessionWorld.cpp(403)
 msgctxt "FinalTake,ObjectiveCivilWitness"
 msgid "The guard is already distracted. Ask a witness who has the money."
 msgstr "The guard is already distracted. Ask a witness who has the money."
 
 #. Key:	ObjectiveDistract
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(386)
-#: Source/MyProject/Private/StorySessionWorld.cpp(386)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(404)
+#: Source/MyProject/Private/StorySessionWorld.cpp(404)
 msgctxt "FinalTake,ObjectiveDistract"
 msgid "Distract the guard. The next actor must deal with it."
 msgstr "Distract the guard. The next actor must deal with it."
 
 #. Key:	ObjectiveCivilAftermath
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(388)
-#: Source/MyProject/Private/StorySessionWorld.cpp(388)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(406)
+#: Source/MyProject/Private/StorySessionWorld.cpp(406)
 msgctxt "FinalTake,ObjectiveCivilAftermath"
 msgid "Help the guard close the case... or change the ending."
 msgstr "Help the guard close the case... or change the ending."
 
 #. Key:	ConsequenceConfiscated
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(535)
-#: Source/MyProject/Private/StorySessionWorld.cpp(535)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(557)
+#: Source/MyProject/Private/StorySessionWorld.cpp(557)
 msgctxt "FinalTake,ConsequenceConfiscated"
 msgid "The police have the money. The robber will return without it."
 msgstr "The police have the money. The robber will return without it."
 
 #. Key:	ConsequenceTransferred
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(536)
-#: Source/MyProject/Private/StorySessionWorld.cpp(536)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(558)
+#: Source/MyProject/Private/StorySessionWorld.cpp(558)
 msgctxt "FinalTake,ConsequenceTransferred"
 msgid "The money changed hands."
 msgstr "The money changed hands."
 
 #. Key:	ConsequenceDropped
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(537)
-#: Source/MyProject/Private/StorySessionWorld.cpp(537)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(559)
+#: Source/MyProject/Private/StorySessionWorld.cpp(559)
 msgctxt "FinalTake,ConsequenceDropped"
 msgid "The money is on the floor. Anyone can pick it up."
 msgstr "The money is on the floor. Anyone can pick it up."
 
 #. Key:	ConsequenceSecured
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(538)
-#: Source/MyProject/Private/StorySessionWorld.cpp(538)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(560)
+#: Source/MyProject/Private/StorySessionWorld.cpp(560)
 msgctxt "FinalTake,ConsequenceSecured"
 msgid "The money is safe... while the guard is paying attention."
 msgstr "The money is safe... while the guard is paying attention."
 
 #. Key:	ConsequenceDistracted
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(539)
-#: Source/MyProject/Private/StorySessionWorld.cpp(539)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(561)
+#: Source/MyProject/Private/StorySessionWorld.cpp(561)
 msgctxt "FinalTake,ConsequenceDistracted"
 msgid "The guard is distracted. The next performance will change."
 msgstr "The guard is distracted. The next performance will change."
 
-#. Key:	BriefRobber
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(54)
-#: Source/MyProject/Private/StorySessionWorld.cpp(54)
-msgctxt "FinalTake,BriefRobber"
-msgid "Get the money. Plan an escape, and face what the other characters do."
-msgstr "Get the money. Plan an escape, and face what the other characters do."
-
 #. Key:	ConsequenceEscape
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(540)
-#: Source/MyProject/Private/StorySessionWorld.cpp(540)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(562)
+#: Source/MyProject/Private/StorySessionWorld.cpp(562)
 msgctxt "FinalTake,ConsequenceEscape"
 msgid "Someone left with the money. There are still consequences."
 msgstr "Someone left with the money. There are still consequences."
 
+#. Key:	BriefRobber
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(57)
+#: Source/MyProject/Private/StorySessionWorld.cpp(57)
+msgctxt "FinalTake,BriefRobber"
+msgid "Get the money. Plan an escape, and face what the other characters do."
+msgstr "Get the money. Plan an escape, and face what the other characters do."
+
 #. Key:	BriefPolice
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(55)
-#: Source/MyProject/Private/StorySessionWorld.cpp(55)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(58)
+#: Source/MyProject/Private/StorySessionWorld.cpp(58)
 msgctxt "FinalTake,BriefPolice"
 msgid "Recover the money, intercept its holder, and give it to the guard."
 msgstr "Recover the money, intercept its holder, and give it to the guard."
 
 #. Key:	BriefCivilian
-#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(56)
-#: Source/MyProject/Private/StorySessionWorld.cpp(56)
+#. SourceLocation:	Source/MyProject/Private/StorySessionWorld.cpp(59)
+#: Source/MyProject/Private/StorySessionWorld.cpp(59)
 msgctxt "FinalTake,BriefCivilian"
 msgid "Distract the guard or help the police. Your last turn can change who gets the money."
 msgstr "Distract the guard or help the police. Your last turn can change who gets the money."

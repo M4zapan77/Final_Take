@@ -1,0 +1,101 @@
+[
+  {
+    "file": "FinalBankPackagedPolice_RecordingHUD.png",
+    "case": "FinalBankPackagedPolice",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "1500eb0ca637e92558c1d734faaad0082c9fcb05b4d1fa93ed59380f0273f8f9"
+  },
+  {
+    "file": "FinalBankPackagedPolice_Premiere.png",
+    "case": "FinalBankPackagedPolice",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "cc95ce3c4322bd7c299d2020ccc75712f6ecc9c6040d65bce213979c57c99cea"
+  },
+  {
+    "file": "FinalBankPackagedPolice_DirectedShot.png",
+    "case": "FinalBankPackagedPolice",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "4f29cbd9cd611d1f5151ad18f7b92fd597a2980d5c464da970579a0954eabc59"
+  },
+  {
+    "file": "FinalBankPackagedPolice_Results.png",
+    "case": "FinalBankPackagedPolice",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "197d851aa154572d2ff68af45cc96bad07d5ddb00da4845e3d64aecddfc1f223"
+  },
+  {
+    "file": "FinalBankPackagedCivilian_ActualThrow.png",
+    "case": "FinalBankPackagedCivilian",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "9839d19fcbb749b13c3c5208df19865badecdba35098fe0c719a765d27d12cdf"
+  },
+  {
+    "file": "FinalBankPackagedCivilian_Results.png",
+    "case": "FinalBankPackagedCivilian",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "53ec94c6762571919f652575d8746694ff530cedfe2beed7362316bab2e50bd5"
+  },
+  {
+    "file": "FinalBankPackagedEscape_VaultMoney.png",
+    "case": "FinalBankPackagedEscape",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "eb42e5661a19f0e582784629062b7ea826df229774de02178e718275a60f3adc"
+  },
+  {
+    "file": "FinalBankPackagedEscape_Premiere.png",
+    "case": "FinalBankPackagedEscape",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "9de55c29e88439810794fdeda6ada755db2d5db1fe6fe09f782950bb1ab94872"
+  },
+  {
+    "file": "FinalBankPackagedEscape_Results.png",
+    "case": "FinalBankPackagedEscape",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "1819aa76a2d9e5cbf36f30106ba9962ac931a8032eeaef3c2af4fab94cdfd09e"
+  },
+  {
+    "file": "FinalBankPackagedFailure_Results.png",
+    "case": "FinalBankPackagedFailure",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "5f6cdb7c6ea2eaa61fc55ace84f12eee53609f805deef7b8207b1db1de3581e6"
+  },
+  {
+    "file": "StartupPackagedAuto_MainMenu.png",
+    "case": "StartupPackagedAuto",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "sha256": "17c76c48df6ffbbd3501eb3271cdb778c0edeba4e002fcf640a9a9a9ab63b8cc"
+  }
+]

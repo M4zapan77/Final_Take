@@ -1,6 +1,6 @@
 param(
     [string]$EngineRoot='C:\Program Files\Epic Games\UE_5.6',
-    [ValidateSet('Police','Civilian','Failure')][string[]]$Scenarios=@('Police','Civilian','Failure'),
+    [ValidateSet('Police','Civilian','Failure','Escape')][string[]]$Scenarios=@('Police','Civilian','Failure'),
     [string]$PackageDirectory,
     [string]$ReportPrefix='FinalUIEvents',
     [switch]$LanguageCheck

@@ -1,0 +1,449 @@
+{
+  "reportCreatedOn": "2026.11.15-23.21.19",
+  "succeeded": 72,
+  "succeededWithWarnings": 1,
+  "failed": 0,
+  "notRun": 0,
+  "inProcess": 0,
+  "totalDuration": 3.6181280612945557,
+  "tests": [
+    {
+      "path": "OneManStudio.Acting.CompactIdleWithoutEarlyMotion",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Acting.RecorderSampling",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Acting.RecordingData",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Acting.ReplayCollision",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Acting.SharedClockAndReplay",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.ActingEvents.AnimationPresentation",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.ActingEvents.CaptureAndGating",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.ActingEvents.DataValidation",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.ActingEvents.PlaybackTimeline",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.ActingEvents.RecordedFootstepTimeline",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.ActingEvents.ThreeTakeMovieAndRestart",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Customization.FacialSnapshotIsolation",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Customization.ProductionAssetsAndHands",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Customization.ProfileAndCatalog",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Customization.TwoHandsAndReset",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Customization.UnifiedInterfaceAndGuard",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.FinalAssets.ReferenceAttachmentsAndSkinMasks",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.FinalAssets.SuppliedAudioAndSnapshot",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.FinalBank.ClockDoorPersistence",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.FinalBank.InvisiblePerimeter",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.FinalBank.RecoverSameActor",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Localization.LiveFTextAndValidation",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Movie.CharacterMovementLifecycle",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Movie.ConcurrentRecordingAndReplay",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Movie.DefaultTimingAndFinishedRestart",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Movie.RestartAndCleanup",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Movie.ThreeTakeLoop",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Objectives.AllRolesAndScores",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Objectives.DefinitionsAndValidation",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Objectives.NativeHUD",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Objectives.PropReplayAndReset",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Objectives.ProximityAtActionTime",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Objectives.RobberRules",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Objectives.ZeroAverageAndCap",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Objectives.ZonesAndBadConfiguration",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.PhysicalProps.CompactChronologicalTrajectory",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.PhysicalProps.HoldPresentationAndRestore",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.PhysicalProps.ThrowAndPause",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Premiere.Configuration",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Premiere.RestartAndCleanup",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Premiere.ResultsButtons",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Premiere.TitleAndReplay",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Premiere.ZeroScore",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Ratings.AwardsAndTies",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Ratings.ConditionalAwards",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Ratings.ScoreThresholds",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Startup.DefaultsAndValidation",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Startup.MissingMediaFallback",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Startup.SkipAndInputGuard",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Startup.TravelSessionState",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Story.BriefDetentionInputCleanup",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Story.ChronologicalAssembly",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Story.EarlyCutAndClock",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Story.FrozenScenarioAndValidation",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 1
+    },
+    {
+      "path": "OneManStudio.Story.LiveActingAcrossSixTurns",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Story.MoneyOwnershipAndContext",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Story.MovementCameraRestoration",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Story.NarrativeScoreValidation",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Story.OutcomesAndNoActionFilm",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Story.SixPersistentTurns",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Story.WardrobeRestoresActiveRoleCamera",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Studio.FrontEndAndIntroduction",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Studio.HubNavigationAndCleanReturn",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Studio.RestartAndInputOwnership",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Studio.SuppliedArtReferences",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Studio.TransitionsReplayAndMenu",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Studio.UIAudioAndConfiguration",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Wardrobe.CatalogAndFallback",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Wardrobe.ExistingSkeleton",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Wardrobe.NativeWidget",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Wardrobe.ReadyAndTimeout",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Wardrobe.SnapshotIsolation",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "OneManStudio.Wardrobe.ThreeTakeOutfits",
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    }
+  ]
+}

@@ -495,7 +495,11 @@ void AMovieManager::CloseWardrobePresentation()
         Player->bShowMouseCursor = bOriginalCursorVisible;
         Player->bEnableClickEvents = bOriginalClickEvents;
         Player->bEnableMouseOverEvents = bOriginalMouseOverEvents;
-        AActor* View = OriginalViewTarget.IsValid() ? OriginalViewTarget.Get() : LivePerformer.Get();
+        // Story mode possesses a different persistent pawn for each role. The
+        // original view belongs to the first actor and must only be restored on
+        // leaving the session, not every time a later actor closes the wardrobe.
+        AActor* View = IsChronologicalMovie() ? LivePerformer.Get()
+            : OriginalViewTarget.IsValid() ? OriginalViewTarget.Get() : LivePerformer.Get();
         if (View) { Player->SetViewTargetWithBlend(View, 0.0f); }
     }
     bWardrobeInputHeld = false;

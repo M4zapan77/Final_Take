@@ -4,6 +4,7 @@
 #include "ActingSceneClockSubsystem.h"
 #include "ActingRecorderComponent.h"
 #include "ActingComponent.h"
+#include "WardrobeWidget.h"
 #include "WardrobeComponent.h"
 #include "ObjectiveManagerComponent.h"
 #include "Misc/AutomationTest.h"
@@ -134,6 +135,26 @@ bool FStoryLiveActingTest::RunTest(const FString& Parameters)
     }
     C.Movie->RestartMovie();
     TestTrue(TEXT("New movie clears acting events"),C.Movie->Performances.IsEmpty() && C.Movie->StorySession->Segments.IsEmpty() && C.Movie->LivePerformer->FindComponentByClass<UActingRecorderComponent>()->GetRecordingData().Events.IsEmpty());
+    return true;
+}
+
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FStoryWardrobeCameraTest,"OneManStudio.Story.WardrobeRestoresActiveRoleCamera",EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
+bool FStoryWardrobeCameraTest::RunTest(const FString& Parameters)
+{
+    StorySessionTests::FWorld C;
+    if(!TestTrue(TEXT("Story starts"),C.Movie->StartMovie())){return false;}
+    for(int32 Role=0;Role<3;++Role)
+    {
+        // The transient test world has no viewport. Represent its open wardrobe
+        // with a real widget object so the normal close/restore path runs.
+        C.Movie->ActiveWardrobeWidget=NewObject<UWardrobeWidget>(C.Player);
+        if(!TestTrue(TEXT("Ready closes the current role wardrobe"),C.Movie->ReadyForTake(C.Movie->PreparationId))){return false;}
+        TestTrue(TEXT("Camera belongs to the possessed role, not the first actor"),C.Player->GetViewTarget()==C.Movie->LivePerformer);
+        int32 Frames=0;while(C.Movie->GetCurrentTakeNumber()==Role+1 && Frames++<40){C.Tick();}
+        if(!TestTrue(TEXT("Role completed"),Frames<40)){return false;}
+    }
+    C.Movie->StopMovie();
+    TestTrue(TEXT("Leaving the session restores original player view"),C.Player->GetViewTarget()==C.Pawn);
     return true;
 }
 

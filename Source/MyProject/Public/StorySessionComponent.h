@@ -18,6 +18,8 @@ class UActingComponent;
 class UGrabbablePropComponent;
 class UBoxComponent;
 class ACameraActor;
+class AStudioSetDoor;
+class AStudioBankBounds;
 
 USTRUCT(BlueprintType)
 struct MYPROJECT_API FStoryPropTrack
@@ -114,6 +116,16 @@ public:
         const TArray<FStorySegment>& SourceSegments, double Duration, FActingRecording& Out);
 
 private:
+    void InitializeSet();
+    void ClearSet();
+    bool FindSetMarker(FName Tag,FTransform& Out)const;
+    bool RequestDoor(AStudioSetDoor* Door,bool Open);
+    void DoorSafetyOpen(AStudioSetDoor* Door);
+    void UpdateCastSafety();
+    UPROPERTY(Transient) TArray<TObjectPtr<AStudioSetDoor>> SetDoors;
+    UPROPERTY(Transient) TWeakObjectPtr<AStudioBankBounds> SafetyBounds;
+    UPROPERTY(Transient) TMap<FName,FTransform> SafePoses;
+    bool bFinalSet=false;
     bool IsCurrent() const;
     bool ConfigureActor(APawn* Pawn);
     bool SwitchActor(int32 Index);

@@ -75,4 +75,5 @@ private:
     UPROPERTY(Transient) TObjectPtr<UMaterialInstanceDynamic> ScreenInstance;
     bool bPresenting = false;
     bool bOwnsListener = false;
+    int32 LastDirectorShot = INDEX_NONE;
 };

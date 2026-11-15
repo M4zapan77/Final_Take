@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "sourceGameplay": "a27bb7b143e035823d87b1c1a818adac3cfa4651",
+  "finalMap": "0882f316a8fc4ce1f29001fdd766162a78b40d6e",
+  "summary": "Menú y ajustes, camerinos y selección real, seis turnos, gesto/sonido, estreno, resultados, repetir con el mismo 4/100, nueva película limpia con 0/100, regreso al estudio, menú y Salir; cámara del policía revisada tras el ajuste final.",
+  "notes": [
+    {
+      "time": "2026-11-15T23:41:39.282Z",
+      "name": "Introduction",
+      "note": "Segundo vídeo reproducido automáticamente en Shipping."
+    },
+    {
+      "time": "2026-11-15T23:41:54.700Z",
+      "name": "Studio",
+      "note": "Estudio y guion visibles antes de consumir tiempo de actuación."
+    },
+    {
+      "time": "2026-11-15T23:42:02.273Z",
+      "name": "MainMenu",
+      "note": "Menú Shipping con vídeo de fondo activo y opciones visibles."
+    },
+    {
+      "time": "2026-11-15T23:42:09.692Z",
+      "name": "Settings",
+      "note": "Panel de ajustes abierto sobre el vídeo; controles de audio e idioma visibles."
+    },
+    {
+      "time": "2026-11-15T23:42:25.799Z",
+      "name": "Wardrobe",
+      "note": "Primer camerino visible; selección de ojos clásicos actualiza la vista real."
+    },
+    {
+      "time": "2026-11-15T23:43:38.001Z",
+      "name": "WardrobeCivilian",
+      "note": "Tercer camerino automático con el civil y su propio aspecto."
+    },
+    {
+      "time": "2026-11-15T23:43:40.447Z",
+      "name": "CivilianActing",
+      "note": "Cámara del civil, gesto y sonido activados con teclado normal."
+    },
+    {
+      "time": "2026-11-15T23:45:52.662Z",
+      "name": "Results",
+      "note": "Resultados Shipping reales: 4/100, una estrella, cero objetivos y premios por baile/sonido del civil."
+    },
+    {
+      "time": "2026-11-15T23:45:58.505Z",
+      "name": "Premiere",
+      "note": "Repetir película abre de nuevo la captura del cine."
+    }
+  ]
+}

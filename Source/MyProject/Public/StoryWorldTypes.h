@@ -3,7 +3,7 @@
 #include "StoryWorldTypes.generated.h"
 
 UENUM(BlueprintType)
-enum class EStoryEventType:uint8 { MoneyTaken,MoneyTransferred,MoneyConfiscated,MoneyDropped,MoneySecured,Escape,Detain,GuardDistracted,AlarmChanged,NPCReaction,NPCInformation,NPCAssisted,PropGrabbed,PropDropped,PropThrown,PropImpact,NPCStateChanged,PresentationStop,PropCreated,PropRecovered };
+enum class EStoryEventType:uint8 { MoneyTaken,MoneyTransferred,MoneyConfiscated,MoneyDropped,MoneySecured,Escape,Detain,GuardDistracted,AlarmChanged,NPCReaction,NPCInformation,NPCAssisted,PropGrabbed,PropDropped,PropThrown,PropImpact,NPCStateChanged,PresentationStop,PropCreated,PropRecovered,DoorChanged,ActorRecovered };
 UENUM(BlueprintType)
 enum class EStoryNPCType:uint8 { Teller,Guard,Witness };
 UENUM(BlueprintType)
@@ -61,6 +61,7 @@ struct MYPROJECT_API FStoryWorldState
     UPROPERTY(BlueprintReadOnly,Category="Story") bool bRobberEscaped=false;
     UPROPERTY(BlueprintReadOnly,Category="Story") bool bMoneyWasTaken=false;
     UPROPERTY(BlueprintReadOnly,Category="Story") TMap<FName,double> DetainedUntil;
+    UPROPERTY(BlueprintReadOnly,Category="Story") TMap<FName,bool> DoorOpen;
     FStoryObjectState* FindObject(FName Id) { return Objects.FindByPredicate([Id](const auto& O){return O.ObjectId==Id;}); }
     const FStoryObjectState* FindObject(FName Id) const { return Objects.FindByPredicate([Id](const auto& O){return O.ObjectId==Id;}); }
     FName MoneyOwner() const { const auto* Money=FindObject(MoneyObjectId);return Money?Money->OwnerId:NAME_None; }

@@ -1,0 +1,4627 @@
+{
+  "map_sha256": "96831951115fffe24f6a689a7c1f3486d180e7e09b74b88c01467b1f1423a62f",
+  "actors": [
+    {
+      "name": "StaticMeshActor_0",
+      "label": "BANK - Meshy Diorama",
+      "class": "StaticMeshActor",
+      "tags": [
+        "BankSetup",
+        "BankShell"
+      ],
+      "location": [
+        -0.5745825541179546,
+        -1.0711593262324348,
+        844.1976958299979
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024057991370) {pitch: 0.000000, yaw: -89.999999, roll: 179.999999}>",
+      "scale": [
+        0.25,
+        0.25,
+        -0.25
+      ],
+      "center": [
+        0.9440943222393798,
+        -3.9023360470864645,
+        842.1576873220343
+      ],
+      "extent": [
+        2378.786319712008,
+        1756.2212492962458,
+        907.7075469036529
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/SM_MeshyBank.SM_MeshyBank",
+      "local_min": [
+        -7013.56005859375,
+        -9521.2197265625,
+        -3638.989990234375
+      ],
+      "local_max": [
+        7036.20947265625,
+        9509.0703125,
+        3622.669921875
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/M_MeshyBank.M_MeshyBank"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_1",
+      "label": "Bank exterior ground",
+      "class": "StaticMeshActor",
+      "tags": [
+        "BankSetup"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -15.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x00000240579BA1D0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        100.0,
+        100.0,
+        0.3
+      ],
+      "center": [
+        0.0,
+        0.0,
+        -15.0
+      ],
+      "extent": [
+        5000.0,
+        5000.0,
+        15.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/MI_BankGround.MI_BankGround"
+      ]
+    },
+    {
+      "name": "ObjectiveZone_3",
+      "label": "Bank entry objective",
+      "class": "ObjectiveZone",
+      "tags": [
+        "BankSetup"
+      ],
+      "location": [
+        -450.0,
+        0.0,
+        110.00000095367432
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024057991370) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        -450.0,
+        0.0,
+        110.00000095367432
+      ],
+      "extent": [
+        110.0,
+        260.0,
+        180.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Engine/EngineMaterials/WorldGridMaterial.WorldGridMaterial"
+      ]
+    },
+    {
+      "name": "ObjectiveZone_4",
+      "label": "Bank counter objective",
+      "class": "ObjectiveZone",
+      "tags": [
+        "BankSetup"
+      ],
+      "location": [
+        40.0,
+        150.0,
+        110.00000095367432
+      ],
+      "rotation": "<Struct 'Rotator' (0x00000240579BA180) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        39.999999999999986,
+        150.0,
+        110.00000095367432
+      ],
+      "extent": [
+        110.0,
+        200.0,
+        180.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Engine/EngineMaterials/WorldGridMaterial.WorldGridMaterial"
+      ]
+    },
+    {
+      "name": "ObjectiveZone_5",
+      "label": "Bank escape objective",
+      "class": "ObjectiveZone",
+      "tags": [
+        "BankSetup"
+      ],
+      "location": [
+        1180.0,
+        0.0,
+        110.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x00000240579BA130) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        1180.0,
+        0.0,
+        110.0
+      ],
+      "extent": [
+        180.0,
+        240.0,
+        160.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Engine/EngineMaterials/WorldGridMaterial.WorldGridMaterial"
+      ]
+    },
+    {
+      "name": "MoneyBagProp_1",
+      "label": "Money bag pickup",
+      "class": "MoneyBagProp",
+      "tags": [
+        "BankSetup"
+      ],
+      "location": [
+        700.0,
+        0.0,
+        103.951808094844
+      ],
+      "rotation": "<Struct 'Rotator' (0x00000240679B2A40) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.38,
+        0.38,
+        0.38
+      ],
+      "center": [
+        700.0,
+        0.0,
+        103.951808094844
+      ],
+      "extent": [
+        18.61079078674311,
+        18.390537948608397,
+        18.999998550415043
+      ],
+      "mesh": "/Game/OneManStudio/Cosmetics/ProductionArt/Props/MoneyBag/SM_MoneyBag.SM_MoneyBag",
+      "local_min": [
+        -48.975765228271484,
+        -48.39615249633789,
+        -49.999996185302734
+      ],
+      "local_max": [
+        48.975765228271484,
+        48.39615249633789,
+        49.999996185302734
+      ],
+      "materials": [
+        "/Game/OneManStudio/Cosmetics/ProductionArt/Props/MoneyBag/MI_MoneyBag.MI_MoneyBag"
+      ]
+    },
+    {
+      "name": "DonutProp_1",
+      "label": "Donut pickup",
+      "class": "DonutProp",
+      "tags": [
+        "BankSetup"
+      ],
+      "location": [
+        10.0,
+        -405.0,
+        141.2284125037575
+      ],
+      "rotation": "<Struct 'Rotator' (0x00000240679B3760) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.24,
+        0.24,
+        0.24
+      ],
+      "center": [
+        10.0,
+        -405.0,
+        141.2284125037575
+      ],
+      "extent": [
+        12.0,
+        11.978509826660172,
+        6.064414215087879
+      ],
+      "mesh": "/Game/OneManStudio/Cosmetics/ProductionArt/Props/Donut/SM_Donut.SM_Donut",
+      "local_min": [
+        -50.0,
+        -49.910457611083984,
+        -25.26839256286621
+      ],
+      "local_max": [
+        50.0,
+        49.910457611083984,
+        25.26839256286621
+      ],
+      "materials": [
+        "/Game/OneManStudio/Cosmetics/ProductionArt/Props/Donut/MI_Donut.MI_Donut"
+      ]
+    },
+    {
+      "name": "BananaProp_1",
+      "label": "Banana pickup",
+      "class": "BananaProp",
+      "tags": [
+        "BankSetup"
+      ],
+      "location": [
+        250.0,
+        -405.0,
+        143.2847709489152
+      ],
+      "rotation": "<Struct 'Rotator' (0x00000240679B0060) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.24,
+        0.24,
+        0.24
+      ],
+      "center": [
+        250.0,
+        -405.0,
+        143.2847709489152
+      ],
+      "extent": [
+        12.0,
+        3.6303554534912337,
+        7.808265380859382
+      ],
+      "mesh": "/Game/OneManStudio/Cosmetics/ProductionArt/Props/Banana/SM_Banana.SM_Banana",
+      "local_min": [
+        -50.0,
+        -15.126481056213379,
+        -32.53443908691406
+      ],
+      "local_max": [
+        50.0,
+        15.126481056213379,
+        32.53443908691406
+      ],
+      "materials": [
+        "/Game/OneManStudio/Cosmetics/ProductionArt/Props/Banana/MI_Banana.MI_Banana"
+      ]
+    },
+    {
+      "name": "DirectionalLight_0",
+      "label": "Bank daylight",
+      "class": "DirectionalLight",
+      "tags": [
+        "BankSetup"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        2500.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x00000240679B2A40) {pitch: -42.000000, yaw: -32.000000, roll: 0.000000}>",
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "center": [
+        189.06676632438104,
+        -118.14202774070827,
+        2299.2608180923426
+      ],
+      "extent": [
+        408.5416065315469,
+        358.6686866915144,
+        349.3681470031362
+      ]
+    },
+    {
+      "name": "DirectionalLight_3",
+      "label": "Soft interior fill",
+      "class": "DirectionalLight",
+      "tags": [
+        "BankSetup"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        1800.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x00000240679D8880) {pitch: -35.000000, yaw: 180.000000, roll: -0.000000}>",
+      "scale": [
+        2.5,
+        2.5,
+        2.5
+      ],
+      "center": [
+        -245.74561328669745,
+        2.842170943040401e-14,
+        1627.9270690946862
+      ],
+      "extent": [
+        360.4609005569066,
+        199.99999999999997,
+        335.90333976311217
+      ]
+    },
+    {
+      "name": "SkyAtmosphere_0",
+      "label": "Bank sky",
+      "class": "SkyAtmosphere",
+      "tags": [
+        "BankSetup"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x00000240679B2A40) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        120.0,
+        0.0,
+        0.0
+      ],
+      "extent": [
+        120.0,
+        80.0,
+        80.0
+      ]
+    },
+    {
+      "name": "SkyLight_0",
+      "label": "Bank ambient sky",
+      "class": "SkyLight",
+      "tags": [
+        "BankSetup"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        1500.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x00000240679D8880) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        0.0,
+        0.0,
+        749.5
+      ],
+      "extent": [
+        1.0,
+        1.0,
+        750.5
+      ]
+    },
+    {
+      "name": "PostProcessVolume_0",
+      "label": "Bank exposure and clear motion",
+      "class": "PostProcessVolume",
+      "tags": [
+        "BankSetup"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x00000240679DA360) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "extent": [
+        100.0,
+        100.0,
+        100.0
+      ]
+    },
+    {
+      "name": "PlayerStart_0",
+      "label": "Movie player start",
+      "class": "PlayerStart",
+      "tags": [
+        "BankSetup"
+      ],
+      "location": [
+        -650.0,
+        0.0,
+        110.00000095367432
+      ],
+      "rotation": "<Struct 'Rotator' (0x00000240679D8880) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        -550.0,
+        0.0,
+        110.00000095367432
+      ],
+      "extent": [
+        140.0,
+        80.0,
+        92.0
+      ]
+    },
+    {
+      "name": "CameraActor_0",
+      "label": "Movie premiere camera",
+      "class": "CameraActor",
+      "tags": [
+        "BankSetup"
+      ],
+      "location": [
+        250.0,
+        1140.0,
+        850.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x00000240679DA360) {pitch: -32.471192, yaw: -90.000000, roll: -0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "extent": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "MovieManager_0",
+      "label": "ONE MAN STUDIO - Movie Manager",
+      "class": "MovieManager",
+      "tags": [
+        "BankSetup"
+      ],
+      "location": [
+        -650.0,
+        0.0,
+        0.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x00000240679D8880) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        -650.0,
+        0.0,
+        0.0
+      ],
+      "extent": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "TextRenderActor_1",
+      "label": "Bank sign",
+      "class": "TextRenderActor",
+      "tags": [
+        "BankSetup"
+      ],
+      "location": [
+        -915.0,
+        0.0,
+        563.2184274791775
+      ],
+      "rotation": "<Struct 'Rotator' (0x00000240679DA360) {pitch: 0.000000, yaw: 180.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        -915.0,
+        0.0,
+        589.2184274791775
+      ],
+      "extent": [
+        0.0,
+        161.99999999999991,
+        26.0
+      ]
+    },
+    {
+      "name": "StaticMeshActor_2",
+      "label": "Teller desk 1",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -350.0,
+        -430.0,
+        79.91045093195612
+      ],
+      "rotation": "<Struct 'Rotator' (0x00000240679DA310) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        2.45,
+        2.465430152568249,
+        2.682747362150482
+      ],
+      "center": [
+        -350.0,
+        -430.0,
+        79.91045093195612
+      ],
+      "extent": [
+        122.5,
+        57.5,
+        55.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Escritorio/SM_Escritorio.SM_Escritorio",
+      "local_min": [
+        -50.0,
+        -23.32250213623047,
+        -20.501371383666992
+      ],
+      "local_max": [
+        50.0,
+        23.32250213623047,
+        20.501371383666992
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Escritorio/MI_Escritorio.MI_Escritorio"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_3",
+      "label": "Teller blue front 1",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -350.0,
+        -366.0,
+        73.17503831618717
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D92900) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        2.35,
+        0.1,
+        0.96
+      ],
+      "center": [
+        -350.0,
+        -366.0,
+        73.17503831618717
+      ],
+      "extent": [
+        117.5,
+        5.0,
+        48.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Navy.MI_Navy"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_4",
+      "label": "Teller cream lip 1",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -350.0,
+        -360.0,
+        135.91045093195612
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D92A40) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        2.53,
+        0.22,
+        0.1
+      ],
+      "center": [
+        -350.0,
+        -360.0,
+        135.91045093195612
+      ],
+      "extent": [
+        126.5,
+        11.0,
+        5.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Cream.MI_Cream"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_5",
+      "label": "Teller laptop 1",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -350.0,
+        -443.0,
+        155.6104509319561
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D92B30) {pitch: 0.000000, yaw: 180.000000, roll: 0.000000}>",
+      "scale": [
+        0.55,
+        0.5106559062008355,
+        0.6005870606552975
+      ],
+      "center": [
+        -350.0,
+        -443.0,
+        155.6104509319561
+      ],
+      "extent": [
+        27.5,
+        19.0,
+        20.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Laptop/SM_Laptop.SM_Laptop",
+      "local_min": [
+        -50.0,
+        -37.20705032348633,
+        -33.300750732421875
+      ],
+      "local_max": [
+        50.0,
+        37.20705032348633,
+        33.300750732421875
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Laptop/MI_Laptop.MI_Laptop"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_8",
+      "label": "Teller stool 1",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -350.0,
+        -565.0,
+        56.27904221531776
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D92BD0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.7315243048260384,
+        0.7983768508690473,
+        0.6200000473022497
+      ],
+      "center": [
+        -350.0,
+        -565.0,
+        56.27904221531776
+      ],
+      "extent": [
+        31.0,
+        31.0,
+        31.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Banquito_Amarillo/SM_Banquito_Amarillo.SM_Banquito_Amarillo",
+      "local_min": [
+        -42.37726593017578,
+        -38.82878112792969,
+        -49.999996185302734
+      ],
+      "local_max": [
+        42.37726593017578,
+        38.82878112792969,
+        49.999996185302734
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Banquito_Amarillo/MI_Banquito_Amarillo.MI_Banquito_Amarillo"
+      ]
+    },
+    {
+      "name": "TargetPoint_0",
+      "label": "Teller reserve 1",
+      "class": "TargetPoint",
+      "tags": [
+        "ProductionArtSet",
+        "NPC.Teller",
+        "CharacterProfile.Base3"
+      ],
+      "location": [
+        -350.0,
+        -545.0,
+        96.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D92CC0) {pitch: 0.000000, yaw: 90.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        -350.0,
+        -425.0,
+        96.0
+      ],
+      "extent": [
+        80.00000000000006,
+        120.00000000000003,
+        80.0
+      ]
+    },
+    {
+      "name": "TextRenderActor_0",
+      "label": "Counter sign 1",
+      "class": "TextRenderActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -350.0,
+        -341.0,
+        72.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D92D60) {pitch: 0.000000, yaw: 90.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        -350.0,
+        -341.0,
+        82.50000095367432
+      ],
+      "extent": [
+        34.730770111083984,
+        0.0,
+        10.500000953674316
+      ]
+    },
+    {
+      "name": "StaticMeshActor_9",
+      "label": "Teller desk 2",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -50.0,
+        -430.0,
+        79.66399828866963
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D92E00) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        2.45,
+        2.465430152568249,
+        2.682747362150482
+      ],
+      "center": [
+        -50.0,
+        -430.0,
+        79.66399828866963
+      ],
+      "extent": [
+        122.5,
+        57.5,
+        55.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Escritorio/SM_Escritorio.SM_Escritorio",
+      "local_min": [
+        -50.0,
+        -23.32250213623047,
+        -20.501371383666992
+      ],
+      "local_max": [
+        50.0,
+        23.32250213623047,
+        20.501371383666992
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Escritorio/MI_Escritorio.MI_Escritorio"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_10",
+      "label": "Teller blue front 2",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -50.0,
+        -366.0,
+        73.13586104933586
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D92EF0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        2.35,
+        0.1,
+        0.96
+      ],
+      "center": [
+        -50.0,
+        -366.0,
+        73.13586104933586
+      ],
+      "extent": [
+        117.5,
+        5.0,
+        48.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Navy.MI_Navy"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_11",
+      "label": "Teller cream lip 2",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -50.0,
+        -360.0,
+        135.66399828866963
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D93030) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        2.53,
+        0.22,
+        0.1
+      ],
+      "center": [
+        -50.0,
+        -360.0,
+        135.66399828866963
+      ],
+      "extent": [
+        126.5,
+        11.0,
+        5.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Cream.MI_Cream"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_12",
+      "label": "Teller laptop 2",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -50.0,
+        -443.0,
+        155.36399828866962
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D93120) {pitch: 0.000000, yaw: 180.000000, roll: 0.000000}>",
+      "scale": [
+        0.55,
+        0.5106559062008355,
+        0.6005870606552975
+      ],
+      "center": [
+        -50.0,
+        -443.0,
+        155.36399828866962
+      ],
+      "extent": [
+        27.5,
+        19.0,
+        20.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Laptop/SM_Laptop.SM_Laptop",
+      "local_min": [
+        -50.0,
+        -37.20705032348633,
+        -33.300750732421875
+      ],
+      "local_max": [
+        50.0,
+        37.20705032348633,
+        33.300750732421875
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Laptop/MI_Laptop.MI_Laptop"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_13",
+      "label": "Teller stool 2",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -50.0,
+        -565.0,
+        56.2006803808365
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D931C0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.7315243048260384,
+        0.7983768508690473,
+        0.6200000473022497
+      ],
+      "center": [
+        -50.0,
+        -565.0,
+        56.2006803808365
+      ],
+      "extent": [
+        31.0,
+        31.0,
+        31.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Banquito_Amarillo/SM_Banquito_Amarillo.SM_Banquito_Amarillo",
+      "local_min": [
+        -42.37726593017578,
+        -38.82878112792969,
+        -49.999996185302734
+      ],
+      "local_max": [
+        42.37726593017578,
+        38.82878112792969,
+        49.999996185302734
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Banquito_Amarillo/MI_Banquito_Amarillo.MI_Banquito_Amarillo"
+      ]
+    },
+    {
+      "name": "TargetPoint_1",
+      "label": "Teller reserve 2",
+      "class": "TargetPoint",
+      "tags": [
+        "ProductionArtSet",
+        "NPC.Teller",
+        "CharacterProfile.Base3"
+      ],
+      "location": [
+        -50.0,
+        -545.0,
+        96.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D932B0) {pitch: 0.000000, yaw: 90.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        -49.99999999999997,
+        -425.0,
+        96.0
+      ],
+      "extent": [
+        80.00000000000003,
+        120.00000000000003,
+        80.0
+      ]
+    },
+    {
+      "name": "TextRenderActor_2",
+      "label": "Counter sign 2",
+      "class": "TextRenderActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -50.0,
+        -341.0,
+        72.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D93350) {pitch: 0.000000, yaw: 90.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        -50.0,
+        -341.0,
+        82.50000095367432
+      ],
+      "extent": [
+        34.730770111083984,
+        0.0,
+        10.500000953674316
+      ]
+    },
+    {
+      "name": "StaticMeshActor_14",
+      "label": "Teller desk 3",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        250.0,
+        -430.0,
+        79.97650556805581
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D933F0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        2.45,
+        2.465430152568249,
+        2.682747362150482
+      ],
+      "center": [
+        250.0,
+        -430.0,
+        79.97650556805581
+      ],
+      "extent": [
+        122.5,
+        57.5,
+        55.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Escritorio/SM_Escritorio.SM_Escritorio",
+      "local_min": [
+        -50.0,
+        -23.32250213623047,
+        -20.501371383666992
+      ],
+      "local_max": [
+        50.0,
+        23.32250213623047,
+        20.501371383666992
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Escritorio/MI_Escritorio.MI_Escritorio"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_15",
+      "label": "Teller blue front 3",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        250.0,
+        -366.0,
+        73.28192546902221
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D934E0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        2.35,
+        0.1,
+        0.96
+      ],
+      "center": [
+        250.0,
+        -366.0,
+        73.28192546902221
+      ],
+      "extent": [
+        117.5,
+        5.0,
+        48.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Navy.MI_Navy"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_16",
+      "label": "Teller cream lip 3",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        250.0,
+        -360.0,
+        135.9765055680558
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D93620) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        2.53,
+        0.22,
+        0.1
+      ],
+      "center": [
+        250.0,
+        -360.0,
+        135.9765055680558
+      ],
+      "extent": [
+        126.5,
+        11.0,
+        5.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Cream.MI_Cream"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_17",
+      "label": "Teller laptop 3",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        250.0,
+        -443.0,
+        155.6765055680558
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D93710) {pitch: 0.000000, yaw: 180.000000, roll: 0.000000}>",
+      "scale": [
+        0.55,
+        0.5106559062008355,
+        0.6005870606552975
+      ],
+      "center": [
+        250.0,
+        -443.0,
+        155.6765055680558
+      ],
+      "extent": [
+        27.5,
+        19.0,
+        20.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Laptop/SM_Laptop.SM_Laptop",
+      "local_min": [
+        -50.0,
+        -37.20705032348633,
+        -33.300750732421875
+      ],
+      "local_max": [
+        50.0,
+        37.20705032348633,
+        33.300750732421875
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Laptop/MI_Laptop.MI_Laptop"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_18",
+      "label": "Teller stool 3",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        250.0,
+        -565.0,
+        56.239139827420445
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D937B0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.7315243048260384,
+        0.7983768508690473,
+        0.6200000473022497
+      ],
+      "center": [
+        250.0,
+        -565.0,
+        56.239139827420445
+      ],
+      "extent": [
+        31.0,
+        31.0,
+        31.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Banquito_Amarillo/SM_Banquito_Amarillo.SM_Banquito_Amarillo",
+      "local_min": [
+        -42.37726593017578,
+        -38.82878112792969,
+        -49.999996185302734
+      ],
+      "local_max": [
+        42.37726593017578,
+        38.82878112792969,
+        49.999996185302734
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Banquito_Amarillo/MI_Banquito_Amarillo.MI_Banquito_Amarillo"
+      ]
+    },
+    {
+      "name": "TargetPoint_2",
+      "label": "Teller reserve 3",
+      "class": "TargetPoint",
+      "tags": [
+        "ProductionArtSet",
+        "NPC.Teller",
+        "CharacterProfile.Base3"
+      ],
+      "location": [
+        250.0,
+        -545.0,
+        96.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D938A0) {pitch: 0.000000, yaw: 90.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        250.00000000000003,
+        -425.0,
+        96.0
+      ],
+      "extent": [
+        80.00000000000003,
+        120.00000000000003,
+        80.0
+      ]
+    },
+    {
+      "name": "TextRenderActor_3",
+      "label": "Counter sign 3",
+      "class": "TextRenderActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        250.0,
+        -341.0,
+        72.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D93940) {pitch: 0.000000, yaw: 90.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        250.0,
+        -341.0,
+        82.50000095367432
+      ],
+      "extent": [
+        34.730770111083984,
+        0.0,
+        10.500000953674316
+      ]
+    },
+    {
+      "name": "StaticMeshActor_19",
+      "label": "Bank notebook",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -285.0,
+        -420.0,
+        152.91045093195612
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D939E0) {pitch: 0.000000, yaw: 90.000000, roll: 0.000000}>",
+      "scale": [
+        0.35,
+        0.35,
+        0.35
+      ],
+      "center": [
+        -285.0,
+        -420.0,
+        152.91045093195612
+      ],
+      "extent": [
+        1.044239687919628,
+        13.86317844390868,
+        17.5
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Libreta/SM_Libreta.SM_Libreta",
+      "local_min": [
+        -39.60908126831055,
+        -2.983541965484619,
+        -50.0
+      ],
+      "local_max": [
+        39.60908126831055,
+        2.983541965484619,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Libreta/MI_Libreta.MI_Libreta"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_20",
+      "label": "Bank ledger",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        310.0,
+        -440.0,
+        138.45610334637612
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D93A80) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.32,
+        0.32,
+        0.32
+      ],
+      "center": [
+        310.0,
+        -440.0,
+        138.45610334637612
+      ],
+      "extent": [
+        16.0,
+        15.892937011718743,
+        2.9795977783203114
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Libro/SM_Libro.SM_Libro",
+      "local_min": [
+        -50.0,
+        -49.665428161621094,
+        -9.311243057250977
+      ],
+      "local_max": [
+        50.0,
+        49.665428161621094,
+        9.311243057250977
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Libro/MI_Libro.MI_Libro"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_21",
+      "label": "Teller coffee",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -10.0,
+        -438.0,
+        143.22768480724824
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D93B20) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.1999999847412121,
+        0.1999999847412121,
+        0.1999999847412121
+      ],
+      "center": [
+        -10.0,
+        -438.0,
+        143.22768480724824
+      ],
+      "extent": [
+        10.0,
+        8.068181757493448,
+        8.063686518578606
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Tasa/SM_Tasa.SM_Tasa",
+      "local_min": [
+        -50.000003814697266,
+        -40.340911865234375,
+        -40.31843566894531
+      ],
+      "local_max": [
+        50.000003814697266,
+        40.340911865234375,
+        40.31843566894531
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Tasa/MI_Tasa.MI_Tasa"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_22",
+      "label": "Bank shelf",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -550.0,
+        -615.0,
+        157.6573332549009
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D93BC0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        2.8762179871785905,
+        2.7543316836559533,
+        2.65
+      ],
+      "center": [
+        -550.0,
+        -615.0,
+        157.6573332549009
+      ],
+      "extent": [
+        77.5,
+        30.0,
+        132.5
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Estanteria/SM_Estanteria.SM_Estanteria",
+      "local_min": [
+        -26.945106506347656,
+        -10.891934394836426,
+        -50.0
+      ],
+      "local_max": [
+        26.945106506347656,
+        10.891934394836426,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Estanteria/MI_Estanteria.MI_Estanteria"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_23",
+      "label": "Bank shelf books",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -550.0,
+        -608.0,
+        123.15733325490089
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D93CB0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.25,
+        0.7050775176580338,
+        0.9329853366867555
+      ],
+      "center": [
+        -550.0,
+        -608.0,
+        123.15733325490089
+      ],
+      "extent": [
+        62.5,
+        15.5,
+        36.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Libros_Estanteria/SM_Libros_Estanteria.SM_Libros_Estanteria",
+      "local_min": [
+        -50.0,
+        -21.9833984375,
+        -38.5858154296875
+      ],
+      "local_max": [
+        50.0,
+        21.9833984375,
+        38.5858154296875
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Libros_Estanteria/MI_Libros_Estanteria.MI_Libros_Estanteria"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_24",
+      "label": "Bank shelf archive",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -550.0,
+        -608.0,
+        220.1573332549009
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D93DA0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.2,
+        0.4160448379051789,
+        0.7354961502036552
+      ],
+      "center": [
+        -550.0,
+        -608.0,
+        220.1573332549009
+      ],
+      "extent": [
+        60.0,
+        15.0,
+        33.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Libros_Estanteria2/SM_Libros_Estanteria2.SM_Libros_Estanteria2",
+      "local_min": [
+        -50.0,
+        -36.05380630493164,
+        -44.867671966552734
+      ],
+      "local_max": [
+        50.0,
+        36.05380630493164,
+        44.867671966552734
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Libros_Estanteria2/MI_Libros_Estanteria2.MI_Libros_Estanteria2"
+      ]
+    },
+    {
+      "name": "ObjectiveZone_0",
+      "label": "Teller frontage objective extension",
+      "class": "ObjectiveZone",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -50.0,
+        -225.0,
+        110.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D93CB0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        -50.0,
+        -225.0,
+        110.0
+      ],
+      "extent": [
+        470.0,
+        100.0,
+        180.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Engine/EngineMaterials/WorldGridMaterial.WorldGridMaterial"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_25",
+      "label": "Front-right waiting bench",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -500.0,
+        500.0,
+        91.30192684963708
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D93F30) {pitch: 0.000000, yaw: 180.000000, roll: 0.000000}>",
+      "scale": [
+        2.45,
+        1.4327392371301928,
+        2.028808272119376
+      ],
+      "center": [
+        -500.0,
+        500.0,
+        91.3019268496371
+      ],
+      "extent": [
+        122.5,
+        55.0,
+        67.5
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Sillon_Azul/SM_Sillon_Azul.SM_Sillon_Azul",
+      "local_min": [
+        -50.0,
+        -38.388004302978516,
+        -33.2707633972168
+      ],
+      "local_max": [
+        50.0,
+        38.388004302978516,
+        33.2707633972168
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Corrections/M_TealWaitingBench.M_TealWaitingBench"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_26",
+      "label": "Waiting table",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -280.0,
+        350.0,
+        54.23058200808464
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068D93FD0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.1368112792177811,
+        0.65,
+        1.444853195518588
+      ],
+      "center": [
+        -280.0,
+        350.0,
+        54.23058200808464
+      ],
+      "extent": [
+        42.5,
+        32.5,
+        29.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Sillon_Amarillo/SM_Sillon_Amarillo.SM_Sillon_Amarillo",
+      "local_min": [
+        -37.38527297973633,
+        -50.0,
+        -20.071243286132812
+      ],
+      "local_max": [
+        37.38527297973633,
+        50.0,
+        20.071243286132812
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Sillon_Amarillo/MI_Sillon_Amarillo.MI_Sillon_Amarillo"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_27",
+      "label": "Waiting stool",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -145.0,
+        480.0,
+        55.128839690380914
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC40B0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.7315243048260384,
+        0.7983768508690473,
+        0.6200000473022497
+      ],
+      "center": [
+        -145.0,
+        480.0,
+        55.128839690380914
+      ],
+      "extent": [
+        31.0,
+        31.0,
+        31.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Banquito_Amarillo/SM_Banquito_Amarillo.SM_Banquito_Amarillo",
+      "local_min": [
+        -42.37726593017578,
+        -38.82878112792969,
+        -49.999996185302734
+      ],
+      "local_max": [
+        42.37726593017578,
+        38.82878112792969,
+        49.999996185302734
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Banquito_Amarillo/MI_Banquito_Amarillo.MI_Banquito_Amarillo"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_28",
+      "label": "Entrance planter left",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -800.0,
+        -580.0,
+        112.76200245672135
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC41A0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        2.0275839305883903,
+        1.9311203689523282,
+        1.7500001335144144
+      ],
+      "center": [
+        -800.0,
+        -580.0,
+        112.76200245672135
+      ],
+      "extent": [
+        47.5,
+        47.5,
+        87.5
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Planta_1/SM_Planta_1.SM_Planta_1",
+      "local_min": [
+        -23.426897048950195,
+        -24.59712028503418,
+        -49.999996185302734
+      ],
+      "local_max": [
+        23.426897048950195,
+        24.59712028503418,
+        49.999996185302734
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Planta_1/MI_Planta_1.MI_Planta_1"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_29",
+      "label": "Waiting planter",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -730.0,
+        560.0,
+        100.13511207907618
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC4240) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.475757946513082,
+        2.3691902121640394,
+        1.5
+      ],
+      "center": [
+        -730.0,
+        560.0,
+        100.13511207907618
+      ],
+      "extent": [
+        45.0,
+        45.0,
+        75.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Planta_2/SM_Planta_2.SM_Planta_2",
+      "local_min": [
+        -30.49280548095703,
+        -18.993831634521484,
+        -50.0
+      ],
+      "local_max": [
+        30.49280548095703,
+        18.993831634521484,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Planta_2/MI_Planta_2.MI_Planta_2"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_30",
+      "label": "Vault planter",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        760.0,
+        -600.0,
+        107.75654725708569
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC42E0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.1305093918258373,
+        1.2669033046079317,
+        1.65
+      ],
+      "center": [
+        760.0,
+        -600.0,
+        107.75654725708569
+      ],
+      "extent": [
+        45.0,
+        45.0,
+        82.5
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Planta_3/SM_Planta_3.SM_Planta_3",
+      "local_min": [
+        -39.8050651550293,
+        -35.51968002319336,
+        -50.0
+      ],
+      "local_max": [
+        39.8050651550293,
+        35.51968002319336,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Planta_3/MI_Planta_3.MI_Planta_3"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_31",
+      "label": "Waiting corner plant",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -100.0,
+        590.0,
+        102.63543258647167
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC43D0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.0479433565956233,
+        1.1916004676508183,
+        1.5500001182556242
+      ],
+      "center": [
+        -100.0,
+        590.0,
+        102.63543258647167
+      ],
+      "extent": [
+        40.0,
+        40.0,
+        77.5
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Planta_4/SM_Planta_4.SM_Planta_4",
+      "local_min": [
+        -38.17000198364258,
+        -33.56829833984375,
+        -49.999996185302734
+      ],
+      "local_max": [
+        38.17000198364258,
+        33.56829833984375,
+        49.999996185302734
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Planta_4/MI_Planta_4.MI_Planta_4"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_32",
+      "label": "Open bank entrance door",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -900.0,
+        165.0,
+        157.79569142706976
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC44C0) {pitch: 0.000000, yaw: 70.000000, roll: 0.000000}>",
+      "scale": [
+        2.25,
+        2.5273466415220347,
+        2.7579598449149407
+      ],
+      "center": [
+        -900.0,
+        165.0,
+        157.79569142706976
+      ],
+      "extent": [
+        50.69327019435457,
+        110.16168170164838,
+        132.5
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Puerta_Vidrio/SM_Puerta_Vidrio.SM_Puerta_Vidrio",
+      "local_min": [
+        -50.0,
+        -5.143734455108643,
+        -48.04275894165039
+      ],
+      "local_max": [
+        50.0,
+        5.143734455108643,
+        48.04275894165039
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Puerta_Vidrio/MI_Puerta_Vidrio.MI_Puerta_Vidrio"
+      ]
+    },
+    {
+      "name": "TargetPoint_3",
+      "label": "Customer reserve 1",
+      "class": "TargetPoint",
+      "tags": [
+        "ProductionArtSet",
+        "NPC.Customer",
+        "CharacterProfile.Base3"
+      ],
+      "location": [
+        -600.0,
+        375.0,
+        96.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC45B0) {pitch: 0.000000, yaw: -90.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        -600.0,
+        254.99999999999997,
+        96.0
+      ],
+      "extent": [
+        80.0,
+        120.00000000000003,
+        80.0
+      ]
+    },
+    {
+      "name": "TargetPoint_4",
+      "label": "Customer reserve 2",
+      "class": "TargetPoint",
+      "tags": [
+        "ProductionArtSet",
+        "NPC.Customer",
+        "CharacterProfile.Base3"
+      ],
+      "location": [
+        -420.0,
+        430.0,
+        96.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC46A0) {pitch: 0.000000, yaw: -90.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        -420.0,
+        310.0,
+        96.0
+      ],
+      "extent": [
+        80.00000000000006,
+        120.00000000000006,
+        80.0
+      ]
+    },
+    {
+      "name": "TargetPoint_5",
+      "label": "Customer reserve 3",
+      "class": "TargetPoint",
+      "tags": [
+        "ProductionArtSet",
+        "NPC.Customer",
+        "CharacterProfile.Base3"
+      ],
+      "location": [
+        -180.0,
+        375.0,
+        96.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC4790) {pitch: 0.000000, yaw: -90.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        -180.00000000000003,
+        254.99999999999997,
+        96.0
+      ],
+      "extent": [
+        80.00000000000003,
+        120.00000000000003,
+        80.0
+      ]
+    },
+    {
+      "name": "TargetPoint_6",
+      "label": "Security guard reserve",
+      "class": "TargetPoint",
+      "tags": [
+        "ProductionArtSet",
+        "NPC.Security",
+        "CharacterProfile.Base3"
+      ],
+      "location": [
+        500.0,
+        -220.0,
+        96.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC4880) {pitch: 0.000000, yaw: 180.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        380.00000000000006,
+        -219.99999999999997,
+        96.0
+      ],
+      "extent": [
+        119.99999999999994,
+        79.99999999999997,
+        80.0
+      ]
+    },
+    {
+      "name": "StaticMeshActor_33",
+      "label": "Vault door open steel leaf",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        665.0,
+        -280.0,
+        190.70844924533765
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC4970) {pitch: 0.000000, yaw: 145.000000, roll: 0.000000}>",
+      "scale": [
+        3.3,
+        3.3,
+        3.3
+      ],
+      "center": [
+        665.0,
+        -280.0,
+        190.70844924533765
+      ],
+      "extent": [
+        164.92603046090937,
+        141.69632357676426,
+        165.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/VaultDoor/SM_VaultDoor.SM_VaultDoor",
+      "local_min": [
+        -47.68975067138672,
+        -19.025238037109375,
+        -50.0
+      ],
+      "local_max": [
+        47.68975067138672,
+        19.025238037109375,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/VaultDoor/M_VaultDoor.M_VaultDoor"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_34",
+      "label": "Vault golden handle",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        580.0,
+        -185.0,
+        154.7371947334093
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC4A60) {pitch: 90.000000, yaw: 55.000000, roll: 0.000000}>",
+      "scale": [
+        0.58,
+        0.58,
+        0.12
+      ],
+      "center": [
+        580.0,
+        -185.0,
+        154.7371947334093
+      ],
+      "extent": [
+        27.196867902487043,
+        21.54862891991428,
+        29.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cylinder.Cylinder",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_35",
+      "label": "Vault security locker",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        700.0,
+        -490.0,
+        108.6075102858238
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC4B50) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.3,
+        0.95,
+        1.7
+      ],
+      "center": [
+        700.0,
+        -490.0,
+        108.6075102858238
+      ],
+      "extent": [
+        65.0,
+        47.5,
+        85.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Steel.MI_Steel"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_36",
+      "label": "Locker door",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        631.0,
+        -490.0,
+        45.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC4C40) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.05,
+        0.8,
+        0.4
+      ],
+      "center": [
+        631.0,
+        -490.0,
+        45.0
+      ],
+      "extent": [
+        2.5,
+        40.0,
+        20.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Navy.MI_Navy"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_37",
+      "label": "Locker golden lock",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        626.0,
+        -490.0,
+        45.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC4D80) {pitch: 90.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.1,
+        0.1,
+        0.08
+      ],
+      "center": [
+        626.0,
+        -490.0,
+        45.0
+      ],
+      "extent": [
+        4.0,
+        5.0,
+        5.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cylinder.Cylinder",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_38",
+      "label": "Locker door",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        631.0,
+        -490.0,
+        95.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC4E20) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.05,
+        0.8,
+        0.4
+      ],
+      "center": [
+        631.0,
+        -490.0,
+        95.0
+      ],
+      "extent": [
+        2.5,
+        40.0,
+        20.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Navy.MI_Navy"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_39",
+      "label": "Locker golden lock",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        626.0,
+        -490.0,
+        95.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC4F60) {pitch: 90.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.1,
+        0.1,
+        0.08
+      ],
+      "center": [
+        626.0,
+        -490.0,
+        95.0
+      ],
+      "extent": [
+        4.0,
+        5.0,
+        5.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cylinder.Cylinder",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_40",
+      "label": "Locker door",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        631.0,
+        -490.0,
+        145.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC5000) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.05,
+        0.8,
+        0.4
+      ],
+      "center": [
+        631.0,
+        -490.0,
+        145.0
+      ],
+      "extent": [
+        2.5,
+        40.0,
+        20.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Navy.MI_Navy"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_41",
+      "label": "Locker golden lock",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        626.0,
+        -490.0,
+        145.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC5140) {pitch: 90.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.1,
+        0.1,
+        0.08
+      ],
+      "center": [
+        626.0,
+        -490.0,
+        145.0
+      ],
+      "extent": [
+        4.0,
+        5.0,
+        5.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cylinder.Cylinder",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_42",
+      "label": "Vault security locker",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        865.0,
+        -490.0,
+        110.51028516708645
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC5230) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.3,
+        0.95,
+        1.7
+      ],
+      "center": [
+        865.0,
+        -490.0,
+        110.51028516708645
+      ],
+      "extent": [
+        65.0,
+        47.5,
+        85.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Steel.MI_Steel"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_43",
+      "label": "Locker door",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        796.0,
+        -490.0,
+        45.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC5320) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.05,
+        0.8,
+        0.4
+      ],
+      "center": [
+        796.0,
+        -490.0,
+        45.0
+      ],
+      "extent": [
+        2.5,
+        40.0,
+        20.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Navy.MI_Navy"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_44",
+      "label": "Locker golden lock",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        791.0,
+        -490.0,
+        45.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC5460) {pitch: 90.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.1,
+        0.1,
+        0.08
+      ],
+      "center": [
+        791.0,
+        -490.0,
+        45.0
+      ],
+      "extent": [
+        4.0,
+        5.0,
+        5.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cylinder.Cylinder",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_45",
+      "label": "Locker door",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        796.0,
+        -490.0,
+        95.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC5500) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.05,
+        0.8,
+        0.4
+      ],
+      "center": [
+        796.0,
+        -490.0,
+        95.0
+      ],
+      "extent": [
+        2.5,
+        40.0,
+        20.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Navy.MI_Navy"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_46",
+      "label": "Locker golden lock",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        791.0,
+        -490.0,
+        95.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC5640) {pitch: 90.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.1,
+        0.1,
+        0.08
+      ],
+      "center": [
+        791.0,
+        -490.0,
+        95.0
+      ],
+      "extent": [
+        4.0,
+        5.0,
+        5.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cylinder.Cylinder",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_47",
+      "label": "Locker door",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        796.0,
+        -490.0,
+        145.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC56E0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.05,
+        0.8,
+        0.4
+      ],
+      "center": [
+        796.0,
+        -490.0,
+        145.0
+      ],
+      "extent": [
+        2.5,
+        40.0,
+        20.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Navy.MI_Navy"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_48",
+      "label": "Locker golden lock",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        791.0,
+        -490.0,
+        145.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC5820) {pitch: 90.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.1,
+        0.1,
+        0.08
+      ],
+      "center": [
+        791.0,
+        -490.0,
+        145.0
+      ],
+      "extent": [
+        4.0,
+        5.0,
+        5.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cylinder.Cylinder",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_49",
+      "label": "Vault security locker",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        700.0,
+        490.0,
+        109.02932422178723
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC5910) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.3,
+        0.95,
+        1.7
+      ],
+      "center": [
+        700.0,
+        490.0,
+        109.02932422178723
+      ],
+      "extent": [
+        65.0,
+        47.5,
+        85.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Steel.MI_Steel"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_50",
+      "label": "Locker door",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        631.0,
+        490.0,
+        45.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC5A00) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.05,
+        0.8,
+        0.4
+      ],
+      "center": [
+        631.0,
+        490.0,
+        45.0
+      ],
+      "extent": [
+        2.5,
+        40.0,
+        20.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Navy.MI_Navy"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_51",
+      "label": "Locker golden lock",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        626.0,
+        490.0,
+        45.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC5B40) {pitch: 90.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.1,
+        0.1,
+        0.08
+      ],
+      "center": [
+        626.0,
+        490.0,
+        45.0
+      ],
+      "extent": [
+        4.0,
+        5.0,
+        5.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cylinder.Cylinder",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_52",
+      "label": "Locker door",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        631.0,
+        490.0,
+        95.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC5BE0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.05,
+        0.8,
+        0.4
+      ],
+      "center": [
+        631.0,
+        490.0,
+        95.0
+      ],
+      "extent": [
+        2.5,
+        40.0,
+        20.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Navy.MI_Navy"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_53",
+      "label": "Locker golden lock",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        626.0,
+        490.0,
+        95.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC5D20) {pitch: 90.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.1,
+        0.1,
+        0.08
+      ],
+      "center": [
+        626.0,
+        490.0,
+        95.0
+      ],
+      "extent": [
+        4.0,
+        5.0,
+        5.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cylinder.Cylinder",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_54",
+      "label": "Locker door",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        631.0,
+        490.0,
+        145.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC5DC0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.05,
+        0.8,
+        0.4
+      ],
+      "center": [
+        631.0,
+        490.0,
+        145.0
+      ],
+      "extent": [
+        2.5,
+        40.0,
+        20.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Navy.MI_Navy"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_55",
+      "label": "Locker golden lock",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        626.0,
+        490.0,
+        145.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC5F00) {pitch: 90.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.1,
+        0.1,
+        0.08
+      ],
+      "center": [
+        626.0,
+        490.0,
+        145.0
+      ],
+      "extent": [
+        4.0,
+        5.0,
+        5.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cylinder.Cylinder",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_56",
+      "label": "Vault security locker",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        865.0,
+        490.0,
+        109.78744586109876
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC5FF0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.3,
+        0.95,
+        1.7
+      ],
+      "center": [
+        865.0,
+        490.0,
+        109.78744586109876
+      ],
+      "extent": [
+        65.0,
+        47.5,
+        85.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Steel.MI_Steel"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_57",
+      "label": "Locker door",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        796.0,
+        490.0,
+        45.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC60E0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.05,
+        0.8,
+        0.4
+      ],
+      "center": [
+        796.0,
+        490.0,
+        45.0
+      ],
+      "extent": [
+        2.5,
+        40.0,
+        20.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Navy.MI_Navy"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_58",
+      "label": "Locker golden lock",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        791.0,
+        490.0,
+        45.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC6220) {pitch: 90.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.1,
+        0.1,
+        0.08
+      ],
+      "center": [
+        791.0,
+        490.0,
+        45.0
+      ],
+      "extent": [
+        4.0,
+        5.0,
+        5.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cylinder.Cylinder",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_59",
+      "label": "Locker door",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        796.0,
+        490.0,
+        95.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC62C0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.05,
+        0.8,
+        0.4
+      ],
+      "center": [
+        796.0,
+        490.0,
+        95.0
+      ],
+      "extent": [
+        2.5,
+        40.0,
+        20.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Navy.MI_Navy"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_60",
+      "label": "Locker golden lock",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        791.0,
+        490.0,
+        95.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC6400) {pitch: 90.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.1,
+        0.1,
+        0.08
+      ],
+      "center": [
+        791.0,
+        490.0,
+        95.0
+      ],
+      "extent": [
+        4.0,
+        5.0,
+        5.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cylinder.Cylinder",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_116",
+      "label": "Locker door",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        796.0,
+        490.0,
+        145.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC64A0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.05,
+        0.8,
+        0.4
+      ],
+      "center": [
+        796.0,
+        490.0,
+        145.0
+      ],
+      "extent": [
+        2.5,
+        40.0,
+        20.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Navy.MI_Navy"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_117",
+      "label": "Locker golden lock",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        791.0,
+        490.0,
+        145.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC65E0) {pitch: 90.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.1,
+        0.1,
+        0.08
+      ],
+      "center": [
+        791.0,
+        490.0,
+        145.0
+      ],
+      "extent": [
+        4.0,
+        5.0,
+        5.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cylinder.Cylinder",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_118",
+      "label": "Vault money plinth",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        700.0,
+        0.0,
+        54.45180954442894
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC66D0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.3,
+        1.2,
+        0.6
+      ],
+      "center": [
+        700.0,
+        0.0,
+        54.45180954442894
+      ],
+      "extent": [
+        65.0,
+        60.0,
+        30.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Mint.MI_Mint"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_119",
+      "label": "Gold bar",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        740.0,
+        250.0,
+        33.46517725494884
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC67C0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.35,
+        0.25,
+        0.17
+      ],
+      "center": [
+        740.0,
+        250.0,
+        33.46517725494884
+      ],
+      "extent": [
+        17.5,
+        12.5,
+        8.5
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_120",
+      "label": "Gold bar",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        775.0,
+        250.0,
+        33.41067364289829
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC68B0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.35,
+        0.25,
+        0.17
+      ],
+      "center": [
+        775.0,
+        250.0,
+        33.41067364289829
+      ],
+      "extent": [
+        17.5,
+        12.5,
+        8.5
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_121",
+      "label": "Gold bar",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        740.0,
+        285.0,
+        34.002957906844514
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC69A0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.35,
+        0.25,
+        0.17
+      ],
+      "center": [
+        740.0,
+        285.0,
+        34.002957906844514
+      ],
+      "extent": [
+        17.5,
+        12.5,
+        8.5
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_122",
+      "label": "Gold bar",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        775.0,
+        285.0,
+        34.01730201933894
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC6A90) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.35,
+        0.25,
+        0.17
+      ],
+      "center": [
+        775.0,
+        285.0,
+        34.01730201933894
+      ],
+      "extent": [
+        17.5,
+        12.5,
+        8.5
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_123",
+      "label": "Gold bar",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        740.0,
+        320.0,
+        34.009183492355916
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC6B80) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.35,
+        0.25,
+        0.17
+      ],
+      "center": [
+        740.0,
+        320.0,
+        34.009183492355916
+      ],
+      "extent": [
+        17.5,
+        12.5,
+        8.5
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_124",
+      "label": "Gold bar",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        775.0,
+        320.0,
+        34.03780983043525
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC6C70) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.35,
+        0.25,
+        0.17
+      ],
+      "center": [
+        775.0,
+        320.0,
+        34.03780983043525
+      ],
+      "extent": [
+        17.5,
+        12.5,
+        8.5
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_125",
+      "label": "Decorative vault money",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        800.0,
+        260.0,
+        55.576689864931765
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC6DB0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.5002474159578268,
+        0.3615989928398588,
+        0.6100000465393102
+      ],
+      "center": [
+        800.0,
+        260.0,
+        55.576689864931765
+      ],
+      "extent": [
+        24.5,
+        17.5,
+        30.5
+      ],
+      "mesh": "/Game/OneManStudio/Cosmetics/ProductionArt/Props/MoneyBag/SM_MoneyBag.SM_MoneyBag",
+      "local_min": [
+        -48.975765228271484,
+        -48.39615249633789,
+        -49.999996185302734
+      ],
+      "local_max": [
+        48.975765228271484,
+        48.39615249633789,
+        49.999996185302734
+      ],
+      "materials": [
+        "/Game/OneManStudio/Cosmetics/ProductionArt/Props/MoneyBag/MI_MoneyBag.MI_MoneyBag"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_126",
+      "label": "Decorative vault money",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        800.0,
+        350.0,
+        56.061858288749406
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC6EA0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.5002474159578268,
+        0.3615989928398588,
+        0.6100000465393102
+      ],
+      "center": [
+        800.0,
+        350.0,
+        56.061858288749406
+      ],
+      "extent": [
+        24.5,
+        17.5,
+        30.5
+      ],
+      "mesh": "/Game/OneManStudio/Cosmetics/ProductionArt/Props/MoneyBag/SM_MoneyBag.SM_MoneyBag",
+      "local_min": [
+        -48.975765228271484,
+        -48.39615249633789,
+        -49.999996185302734
+      ],
+      "local_max": [
+        48.975765228271484,
+        48.39615249633789,
+        49.999996185302734
+      ],
+      "materials": [
+        "/Game/OneManStudio/Cosmetics/ProductionArt/Props/MoneyBag/MI_MoneyBag.MI_MoneyBag"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_127",
+      "label": "Decorative vault money",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        800.0,
+        440.0,
+        56.012602921027266
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC6F90) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.5002474159578268,
+        0.3615989928398588,
+        0.6100000465393102
+      ],
+      "center": [
+        800.0,
+        440.0,
+        56.012602921027266
+      ],
+      "extent": [
+        24.5,
+        17.5,
+        30.5
+      ],
+      "mesh": "/Game/OneManStudio/Cosmetics/ProductionArt/Props/MoneyBag/SM_MoneyBag.SM_MoneyBag",
+      "local_min": [
+        -48.975765228271484,
+        -48.39615249633789,
+        -49.999996185302734
+      ],
+      "local_max": [
+        48.975765228271484,
+        48.39615249633789,
+        49.999996185302734
+      ],
+      "materials": [
+        "/Game/OneManStudio/Cosmetics/ProductionArt/Props/MoneyBag/MI_MoneyBag.MI_MoneyBag"
+      ]
+    },
+    {
+      "name": "StudioRailRig_0",
+      "label": "Production camera rail",
+      "class": "StudioRailRig",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        300.0,
+        620.0,
+        25.222112236784938
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC7030) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        300.0,
+        620.0,
+        117.47211223678494
+      ],
+      "extent": [
+        305.0,
+        58.92507745345745,
+        91.75
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Steel.MI_Steel"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_128",
+      "label": "Secondary studio tripod",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        670.0,
+        390.0,
+        115.19679165297009
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC7170) {pitch: 0.000000, yaw: 125.049377, roll: 0.000000}>",
+      "scale": [
+        2.3081480229231035,
+        1.6172519337391105,
+        1.8
+      ],
+      "center": [
+        670.0,
+        390.0,
+        115.19679165297009
+      ],
+      "extent": [
+        62.071343847532376,
+        63.293220172430836,
+        90.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/FilmEquipment/ProductionArt/Camara1_Alta/SM_Camara1_Alta.SM_Camara1_Alta",
+      "local_min": [
+        -20.579269409179688,
+        -26.279146194458008,
+        -50.0
+      ],
+      "local_max": [
+        20.579269409179688,
+        26.279146194458008,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/FilmEquipment/ProductionArt/Camara1_Alta/MI_Camara1_Alta.MI_Camara1_Alta"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_129",
+      "label": "Director chair",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        70.0,
+        700.0,
+        97.15948457349577
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC7210) {pitch: 0.000000, yaw: -90.000000, roll: 0.000000}>",
+      "scale": [
+        1.6071477070293032,
+        2.3145150277589237,
+        1.44
+      ],
+      "center": [
+        70.0,
+        700.0,
+        97.15948457349577
+      ],
+      "extent": [
+        52.50000000000003,
+        50.0,
+        72.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/FilmEquipment/ProductionArt/Silla_Director/SM_Silla_Director.SM_Silla_Director",
+      "local_min": [
+        -31.11101722717285,
+        -22.682937622070312,
+        -50.0
+      ],
+      "local_max": [
+        31.11101722717285,
+        22.682937622070312,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/FilmEquipment/ProductionArt/Silla_Director/MI_Silla_Director.MI_Silla_Director"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_130",
+      "label": "Equipment case",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        80.0,
+        590.0,
+        54.95092770222618
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC72B0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.2,
+        0.7,
+        0.6
+      ],
+      "center": [
+        80.0,
+        590.0,
+        54.95092770222618
+      ],
+      "extent": [
+        60.0,
+        35.0,
+        30.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Navy.MI_Navy"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_131",
+      "label": "Equipment case latch",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        80.0,
+        551.0,
+        59.759277324721324
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC73F0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.35,
+        0.05,
+        0.18
+      ],
+      "center": [
+        80.0,
+        551.0,
+        59.759277324721324
+      ],
+      "extent": [
+        17.5,
+        2.5,
+        9.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_132",
+      "label": "Studio light panel",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        80.0,
+        320.0,
+        210.2527465292219
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC7530) {pitch: 0.000000, yaw: 20.000000, roll: 0.000000}>",
+      "scale": [
+        0.9,
+        0.12,
+        0.65
+      ],
+      "center": [
+        80.0,
+        320.0,
+        210.2527465292219
+      ],
+      "extent": [
+        44.3382887953199,
+        21.02906217437055,
+        32.5
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Cream.MI_Cream"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_133",
+      "label": "Studio light stand",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        80.0,
+        320.0,
+        110.2527465292219
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC7670) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.08,
+        0.08,
+        1.7
+      ],
+      "center": [
+        80.0,
+        320.0,
+        110.2527465292219
+      ],
+      "extent": [
+        4.0,
+        4.0,
+        85.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cylinder.Cylinder",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Steel.MI_Steel"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_134",
+      "label": "Equipment case",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        550.0,
+        590.0,
+        55.23713296817721
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC7710) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        1.2,
+        0.7,
+        0.6
+      ],
+      "center": [
+        550.0,
+        590.0,
+        55.23713296817721
+      ],
+      "extent": [
+        60.0,
+        35.0,
+        30.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Navy.MI_Navy"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_135",
+      "label": "Equipment case latch",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        550.0,
+        551.0,
+        60.20087808784683
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC7850) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.35,
+        0.05,
+        0.18
+      ],
+      "center": [
+        550.0,
+        551.0,
+        60.20087808784683
+      ],
+      "extent": [
+        17.5,
+        2.5,
+        9.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Gold.MI_Gold"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_136",
+      "label": "Studio light panel",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        550.0,
+        320.0,
+        210.2678946848223
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC7990) {pitch: 0.000000, yaw: -20.000000, roll: 0.000000}>",
+      "scale": [
+        0.9,
+        0.12,
+        0.65
+      ],
+      "center": [
+        550.0,
+        320.0,
+        210.2678946848223
+      ],
+      "extent": [
+        44.33828879531987,
+        21.02906217437055,
+        32.5
+      ],
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Cream.MI_Cream"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_137",
+      "label": "Studio light stand",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        550.0,
+        320.0,
+        110.2678946848223
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC7AD0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.08,
+        0.08,
+        1.7
+      ],
+      "center": [
+        550.0,
+        320.0,
+        110.2678946848223
+      ],
+      "extent": [
+        4.0,
+        4.0,
+        85.0
+      ],
+      "mesh": "/Engine/BasicShapes/Cylinder.Cylinder",
+      "local_min": [
+        -50.0,
+        -50.0,
+        -50.0
+      ],
+      "local_max": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Cinema/ProductionArt/Shared/MI_Steel.MI_Steel"
+      ]
+    },
+    {
+      "name": "StaticMeshActor_138",
+      "label": "Director clapperboard",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        70.0,
+        660.0,
+        141.0690915132775
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC7BC0) {pitch: 0.000000, yaw: 180.000000, roll: 0.000000}>",
+      "scale": [
+        0.5199999603271515,
+        0.5199999603271515,
+        0.5199999603271515
+      ],
+      "center": [
+        70.0,
+        660.0,
+        141.0690915132775
+      ],
+      "extent": [
+        23.982766572359722,
+        5.473274118555082,
+        26.0
+      ],
+      "mesh": "/Game/OneManStudio/Environment/FilmEquipment/ProductionArt/Clapperboard/SM_Clapperboard.SM_Clapperboard",
+      "local_min": [
+        -46.12070846557617,
+        -10.525527954101562,
+        -50.000003814697266
+      ],
+      "local_max": [
+        46.12070846557617,
+        10.525527954101562,
+        50.000003814697266
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/FilmEquipment/ProductionArt/Clapperboard/MI_Clapperboard.MI_Clapperboard"
+      ]
+    },
+    {
+      "name": "TextRenderActor_4",
+      "label": "Film set notice",
+      "class": "TextRenderActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        400.0,
+        615.0,
+        215.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC7C60) {pitch: 0.000000, yaw: 180.000000, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        400.0,
+        615.0,
+        228.0
+      ],
+      "extent": [
+        0.0,
+        110.0,
+        13.0
+      ]
+    },
+    {
+      "name": "RectLight_0",
+      "label": "Bank soft production fill 1",
+      "class": "RectLight",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -500.0,
+        -80.0,
+        650.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC7D00) {pitch: -46.841424, yaw: 9.090277, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        -500.0,
+        -80.0,
+        650.0
+      ],
+      "extent": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "RectLight_1",
+      "label": "Bank soft production fill 2",
+      "class": "RectLight",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        350.0,
+        -80.0,
+        650.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC7DA0) {pitch: -56.381504, yaw: 167.124998, roll: 0.000001}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        350.0,
+        -80.0,
+        650.0
+      ],
+      "extent": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "RectLight_2",
+      "label": "Bank soft production fill 3",
+      "class": "RectLight",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        0.0,
+        700.0,
+        550.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC7E40) {pitch: -32.152295, yaw: -90.000000, roll: -0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        0.0,
+        700.0,
+        550.0
+      ],
+      "extent": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "StaticMeshActor_6",
+      "label": "Teller coffee2",
+      "class": "StaticMeshActor",
+      "tags": [
+        "ProductionArtSet"
+      ],
+      "location": [
+        -225.0,
+        3190.0,
+        115.0
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC7EE0) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}>",
+      "scale": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "center": [
+        -225.0,
+        3190.0,
+        115.0
+      ],
+      "extent": [
+        10.000000762939464,
+        8.068182373046966,
+        8.06368713378906
+      ],
+      "mesh": "/Game/OneManStudio/Environment/Bank/ProductionArt/Tasa/SM_Tasa.SM_Tasa",
+      "local_min": [
+        -50.000003814697266,
+        -40.340911865234375,
+        -40.31843566894531
+      ],
+      "local_max": [
+        50.000003814697266,
+        40.340911865234375,
+        40.31843566894531
+      ],
+      "materials": [
+        "/Game/OneManStudio/Environment/Bank/ProductionArt/Tasa/MI_Tasa.MI_Tasa"
+      ]
+    },
+    {
+      "name": "CineCameraActor_0",
+      "label": "CineCameraActor0",
+      "class": "CineCameraActor",
+      "tags": [],
+      "location": [
+        65.0,
+        620.0,
+        196.22211223678494
+      ],
+      "rotation": "<Struct 'Rotator' (0x0000024068DC7F80) {pitch: -7.393338, yaw: -95.305110, roll: 0.000000}>",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "center": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "extent": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

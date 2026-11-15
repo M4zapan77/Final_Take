@@ -1,0 +1,16 @@
+{
+"passed":true,
+"scenario":"Failures",
+"studioPlayback":false,
+"gamePlayback":false,
+"hubPlayback":true,
+"hubLoops":false,
+"optionsContinuous":true,
+"skipConsumed":false,
+"missingAndFailedMedia":true,
+"fadeBlack":true,
+"levelLoaded":true,
+"mediaStopped":true,
+"gameplayInput":true,
+"message":"Video order, skip shield, HUB loop/options, black fade, real level travel and gameplay input verified"
+}

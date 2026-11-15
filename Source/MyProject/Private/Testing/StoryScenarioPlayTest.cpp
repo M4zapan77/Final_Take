@@ -93,6 +93,15 @@ struct FRun
         else{Key(false);}
         return false;
     }
+    bool DropTowardRole(int32 Receiver)
+    {
+        // Stage a deliberate handoff on the lobby floor, rather than dropping
+        // into the teller counter while still looking at the teller.
+        auto* S=Movie->StorySession.Get();auto* PC=World->GetFirstPlayerController();
+        const FVector Delta=S->Cast[Receiver].Pawn->GetActorLocation()-Movie->LivePerformer->GetActorLocation();
+        PC->SetControlRotation(FRotator(-15,Delta.Rotation().Yaw,0));
+        return S->DropHeldObject();
+    }
     void EndTurn(){Key(false);const double Minimum=FParse::Param(FCommandLine::Get(),TEXT("StoryUICosmeticsCheck"))?.85:.12;if(Movie->GetPhaseElapsedSeconds()>Minimum){Movie->EndCurrentTurn();}}
     void Tick()
     {
@@ -154,6 +163,7 @@ struct FRun
         }
         else if(M->State==EMovieState::Recording)
         {
+            if(M->GetPhaseElapsedSeconds()>.5 && !Check(World->GetFirstPlayerController()->GetViewTarget()==M->LivePerformer,TEXT("Gameplay camera did not follow the currently possessed role after wardrobe"))){return;}
             if(!bHudShot && M->GetPhaseElapsedSeconds()>.65){bHudShot=true;Shot(TEXT("RecordingHUD"));}
             const int32 Turn=M->GetCurrentTakeNumber();
             if(M->GetPhaseElapsedSeconds()-LastDiagnostic>.5 || LastDiagnostic>M->GetPhaseElapsedSeconds())
@@ -185,11 +195,29 @@ struct FRun
                 Shot(Turn==1?TEXT("Robber"):Turn==4?TEXT("RoundTwo"):TEXT("Acting"));
             }
             if(Scenario==TEXT("Failure")){return;}
+            if(Scenario==TEXT("Escape"))
+            {
+                // Exercise the actual door, unique vault money and entrance
+                // using the same movement/E routes as the player.
+                if(Turn==1)
+                {
+                    if(Step==0 && Action(TEXT("Scene.VaultDoor"))){++Step;}
+                    else if(Step==1 && Action(S->SceneState.MoneyObjectId)){++Step;Shot(TEXT("VaultMoney"));}
+                    else if(Step==2 && Action(TEXT("Scene.Exit"))){++Step;Shot(TEXT("ActualEscape"));}
+                    if(Step>=3){EndTurn();}
+                }
+                else if(Turn==3)
+                {if(Step==0 && Action(TEXT("NPC.Guard"))){++Step;}if(Step>0){EndTurn();}}
+                else if(Turn==4)
+                {if(Step==0 && Action(TEXT("Scene.Exit"))){++Step;Shot(TEXT("ActualEscape"));}if(Step>0){EndTurn();}}
+                else{EndTurn();}
+                return;
+            }
             if(Scenario==TEXT("Police"))
             {
                 switch(Turn)
                 {
-                case 1:if(Step==0 && Action(TEXT("NPC.Teller"),FVector(0,270,0))){++Step;Shot(TEXT("MoneyAcquired"));}break;
+                case 1:if(Step==0 && Action(TEXT("NPC.Teller"),FVector(270,0,0))){++Step;Shot(TEXT("MoneyAcquired"));}break;
                 case 2:if(Step==0 && Action(S->Cast[0].ActorId)){++Step;Shot(TEXT("Confiscated"));}break;
                 case 3:if(Step==0 && Action(TEXT("NPC.Guard"))){++Step;Shot(TEXT("DistractedGuard"));}break;
                 case 4:if(Step==0 && Action(TEXT("NPC.Witness1"))){++Step;}break;
@@ -203,11 +231,11 @@ struct FRun
                 switch(Turn)
                 {
                 case 1:
-                    if(Step==0 && Action(TEXT("NPC.Teller"),FVector(0,270,0))){++Step;}
-                    else if(Step==1 && S->DropHeldObject()){++Step;Shot(TEXT("DroppedMoney"));}break;
+                    if(Step==0 && Action(TEXT("NPC.Teller"),FVector(270,0,0))){++Step;}
+                    else if(Step==1 && DropTowardRole(1)){++Step;Shot(TEXT("DroppedMoney"));}break;
                 case 2:
                     if(Step==0 && Action(S->SceneState.MoneyObjectId)){++Step;}
-                    else if(Step==1 && S->DropHeldObject()){++Step;}break;
+                    else if(Step==1 && DropTowardRole(2)){++Step;}break;
                 case 3:
                     if(Step==0 && Action(TEXT("NPC.Guard"))){++Step;}
                     else if(Step==1)
@@ -221,7 +249,7 @@ struct FRun
                         if(S->ThrowHeldObject()){ThrowAt=M->GetPhaseElapsedSeconds();++Step;Shot(TEXT("ActualThrow"));}
                     }
                     else if(Step==3 && M->GetPhaseElapsedSeconds()-ThrowAt>.8){if(Action(S->SceneState.MoneyObjectId)){++Step;}}
-                    else if(Step==4 && S->DropHeldObject()){++Step;}break;
+                    else if(Step==4 && DropTowardRole(0)){++Step;}break;
                 case 4:if(Step==0 && Action(S->SceneState.MoneyObjectId)){++Step;}break;
                 case 5:if(Step==0 && Action(S->Cast[0].ActorId)){++Step;}break;
                 case 6:if(Step==0 && Action(S->Cast[1].ActorId)){++Step;Shot(TEXT("CivilianSteals"));}break;
@@ -231,7 +259,7 @@ struct FRun
         }
         else if(M->State==EMovieState::MoviePremiere)
         {
-            const EStoryOutcome Expected=Scenario==TEXT("Police")?EStoryOutcome::PoliceRecovered:Scenario==TEXT("Civilian")?EStoryOutcome::CivilianBetrayal:EStoryOutcome::FailedRobbery;
+            const EStoryOutcome Expected=Scenario==TEXT("Police")?EStoryOutcome::PoliceRecovered:Scenario==TEXT("Civilian")?EStoryOutcome::CivilianBetrayal:Scenario==TEXT("Escape")?EStoryOutcome::RobberEscaped:EStoryOutcome::FailedRobbery;
             if(!Check(S->Outcome==Expected && S->Segments.Num()==6,TEXT("Final outcome does not match actual actions"))){return;}
             if(FParse::Param(FCommandLine::Get(),TEXT("StoryUICosmeticsCheck")))
             {

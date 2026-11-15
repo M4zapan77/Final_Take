@@ -1,5 +1,6 @@
 #include "StudioCinemaPresenter.h"
 #include "StudioRailRig.h"
+#include "MovieDirectorComponent.h"
 #include "Camera/CameraActor.h"
 #include "Camera/CameraComponent.h"
 #include "Components/ChildActorComponent.h"
@@ -139,7 +140,7 @@ bool AStudioCinemaPresenter::StartPresentation(AMovieManager* Movie)
     FilmCapture->HiddenActors.Reset();
     for (TActorIterator<AActor> It(GetWorld()); It; ++It)
     {
-        if (It->ActorHasTag(TEXT("CinemaSet")))
+        if (It->ActorHasTag(TEXT("CinemaSet")) || It->ActorHasTag(TEXT("FinalBankCeiling")))
         {
             FilmCapture->HideActorComponents(*It);
         }
@@ -147,6 +148,8 @@ bool AStudioCinemaPresenter::StartPresentation(AMovieManager* Movie)
     FilmCapture->SetWorldTransform(FilmCamera->GetCameraComponent()->GetComponentTransform());
     FilmCapture->FOVAngle = FilmCamera->GetCameraComponent()->FieldOfView;
     FilmCapture->PostProcessSettings = FilmCamera->GetCameraComponent()->PostProcessSettings;
+    FilmCapture->bCameraCutThisFrame = true;
+    LastDirectorShot = Movie->MovieDirector ? Movie->MovieDirector->ShotCount : INDEX_NONE;
     FilmCapture->bCaptureEveryFrame = true;
     FilmCapture->SetComponentTickEnabled(true);
     CapturedFrames = 0;
@@ -193,6 +196,13 @@ void AStudioCinemaPresenter::Tick(float DeltaSeconds)
         }
         FilmCapture->SetWorldTransform(FilmCamera->GetCameraComponent()->GetComponentTransform());
         FilmCapture->FOVAngle = FilmCamera->GetCameraComponent()->FieldOfView;
+        const int32 DirectorShot=BoundMovie.IsValid() && BoundMovie->MovieDirector ? BoundMovie->MovieDirector->ShotCount : INDEX_NONE;
+        if(DirectorShot!=LastDirectorShot)
+        {
+            // The capture owns a separate rendering history from the film camera.
+            // Mark cuts explicitly so old occlusion/motion history is not reused.
+            FilmCapture->bCameraCutThisFrame=true;LastDirectorShot=DirectorShot;
+        }
         ++CapturedFrames;
     }
 }

@@ -4,7 +4,7 @@ Verified Unreal Engine 5.6 C++ development progress for the offline Windows game
 
 This repository snapshot contains gameplay source, configuration, localization, tooling, documentation and test evidence. It deliberately excludes the multi-gigabyte art/media collection, generated caches, binaries and packaged archives. The complete editable project and playable backup are preserved locally; this code snapshot alone is not the complete asset project.
 
-Verified source checkpoint: `c693186ce3f66d7dd3c28e2a86e671ddb2a4bef9` (local full-project repository).
+Verified source checkpoint: `53809478a9d9135acb1ac1a623dbb1a55d22d6b1` (local full-project repository).
 
 - Three persistent characters, two rounds and six chronological turns.
 - First-only wardrobe, ten-second turns, contextual objectives and exclusive money ownership.

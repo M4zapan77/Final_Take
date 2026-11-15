@@ -1,4 +1,5 @@
 #include "StorySessionComponent.h"
+#include "StudioBankBounds.h"
 #include "MovieManager.h"
 #include "GrabbablePropComponent.h"
 #include "ActingSceneClockSubsystem.h"
@@ -55,6 +56,7 @@ bool UStorySessionComponent::InitializePhysicalProps()
         if(*It==MoneyProp || (It->PropId!=TEXT("Prop.Donut") && It->PropId!=TEXT("Prop.Banana"))){continue;}
         if(auto* Prop=RegisterPhysicalProp(*It,It->PickupId,It->PropId))
         {
+            if(bFinalSet){continue;}
             // Reversible runtime staging keeps the useful props within a ten-second turn.
             FTransform Transform=Prop->GetBodyTransform();Transform.SetLocation(GroundLocation(SceneAnchor+FVector(120,-80+ItemIndex*100,0),Prop->PhysicsBody->GetScaledBoxExtent().Z));
             Prop->RecoverTo(Transform);SceneState.FindObject(Prop->ObjectId)->WorldTransform=Transform;
@@ -64,7 +66,7 @@ bool UStorySessionComponent::InitializePhysicalProps()
     for(TActorIterator<AStaticMeshActor> It(GetWorld());It;++It)
     {
         auto* Mesh=It->GetStaticMeshComponent();if(!Mesh || !Mesh->GetStaticMesh()){continue;}const FString Name=Mesh->GetStaticMesh()->GetName();
-        if(!bStool && Name==TEXT("SM_Banquito_Amarillo"))
+        if(!bStool && Name==TEXT("SM_Banquito_Amarillo") && (!bFinalSet || It->ActorHasTag(TEXT("StoryThrowable"))))
         {bStool=RegisterPhysicalProp(*It,FName(*(TEXT("Scene.")+It->GetName())),NAME_None)!=nullptr;}
         if(Name==TEXT("SM_Escritorio"))
         {
@@ -168,7 +170,7 @@ void UStorySessionComponent::UpdatePhysicalProps()
         if(!State->OwnerId.IsNone()){continue;}
         if(Time<NextPropSampleTime){continue;}
         const FVector Position=Prop->GetOwner()->GetActorLocation();const FVector Floor=GroundLocation(Position,0);
-        if(Position.ContainsNaN() || FVector::DistSquared2D(Position,SceneAnchor)>FMath::Square(1500.0) || Position.Z<Floor.Z-150 || Position.Z>Floor.Z+1400)
+        if(Position.ContainsNaN() || (SafetyBounds.IsValid() && SafetyBounds->NeedsRecovery(Position)) || FVector::DistSquared2D(Position,SceneAnchor)>FMath::Square(1500.0) || Position.Z<Floor.Z-150 || Position.Z>Floor.Z+1400)
         {
             FTransform Recovered=InitialSceneState.FindObject(Pair.Key)->WorldTransform;
             Recovered.SetLocation(GroundLocation(SceneAnchor+FVector(100,0,0),Prop->PhysicsBody->GetScaledBoxExtent().Z));Prop->RecoverTo(Recovered);ObserveProp(Pair.Key,true);

@@ -1,0 +1,70 @@
+{
+  "capsules": [
+    {
+      "blocked": false,
+      "hit": "None",
+      "marker": "StorySpawn.Robber"
+    },
+    {
+      "blocked": false,
+      "hit": "None",
+      "marker": "StorySpawn.PoliceOfficer"
+    },
+    {
+      "blocked": false,
+      "hit": "None",
+      "marker": "StorySpawn.Customer"
+    },
+    {
+      "blocked": false,
+      "hit": "None",
+      "marker": "StorySpawn.NPC.Teller"
+    },
+    {
+      "blocked": false,
+      "hit": "None",
+      "marker": "StorySpawn.NPC.Guard"
+    },
+    {
+      "blocked": false,
+      "hit": "None",
+      "marker": "StorySpawn.NPC.Witness1"
+    },
+    {
+      "blocked": false,
+      "hit": "None",
+      "marker": "StorySpawn.NPC.Witness2"
+    }
+  ],
+  "entrance": [
+    {
+      "blocked": false,
+      "hit": "None",
+      "x": 50
+    },
+    {
+      "blocked": false,
+      "hit": "None",
+      "x": 100
+    },
+    {
+      "blocked": false,
+      "hit": "None",
+      "x": 150
+    },
+    {
+      "blocked": false,
+      "hit": "None",
+      "x": 200
+    }
+  ],
+  "teller": [
+    -595,
+    -385,
+    149.9797336892906
+  ],
+  "open_vault_passage": {
+    "blocked": false,
+    "hit": "None"
+  }
+}

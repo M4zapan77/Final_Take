@@ -11,6 +11,8 @@
 #include "ReplayActor.h"
 #include "MovieResultsLibrary.h"
 #include "GrabbablePropComponent.h"
+#include "StudioSetDoor.h"
+#include "StudioBankBounds.h"
 #include "Components/BoxComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -38,7 +40,12 @@ FText Ending(EStoryOutcome Outcome)
 
 FVector UStorySessionComponent::GroundLocation(FVector Location,double Height) const
 {
+    // The final set has one authored continuous floor. A ray from above the
+    // building can hit a wall cap, stool or shelf and incorrectly spawn an NPC
+    // on the furniture. Use the safety-floor plane for its explicit markers.
+    if(bFinalSet && SafetyBounds.IsValid()){Location.Z=SafetyBounds->GetActorLocation().Z+2+Height+1;return Location;}
     FHitResult Hit;FCollisionQueryParams Query(SCENE_QUERY_STAT(StoryWorldFloor),true);
+    for(TActorIterator<AActor> It(GetWorld());It;++It){if(It->ActorHasTag(TEXT("FinalBankCeiling"))){Query.AddIgnoredActor(*It);}}
     if(GetWorld()->LineTraceSingleByObjectType(Hit,Location+FVector(0,0,1000),Location-FVector(0,0,1500),FCollisionObjectQueryParams(ECC_WorldStatic),Query) && Hit.ImpactNormal.Z>.7){Location.Z=Hit.ImpactPoint.Z+Height+1;}
     return Location;
 }
@@ -61,13 +68,17 @@ bool UStorySessionComponent::InitializeScene()
     SceneState=FStoryWorldState();SceneEvents.Reset();InteractionPairs.Reset();CreativeIds.Reset();NPCInteractionIds.Reset();ThrownObjects.Reset();
     Outcome=EStoryOutcome::Unresolved;bScenePlayback=false;SceneEventCursor=0;
     SceneAnchor=Movie->MovieOrigin.GetLocation()+SessionScenario.SceneAnchorOffset;
+    InitializeSet();
     EscapeLocation=GroundLocation(SceneAnchor+SessionScenario.ExitOffset);SecureLocation=GroundLocation(SceneAnchor+SessionScenario.SecureOffset,30);
+    FTransform Marker;if(FindSetMarker(TEXT("StoryExit"),Marker)){EscapeLocation=Marker.GetLocation();}if(FindSetMarker(TEXT("StorySecure"),Marker)){SecureLocation=Marker.GetLocation();}
     for(int32 Index=0;Index<Cast.Num();++Index)
     {
         auto& Member=Cast[Index];double Height=96;
         if(auto* C=::Cast<ACharacter>(Member.Pawn)){Height=C->GetCapsuleComponent()->GetScaledCapsuleHalfHeight();}
         Member.InitialTransform.SetLocation(GroundLocation(SceneAnchor+SessionScenario.RoleOffsets[Index],Height));
+        if(FindSetMarker(FName(*(TEXT("StorySpawn.")+Member.ActorId.ToString())),Marker)){Member.InitialTransform=Marker;Member.InitialTransform.SetLocation(GroundLocation(Marker.GetLocation(),Height));}
         Member.Pawn->SetActorTransform(Member.InitialTransform,false,nullptr,ETeleportType::TeleportPhysics);
+        SafePoses.Add(Member.ActorId,Member.InitialTransform);
         // Costume bags never create extra copies of the unique story money.
         if(Movie->SessionRoles[Index].DefaultOutfit.PropId==TEXT("Prop.MoneyBag")){Movie->SessionRoles[Index].DefaultOutfit.PropId=NAME_None;}
         Movie->SessionRoles[Index].Objectives.Reset();
@@ -89,13 +100,16 @@ bool UStorySessionComponent::InitializeScene()
     FVector MoneyLocation=GroundLocation(SceneAnchor+SessionScenario.MoneyOffset,0);
     const auto Bounds=MoneyProp->PickupMesh->Bounds;
     MoneyLocation.Z+=SessionScenario.MoneySurfaceHeight+Bounds.BoxExtent.Z-(Bounds.Origin.Z-MoneyProp->GetActorLocation().Z);
+    if(FindSetMarker(TEXT("StoryMoneySurface"),Marker)){MoneyLocation=Marker.GetLocation()+FVector(0,0,Bounds.BoxExtent.Z-(Bounds.Origin.Z-MoneyProp->GetActorLocation().Z)+1);}
     MoneyProp->SetActorLocation(MoneyLocation,false,nullptr,ETeleportType::TeleportPhysics);
     SceneState.MoneyObjectId=MoneyProp->PickupId;
     auto& Object=SceneState.Objects.AddDefaulted_GetRef();Object.ObjectId=MoneyProp->PickupId;Object.CosmeticId=MoneyProp->PropId;Object.WorldTransform=MoneyProp->GetActorTransform();
     const FName IDs[]={TEXT("NPC.Teller"),TEXT("NPC.Guard"),TEXT("NPC.Witness1"),TEXT("NPC.Witness2")};
     for(int32 Index=0;Index<4;++Index)
     {
-        auto* NPC=GetWorld()->SpawnActor<ACharacter>(ACharacter::StaticClass(),GroundLocation(SceneAnchor+SessionScenario.NPCOffsets[Index]),FRotator(0,Index==0?90:180,0));
+        FVector NPCLocation=GroundLocation(SceneAnchor+SessionScenario.NPCOffsets[Index]);FRotator NPCRotation(0,Index==0?90:180,0);
+        if(FindSetMarker(FName(*(TEXT("StorySpawn.")+IDs[Index].ToString())),Marker)){NPCLocation=GroundLocation(Marker.GetLocation());NPCRotation=Marker.Rotator();}
+        auto* NPC=GetWorld()->SpawnActor<ACharacter>(ACharacter::StaticClass(),NPCLocation,NPCRotation);
         if(!NPC){return false;}
         NPCActors.Add(NPC);NPC->AutoPossessAI=EAutoPossessAI::Disabled;NPC->GetCapsuleComponent()->SetCapsuleSize(42,96);
         NPC->GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Pawn,ECR_Overlap);
@@ -108,6 +122,8 @@ bool UStorySessionComponent::InitializeScene()
         FCosmeticSelection Outfit=WardrobeDefaults::Casual();Outfit.PropId=NAME_None;
         Outfit.BodyId=Index==0?FName(TEXT("Body.Suit")):Index==1?FName(TEXT("Body.Uniform")):FName(TEXT("Body.Casual"));
         Outfit.HeadId=Index==1?FName(TEXT("Head.PoliceCap")):NAME_None;
+        Outfit.EyeId=TEXT("Eyes.Classic");Outfit.MouthId=Index==1?FName(TEXT("Mouth.Teeth")):FName(TEXT("Mouth.Smile"));Outfit.EyebrowId=TEXT("Eyebrows.Neutral");
+        if(Index==0){Outfit.FaceId=TEXT("Face.Glasses");}if(Index==3){Outfit.BodyId=TEXT("Body.Dress");Outfit.SkinColor=FLinearColor(.65,.82,1);}
         Wardrobe->BeginSelection(Outfit);Wardrobe->SetSelectionEnabled(false);
         auto* Acting=NewObject<UActingComponent>(NPC);NPC->AddInstanceComponent(Acting);Acting->RegisterComponent();
         if(Movie->CharacterProfile){Movie->CharacterProfile->ConfigureActing(Acting);}if(Movie->AudioProfile){Movie->AudioProfile->ConfigureActing(Acting);}Acting->SetLiveActionsEnabled(false);
@@ -123,6 +139,7 @@ bool UStorySessionComponent::InitializeScene()
 
 void UStorySessionComponent::ClearScene()
 {
+    ClearSet();
     ClearPhysicalProps();
     if(CreativeSource.IsValid()){CreativeSource->OnActingEventTriggeredNative.Remove(CreativeDelegate);}CreativeSource.Reset();CreativeDelegate.Reset();
     for(ACharacter* NPC:NPCActors){if(IsValid(NPC)){NPC->Destroy();}}NPCActors.Reset();
@@ -155,6 +172,7 @@ bool UStorySessionComponent::IsReachable(FVector Location,AActor* Target) const
 }
 FVector UStorySessionComponent::GetInteractionLocation(FName Id) const
 {
+    for(AStudioSetDoor* Door:SetDoors){if(IsValid(Door) && Door->DoorId==Id){return Door->GetInteractionPoint();}}
     if(Id==TEXT("Scene.Exit")){return EscapeLocation;}if(Id==TEXT("Scene.Secure")){return SecureLocation;}
     if(Id==SceneState.MoneyObjectId && MoneyProp){return MoneyProp->GetActorLocation();}
     if(auto* Prop=PhysicalProps.FindRef(Id).Get()){return Prop->GetOwner()->GetActorLocation();}
@@ -172,6 +190,7 @@ FName UStorySessionComponent::FindInteractionTarget() const
         const double Score=Priority-FVector::Distance(Location,Movie->LivePerformer->GetActorLocation());if(Score>BestScore){BestScore=Score;Best=Id;}
     };
     const FName Role=Movie->GetCurrentRoleId();const FName Owner=SceneState.MoneyOwner();
+    for(AStudioSetDoor* Door:SetDoors){if(IsValid(Door)){Consider(Door->DoorId,Door->bOpen?60:850,Door);}}
     const auto* Guard=SceneState.NPCs.FindByPredicate([](const auto& N){return N.Type==EStoryNPCType::Guard;});
     const bool Protected=SceneState.bMoneySecured && GetRoleIndex()!=1 && (!Guard || Guard->Mood!=EStoryNPCMood::Distracted);
     if(Owner!=Role && !Protected){Consider(SceneState.MoneyObjectId,800,MoneyProp);}
@@ -189,7 +208,14 @@ FName UStorySessionComponent::FindInteractionTarget() const
 FText UStorySessionComponent::GetInteractionPrompt() const
 {
     const FName Target=FindInteractionTarget();if(Target.IsNone()){return FText::GetEmpty();}
-    if(Target==TEXT("Scene.Exit")){return NSLOCTEXT("FinalTake","PromptEscape","[E] Leave with the money");}
+    for(AStudioSetDoor* Door:SetDoors){if(IsValid(Door) && Door->DoorId==Target){return !Door->bOpen?NSLOCTEXT("FinalRelease","OpenVault","[E] Open vault"):Door->IsPassageClear()?NSLOCTEXT("FinalRelease","CloseVault","[E] Close vault"):NSLOCTEXT("FinalRelease","DoorClear","Keep the doorway clear");}}
+    if(Target==TEXT("Scene.Exit"))
+    {
+        const auto* Guard=SceneState.NPCs.FindByPredicate([](const auto& N){return N.Type==EStoryNPCType::Guard;});
+        if(GetRoleIndex()==0 && SceneState.bAlarmActive && (!Guard || Guard->Mood!=EStoryNPCMood::Distracted))
+        {return NSLOCTEXT("FinalTake","ObjectiveEscape","Escape with the money: distract the guard and reach the exit.");}
+        return NSLOCTEXT("FinalTake","PromptEscape","[E] Leave with the money");
+    }
     if(Target==TEXT("Scene.Secure")){return NSLOCTEXT("FinalTake","PromptSecure","[E] Secure the money");}
     if(Target==SceneState.MoneyObjectId || (!SceneState.MoneyOwner().IsNone() && Target==SceneState.MoneyOwner()))
     {return GetRoleIndex()==1?NSLOCTEXT("FinalTake","PromptConfiscate","[E] Confiscate money"):NSLOCTEXT("FinalTake","PromptTakeMoney","[E] Take the money");}
@@ -303,6 +329,7 @@ bool UStorySessionComponent::Interact(){return InteractWith(FindInteractionTarge
 bool UStorySessionComponent::InteractWith(FName Target)
 {
     if(!CanAct() || Target.IsNone()){return false;}
+    for(AStudioSetDoor* Door:SetDoors){if(IsValid(Door) && Door->DoorId==Target){return IsReachable(Door->GetInteractionPoint(),Door) && RequestDoor(Door,!Door->bOpen);}}
     if(Target!=SceneState.MoneyObjectId && PhysicalProps.Contains(Target)){return GrabObject(Target);}
     AActor* TargetActor=Target==SceneState.MoneyObjectId?static_cast<AActor*>(MoneyProp.Get()):static_cast<AActor*>(FindActor(Target));
     for(int32 Index=0;Index<SceneState.NPCs.Num();++Index){if(SceneState.NPCs[Index].Id==Target && NPCActors.IsValidIndex(Index)){TargetActor=NPCActors[Index];}}
@@ -326,6 +353,7 @@ bool UStorySessionComponent::InteractWith(FName Target)
     else if(Target==TEXT("NPC.Teller"))
     {
         NPCInteractionIds.Add(TEXT("Teller"));
+        if(GetRoleIndex()==0){for(AStudioSetDoor* Door:SetDoors){if(IsValid(Door) && !Door->bOpen){RequestDoor(Door,true);}}}
         if(GetRoleIndex()==0 && Owner.IsNone() && !SceneState.bMoneySecured && (!SceneState.bMoneyWasTaken || IsReachable(MoneyProp->GetActorLocation(),MoneyProp))){Success=SetMoneyOwner(Role,EStoryEventType::MoneyTaken);SceneState.bAlarmActive=true;AddSceneEvent(EStoryEventType::AlarmChanged,Target,NAME_None,TEXT("On"));SetNPCMood(Target,EStoryNPCMood::Frightened,4,TEXT("Scared"));if(!Distracted){SetNPCMood(TEXT("NPC.Guard"),EStoryNPCMood::Alert,0,TEXT("Point"));}}
         else{AddSceneEvent(EStoryEventType::NPCInformation,Target);SetNPCMood(Target,EStoryNPCMood::Helpful,3,TEXT("Point"));Success=true;}
     }
@@ -368,7 +396,7 @@ void UStorySessionComponent::PreviewContextObjective(bool bBindCreative)
         if(Owner==Movie->GetCurrentRoleId()){ObjectiveKind=EStoryObjectiveKind::Escape;CurrentObjective.DisplayName=NSLOCTEXT("FinalTake","ObjectiveEscape","Escape with the money: distract the guard and reach the exit.");}
         else if(SceneState.bMoneySecured){ObjectiveKind=EStoryObjectiveKind::AskWitness;CurrentObjective.DisplayName=NSLOCTEXT("FinalTake","ObjectiveAfterRobbery","Ask a witness how your brilliant plan ended.");}
         else if(Owner.IsNone() && SceneState.bMoneyWasTaken){ObjectiveKind=EStoryObjectiveKind::RecoverMoney;CurrentObjective.DisplayName=NSLOCTEXT("FinalTake","ObjectiveDroppedMoney","Find the dropped money and pick it up.");}
-        else{ObjectiveKind=EStoryObjectiveKind::GetMoney;CurrentObjective.DisplayName=Owner.IsNone()?NSLOCTEXT("FinalTake","ObjectiveGetMoney","Get the money from the counter or talk to the teller."):NSLOCTEXT("FinalTake","ObjectiveRecoverMoney","Recover the money from whoever is carrying it.");}
+        else{ObjectiveKind=EStoryObjectiveKind::GetMoney;CurrentObjective.DisplayName=Owner.IsNone()?(bFinalSet?NSLOCTEXT("FinalRelease","VaultObjective","Get the vault money: open its door with E, or ask the teller."):NSLOCTEXT("FinalTake","ObjectiveGetMoney","Get the money from the counter or talk to the teller.")):NSLOCTEXT("FinalTake","ObjectiveRecoverMoney","Recover the money from whoever is carrying it.");}
     }
     else if(GetRoleIndex()==1)
     {
@@ -419,6 +447,7 @@ void UStorySessionComponent::HandleCreativeAction(const FActingEvent& Event,bool
 
 void UStorySessionComponent::UpdateScene()
 {
+    UpdateCastSafety();
     UpdatePhysicalProps();
     const bool Running=Movie->SceneClock->IsClockRunning();const double Time=Movie->GetSceneTimeSeconds();
     SetDetentionInput(CanAct() && SceneState.DetainedUntil.FindRef(Movie->GetCurrentRoleId())>Time);
@@ -459,6 +488,7 @@ void UStorySessionComponent::AppendSceneActingEvents(FName Id,FActingRecording& 
 }
 void UStorySessionComponent::BeginScenePlayback()
 {
+    for(AStudioSetDoor* Door:SetDoors){if(IsValid(Door)){Door->ResetDoor();}}
     bScenePlayback=true;SceneEventCursor=0;SetPhysicsPaused(true);PlaybackOwners.Reset();PlaybackLeftHands.Reset();
     for(const auto& Object:InitialSceneState.Objects)
     {PlaybackOwners.Add(Object.ObjectId,Object.OwnerId);PlaybackLeftHands.Add(Object.ObjectId,Object.bLeftHand);if(auto* Prop=PhysicalProps.FindRef(Object.ObjectId).Get()){Prop->PresentWorld(Object.WorldTransform);Prop->GetOwner()->SetActorHiddenInGame(Object.CreatedAtSeconds>0);}}
@@ -472,6 +502,8 @@ void UStorySessionComponent::BeginScenePlayback()
 }
 void UStorySessionComponent::ApplyPlaybackEvent(const FStorySceneEvent& Event)
 {
+    if(Event.Type==EStoryEventType::DoorChanged){for(AStudioSetDoor* Door:SetDoors){if(IsValid(Door) && Door->DoorId==Event.TargetId){Door->PresentRequest(Event.Payload==TEXT("Open"),Event.TimeSeconds,Event.WorldTransform,true);}}}
+    if(Event.Type==EStoryEventType::ActorRecovered){if(auto* Actor=Movie->FindReplayForRole(Event.TargetId)){Actor->SetActorTransform(Event.WorldTransform,false,nullptr,ETeleportType::TeleportPhysics);}}
     PlaySceneEventAudio(Event,true);
     ApplyPhysicalEvent(Event);
     if(Event.Type==EStoryEventType::NPCReaction)

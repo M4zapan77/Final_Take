@@ -291,5 +291,12 @@
   "Back to Studio": "Volver al estudio",
   "Round {0}/2 · Turn {1}/6": "Ronda {0}/2 · Turno {1}/6",
   "Round {0}/2\nTurn {1}/6": "Ronda {0}/2\nTurno {1}/6",
-  "Your scene: {0}": "Tu escena: {0}"
+  "Your scene: {0}": "Tu escena: {0}",
+  "Open vault door": "Abrir puerta de la bóveda",
+  "Close vault door": "Cerrar puerta de la bóveda",
+  "Clear the doorway to close it.": "Despeja la entrada para cerrar la puerta.",
+  "Get the vault money: open its door with E, or ask the teller.": "Consigue el dinero: abre la bóveda con E o pídeselo al cajero.",
+  "[E] Open vault": "[E] Abrir bóveda",
+  "[E] Close vault": "[E] Cerrar bóveda",
+  "Keep the doorway clear": "Despeja la entrada de la bóveda"
 }

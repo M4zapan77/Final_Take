@@ -1,87 +1,129 @@
-# FINAL TAKE 1.0 — entrega final
+# FINAL TAKE — entrega final GameJam 2026
 
-Checkpoint de código y configuración del paquete: `063c78040fe12ebb14a06d2c45f54eec0c61e785`.
-Rama local completa: `final-take/final-ui`. UE 5.6.1, Windows 64 bits.
+Unreal Engine 5.6.1, Windows 64 bits. Código del paquete: `0882f316a8fc4ce1f29001fdd766162a78b40d6e`.
+Rama local completa: `final-take/final-ui`. El mapa y binarios de esta entrega
+corresponden al mismo checkpoint; los commits posteriores añaden documentación.
 
-## Entrega jugable y proyecto
+## Jugar y recuperar el proyecto
 
-- Carpeta completa: `output/release/FINAL_TAKE_Final_UI_2026-11-15/Windows` del espacio de trabajo.
-- ZIP jugable: `FINAL_TAKE_Final_UI_Windows.zip`, **573.97 MB**, 32 archivos, CRC verificado.
-- SHA256: `be2b12a2eaa0e8834597486a901ac7e7cfb2a65cee4d1fd80e5bbec57ec7217e`.
-- Proyecto editable: `FINAL_TAKE_Final_UI_Project.zip`, con MyProject.uproject, Source, Content, SourceArt, configuración, scripts, traducciones y documentación. Su recibo JSON y SHA256 están junto al ZIP; no incluye .git, Saved, Binaries, Intermediate ni cachés.
-- Iniciar: extraer toda la carpeta Windows y ejecutar Play-FINAL-TAKE.bat. En el espacio de trabajo también existe JUGAR_FINAL_TAKE.bat.
+- Extraer **FINAL_TAKE_GameJam2026_FINAL_Windows.zip** completo y ejecutar
+  `Windows/Play-FINAL-TAKE.bat`. También hay un lanzador JUGAR_FINAL_TAKE.bat en el espacio de trabajo.
+- ZIP Windows: **574.20 MB**, 33 archivos, CRC verificado.
+- SHA256 Windows: `09c7131917ba0dac5b78bd6a88a5b03fd9a92462e47afa1fbf792cdf3286f831`.
+- **FINAL_TAKE_GameJam2026_FINAL_Project.zip** contiene MyProject.uproject, Source,
+  Content, SourceArt, configuración, traducciones, scripts y documentación. Los
+  recibos JSON y SHA256 externos registran el tamaño e integridad de ambos ZIP.
+  No incluye .git, Binaries, Intermediate, Saved ni otros cachés.
+- Proyecto activo: `C:/Games/OneManStudio/MyProject/MyProject.uproject`.
+- [Configuración exacta del banco en Editor](../Docs/FinalRelease-EditorSetup.md).
+- [Tema, widgets y asignación del arte UI](../Docs/FinalUI-EditorSetup.md).
 
-Los archivos de distribución están fuera de los cachés limpiados. Se conservan
-los respaldos PreGameplayUpdate y Gameplay_Optimized como versiones históricas,
-además del archivo de recuperación de la limpieza de recursos.
+## Cambios finales
 
-## Resultados ejecutados
+Se conservó la arquitectura de grabación, reloj, seis turnos, tres camerinos,
+gestos, sonidos, ropa, objetos, objetivos, puntuación, director y cine.
 
-- Compilación Development Editor aprobada; 69 pruebas automáticas aprobadas (68 éxitos y un éxito con advertencia esperada).
-- Windows Shipping empaquetado con Pak/IoStore y compresión: UAT terminó con código 0.
-- Los 47 paquetes UI están en el manifiesto cocinado; no falta ninguno.
-- Tras limpiar cachés, el proyecto volvió a abrir y pasaron de nuevo las 69 pruebas. El Shipping final permaneció activo 20.76 segundos en arranque offscreen sin intervención; eso sólo verifica estabilidad de arranque.
-- 12 ejecuciones nativas aprobadas: vídeos, saltos y fallos de medios; menús a 720p/1080p; personalización; animación/audio; tres desenlaces en Editor; vídeos y dos historias en Windows Development empaquetado.
-- En las historias se verifican seis turnos, tres camerinos, dos películas, gestos/sonidos/ropa por actor, eventos sin duplicar, puntuación estable y nueva sesión limpia. El civil lanza un objeto físico real. El caso sin objetivos sigue siendo visible y puntuable.
-- Cobertura ES/EN: 305 traducciones, cero ausentes. El idioma se cambia durante resultados y se conserva al iniciar otra película.
-- 21 capturas reales, incluida UI empaquetada, HUD de actuación, resultados en inglés y película de cero objetivos.
+- La cámara vuelve al personaje controlado al cerrar cada camerino. La captura
+  del cine marca los cortes para no reutilizar la historia visual anterior.
+- El mismo Lvl_Bank tiene escala corregida, suelo continuo, techo crema, rellenos
+  cálidos, exterior verde y entrada alineada con su hueco real. Cajas a la izquierda,
+  espera al frente derecho, bóveda al fondo y producción al fondo derecho.
+- Siete puntos de aparición con espacio de cápsula comprobado. Los protagonistas
+  comienzan en lugares distintos y sólo se inicializan una vez por película.
+- La hoja de bóveda importada ahora tiene bisagra, movimiento con reloj compartido,
+  bloqueo de cierre si hay alguien en el paso y eventos de reproducción. Su cuarto
+  se completó con paredes, techo, pedestal y muebles existentes: el modelo aportado
+  es una hoja sólida, no un interior transitable completo.
+- E abre/cierra la bóveda; se puede recoger su bolsa única o pedir el dinero al
+  cajero. Para huir, el guardia debe estar distraído; el HUD aclara esa condición.
+- Límites y suelo invisibles independientes de la cámara. Recuperación de la
+  misma instancia del personaje o prop sin reiniciar turno, vestuario o inventario
+  ni duplicar el dinero. La recuperación también se registra.
+- Se mantienen los assets y widgets del artista. Sólo se añadieron seis materiales
+  locales de acabado; no se sustituyó el rig ni se reescribieron los sistemas.
 
-La prueba manual de Shipping con ratón y teclado quedó **pendiente porque Windows
-estaba bloqueado**. La copia Development empaquetada sí completó pruebas automáticas
-fuera del Editor. No se presenta esa ejecución como una partida humana en Shipping,
-ni se afirma haber probado otro ordenador o una instalación limpia de Windows.
+La relación de archivos está en [FilesModified.txt](FinalRelease/FilesModified.txt).
+Los cambios de código principales son MovieManager, StudioCinemaPresenter,
+StorySessionWorld/Props/Set, StudioBankBounds, StudioSetDoor y sus pruebas.
 
-## Limpieza y tamaños
+## Pruebas ejecutadas
 
-La limpieza final eliminó **13.69 GB** de paquetes antiguos,
-staging, temporales e intermediarios regenerables. Se comprobaron rutas absolutas,
-ausencia de enlaces/junctions y ausencia de archivos seguidos por Git. Se conservaron
-Source, Content, SourceArt, Binaries, .git, DDC, preferencias, guardados, autosaves,
-logs, informes y cachés útiles de shaders. El próximo build completo regenerará
-intermediarios; el proyecto editable se distribuye sin ellos.
+- Development Editor compilado; **73 pruebas** aprobadas: 72
+  éxitos y 1 con advertencia esperada de configuración inválida.
+- Shipping reempaquetado: UAT **código 0**, 140.30 s.
+  Development final: UAT **código 0**, 145.43 s.
+  Pak/IoStore comprimido, prerrequisitos incluidos. La primera compilación completa
+  previa al ajuste de spawn tardó 240.97 s / 214.45 s respectivamente.
+- Cocinados y comprobados: **47 paquetes UI y seis materiales nuevos**, ninguno ausente.
+- **13 ejecuciones nativas aprobadas**: cuatro historias en Editor, cuatro en
+  Windows Development empaquetado, cuatro pruebas de vídeo empaquetadas y una
+  repetición completa de Policía después del último ajuste de su punto inicial.
+- Historias Policía, Civil, Escape y Sin objetivos: seis turnos, tres camerinos,
+  cámara del rol correcto, ropa independiente, dinero único, gestos y sonidos,
+  dos reproducciones, puntuación estable, nueva película limpia y regreso al HUB.
+  El civil lanza un objeto físico; Escape abre la bóveda, toma su dinero, atraviesa
+  la entrada y huye después de distraer al guardia. Sin objetivos sigue siendo
+  visible y puntuable. La segunda ronda conserva poses e inventario.
+- Vídeos empaquetados: reproducción automática de ambos intros, salto desde
+  cualquiera consumiendo el clic, HUB en bucle y paneles interactivos, fundido,
+  viaje real, audio detenido, entrada de juego y alternativa para medios fallidos.
+- **Shipping probado con ratón y teclado**, sin harness ni consola de desarrollo:
+  Menú y ajustes, camerinos y selección real, seis turnos, gesto/sonido, estreno, resultados, repetir con el mismo 4/100, nueva película limpia con 0/100, regreso al estudio, menú y Salir; cámara del policía revisada tras el ajuste final.
+  El ciclo visual completo se comprobó antes del último desplazamiento de 220 cm
+  del spawn policial; después se volvió a comprobar esa cámara en Shipping final.
+  Las doce ejecuciones anteriores se conservan con su procedencia; la repetición
+  de Policía corresponde al mapa definitivo. El código de gameplay no cambió en
+  ese último ajuste de colocación.
+- Español/inglés: **309 traducciones**, cero ausentes. Los casos
+  cambian idioma en resultados sin alterar grabaciones o puntuación y conservan
+  la elección al iniciar otra película.
 
-La limpieza anterior auditó y retiró 16 assets de plantilla (2 210 671 bytes) y
-45 copias de archivos ZIP/RAR (1 736 161 593 bytes). Todos están en un ZIP de
-recuperación con CRC/SHA256 fuera del proyecto; los FBX/OBJ/texturas extraídos siguen
-disponibles para reimportación. Se retuvieron 80 recursos de maniquí para fallback
-y retargeting. Sólo se desactivó el plugin GameplayStateTree sin dependencias.
+Los JSON/CSV están en [Tests/FinalRelease](Tests/FinalRelease); capturas reales en
+[Screenshots/FinalRelease](Screenshots/FinalRelease). La comprobación manual tiene
+su propia secuencia de observaciones y capturas, separada de las pruebas nativas.
+Los fallos de colocación inicial del cajero y el primer guion de escape se
+corrigieron y se volvieron a ejecutar; no figuran como aprobados en la evidencia final.
 
-El ZIP Windows original era 629.34 MB; el final es 573.97 MB.
-El proyecto editable contiene arte nuevo y evidencias: no se afirma que su fuente
-canónica sea más pequeña por añadir funciones. El recibo de su ZIP contiene su
-tamaño exacto y el desglose de carpetas.
+## Rendimiento y limpieza
 
-## Medidas de rendimiento y sus límites
+Windows Development empaquetado, DX12 SM6, 1280×720 offscreen; Ryzen 7 7840HS,
+16 GB, RTX 4060 Laptop. Las capturas y cargas forman parte de estas mediciones:
 
-En el mismo caso estático M7, los buffers de poses pasaron de 283136
-a 19040 bytes, con trayectorias de props conservadas.
-Es una medición de grabación estática, no de toda la RAM. La corrección final
-mantiene la captura de ajustes activa para que gestos/sonidos funcionen.
-
-Windows Development empaquetado, DX12 SM6, 1280×720 offscreen, Ryzen 7 7840HS,
-16 GB y RTX 4060 Laptop seleccionada:
-
-| Caso | Grabación media/p95 | Película media/p95 | Pico de RAM observado |
+| Caso | Grabación media / p95 ms | Película media / p95 ms | Pico RAM MiB |
 | --- | --- | --- | --- |
-| Policía | 24.32/31.51 ms | 13.95/15.36 ms | 2057.86 MiB |
-| Civil | 19.46/18.25 ms | 13.82/15.10 ms | 2078.33 MiB |
+| Police | 19.437 / 16.1064 | 14.3724 / 15.8832 | 2233.78 |
+| Civilian | 18.7334 / 16.123 | 14.2115 / 15.7531 | 2072.91 |
+| Escape | 14.6299 / 16.1356 | 14.6017 / 16.8213 | 2050.29 |
+| Failure | 11.502 / 14.3365 | 14.5019 / 17.293 | 2031.33 |
 
-Se observaron picos de carga/cambio de actor y capturas, incluidos fotogramas de
-aproximadamente un segundo. Las medias incluyen esos picos. No se demuestra una
-mejora general de FPS ni se garantizan 60 FPS; no hay benchmark Shipping completo.
-Los JSON conservan las muestras resumidas, máximos y percentiles reales.
-En el arranque Shipping de 20 segundos se observaron 2234.79 MiB
-de pico de memoria de proceso. Es una observación de inicio, no de toda la película.
+No es un benchmark Shipping ni garantiza 60 FPS. Hay picos de carga y cambio de
+personaje, superiores a un segundo en algunos casos; los JSON conservan máximos
+y percentiles. Los buffers estáticos M7 anteriores bajaron de 283136 a 19040 bytes;
+esa reducción no representa toda la RAM ni una mejora general demostrada de FPS.
 
-## Configuración pendiente y límites
+La limpieza anterior retiró **13,693,407,363 bytes** de cachés temporales históricos;
+la recompilación regenera parte de ellos. Se conservan sus recibos y no se presenta
+esa suma como espacio libre neto final. Las fuentes de arte, pruebas, configuración,
+autosaves y respaldos están preservados.
 
-- Falta una portada oficial de la película del banco; el logo aprobado sirve de alternativa. Asignar MovieCover en DA_FinalTakeUITheme es opcional.
-- El retrato usa el modelo 3D real sobre fondo negro. Encuadre, colores, texturas, iconos y widgets derivados siguen configurables por el artista.
-- No hacen falta Widget Blueprints manuales para jugar. La guía Docs/FinalUI-EditorSetup.md detalla clases y conexiones si se sustituye la disposición nativa.
-- Los documentos históricos pueden describir el antiguo modo de tres tomas; README y los informes actuales describen el modo normal de seis turnos.
-- Las fuentes de reimportación están incluidas; si se extrae el proyecto a otra ubicación, Unreal puede requerir reasignar rutas de reimportación a SourceArt.
-- No hay multijugador, dependencia de API de IA en tiempo de ejecución ni exportación MP4.
-- GitHub recibe código/configuración/traducciones/evidencias. No se suben los varios GB de arte/vídeos ni ZIP de distribución al repositorio ordinario. El ZIP local es el proyecto completo.
+## Respaldos, publicación y límites
 
-Consulta UI/Integration.md para archivos modificados, UI/Testing.md para alcance
-de cada prueba y Optimization/FinalStorageCleanup.json para cada ruta eliminada.
+- Checkpoint previo al banco: `5b424423f7d4215a9941b23f8291a3c65290d4bc`, tag
+  `camera-fix-before-final-bank-2026-11-15`; mapa anterior y SHA fuera de cachés en
+  `gamejam/output/recovery/BeforeFinalBank20261115`. ZIP históricos conservados.
+- [GitHub](https://github.com/M4zapan77/Final_Take), rama `main`: snapshot de código,
+  configuración, traducciones y evidencias. El recibo externo de publicación da
+  el hash remoto verificado. Los varios GB de arte/vídeos y los ZIP completos se
+  entregan localmente; clonar únicamente el snapshot no recupera todos los assets.
+- Falta una portada oficial del banco; se utiliza el logo aprobado y MovieCover
+  sigue configurable. La interfaz nativa funciona sin crear UMG manualmente.
+- No se probó una instalación limpia ni otro PC. Los prerrequisitos de Unreal
+  están incluidos. No se hizo una revisión auditiva humana de la mezcla; los
+  eventos de sonido y reproductores se comprobaron en ejecución.
+- VS 2022 14.44 compiló correctamente; Unreal recomienda 14.38 y conserva ese aviso.
+  Los avisos de InputKey afectan al harness de Development, excluido de Shipping.
+- Si el proyecto se extrae en otra ruta, pueden requerirse nuevas rutas de
+  reimportación a SourceArt. Los assets cocinados del juego no dependen de ellas.
+- Sin multijugador, API de IA en ejecución, exportación MP4 ni codificación de vídeo.
+
+Ésta es la entrega de cierre. No se inicia otra fase automáticamente.

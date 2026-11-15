@@ -1,0 +1,13 @@
+sequence,time,type,instigator,target,payload
+1,10.000000,17,Robber,Robber,TurnEnd
+2,10.000000,17,PoliceOfficer,PoliceOfficer,TurnStart
+3,10.000000,18,PoliceOfficer,PoliceOfficer,PoliceOfficer
+4,20.000000,17,PoliceOfficer,PoliceOfficer,TurnEnd
+5,20.000000,17,Customer,Customer,TurnStart
+6,30.000000,17,Customer,Customer,TurnEnd
+7,30.000000,17,Robber,Robber,TurnStart
+8,40.000000,17,Robber,Robber,TurnEnd
+9,40.000000,17,PoliceOfficer,PoliceOfficer,TurnStart
+10,50.000000,17,PoliceOfficer,PoliceOfficer,TurnEnd
+11,50.000000,17,Customer,Customer,TurnStart
+12,60.000000,17,Customer,Customer,TurnEnd
