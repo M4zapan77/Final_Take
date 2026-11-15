@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "configuration": "Shipping",
+  "sourceCommit": "063c78040fe12ebb14a06d2c45f54eec0c61e785",
+  "scope": "20-second unattended offscreen startup stability only; no input or full movie flow tested",
+  "runtime": "C:\\Users\\diego\\OneDrive\\Documentos\\ChatGPT\\gamejam\\output\\release\\FINAL_TAKE_Final_UI_2026-11-15\\Windows\\MyProject\\Binaries\\Win64\\MyProject-Win64-Shipping.exe",
+  "elapsedSeconds": 20.757771,
+  "peakWorkingSetBytes": 2343350272,
+  "termination": "Owned test process stopped after observation; not a normal Quit-menu test",
+  "manualTest": "Pending: desktop locked"
+}

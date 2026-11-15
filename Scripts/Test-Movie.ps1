@@ -25,6 +25,7 @@ if (-not (Test-Path -LiteralPath $reportPath) -or (Get-Item -LiteralPath $report
 }
 $report = Get-Content -LiteralPath $reportPath -Raw | ConvertFrom-Json
 $expectedPaths = @(
+    'OneManStudio.Story.LiveActingAcrossSixTurns',
     'OneManStudio.Acting.RecordingData',
     'OneManStudio.Acting.RecorderSampling',
     'OneManStudio.Acting.SharedClockAndReplay',

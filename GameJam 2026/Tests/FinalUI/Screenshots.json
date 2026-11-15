@@ -1,0 +1,170 @@
+[
+  {
+    "file": "MainMenu720.png",
+    "source_run": "FinalUI720Complete/MainMenu.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 1098449,
+    "sha256": "3eb4a4906d17d731ae74c3368ad493eefcd29f415b206be17c31aab4add05aae"
+  },
+  {
+    "file": "MainMenu1080.png",
+    "source_run": "FinalUI1080Auto/MainMenu.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 2080432,
+    "sha256": "4c2d23483edc617d1379fdd4b8ab0b36c275acc1a9b9ae160051f603ab186e05"
+  },
+  {
+    "file": "Hub720.png",
+    "source_run": "FinalUI720Complete/Hub.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 1006588,
+    "sha256": "81d31c494824624e705cd316913d8cacf2898b970897a6b981d5a426bd4d3e2c"
+  },
+  {
+    "file": "Hub1080.png",
+    "source_run": "FinalUI1080Auto/Hub.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 1821522,
+    "sha256": "7f1efbfcecd32114e2277ce8cd1280f6f45727076b015e923db8b0505ab688c9"
+  },
+  {
+    "file": "SettingsEnglish.png",
+    "source_run": "FinalUI1080Auto/SettingsEnglish.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 1576367,
+    "sha256": "d4ed1e237fd2524d4ad4038cf647089df4e6e90dbea1c7f5c3bf8920515bc5d6"
+  },
+  {
+    "file": "SettingsSpanish.png",
+    "source_run": "FinalUI1080Auto/SettingsSpanish.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 1588062,
+    "sha256": "f75edf1186b48c3d75b17807222c29e3a6fe2f271d830e10724369f856713a82"
+  },
+  {
+    "file": "ButtonHover.png",
+    "source_run": "FinalUI1080Auto/ButtonHover.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 2160560,
+    "sha256": "8de398dd3dc69dcfe30d8625c3c4458fa662c76172f9cf5f2cb05561755ca959"
+  },
+  {
+    "file": "ButtonPressed.png",
+    "source_run": "FinalUI1080Auto/ButtonPressed.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 2112956,
+    "sha256": "d60966230dbd6931fed408cc0dcc16f51b751c51922ecefd30b016b6b062e6e6"
+  },
+  {
+    "file": "Credits.png",
+    "source_run": "FinalUI1080Auto/Credits.png",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 1499206,
+    "sha256": "1a667615c9618850662f55342597a141b82944773fae3a6a4f98e97a304a68cc"
+  },
+  {
+    "file": "WardrobeRobber.png",
+    "source_run": "FinalUIEventsPolice/WardrobeRole1.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 598169,
+    "sha256": "8fc52688d98b957e265e0e351fb7ce5b68b5f09883a7c7083b1ab62be186c7f1"
+  },
+  {
+    "file": "WardrobePolice.png",
+    "source_run": "FinalUIEventsPolice/WardrobeRole2.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 597154,
+    "sha256": "d431a3d4dd5f428a59a8bb73d54e468d6a95bc6e8f0a5a3e20b392ce5731f19d"
+  },
+  {
+    "file": "WardrobeCivilian.png",
+    "source_run": "FinalUIEventsPolice/WardrobeRole3.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 599025,
+    "sha256": "4f6e209d3a64b52154dd3d92f0d0ffc0a59c73eddb9fabc50e9ac6f0ac37857d"
+  },
+  {
+    "file": "WardrobeTwoHandsSurvey.png",
+    "source_run": "FinalUICustomizationLayout/BothProps.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 628384,
+    "sha256": "8c61da91e6fb93d23be31564cd975579c32577570d5327ba9bf5401055b69779"
+  },
+  {
+    "file": "Cinema.png",
+    "source_run": "FinalUIEventsPolice/Premiere.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 912309,
+    "sha256": "65565f9f22873bd3f2908880b8349e46c2105bc880ceb1d26bd91923498869ad"
+  },
+  {
+    "file": "DirectedShot.png",
+    "source_run": "FinalUIEventsPolice/DirectedShot.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 910187,
+    "sha256": "69a6584b36f6a5131d586783813a904db887e154ed15aee94a20695a944401c3"
+  },
+  {
+    "file": "ResultsPolice.png",
+    "source_run": "FinalUIEventsPolice/Results.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 142023,
+    "sha256": "2a55cafeafe2dabfd4af9e6c1ec995421fbb6dd2fa540f83f3b0265ae6e8951b"
+  },
+  {
+    "file": "ResultsCivilian.png",
+    "source_run": "FinalUIEventsCivilian/Results.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 140643,
+    "sha256": "e841a0fc22f93bf488bf184282ad54d07a5c525c0d7493dc02eb1d982c24e363"
+  },
+  {
+    "file": "ResultsZeroObjectives.png",
+    "source_run": "FinalUIEventsFailure/Results.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 123059,
+    "sha256": "5f6cdb7c6ea2eaa61fc55ace84f12eee53609f805deef7b8207b1db1de3581e6"
+  },
+  {
+    "file": "PackagedMainMenu.png",
+    "source_run": "StartupPackagedAuto/MainMenu.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 1097755,
+    "sha256": "17c76c48df6ffbbd3501eb3271cdb778c0edeba4e002fcf640a9a9a9ab63b8cc"
+  },
+  {
+    "file": "PackagedResultsEnglish.png",
+    "source_run": "FinalUIPackagedPolice/ResultsEnglish.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 17709,
+    "sha256": "29b9ad2843a8943aabe17884ac1482e19b7ab7e7c038186e4cb5e7c6e14fcfc4"
+  },
+  {
+    "file": "PackagedRecordingHUD.png",
+    "source_run": "FinalUIPackagedPolice/RecordingHUD.png",
+    "width": 1280,
+    "height": 720,
+    "bytes": 1052806,
+    "sha256": "5f0678fe4079c717cc5c1dff4323d6ea7987b151c94274f70080b3a9ccbefc39"
+  }
+]

@@ -1,0 +1,539 @@
+{
+  "textures": [
+    {
+      "source": "ele_menu/Dau_KPk4z5DjXI8V9aafw_T_UI_Logo_FinalTake_4K.png",
+      "asset": "/Game/OneManStudio/UI/Common/T_UI_Logo_FinalTake",
+      "keys": [
+        "Logo"
+      ],
+      "sha256": "cdb16c82b7bfc61fb5cabee968590e253344a0821c35625e4572aa1f9c2c61bb",
+      "width": 4096,
+      "height": 2252,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "MainMenu/ButtonStates/T_UI_Button_Hover.png",
+      "asset": "/Game/OneManStudio/UI/MainMenu/T_UI_Button_Hover",
+      "keys": [
+        "Button.Hover"
+      ],
+      "sha256": "508a9a954fca2175c891eac6e61b389b58f5a56ad3dcbdd0cacb1e0567e96bf0",
+      "width": 664,
+      "height": 246,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "MainMenu/ButtonStates/T_UI_Button_Normal.png",
+      "asset": "/Game/OneManStudio/UI/MainMenu/T_UI_Button_Normal",
+      "keys": [
+        "Button.Normal"
+      ],
+      "sha256": "efdb762563135fb86d73d5d45b39b0ced2e0f993625f8bf831ccc110ca84541e",
+      "width": 664,
+      "height": 246,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "MainMenu/ButtonStates/T_UI_Button_Pressed.png",
+      "asset": "/Game/OneManStudio/UI/MainMenu/T_UI_Button_Pressed",
+      "keys": [
+        "Button.Pressed"
+      ],
+      "sha256": "4dde097c237e4cca2d4e5f7398221b63b78e3629aa120f4f922eb88a86e08456",
+      "width": 664,
+      "height": 246,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "MainMenu/MenuElements/T_UI_Deco_Star_Large.png",
+      "asset": "/Game/OneManStudio/UI/Common/T_UI_Deco_Star_Large",
+      "keys": [
+        "T_UI_Deco_Star_Large"
+      ],
+      "sha256": "5fd2ca064f727579251c036a4f805659e4ede268f97da82e10ad6e65b7b2d666",
+      "width": 214,
+      "height": 216,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "MainMenu/MenuElements/T_UI_Deco_Star_Medium.png",
+      "asset": "/Game/OneManStudio/UI/Common/T_UI_Deco_Star_Medium",
+      "keys": [
+        "T_UI_Deco_Star_Medium"
+      ],
+      "sha256": "d474f4368b0ae24560d9eff279408bb163b59134e220f7cbd803de4749a6002c",
+      "width": 138,
+      "height": 140,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "MainMenu/MenuElements/T_UI_Deco_Star_Small.png",
+      "asset": "/Game/OneManStudio/UI/Common/T_UI_Deco_Star_Small",
+      "keys": [
+        "T_UI_Deco_Star_Small"
+      ],
+      "sha256": "3ea7a5af4748d690996b57ac3911b57b17e0857f41ec0d8ea37edde0519fef52",
+      "width": 96,
+      "height": 96,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "MainMenu/MenuElements/T_UI_Icon_Back.png",
+      "asset": "/Game/OneManStudio/UI/Common/T_UI_Icon_Back",
+      "keys": [
+        "T_UI_Icon_Back"
+      ],
+      "sha256": "7039fc2f0e62cc98ac125c4b94bb97f6f186c021d14e56af59d445e7dabbc5e0",
+      "width": 200,
+      "height": 200,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "MainMenu/MenuElements/T_UI_Icon_Clapperboard.png",
+      "asset": "/Game/OneManStudio/UI/Common/T_UI_Icon_Clapperboard",
+      "keys": [
+        "T_UI_Icon_Clapperboard"
+      ],
+      "sha256": "87fd97484ed673e155e24022b14ee77a439ecf2ce8c93e0dbb334419a38b8010",
+      "width": 240,
+      "height": 240,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "MainMenu/MenuElements/T_UI_Icon_Settings.png",
+      "asset": "/Game/OneManStudio/UI/Common/T_UI_Icon_Settings",
+      "keys": [
+        "T_UI_Icon_Settings"
+      ],
+      "sha256": "b66765cdd95549714aeb8373343d15db1b27cf3c5e7b984904f13a8b3cb7e587",
+      "width": 198,
+      "height": 200,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "MainMenu/MenuElements/T_UI_MenuButton_Primary.png",
+      "asset": "/Game/OneManStudio/UI/MainMenu/T_UI_MenuButton_Primary",
+      "keys": [
+        "Button.Primary"
+      ],
+      "sha256": "751da8c90ecf8f54ac5be50bc924705abc474dda506559e7f81c42c49aa38fad",
+      "width": 490,
+      "height": 172,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "MainMenu/MenuElements/T_UI_MenuButton_Secondary_01.png",
+      "asset": "/Game/OneManStudio/UI/MainMenu/T_UI_MenuButton_Secondary_01",
+      "keys": [
+        "T_UI_MenuButton_Secondary_01"
+      ],
+      "sha256": "da7faee9e5f6dcd8e2adf9867068b91cd9224960a1a832a89d41b850e591b25a",
+      "width": 490,
+      "height": 172,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "MainMenu/MenuElements/T_UI_MenuButton_Secondary_02.png",
+      "asset": "/Game/OneManStudio/UI/MainMenu/T_UI_MenuButton_Secondary_02",
+      "keys": [
+        "T_UI_MenuButton_Secondary_02"
+      ],
+      "sha256": "1c2c2b19bc7b1816828df10889602b1086089b90a7fa9340e6a8f0fc3dee359a",
+      "width": 490,
+      "height": 172,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "MainMenu/MenuElements/T_UI_MenuButton_Secondary_03.png",
+      "asset": "/Game/OneManStudio/UI/MainMenu/T_UI_MenuButton_Secondary_03",
+      "keys": [
+        "T_UI_MenuButton_Secondary_03"
+      ],
+      "sha256": "ed46d90113951611716dd5d7830a6ecd3e1cc2176c9cb6d63c92188b1aa0ce59",
+      "width": 490,
+      "height": 172,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Buttons/T_UI_Button_Ready.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_Button_Ready",
+      "keys": [
+        "Wardrobe.Ready"
+      ],
+      "sha256": "84f68cf5a7c87436ad6f91d0a393b84ee52608e018aa15d55327d008f6a1b2b8",
+      "width": 660,
+      "height": 202,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Buttons/T_UI_Button_Secondary_Randomize.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_Button_Secondary_Randomize",
+      "keys": [
+        "Wardrobe.Random"
+      ],
+      "sha256": "9e82bd8412e66abfb3095c38ff9f75ea88c31c568a9b74d1787fc80fa4bbad69",
+      "width": 660,
+      "height": 202,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Buttons/T_UI_Button_Secondary_Reset.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_Button_Secondary_Reset",
+      "keys": [
+        "Wardrobe.Reset"
+      ],
+      "sha256": "fa3f3180f3053481974d7c8319e0f9bad2638f632565ec4194fb7383174b6cc8",
+      "width": 660,
+      "height": 202,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Cards/T_UI_CosmeticCard_Normal.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_CosmeticCard_Normal",
+      "keys": [
+        "Wardrobe.Card.Normal"
+      ],
+      "sha256": "a4c7171eb6ccdbc30ce947d1a022f6dd5860d185d042993841f0e3f73a5ac699",
+      "width": 512,
+      "height": 512,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Cards/T_UI_CosmeticCard_Selected.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_CosmeticCard_Selected",
+      "keys": [
+        "Wardrobe.Card.Selected"
+      ],
+      "sha256": "906d00109d1159ecd07f43634be0a99931f4be176d667881c03e67b8165fe269",
+      "width": 512,
+      "height": 512,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Cards/T_UI_ThumbFrame_Normal.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_ThumbFrame_Normal",
+      "keys": [
+        "T_UI_ThumbFrame_Normal"
+      ],
+      "sha256": "3ce64c64ce6a888635679eace466fbeac157ac527f51a2fc2b4672318a4c1d44",
+      "width": 328,
+      "height": 306,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Cards/T_UI_ThumbFrame_Selected.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_ThumbFrame_Selected",
+      "keys": [
+        "T_UI_ThumbFrame_Selected"
+      ],
+      "sha256": "37fc9745b9ac0c3b2fc9827e59b07d8f82c2626e9207a2fb7fda4c807ea2d6ab",
+      "width": 328,
+      "height": 306,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Decorations/T_UI_Deco_Clapperboard.png",
+      "asset": "/Game/OneManStudio/UI/Common/T_UI_Deco_Clapperboard",
+      "keys": [
+        "T_UI_Deco_Clapperboard"
+      ],
+      "sha256": "7060d5b8a10ef66c07fa37eabd78efac67585dc0977056c61ae4c6888c4cb468",
+      "width": 426,
+      "height": 274,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Decorations/T_UI_Deco_FilmReel.png",
+      "asset": "/Game/OneManStudio/UI/Common/T_UI_Deco_FilmReel",
+      "keys": [
+        "T_UI_Deco_FilmReel"
+      ],
+      "sha256": "f1eddb32ab6fd59027bffa9941d34c69a1ddfc0fed94c2fd7eae32c5d5cf4015",
+      "width": 284,
+      "height": 284,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Decorations/T_UI_Deco_FilmStrip.png",
+      "asset": "/Game/OneManStudio/UI/Common/T_UI_Deco_FilmStrip",
+      "keys": [
+        "T_UI_Deco_FilmStrip"
+      ],
+      "sha256": "0cef8e6dd2e9fd3208367363d505636cf2ff0eaff977caea99900d8c1dcd8339",
+      "width": 422,
+      "height": 226,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Decorations/T_UI_Deco_Megaphone.png",
+      "asset": "/Game/OneManStudio/UI/Common/T_UI_Deco_Megaphone",
+      "keys": [
+        "T_UI_Deco_Megaphone"
+      ],
+      "sha256": "34febaf711ab35386e05ee311f95532d3266d00e44d8a5cf64dc0dd0d6ea8fc8",
+      "width": 300,
+      "height": 258,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Decorations/T_UI_Deco_Star_Large.png",
+      "asset": "/Game/OneManStudio/UI/Common/T_UI_Wardrobe_Star_Large",
+      "keys": [
+        "Star"
+      ],
+      "sha256": "2df9ef3f9e0353307f898f19868ae0ca339be645bfb224a20680f3b3e446c18f",
+      "width": 194,
+      "height": 196,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Decorations/T_UI_Deco_Star_Medium.png",
+      "asset": "/Game/OneManStudio/UI/Common/T_UI_Wardrobe_Star_Medium",
+      "keys": [
+        "T_UI_Deco_Star_Medium"
+      ],
+      "sha256": "7b85c63546ee473d647041de5c29df62a8df5cba67115e039b234884fb593dd5",
+      "width": 146,
+      "height": 146,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Decorations/T_UI_Deco_Star_Small.png",
+      "asset": "/Game/OneManStudio/UI/Common/T_UI_Wardrobe_Star_Small",
+      "keys": [
+        "T_UI_Deco_Star_Small"
+      ],
+      "sha256": "5f743cc56b71c9533b445949d850fb9063f902f305dd7fbb0ebea7c8bbb5610a",
+      "width": 94,
+      "height": 94,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Icons/T_UI_Icon_Eyebrows.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_Icon_Eyebrows",
+      "keys": [
+        "Icon.Eyebrows"
+      ],
+      "sha256": "9e9440d1e9404537798c0a668f0240d7bb12aace94583e137a32c845c0d75bbd",
+      "width": 256,
+      "height": 256,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Icons/T_UI_Icon_Eyes.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_Icon_Eyes",
+      "keys": [
+        "Icon.Eyes"
+      ],
+      "sha256": "9652de0eb425b364175c13979782f73252f6991570eeb1127c537ab392a7622d",
+      "width": 256,
+      "height": 256,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Icons/T_UI_Icon_Hat.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_Icon_Hat",
+      "keys": [
+        "Icon.Hats"
+      ],
+      "sha256": "0136c79ac40504bdeb07ad3d5af2cd973d756dab6c45b6342a361172e74ec836",
+      "width": 256,
+      "height": 256,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Icons/T_UI_Icon_Mouth.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_Icon_Mouth",
+      "keys": [
+        "Icon.Mouth"
+      ],
+      "sha256": "38d7847335749b1d8396d80fbb852db7753e6c44bfbd1c97bdcfbc9684ae6cb4",
+      "width": 256,
+      "height": 256,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Icons/T_UI_Icon_Prop_Banana.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_Icon_Prop_Banana",
+      "keys": [
+        "Icon.Objects"
+      ],
+      "sha256": "f23cb6f65da3d457bfbb5a3eae846bc73e186edf50503714fc096fe8771f18f3",
+      "width": 256,
+      "height": 256,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Icons/T_UI_Icon_Shirt.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_Icon_Shirt",
+      "keys": [
+        "Icon.Clothing"
+      ],
+      "sha256": "0cbae9ef9ec01a40868887cafd4b05b54e71c8a6626e8b0ed68d0dcb5898471b",
+      "width": 256,
+      "height": 256,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Icons/T_UI_Icon_SkinPalette.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_Icon_SkinPalette",
+      "keys": [
+        "Icon.Skin"
+      ],
+      "sha256": "cb5c2f7fc46a67e5e92e8d1e62f6b245d2c5bdd9115d4e10e2999e6238a19299",
+      "width": 256,
+      "height": 256,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Icons/T_UI_Icon_Sunglasses.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_Icon_Sunglasses",
+      "keys": [
+        "Icon.Accessories"
+      ],
+      "sha256": "9ea70d99e58917bc93a783a766f69c3c1185067720f01b28bcfbaf5b66b4ad8b",
+      "width": 256,
+      "height": 256,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Panels/T_UI_Panel_ActorIDCard.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_Panel_ActorIDCard",
+      "keys": [
+        "Wardrobe.ActorPanel"
+      ],
+      "sha256": "89fc0814626380b55b4f3740c98e8314eb8e3aedd908e038bd9c06a16ce37a4b",
+      "width": 962,
+      "height": 554,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Panels/T_UI_Panel_CosmeticGrid.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_Panel_CosmeticGrid",
+      "keys": [
+        "Wardrobe.GridPanel"
+      ],
+      "sha256": "0fbe85e4f7a3bbfc933a0c0c97af4b84813d5661029d409a306f7bccb832bfc1",
+      "width": 998,
+      "height": 550,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Tabs/T_UI_Tab_Category_Normal.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_Tab_Category_Normal",
+      "keys": [
+        "Wardrobe.Tab.Normal"
+      ],
+      "sha256": "6993a3b31ad74a7845b13a74adc524231a5457eff076697a03eb7d3ae03a4f20",
+      "width": 546,
+      "height": 198,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    },
+    {
+      "source": "FinalTake_Wardrobe_UI/Tabs/T_UI_Tab_Category_Selected.png",
+      "asset": "/Game/OneManStudio/UI/Wardrobe/T_UI_Tab_Category_Selected",
+      "keys": [
+        "Wardrobe.Tab.Selected"
+      ],
+      "sha256": "579249a0928cdc45f6e9977ec1113a49b7d58d2addfc4aa36fe5a36412690134",
+      "width": 546,
+      "height": 198,
+      "alpha_preserved": true,
+      "ui_compression": "UserInterface2D / TC_EDITOR_ICON"
+    }
+  ],
+  "created": [
+    "/Game/OneManStudio/UI/Common/T_UI_Logo_FinalTake",
+    "/Game/OneManStudio/UI/MainMenu/T_UI_Button_Hover",
+    "/Game/OneManStudio/UI/MainMenu/T_UI_Button_Normal",
+    "/Game/OneManStudio/UI/MainMenu/T_UI_Button_Pressed",
+    "/Game/OneManStudio/UI/Common/T_UI_Deco_Star_Large",
+    "/Game/OneManStudio/UI/Common/T_UI_Deco_Star_Medium",
+    "/Game/OneManStudio/UI/Common/T_UI_Deco_Star_Small",
+    "/Game/OneManStudio/UI/Common/T_UI_Icon_Back",
+    "/Game/OneManStudio/UI/Common/T_UI_Icon_Clapperboard",
+    "/Game/OneManStudio/UI/Common/T_UI_Icon_Settings",
+    "/Game/OneManStudio/UI/MainMenu/T_UI_MenuButton_Primary",
+    "/Game/OneManStudio/UI/MainMenu/T_UI_MenuButton_Secondary_01",
+    "/Game/OneManStudio/UI/MainMenu/T_UI_MenuButton_Secondary_02",
+    "/Game/OneManStudio/UI/MainMenu/T_UI_MenuButton_Secondary_03",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_Button_Ready",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_Button_Secondary_Randomize",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_Button_Secondary_Reset",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_CosmeticCard_Normal",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_CosmeticCard_Selected",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_ThumbFrame_Normal",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_ThumbFrame_Selected",
+    "/Game/OneManStudio/UI/Common/T_UI_Deco_Clapperboard",
+    "/Game/OneManStudio/UI/Common/T_UI_Deco_FilmReel",
+    "/Game/OneManStudio/UI/Common/T_UI_Deco_FilmStrip",
+    "/Game/OneManStudio/UI/Common/T_UI_Deco_Megaphone",
+    "/Game/OneManStudio/UI/Common/T_UI_Wardrobe_Star_Large",
+    "/Game/OneManStudio/UI/Common/T_UI_Wardrobe_Star_Medium",
+    "/Game/OneManStudio/UI/Common/T_UI_Wardrobe_Star_Small",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_Icon_Eyebrows",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_Icon_Eyes",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_Icon_Hat",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_Icon_Mouth",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_Icon_Prop_Banana",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_Icon_Shirt",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_Icon_SkinPalette",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_Icon_Sunglasses",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_Panel_ActorIDCard",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_Panel_CosmeticGrid",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_Tab_Category_Normal",
+    "/Game/OneManStudio/UI/Wardrobe/T_UI_Tab_Category_Selected",
+    "/Game/OneManStudio/UI/Common/FF_Bungee",
+    "/Game/OneManStudio/UI/Common/DA_FinalTakeUITheme"
+  ],
+  "theme": "/Game/OneManStudio/UI/Common/DA_FinalTakeUITheme",
+  "font": "/Game/OneManStudio/UI/Common/FF_Bungee",
+  "font_license": "Font/OFL.txt",
+  "spanish_font_glyphs_verified": true,
+  "missing_art": [
+    "No official bank movie poster was supplied; the approved brand logo is the cover fallback."
+  ],
+  "texture_count": 40,
+  "media_assets_modified": [],
+  "maps_modified": [],
+  "character_assets_modified": []
+}

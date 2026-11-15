@@ -7,6 +7,7 @@ class AMovieManager;
 class UBorder;
 class UTextBlock;
 class UVerticalBox;
+class UStudioUITheme;
 
 USTRUCT(BlueprintType)
 struct MYPROJECT_API FObjectiveHUDView
@@ -26,6 +27,7 @@ struct MYPROJECT_API FObjectiveHUDView
     UPROPERTY(BlueprintReadOnly, Category="Objectives") bool bRecording = false;
     UPROPERTY(BlueprintReadOnly, Category="Objectives") FName ActiveGesture;
     UPROPERTY(BlueprintReadOnly, Category="Objectives") FText Controls;
+    UPROPERTY(BlueprintReadOnly,Category="Objectives") FText HeldObjects;
 };
 
 /** Separate read-only HUD; does not change the wardrobe layout or gameplay input mode. */
@@ -40,6 +42,7 @@ public:
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Style") FLinearColor PanelColor = FLinearColor(.025f,.03f,.05f,.9f);
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Style") FLinearColor CompleteColor = FLinearColor(.4f,1.0f,.5f);
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Style") float PanelWidth = 360;
+    UPROPERTY(EditDefaultsOnly,BlueprintReadWrite,Category="Style") TObjectPtr<UStudioUITheme> UITheme;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Style") bool bShowControlReference = true;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Style", meta=(MultiLine=true)) FText ControlReference = NSLOCTEXT("MovieHUD","Controls","WASD Move | Mouse Look | Space Jump\nE Pick up / use prop | R Restart movie\nGESTURES\n1 Dance | 2 Point | 3 Scared\n4 Faint | 5 Arrest\nSOUNDS\nZ Evil laugh | X Scream | C Cry\nV Siren | B Kiss | N Failure");
     UFUNCTION(BlueprintImplementableEvent, Category="Objectives") void OnObjectiveViewChanged(const FObjectiveHUDView& Data);
@@ -63,4 +66,7 @@ private:
     UPROPERTY(Transient) TObjectPtr<UBorder> ControlsPanel;
     UPROPERTY(Transient) TObjectPtr<UTextBlock> ControlsText;
     UPROPERTY(Transient) TObjectPtr<UTextBlock> GestureText;
+    UPROPERTY(Transient) TObjectPtr<UTextBlock> RecordingBadge;
+    UPROPERTY(Transient) TObjectPtr<UTextBlock> HandsText;
+    UPROPERTY(Transient) TObjectPtr<UBorder> HandsPanel;
 };

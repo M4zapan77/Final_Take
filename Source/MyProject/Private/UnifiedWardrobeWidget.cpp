@@ -1,4 +1,5 @@
 #include "UnifiedWardrobeWidget.h"
+#include "StorySessionComponent.h"
 #include "StudioFlowManager.h"
 #include "ActingComponent.h"
 #include "Blueprint/WidgetTree.h"
@@ -73,7 +74,7 @@ UTextBlock* UUnifiedWardrobeWidget::Label(const FText& Text, int32 Size, FLinear
 {
     auto* T = WidgetTree->ConstructWidget<UTextBlock>();
     auto Font = T->GetFont();
-    if (HeadingFont.FontObject)
+    if (Size>=23 && (HeadingFont.FontObject || HeadingFont.CompositeFont))
     {
         Font = HeadingFont;
     }
@@ -109,6 +110,12 @@ UCustomizationOptionButton* UUnifiedWardrobeWidget::Button(const FText& Text, FN
     B->SetStyle(bUseCustomButtonStyle ? ButtonStyle : Style);
     B->SetBackgroundColor(Cream);
     B->Caption = Label(Text, FontSize, Navy);
+    B->Caption->SetColorAndOpacity(FSlateColor::UseForeground());
+    if(UITheme)
+    {
+        const FName Kind=(Action==ECustomizationButtonAction::Tab || Action==ECustomizationButtonAction::LeftHand || Action==ECustomizationButtonAction::RightHand)?TEXT("Tab"):(Action==ECustomizationButtonAction::Item || Action==ECustomizationButtonAction::Skin)?TEXT("Card"):Action==ECustomizationButtonAction::Ready?TEXT("Ready"):Action==ECustomizationButtonAction::Random?TEXT("Random"):Action==ECustomizationButtonAction::Reset?TEXT("Reset"):TEXT("Secondary");
+        UITheme->StyleButton(B,Kind);B->Caption->SetFont(UITheme->Heading(Action==ECustomizationButtonAction::LeftHand || Action==ECustomizationButtonAction::RightHand?13:16));
+    }
     B->Caption->SetJustification(ETextJustify::Center);
     B->SetContent(B->Caption);
     Controls.Add(B);
@@ -116,6 +123,8 @@ UCustomizationOptionButton* UUnifiedWardrobeWidget::Button(const FText& Text, FN
 }
 void UUnifiedWardrobeWidget::BuildNativeLayout()
 {
+    if(!UITheme){UITheme=UStudioUITheme::LoadDefault();}
+    if(UITheme){Navy=UITheme->Navy;Purple=FLinearColor(Navy.R+.012,Navy.G+.012,Navy.B+.018,1);Gold=UITheme->Gold;Cream=UITheme->Cream;Red=UITheme->Red;HeadingFont=UITheme->Heading(28);if(!Logo){Logo=UITheme->Texture(TEXT("Logo"));}}
     auto* Root = WidgetTree->ConstructWidget<UCanvasPanel>();
     WidgetTree->RootWidget = Root;
     auto* Background = Card(Navy, 0);
@@ -140,9 +149,9 @@ void UUnifiedWardrobeWidget::BuildNativeLayout()
     if (Logo)
     {
         auto* LogoImage = WidgetTree->ConstructWidget<UImage>();
-        LogoImage->SetBrushFromTexture(Logo);
+        LogoImage->SetBrushFromTexture(Logo,true);
         auto* LogoSize = WidgetTree->ConstructWidget<USizeBox>();
-        LogoSize->SetWidthOverride(80);
+        LogoSize->SetWidthOverride(144);
         LogoSize->SetHeightOverride(80);
         LogoSize->SetContent(LogoImage);
         HeaderRow->AddChildToHorizontalBox(LogoSize)->SetPadding(FMargin(0, 0, 16, 0));
@@ -153,6 +162,7 @@ void UUnifiedWardrobeWidget::BuildNativeLayout()
     Titles->AddChildToVerticalBox(Label(NSLOCTEXT("FinalTakeUI","UnifiedWardrobeWidget.d9f0d7528a","ACTOR WARDROBE"), 30, Cream));
     MovieLabel = Label(FText::GetEmpty(), 16, Cream);
     Titles->AddChildToVerticalBox(MovieLabel);
+    ObjectivesLabel=Label(FText::GetEmpty(),14,Cream);Titles->AddChildToVerticalBox(ObjectivesLabel);
     auto* Clock = WidgetTree->ConstructWidget<UVerticalBox>();
     HeaderRow->AddChildToHorizontalBox(Clock);
     TimerLabel = Label(FText::FromString(TEXT("00:10")), 40, Gold);
@@ -165,7 +175,8 @@ void UUnifiedWardrobeWidget::BuildNativeLayout()
     auto* LeftWidth = WidgetTree->ConstructWidget<USizeBox>();
     LeftWidth->SetWidthOverride(420);
     Row->AddChildToHorizontalBox(LeftWidth)->SetPadding(FMargin(0, 0, 22, 0));
-    auto* Left = Card(FLinearColor(.10, .09, .18), 16);
+    auto* Left = Card(Cream, 16);
+    if(UITheme){Left->SetBrush(UITheme->Brush(TEXT("Wardrobe.ActorPanel"),FMargin(.1,.18,.1,.14)));Left->SetPadding(FMargin(24,38,24,20));}
     LeftWidth->SetContent(Left);
     auto* Photo = WidgetTree->ConstructWidget<UVerticalBox>();
     Left->SetContent(Photo);
@@ -179,7 +190,7 @@ void UUnifiedWardrobeWidget::BuildNativeLayout()
     PortraitSize->SetContent(Portrait);
     PortraitScale->SetContent(PortraitSize);
     Photo->AddChildToVerticalBox(PortraitScale)->SetSize(FSlateChildSize(ESlateSizeRule::Fill));
-    RoleLabel = Label(FText::GetEmpty(), 26, Cream);
+    RoleLabel = Label(FText::GetEmpty(), 26, Navy);
     RoleLabel->SetJustification(ETextJustify::Center);
     Photo->AddChildToVerticalBox(RoleLabel);
     auto* Rotate = WidgetTree->ConstructWidget<UHorizontalBox>();
@@ -193,11 +204,13 @@ void UUnifiedWardrobeWidget::BuildNativeLayout()
             Button(NSLOCTEXT("FinalTakeUI","UnifiedWardrobeWidget.95253203f7","RIGHT"), TEXT("Rotate.Right"), ECustomizationButtonAction::RotateRight))
         ->SetSize(FSlateChildSize(ESlateSizeRule::Fill));
     auto* Right = WidgetTree->ConstructWidget<UVerticalBox>();
-    Row->AddChildToHorizontalBox(Right)->SetSize(FSlateChildSize(ESlateSizeRule::Fill));
+    auto* RightPanel=Card(Navy,16);RightPanel->SetContent(Right);
+    if(UITheme){RightPanel->SetBrush(UITheme->Brush(TEXT("Wardrobe.GridPanel"),FMargin(.08,.12,.08,.12)));}
+    Row->AddChildToHorizontalBox(RightPanel)->SetSize(FSlateChildSize(ESlateSizeRule::Fill));
     auto* Tabs = WidgetTree->ConstructWidget<UWrapBox>();
     Tabs->SetExplicitWrapSize(true);
-    Tabs->SetWrapSize(700);
-    Tabs->SetInnerSlotPadding(FVector2D(6));
+    Tabs->SetWrapSize(660);
+    Tabs->SetInnerSlotPadding(FVector2D(5));
     Right->AddChildToVerticalBox(Tabs)->SetPadding(FMargin(0, 0, 0, 10));
     const FText Names[] = {NSLOCTEXT("FinalTakeUI","UnifiedWardrobeWidget.Names.62be7f5142","Eyes"), NSLOCTEXT("FinalTakeUI","UnifiedWardrobeWidget.Names.8b89346ec1","Mouth"),      NSLOCTEXT("FinalTakeUI","UnifiedWardrobeWidget.Names.748d59f0b5","Eyebrows"),      NSLOCTEXT("FinalTakeUI","UnifiedWardrobeWidget.Names.8f57bd6132","Skin"),
                             NSLOCTEXT("FinalTakeUI","UnifiedWardrobeWidget.Names.d31d367bc5","Clothing"), NSLOCTEXT("FinalTakeUI","UnifiedWardrobeWidget.Names.9d3045a4d1","Hats"), NSLOCTEXT("FinalTakeUI","UnifiedWardrobeWidget.Names.f3b50cd53c","Accessories"), NSLOCTEXT("FinalTakeUI","UnifiedWardrobeWidget.Names.72a83add2c","Objects")};
@@ -208,8 +221,17 @@ void UUnifiedWardrobeWidget::BuildNativeLayout()
         auto* B = Button(Names[I], FName(*(FString(TEXT("Tab.")) + Ids[I])),
                          ECustomizationButtonAction::Tab);
         B->Tab = static_cast<ECustomizationTab>(I);
+        if(UITheme)
+        {
+            auto* Content=WidgetTree->ConstructWidget<UHorizontalBox>();
+            auto* Icon=WidgetTree->ConstructWidget<UImage>();Icon->SetBrushFromTexture(UITheme->Texture(FName(*(FString(TEXT("Icon."))+Ids[I]))));
+            auto* IconSize=WidgetTree->ConstructWidget<USizeBox>();IconSize->SetWidthOverride(25);IconSize->SetHeightOverride(25);IconSize->SetContent(Icon);
+            Content->AddChildToHorizontalBox(IconSize)->SetPadding(FMargin(0,0,7,0));
+            Content->AddChildToHorizontalBox(B->Caption)->SetVerticalAlignment(VAlign_Center);B->SetContent(Content);
+            auto Font=B->Caption->GetFont();Font.Size=11;B->Caption->SetFont(Font);
+        }
         auto* TabSize = WidgetTree->ConstructWidget<USizeBox>();
-        TabSize->SetWidthOverride(160);
+        TabSize->SetWidthOverride(150);TabSize->SetHeightOverride(53);
         TabSize->SetContent(B);
         Tabs->AddChildToWrapBox(TabSize);
     }
@@ -227,13 +249,9 @@ void UUnifiedWardrobeWidget::BuildNativeLayout()
     Right->AddChildToVerticalBox(Scroll)->SetSize(FSlateChildSize(ESlateSizeRule::Fill));
     Options = WidgetTree->ConstructWidget<UWrapBox>();
     Options->SetExplicitWrapSize(true);
-    Options->SetWrapSize(690);
+    Options->SetWrapSize(650);
     Options->SetInnerSlotPadding(FVector2D(8));
     Scroll->AddChild(Options);
-    auto* Brief = Card(Navy, 10);
-    Right->AddChildToVerticalBox(Brief)->SetPadding(FMargin(0, 10, 0, 0));
-    ObjectivesLabel = Label(FText::GetEmpty(), 15, Cream);
-    Brief->SetContent(ObjectivesLabel);
     auto* Bottom = WidgetTree->ConstructWidget<UHorizontalBox>();
     Main->AddChildToVerticalBox(Bottom)->SetPadding(FMargin(0, 18, 0, 0));
     Bottom
@@ -246,8 +264,8 @@ void UUnifiedWardrobeWidget::BuildNativeLayout()
         ->SetSize(FSlateChildSize(ESlateSizeRule::Fill));
     auto* Ready = Button(NSLOCTEXT("FinalTakeUI","UnifiedWardrobeWidget.aa7a094e7b","READY!"), TEXT("Action.Ready"), ECustomizationButtonAction::Ready);
     ReadyButton = Ready;
-    Ready->SetBackgroundColor(Gold);
-    Bottom->AddChildToHorizontalBox(Ready)->SetSize(FSlateChildSize(ESlateSizeRule::Fill));
+    if(!UITheme){Ready->SetBackgroundColor(Gold);}
+    Main->AddChildToVerticalBox(Ready)->SetPadding(FMargin(0,12,0,0));
 }
 bool UUnifiedWardrobeWidget::CanCustomize() const
 {
@@ -396,38 +414,24 @@ void UUnifiedWardrobeWidget::BuildOptions()
     {
         auto CaptionFont=B->Caption->GetFont();CaptionFont.Size=OptionFontSize;B->Caption->SetFont(CaptionFont);
         auto* Size = WidgetTree->ConstructWidget<USizeBox>();
-        Size->SetWidthOverride(206);
-        Size->SetHeightOverride(ActiveTab == ECustomizationTab::Objects ? 100 : 126);
+        Size->SetWidthOverride(180);
+        Size->SetHeightOverride(180);
         auto* Column = WidgetTree->ConstructWidget<UVerticalBox>();
         auto* Picture = WidgetTree->ConstructWidget<UImage>();
         Picture->SetDesiredSizeOverride(FVector2D(76));
         if (Icon)
         {
-            Picture->SetBrushFromTexture(Icon);
+            Picture->SetBrushFromTexture(Icon,true);
         }
         else
         {
             Picture->SetColorAndOpacity(bSwatch ? Swatch : FLinearColor::Transparent);
         }
         auto* IconSize = WidgetTree->ConstructWidget<USizeBox>();
-        IconSize->SetWidthOverride(ActiveTab == ECustomizationTab::Objects ? 40 : 52);
-        IconSize->SetHeightOverride(ActiveTab == ECustomizationTab::Objects ? 40 : 52);
-        IconSize->SetContent(Picture);
-        if (!Icon && !bSwatch)
-        {
-            static const TMap<FName, FString> Marks = {
-                {TEXT("Prop.Banana"), TEXT("BAN")},    {TEXT("Prop.Donut"), TEXT("O")},
-                {TEXT("Prop.MoneyBag"), TEXT("$")},    {TEXT("Prop.Microphone"), TEXT("MIC")},
-                {TEXT("Head.PoliceCap"), TEXT("POL")}, {TEXT("Head.RobberMask"), TEXT("LAD")},
-                {TEXT("Head.Crown"), TEXT("REY")},     {TEXT("Head.Chicken"), TEXT("PÍO")},
-                {TEXT("Face.Glasses"), TEXT("OO")},    {TEXT("Face.Mustache"), TEXT("W")},
-                {TEXT("Body.Casual"), TEXT("CAS")},    {TEXT("Body.Uniform"), TEXT("UNI")},
-                {TEXT("Body.Suit"), TEXT("TRA")},      {TEXT("Body.Dress"), TEXT("VES")}};
-            const FString* Mark = Marks.Find(B->CosmeticId);
-            auto* Glyph = Label(FText::FromString(Mark ? *Mark : TEXT("—")), 28, Navy);
-            Glyph->SetJustification(ETextJustify::Center);
-            IconSize->SetContent(Glyph);
-        }
+        IconSize->SetWidthOverride(64);
+        IconSize->SetHeightOverride(64);
+        auto* IconScale=WidgetTree->ConstructWidget<UScaleBox>();IconScale->SetStretch(EStretch::ScaleToFit);IconScale->SetContent(Picture);IconSize->SetContent(IconScale);
+        // Real thumbnails, color swatches or text-only None; no invented placeholder art.
         Column->AddChildToVerticalBox(IconSize)->SetHorizontalAlignment(HAlign_Center);
         Column->AddChildToVerticalBox(B->Caption)->SetPadding(FMargin(2, 4));
         B->SetContent(Column);
@@ -465,7 +469,7 @@ void UUnifiedWardrobeWidget::BuildOptions()
                          ECustomizationButtonAction::Item);
         B->Category = Category;
         B->CosmeticId = Item.Id;
-        AddOption(B, Item.Icon, Gold, false);
+        AddOption(B, Item.Icon?Item.Icon.Get():Item.FaceTexture.Get(), Gold, false);
     }
 }
 void UUnifiedWardrobeWidget::UpdatePreview()
@@ -526,12 +530,12 @@ void UUnifiedWardrobeWidget::RefreshWardrobe()
     }
     if (MovieLabel)
     {
-        MovieLabel->SetText(Manager->ResultsSettings.MovieTitle);
+        MovieLabel->SetText(Manager->IsChronologicalMovie()?Manager->StorySession->SessionScenario.Name:Manager->ResultsSettings.MovieTitle);
     }
     if (TakeLabel)
     {
         TakeLabel->SetText(
-            FText::Format(NSLOCTEXT("WardrobeUI","Turn","TURN {0} / {1}"),FText::AsNumber(ViewData.TakeNumber),FText::AsNumber(ViewData.TakeCount)));
+            Manager->IsChronologicalMovie()?FText::Format(NSLOCTEXT("FinalUI","WardrobeRoundCompact","Round {0}/2\nTurn {1}/6"),FText::AsNumber(Manager->GetRoundNumber()),FText::AsNumber(ViewData.TakeNumber)):FText::Format(NSLOCTEXT("WardrobeUI","Turn","TURN {0} / {1}"),FText::AsNumber(ViewData.TakeNumber),FText::AsNumber(ViewData.TakeCount)));
     }
     if (TimerLabel)
     {
@@ -543,11 +547,10 @@ void UUnifiedWardrobeWidget::RefreshWardrobe()
     {
         RoleLabel->SetText(ViewData.RoleName);
     }
-    if (ObjectivesLabel && Manager->ObjectiveManager)
+    if(ObjectivesLabel && Manager->ObjectiveManager)
     {
-        TArray<FText> Names;
-        for(const auto& Objective:Manager->ObjectiveManager->Objectives){Names.Add(Objective.Definition.DisplayName);}
-        ObjectivesLabel->SetText(FText::Format(NSLOCTEXT("WardrobeUI","YourScene","YOUR SCENE\n{0}"),FText::Join(FText::FromString(TEXT(" · ")),Names)));
+        const FText Instruction=Manager->IsChronologicalMovie()?Manager->StorySession->GetPrimaryObjectiveText():ViewData.ScriptInstruction;
+        ObjectivesLabel->SetText(FText::Format(NSLOCTEXT("FinalUI","WardrobeInstruction","Your scene: {0}"),Instruction));
     }
     for (UCustomizationOptionButton* B : Controls)
     {
@@ -577,7 +580,15 @@ void UUnifiedWardrobeWidget::RefreshWardrobe()
         {
             Selected = !bSelectLeftHand;
         }
-        B->SetBackgroundColor(Selected || B->Action == ECustomizationButtonAction::Ready ? Gold : Cream);
+        if(UITheme)
+        {
+            if(!B->bHasArtSelection || B->bArtSelected!=Selected)
+            {
+                const FName Kind=(B->Action==ECustomizationButtonAction::Tab || B->Action==ECustomizationButtonAction::LeftHand || B->Action==ECustomizationButtonAction::RightHand)?TEXT("Tab"):(B->Action==ECustomizationButtonAction::Item || B->Action==ECustomizationButtonAction::Skin)?TEXT("Card"):B->Action==ECustomizationButtonAction::Ready?TEXT("Ready"):B->Action==ECustomizationButtonAction::Random?TEXT("Random"):B->Action==ECustomizationButtonAction::Reset?TEXT("Reset"):TEXT("Secondary");
+                UITheme->StyleButton(B,Kind,Selected);B->bArtSelected=Selected;B->bHasArtSelection=true;
+            }
+        }
+        else{B->SetBackgroundColor(Selected || B->Action==ECustomizationButtonAction::Ready?Gold:Cream);}
     }
     UpdatePreview();
 }

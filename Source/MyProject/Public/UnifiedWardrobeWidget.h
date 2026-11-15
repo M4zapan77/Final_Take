@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "WardrobeWidget.h"
+#include "StudioUITheme.h"
 #include "UnifiedWardrobeWidget.generated.h"
 class AWardrobePreviewActor;
 class UMaterialInstanceDynamic;
@@ -46,7 +47,7 @@ struct MYPROJECT_API FSkinColorPreset
 };
 class UUnifiedWardrobeWidget;
 UCLASS()
-class MYPROJECT_API UCustomizationOptionButton : public UButton
+class MYPROJECT_API UCustomizationOptionButton : public UStudioArtButton
 {
     GENERATED_BODY()
 public:
@@ -58,6 +59,8 @@ public:
     ECosmeticCategory Category = ECosmeticCategory::Eyes;
     FLinearColor SkinColor = FLinearColor::White;
     UPROPERTY() TObjectPtr<UTextBlock> Caption;
+    bool bArtSelected=false;
+    bool bHasArtSelection=false;
 
 private:
     UFUNCTION() void Click();
@@ -104,12 +107,13 @@ public:
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Customization|Style") TObjectPtr<UTexture2D> Logo;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Customization|Style")
     TObjectPtr<UMaterialInterface> PreviewUIMaterial;
+    UPROPERTY(EditDefaultsOnly,BlueprintReadWrite,Category="Customization|Style") TObjectPtr<UStudioUITheme> UITheme;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Customization|Style")
     TSubclassOf<AWardrobePreviewActor> PreviewActorClass;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Customization|Style")
     FVector2D CardSize = FVector2D(1240, 760);
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Customization|Style", meta=(ClampMin="10",ClampMax="30"))
-    int32 OptionFontSize=18;
+    int32 OptionFontSize=14;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Customization|Skin")
     TArray<FSkinColorPreset> SkinPresets;
     UPROPERTY(BlueprintReadOnly, Transient, Category = "Customization") TObjectPtr<AWardrobePreviewActor> PreviewActor;

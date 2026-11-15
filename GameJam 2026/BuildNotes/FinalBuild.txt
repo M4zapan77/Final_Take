@@ -1,0 +1,11 @@
+FINAL TAKE 1.0 / UE 5.6.1 / Win64
+Production code/config checkpoint: 063c78040fe12ebb14a06d2c45f54eec0c61e785
+Development Editor final source: Result Succeeded, 71.42 seconds.
+Post-cleanup project open and OneManStudio.*: 69 passed, zero failures.
+Shipping final UAT: BUILD SUCCESSFUL, ExitCode=0, 47 UI packages verified.
+Development validation UAT: BUILD SUCCESSFUL, ExitCode=0, 47 UI packages verified.
+Windows Development packaged: Startup Auto, Police and Civilian passed; six turns, two movies, language and clean reset.
+Shipping final: 20-second offscreen startup stability passed; manual full-loop test pending because desktop locked.
+Toolchain: VS2022 MSVC 14.44.35230 / Windows SDK 10.0.22621.0.
+UBT warns that MSVC 14.38 is preferred. Compilation succeeded; no preferred-toolchain installation was performed.
+Full local logs are retained in Saved/Logs and workspace FinalUI20261115; network/device metadata is not published.

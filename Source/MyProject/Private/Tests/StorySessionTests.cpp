@@ -3,6 +3,7 @@
 #include "MovieManager.h"
 #include "ActingSceneClockSubsystem.h"
 #include "ActingRecorderComponent.h"
+#include "ActingComponent.h"
 #include "WardrobeComponent.h"
 #include "ObjectiveManagerComponent.h"
 #include "Misc/AutomationTest.h"
@@ -88,6 +89,51 @@ bool FStoryPersistentTurnsTest::RunTest(const FString& Parameters)
     TestEqual(TEXT("Restart retains only new three-person cast"),C.Movie->StorySession->Cast.Num(),3);
     TestTrue(TEXT("Restart returns to first wardrobe"),C.Movie->IsWardrobeOpen() && C.Movie->GetCurrentTakeNumber()==1);
     C.Movie->StopMovie(); TestTrue(TEXT("Original pawn restored"),C.Player->GetPawn()==C.Pawn);
+    return true;
+}
+
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FStoryLiveActingTest,"OneManStudio.Story.LiveActingAcrossSixTurns",EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
+bool FStoryLiveActingTest::RunTest(const FString& Parameters)
+{
+    StorySessionTests::FWorld C;
+    if(!TestTrue(TEXT("Story starts"),C.Movie->StartMovie())){return false;}
+    for(int32 Turn=0;Turn<6;++Turn)
+    {
+        const int32 Role=Turn%3;
+        if(Turn<3)
+        {
+            C.Movie->LiveActingComponent->Gestures[0].DurationSeconds=1.f+Role;
+            if(!TestTrue(TEXT("First wardrobe starts recording"),C.Movie->ReadyForTake(C.Movie->PreparationId))){return false;}
+        }
+        const auto* Recorder=C.Movie->LivePerformer->FindComponentByClass<UActingRecorderComponent>();
+        if(!TestNotNull(TEXT("Active actor has a recorder"),Recorder)){return false;}
+        TestTrue(TEXT("Compact recording keeps active gesture definitions"),!Recorder->GetRecordingData().ActingSettings.Gestures.IsEmpty());
+        TestTrue(TEXT("Every role can record its dance"),C.Movie->LiveActingComponent->TriggerGesture(EActingGesture::Dance));
+        TestTrue(TEXT("Every role can record its sound"),C.Movie->LiveActingComponent->TriggerSound(EActingSound::EvilLaugh));
+        TestEqual(TEXT("Live event is appended exactly once"),Recorder->GetRecordingData().Events.Num(),2);
+        int32 Frames=0;
+        while(C.Movie->GetCurrentTakeNumber()==Turn+1 && C.Movie->State==EMovieState::Recording && Frames++<40){C.Tick();}
+        if(!TestTrue(TEXT("Turn finishes"),Frames<40)){return false;}
+    }
+    TestEqual(TEXT("All three films assembled"),C.Movie->Performances.Num(),3);
+    for(int32 Role=0;Role<C.Movie->Performances.Num();++Role)
+    {
+        const auto& Film=C.Movie->Performances[Role].Recording;
+        TestTrue(TEXT("Film remains valid"),Film.IsValid());
+        const auto ActingEvents=Film.Events.FilterByPredicate([](const FActingEvent& Event){return Event.Type==EActingEventType::Gesture || Event.Type==EActingEventType::Sound;});
+        TestEqual(TEXT("Two gestures and two sounds per actor"),ActingEvents.Num(),4);
+        TestEqual(TEXT("Each actor keeps its own gesture settings"),Film.ActingSettings.Gestures[0].DurationSeconds,1.f+Role);
+        if(ActingEvents.Num()==4)
+        {
+            TestTrue(TEXT("Second round events retain their chronological offset"),FMath::IsNearlyEqual(ActingEvents[2].TimeSeconds,0.9+Role*0.3,1.e-6));
+        }
+    }
+    for(const auto& Segment:C.Movie->StorySession->Segments)
+    {
+        TestTrue(TEXT("Finished segments do not duplicate per-cast definitions"),Segment.Recording.ActingSettings.Gestures.IsEmpty());
+    }
+    C.Movie->RestartMovie();
+    TestTrue(TEXT("New movie clears acting events"),C.Movie->Performances.IsEmpty() && C.Movie->StorySession->Segments.IsEmpty() && C.Movie->LivePerformer->FindComponentByClass<UActingRecorderComponent>()->GetRecordingData().Events.IsEmpty());
     return true;
 }
 

@@ -73,9 +73,10 @@ bool AStudioFlowManager::InitializeFlow(AMovieManager* Manager,APlayerController
     if (Travel && Travel->ConsumeGameplayIntent())
     {
         SetScreen(EStudioScreen::MovieIntroduction);
-        if(Movie->bUseChronologicalGameplay)
-        {SetMusic(Settings.IntroductionMusic?Settings.IntroductionMusic.Get():Settings.MenuMusic.Get());Travel->MarkGameplayReady();return EnsureWidget();}
-        const bool bStarted=BeginIntroducedMovie();
+        // The studio's Start Movie button already presented the script and chose the
+        // scenario before travel. Enter the first wardrobe under the black shield.
+        StopDirector();SetMusic(nullptr);ReleaseFrontEnd();
+        const bool bStarted=Movie->StartMovie();
         Travel->MarkGameplayReady();
         return bStarted;
     }
@@ -229,17 +230,18 @@ void AStudioFlowManager::PlayClick()
 bool AStudioFlowManager::PlayMovie()
 {
     if (!bInitialized || bNavigating || Screen!=EStudioScreen::MainMenu) { return false; }
-    if (bStartupPresentation)
-    {
-        if (!StartupVideos->RequestStartGame()) { return false; }
-        SetScreen(EStudioScreen::StartingGame); return true;
-    }
+    if(bStartupPresentation && !StartupVideos->IsHubInteractive()){return false;}
     TGuardValue<bool> Guard(bNavigating,true); FlowError=FText::GetEmpty();
-    SetScreen(EStudioScreen::MovieIntroduction); SetMusic(Settings.IntroductionMusic?Settings.IntroductionMusic.Get():Settings.MenuMusic.Get()); PlayClick(); return true;
+    SetScreen(EStudioScreen::MovieIntroduction); SetMusic(Settings.MenuMusic); PlayClick(); return true;
 }
 bool AStudioFlowManager::BeginIntroducedMovie()
 {
     if (!bInitialized || bNavigating || Screen!=EStudioScreen::MovieIntroduction || !Movie) { return false; }
+    if(bStartupPresentation)
+    {
+        if(!StartupVideos->RequestStartGame()){return false;}
+        PlayClick();SetScreen(EStudioScreen::StartingGame);return true;
+    }
     TGuardValue<bool> Guard(bNavigating,true); StopDirector(); SetMusic(nullptr); ReleaseFrontEnd();
     const bool bStarted=Movie->StartMovie();
     if (!bStarted && Screen!=EStudioScreen::Error) { HandleMovieError(Movie->LastError); }
@@ -247,9 +249,9 @@ bool AStudioFlowManager::BeginIntroducedMovie()
 }
 bool AStudioFlowManager::ShowMenuPage(EStudioScreen NewScreen)
 {
-    if (!bInitialized || bNavigating || Screen!=EStudioScreen::MainMenu) { return false; }
+    if (!bInitialized || bNavigating || (Screen!=EStudioScreen::MainMenu && Screen!=EStudioScreen::MovieIntroduction)) { return false; }
     if (bStartupPresentation && !StartupVideos->IsHubInteractive()) { return false; }
-    TGuardValue<bool> Guard(bNavigating,true); SetScreen(NewScreen); PlayClick(); return true;
+    TGuardValue<bool> Guard(bNavigating,true); SettingsReturnScreen=Screen;SetScreen(NewScreen); PlayClick(); return true;
 }
 bool AStudioFlowManager::ShowHowToPlay() { return ShowMenuPage(EStudioScreen::HowToPlay); }
 bool AStudioFlowManager::ShowCredits() { return ShowMenuPage(EStudioScreen::Credits); }
@@ -257,9 +259,9 @@ bool AStudioFlowManager::ShowAudioSettings() { return ShowMenuPage(EStudioScreen
 bool AStudioFlowManager::BackToMenu()
 {
     if (!bInitialized || bNavigating || !IsFrontEndOpen() || Screen==EStudioScreen::MainMenu) { return false; }
-    if(Screen==EStudioScreen::MovieIntroduction && bStartupPresentation){return ReturnToMainMenu();}
     if (bStartupPresentation && !StartupVideos->IsHubInteractive()) { return false; }
-    TGuardValue<bool> Guard(bNavigating,true); SetScreen(EStudioScreen::MainMenu); SetMusic(Settings.MenuMusic); PlayClick(); return true;
+    const EStudioScreen Target=Screen==EStudioScreen::MovieIntroduction?EStudioScreen::MainMenu:SettingsReturnScreen;
+    TGuardValue<bool> Guard(bNavigating,true); SetScreen(Target); SetMusic(Settings.MenuMusic); PlayClick(); return true;
 }
 bool AStudioFlowManager::ReturnToMainMenu()
 {
@@ -268,9 +270,22 @@ bool AStudioFlowManager::ReturnToMainMenu()
     Movie->StopMovie(); StopDirector(); ButtonAudio->Stop(); ButtonAudio->SetSound(nullptr);
     SetAmbience(nullptr); SetEffectsAudio->Stop();
     if (auto* Clock=GetWorld()->GetSubsystem<UActingSceneClockSubsystem>()) { Clock->StopClock(); }
-    FlowError=FText::GetEmpty(); bTransitionCueSent=false; HoldFrontEnd();
+    FlowError=FText::GetEmpty(); bTransitionCueSent=false;bOpenHubWhenPrepared=false;SettingsReturnScreen=EStudioScreen::MainMenu; HoldFrontEnd();
     if (bStartupPresentation) { SetScreen(EStudioScreen::StartupVideos); StartupVideos->BeginSequence(true); }
     else { SetScreen(EStudioScreen::MainMenu); SetMusic(Settings.MenuMusic); }
+    return true;
+}
+bool AStudioFlowManager::ReturnToHub()
+{
+    if(!ReturnToMainMenu()){return false;}
+    // StopMovie restores and clears the entire scene before the selection UI opens.
+    if(bStartupPresentation)
+    {
+        // Missing HUB media can prepare the black fallback synchronously.
+        if(StartupVideos->Stage==EStartupVideoStage::Hub && StartupVideos->Phase!=EStartupVideoPhase::Opening){SetScreen(EStudioScreen::MovieIntroduction);}
+        else{bOpenHubWhenPrepared=true;}
+    }
+    else{SetScreen(EStudioScreen::MovieIntroduction);}
     return true;
 }
 bool AStudioFlowManager::QuitGame()
@@ -307,7 +322,7 @@ void AStudioFlowManager::HandleTakeRecorded(const FMoviePerformance& Performance
 void AStudioFlowManager::HandleMovieError(FText Error)
 { FlowError=Error; StopDirector(); SetMusic(nullptr); HoldFrontEnd(); SetScreen(EStudioScreen::Error); }
 
-void AStudioFlowManager::HandleHubPrepared() { SetScreen(EStudioScreen::MainMenu); }
+void AStudioFlowManager::HandleHubPrepared() { SetScreen(bOpenHubWhenPrepared?EStudioScreen::MovieIntroduction:EStudioScreen::MainMenu);bOpenHubWhenPrepared=false; }
 void AStudioFlowManager::HandleHubInteractive() { SetMusic(Settings.MenuMusic); EnsureWidget(); }
 void AStudioFlowManager::HandleGameplayBlack()
 {
@@ -325,7 +340,9 @@ FStudioFlowView AStudioFlowManager::GetView() const
     if (Movie)
     {
         if(Movie->bUseChronologicalGameplay){for(const UStoryScenarioData* Entry:Movie->ScenarioLibrary){if(Entry && (Movie->SelectedScenarioId.IsNone() || Entry->Definition.Id==Movie->SelectedScenarioId)){View.Synopsis=Entry->Definition.Synopsis;break;}}}
-        View.MovieTitle=Movie->ResultsSettings.MovieTitle; View.CurrentRole=Movie->GetCurrentRoleName(); View.CurrentScript=Movie->GetCurrentScriptInstruction();
+        View.MovieTitle=Movie->bUseChronologicalGameplay?FStoryScenarioDefinition().Name:Movie->ResultsSettings.MovieTitle;
+        if(Movie->bUseChronologicalGameplay){for(const UStoryScenarioData* Entry:Movie->ScenarioLibrary){if(Entry && (Movie->SelectedScenarioId.IsNone() || Entry->Definition.Id==Movie->SelectedScenarioId)){View.MovieTitle=Entry->Definition.Name;break;}}}
+        View.CurrentRole=Movie->GetCurrentRoleName(); View.CurrentScript=Movie->GetCurrentScriptInstruction();
         View.RoundNumber=Movie->GetRoundNumber();View.bChronologicalMovie=Movie->IsChronologicalMovie();
         View.TakeNumber=Movie->GetCurrentTakeNumber(); View.RemainingSeconds=Movie->GetPhaseRemainingSeconds();
         for (int32 Index=0;Index<Movie->Roles.Num();++Index)

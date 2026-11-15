@@ -47,7 +47,7 @@ bool UStorySessionComponent::ConfigureActor(APawn* Pawn)
     auto* Acting=Ensure.operator()<UActingComponent>();
     auto* Wardrobe=Ensure.operator()<UWardrobeComponent>();
     auto* Recorder=Ensure.operator()<UActingRecorderComponent>();
-    Recorder->bCompactStationarySamples=!FParse::Param(FCommandLine::Get(),TEXT("StoryNoCompaction"));Recorder->bCapturePresentationSnapshot=false;
+    Recorder->bCompactStationarySamples=!FParse::Param(FCommandLine::Get(),TEXT("StoryNoCompaction"));
     Ensure.operator()<UPropInteractionComponent>();
     if(Movie->CharacterProfile)
     {
@@ -90,10 +90,11 @@ bool UStorySessionComponent::BeginSession()
         if((!Chosen && Movie->SelectedScenarioId.IsNone()) || Entry->Definition.Id==Movie->SelectedScenarioId){Chosen=Entry;}
     }
     if(Chosen){SessionScenario=Chosen->Definition;}
+    Movie->SessionResultsSettings.MovieTitle=SessionScenario.Name;
     if(!Movie->SelectedScenarioId.IsNone() && SessionScenario.Id!=Movie->SelectedScenarioId){return false;}
     if(!SessionScenario.InitialMoneyOwner.IsNone() && !Movie->SessionRoles.ContainsByPredicate([this](const auto& Role){return Role.RoleId==SessionScenario.InitialMoneyOwner;})){return false;}
     bActive=true; Generation=Movie->SessionGeneration; OriginalPawn=Movie->LivePerformer;
-    bOriginalCompact=Movie->Recorder->bCompactStationarySamples;bOriginalCaptureSnapshot=Movie->Recorder->bCapturePresentationSnapshot;
+    bOriginalCompact=Movie->Recorder->bCompactStationarySamples;
     bOriginalActorTick=OriginalPawn->IsActorTickEnabled();
     if(auto* Character=::Cast<ACharacter>(OriginalPawn)) { bOriginalPauseAnims=Character->GetMesh()->bPauseAnims; }
     bOriginalAutoCamera=Movie->Controller->bAutoManageActiveCameraTarget;
@@ -368,7 +369,7 @@ void UStorySessionComponent::ResetSession(bool bRestorePlayer)
         Movie->LivePerformer=OriginalPawn; Movie->Recorder=OriginalPawn->FindComponentByClass<UActingRecorderComponent>();
         Movie->LiveWardrobeComponent=OriginalPawn->FindComponentByClass<UWardrobeComponent>(); Movie->LiveActingComponent=OriginalPawn->FindComponentByClass<UActingComponent>();
         Movie->Movement=OriginalPawn->GetMovementComponent(); Movie->bFrozen=true;
-        Movie->Recorder->bCompactStationarySamples=bOriginalCompact;Movie->Recorder->bCapturePresentationSnapshot=bOriginalCaptureSnapshot;
+        Movie->Recorder->bCompactStationarySamples=bOriginalCompact;
         OriginalPawn->SetActorTickEnabled(bOriginalActorTick);
         if(auto* Character=::Cast<ACharacter>(OriginalPawn)) { Character->GetMesh()->bPauseAnims=bOriginalPauseAnims; }
         if(auto* Character=::Cast<ACharacter>(OriginalPawn);Character && OriginalControls.bSaved)

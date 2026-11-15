@@ -14,6 +14,7 @@ class UTextBlock;
 class UTexture2D;
 class UVerticalBox;
 class UScrollBox;
+class UStudioUITheme;
 
 /** Native fallback. A UMG child with a Designer root keeps that root and consumes ViewData/events. */
 UCLASS(Blueprintable)
@@ -41,6 +42,7 @@ public:
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Style") FLinearColor TextColor = FLinearColor(.95f,.95f,1.f);
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Style") FLinearColor AccentColor = FLinearColor(.9f,.62f,.2f);
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Style") TObjectPtr<UTexture2D> BackgroundImage;
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Style") TObjectPtr<UStudioUITheme> UITheme;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Text") FText MenuTagline;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Text", meta=(MultiLine=true)) FText IntroductionControls;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Text") FText PlayText;
@@ -67,6 +69,7 @@ public:
     UPROPERTY(BlueprintReadOnly, Transient, Category="Native Controls") TObjectPtr<UButton> QuitButton;
     UPROPERTY(BlueprintReadOnly, Transient, Category="Native Controls") TObjectPtr<UButton> StartButton;
     UPROPERTY(BlueprintReadOnly, Transient, Category="Native Controls") TObjectPtr<UButton> BackButton;
+    UPROPERTY(BlueprintReadOnly,Transient,Category="Native Controls") TObjectPtr<UButton> HubSettingsButton;
     UPROPERTY(BlueprintReadOnly, Transient, Category="Native Controls") TObjectPtr<USlider> MasterSlider;
     UPROPERTY(BlueprintReadOnly, Transient, Category="Native Controls") TObjectPtr<USlider> MusicSlider;
     UPROPERTY(BlueprintReadOnly, Transient, Category="Native Controls") TObjectPtr<USlider> EffectsSlider;
@@ -101,6 +104,10 @@ private:
     UPROPERTY(Transient) TWeakObjectPtr<AStudioFlowManager> Flow;
     UPROPERTY(Transient) TObjectPtr<UBorder> Backdrop;
     UPROPERTY(Transient) TObjectPtr<UVerticalBox> PageColumn;
+    UPROPERTY(Transient) TObjectPtr<UVerticalBox> MainMenuColumn;
+    UPROPERTY(Transient) TObjectPtr<UBorder> PageFrame;
+    UPROPERTY(Transient) TObjectPtr<UBorder> CoverPanel;
+    UPROPERTY(Transient) TObjectPtr<UTextBlock> CoverTitle;
     UPROPERTY(Transient) TObjectPtr<UTextBlock> Heading;
     UPROPERTY(Transient) TObjectPtr<UTextBlock> Detail;
     UPROPERTY(Transient) TObjectPtr<UTextBlock> Tutorial;

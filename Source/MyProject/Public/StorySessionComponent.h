@@ -192,7 +192,7 @@ private:
     bool bOriginalAutoCamera=true;
     bool bOriginalActorTick=true;
     bool bOriginalPauseAnims=false;
-    bool bOriginalCompact=false,bOriginalCaptureSnapshot=true;
+    bool bOriginalCompact=false;
     bool bDetentionInputHeld=false;
     UPROPERTY(Transient) TObjectPtr<ACameraActor> PossessionCamera;
     struct FOriginalMovementCamera

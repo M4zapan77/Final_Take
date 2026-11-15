@@ -57,7 +57,6 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Acting|Recording", meta = (ClampMin = "1.0", ClampMax = "120.0"))
     float SampleRateHz = 20.0f;
     UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Acting|Recording") bool bCompactStationarySamples=false;
-    UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Acting|Recording") bool bCapturePresentationSnapshot=true;
 
     UPROPERTY(BlueprintAssignable, Category = "Acting|Recording")
     FActingRecordingFinished OnRecordingFinished;

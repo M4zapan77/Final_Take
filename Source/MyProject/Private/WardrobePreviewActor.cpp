@@ -96,12 +96,23 @@ void AWardrobePreviewActor::UpdateView()
     FBox Frame = Body->Bounds.GetBox();
     for (const UMeshComponent* Part : Wardrobe->CosmeticMeshes)
     {
-        if (IsValid(Part)) { Frame += Part->Bounds.GetBox(); }
+        if (IsValid(Part) && Part->IsVisible()) { Frame += Part->Bounds.GetBox(); }
     }
     const FVector Focus = Frame.IsValid ? Frame.GetCenter() - GetActorLocation() : FVector::ZeroVector;
-    const float Distance = Frame.IsValid
-        ? FMath::Max(CameraDistance, Frame.GetExtent().Size() * 1.08f / FMath::Tan(FMath::DegreesToRadians(FieldOfView * .5f)))
-        : CameraDistance;
+    double Distance=FMath::Max(20.0,static_cast<double>(CameraDistance));
+    if(Frame.IsValid)
+    {
+        const FVector Direction=FRotator(0,ViewYaw,0).Vector();
+        const FVector Right=FRotationMatrix(FRotator(0,ViewYaw,0)).GetUnitAxis(EAxis::Y);
+        const double HalfTan=FMath::Tan(FMath::DegreesToRadians(FMath::Clamp(FieldOfView,10.f,90.f)*.5f));
+        const FVector Extent=Frame.GetExtent();
+        for(int32 I=0;I<8;++I)
+        {
+            const FVector Corner=Extent*FVector((I&1)?1:-1,(I&2)?1:-1,(I&4)?1:-1);
+            const double Span=FMath::Max(FMath::Abs(FVector::DotProduct(Corner,Right)),FMath::Abs(Corner.Z));
+            Distance=FMath::Max(Distance,Span*FMath::Clamp(FramingPadding,1.f,2.f)/HalfTan+FVector::DotProduct(Corner,Direction));
+        }
+    }
     const FVector Location = Focus + FRotator(0, ViewYaw, 0).RotateVector(FVector(Distance, 0, 12));
     Capture->SetRelativeLocation(Location);
     Capture->SetRelativeRotation((Focus - Location).Rotation());

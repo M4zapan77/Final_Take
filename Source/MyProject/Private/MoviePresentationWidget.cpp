@@ -1,4 +1,9 @@
 #include "MoviePresentationWidget.h"
+#include "StudioUITheme.h"
+#include "StudioFlowManager.h"
+#include "Components/Image.h"
+#include "Components/ScaleBox.h"
+#include "Components/SizeBox.h"
 
 #include "MovieManager.h"
 #include "Blueprint/WidgetTree.h"
@@ -23,7 +28,7 @@ UMoviePresentationWidget::UMoviePresentationWidget(const FObjectInitializer& Obj
     BodyFont=FCoreStyle::GetDefaultFontStyle(TEXT("Regular"),17);
     ReplayButtonText=NSLOCTEXT("MovieResults","ReplayButton","Replay Movie");
     NewMovieButtonText=NSLOCTEXT("MovieResults","NewButton","Record New Movie");
-    MainMenuButtonText=NSLOCTEXT("MovieResults","MenuButton","Return to Main Menu");
+    MainMenuButtonText=NSLOCTEXT("FinalUI","BackToHub","Back to Studio");
     AwardsHeading=NSLOCTEXT("MovieResults","Awards","THE EXTREMELY PRESTIGIOUS AWARDS");
     NoAwardsText=NSLOCTEXT("MovieResults","NoAwards","The jury is still recovering.");
     NoObjectivesText=NSLOCTEXT("MovieResults","NoObjectives","No objectives completed. A bold artistic choice.");
@@ -32,6 +37,8 @@ UMoviePresentationWidget::UMoviePresentationWidget(const FObjectInitializer& Obj
 void UMoviePresentationWidget::NativeOnInitialized()
 {
     Super::NativeOnInitialized();
+    if(!UITheme){UITheme=UStudioUITheme::LoadDefault();}
+    if(UITheme){TitleFont=UITheme->Heading(28);ScoreFont=UITheme->Heading(24);AccentColor=UITheme->Gold;ResultPanelColor=UITheme->Navy;ResultTextColor=UITheme->Cream;}
     if (!WidgetTree) { WidgetTree=NewObject<UWidgetTree>(this,TEXT("WidgetTree")); }
     if (!WidgetTree->RootWidget) { BuildLayout(); }
 }
@@ -45,9 +52,10 @@ UTextBlock* UMoviePresentationWidget::Text(UVerticalBox* Parent, const FSlateFon
 
 UButton* UMoviePresentationWidget::Button(UHorizontalBox* Parent, const FText& Label)
 {
-    auto* Control=WidgetTree->ConstructWidget<UButton>(); Control->SetBackgroundColor(AccentColor);
+    auto* Control=WidgetTree->ConstructWidget<UStudioArtButton>(); Control->SetBackgroundColor(AccentColor);
     auto* Caption=WidgetTree->ConstructWidget<UTextBlock>(); Caption->SetText(Label); Caption->SetFont(BodyFont);
-    Caption->SetColorAndOpacity(FSlateColor(FLinearColor(.015f,.015f,.02f))); Control->SetContent(Caption);
+    Caption->SetColorAndOpacity(FSlateColor::UseForeground()); Control->SetContent(Caption);
+    if(UITheme){UITheme->StyleButton(Control,Label.EqualTo(ReplayButtonText)?TEXT("Primary"):TEXT("Secondary"));Caption->SetFont(UITheme->Heading(17));}
     auto* ControlSlot=Parent->AddChildToHorizontalBox(Control); ControlSlot->SetPadding(FMargin(6));
     ControlSlot->SetSize(FSlateChildSize(ESlateSizeRule::Fill)); return Control;
 }
@@ -73,7 +81,24 @@ void UMoviePresentationWidget::BuildLayout()
     Full(ResultsBackdrop);
     ResultsColumn=WidgetTree->ConstructWidget<UVerticalBox>();
     auto* ContentSlot=Full(ResultsColumn); ContentSlot->SetAnchors(FAnchors(.05f,.05f,.95f,.95f));
-    ResultsTitle=Text(ResultsColumn,TitleFont); ResultsTitle->SetColorAndOpacity(FSlateColor(AccentColor));
+    auto* ResultHeader=WidgetTree->ConstructWidget<UHorizontalBox>();ResultsColumn->AddChildToVerticalBox(ResultHeader)->SetPadding(FMargin(0,0,0,6));
+    if(UITheme)
+    {
+        auto* Logo=WidgetTree->ConstructWidget<UImage>();Logo->SetBrushFromTexture(UITheme->Texture(TEXT("Logo")),true);
+        auto* LogoScale=WidgetTree->ConstructWidget<UScaleBox>();LogoScale->SetStretch(EStretch::ScaleToFit);LogoScale->SetContent(Logo);
+        auto* LogoSize=WidgetTree->ConstructWidget<USizeBox>();LogoSize->SetWidthOverride(225);LogoSize->SetHeightOverride(124);LogoSize->SetContent(LogoScale);ResultHeader->AddChildToHorizontalBox(LogoSize)->SetPadding(FMargin(0,0,24,0));
+    }
+    auto* HeaderText=WidgetTree->ConstructWidget<UVerticalBox>();ResultHeader->AddChildToHorizontalBox(HeaderText)->SetSize(FSlateChildSize(ESlateSizeRule::Fill));
+    ResultsTitle=Text(HeaderText,TitleFont);ResultsTitle->SetColorAndOpacity(AccentColor);
+    if(UITheme)
+    {
+        auto* Stars=WidgetTree->ConstructWidget<UHorizontalBox>();HeaderText->AddChildToVerticalBox(Stars);
+        for(int32 Index=0;Index<5;++Index)
+        {
+            auto* Star=WidgetTree->ConstructWidget<UImage>();Star->SetBrushFromTexture(UITheme->Texture(TEXT("Star")));RatingStars.Add(Star);
+            auto* Size=WidgetTree->ConstructWidget<USizeBox>();Size->SetWidthOverride(35);Size->SetHeightOverride(35);Size->SetContent(Star);Stars->AddChildToHorizontalBox(Size)->SetPadding(FMargin(0,0,5,0));
+        }
+    }
     ScoreLabel=Text(ResultsColumn,ScoreFont); RatingLabel=Text(ResultsColumn,ScoreFont); ReviewLabel=Text(ResultsColumn,BodyFont);
     auto* Scroll=WidgetTree->ConstructWidget<UScrollBox>();
     auto* ScrollSlot=ResultsColumn->AddChildToVerticalBox(Scroll); ScrollSlot->SetSize(FSlateChildSize(ESlateSizeRule::Fill));
@@ -151,7 +176,8 @@ void UMoviePresentationWidget::RefreshPresentation()
     if (RatingLabel)
     {
         const FString Stars=FString::ChrN(ViewData.Results.Stars,TCHAR(0x2605))+FString::ChrN(5-ViewData.Results.Stars,TCHAR(0x2606));
-        RatingLabel->SetText(FText::Format(NSLOCTEXT("MovieResults","Rating","{0}  {1}"),FText::FromString(Stars),ViewData.Results.RatingName));
+        RatingLabel->SetText(RatingStars.IsEmpty()?FText::Format(NSLOCTEXT("MovieResults","Rating","{0}  {1}"),FText::FromString(Stars),ViewData.Results.RatingName):ViewData.Results.RatingName);
+        if(LastStars!=ViewData.Results.Stars){for(int32 I=0;I<RatingStars.Num();++I){RatingStars[I]->SetRenderOpacity(I<ViewData.Results.Stars?1.f:.18f);}LastStars=ViewData.Results.Stars;}
     }
     if (ReviewLabel) { ReviewLabel->SetText(ViewData.Results.AudienceReview); }
     if(ReviewLabel && !ViewData.Results.StoryEnding.IsEmpty())
@@ -179,7 +205,12 @@ bool UMoviePresentationWidget::RecordNewMovie()
     AMovieManager* Manager=Movie.Get(); if (!CanUseResults() || !Manager->RecordNewMovie()) { return false; }
     Manager->PlayPresentationClick(); return true;
 }
-bool UMoviePresentationWidget::ReturnToMainMenu() { return CanUseResults() && Movie->ReturnToMainMenu(); }
+bool UMoviePresentationWidget::ReturnToMainMenu()
+{
+    if(!CanUseResults()){return false;}
+    if(auto* Flow=AStudioFlowManager::Find(this)){return Flow->ReturnToHub();}
+    return Movie->ReturnToMainMenu();
+}
 void UMoviePresentationWidget::HandleReplay() { ReplayMovie(); }
 void UMoviePresentationWidget::HandleNewMovie() { RecordNewMovie(); }
 void UMoviePresentationWidget::HandleMainMenu() { ReturnToMainMenu(); }

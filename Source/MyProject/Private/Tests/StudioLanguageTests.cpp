@@ -1,4 +1,4 @@
-#if WITH_DEV_AUTOMATION_TESTS
+#if WITH_DEV_AUTOMATION_TESTS && WITH_EDITOR
 #include "StudioLanguageSubsystem.h"
 #include "StorySessionComponent.h"
 #include "MovieResultsTypes.h"

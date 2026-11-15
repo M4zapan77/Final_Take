@@ -32,6 +32,7 @@ public:
     UFUNCTION(BlueprintCallable, Category="Studio") bool ShowAudioSettings();
     UFUNCTION(BlueprintCallable, Category="Studio") bool BackToMenu();
     UFUNCTION(BlueprintCallable, Category="Studio") bool ReturnToMainMenu();
+    UFUNCTION(BlueprintCallable, Category="Studio") bool ReturnToHub();
     UFUNCTION(BlueprintCallable, Category="Studio") bool QuitGame();
     UFUNCTION(BlueprintCallable, Category="Studio|Audio") void SetAudioLevels(FStudioAudioLevels Levels);
     UFUNCTION(BlueprintCallable, Category="Studio|Audio") void PlayInterfaceSound() { PlayClick(); }
@@ -110,6 +111,8 @@ private:
     bool bSavedHUDVisible = true;
     bool bSavedActions = true;
     bool bTransitionCueSent = false;
+    bool bOpenHubWhenPrepared = false;
+    EStudioScreen SettingsReturnScreen = EStudioScreen::MainMenu;
     UPROPERTY(Transient) TObjectPtr<USoundBase> DesiredMusic;
     UPROPERTY(Transient) TMap<USoundBase*,float> MusicPositions;
     double MusicStartedAt=0;

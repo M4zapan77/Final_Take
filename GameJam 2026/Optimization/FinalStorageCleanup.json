@@ -1,0 +1,175 @@
+{
+  "time_utc": "2026-11-15T21:40:43.159783+00:00",
+  "project": "C:\\Games\\OneManStudio\\MyProject",
+  "before_folder_bytes": {
+    ".gitattributes": 607,
+    ".gitignore": 358,
+    "MyProject.uproject": 528,
+    "README.md": 2493,
+    ".git": 3702186802,
+    "Binaries": 1183525253,
+    "Build": 1051515,
+    "Config": 38108,
+    "Content": 1305563837,
+    "DerivedDataCache": 1627828,
+    "Docs": 246506,
+    "GameJam 2026": 53876909,
+    "Intermediate": 6813979948,
+    "Saved": 10965833544,
+    "Scripts": 196935,
+    "Source": 1128459,
+    "SourceArt": 2393098201
+  },
+  "before_file_counts": {
+    ".gitattributes": 1,
+    ".gitignore": 1,
+    "MyProject.uproject": 1,
+    "README.md": 1,
+    ".git": 3606,
+    "Binaries": 19,
+    "Build": 2,
+    "Config": 8,
+    "Content": 706,
+    "DerivedDataCache": 5,
+    "Docs": 24,
+    "GameJam 2026": 140,
+    "Intermediate": 1197,
+    "Saved": 5004,
+    "Scripts": 45,
+    "Source": 130,
+    "SourceArt": 561
+  },
+  "candidates": [
+    {
+      "path": "C:\\Games\\OneManStudio\\MyProject\\Saved\\Packages\\BankIntegration",
+      "bytes": 762886093,
+      "files": 59
+    },
+    {
+      "path": "C:\\Games\\OneManStudio\\MyProject\\Saved\\Packages\\FinalCorrections",
+      "bytes": 903476217,
+      "files": 62
+    },
+    {
+      "path": "C:\\Games\\OneManStudio\\MyProject\\Saved\\Packages\\Phase6",
+      "bytes": 705708454,
+      "files": 46
+    },
+    {
+      "path": "C:\\Games\\OneManStudio\\MyProject\\Saved\\Packages\\Phase7",
+      "bytes": 763569109,
+      "files": 55
+    },
+    {
+      "path": "C:\\Games\\OneManStudio\\MyProject\\Saved\\Packages\\ProductionArt",
+      "bytes": 1563865788,
+      "files": 61
+    },
+    {
+      "path": "C:\\Games\\OneManStudio\\MyProject\\Saved\\Packages\\StartupVideos",
+      "bytes": 770157315,
+      "files": 62
+    },
+    {
+      "path": "C:\\Games\\OneManStudio\\MyProject\\Saved\\Packages\\UnifiedCustomization",
+      "bytes": 771956252,
+      "files": 61
+    },
+    {
+      "path": "C:\\Games\\OneManStudio\\MyProject\\Saved\\StagedBuilds",
+      "bytes": 711483730,
+      "files": 30
+    },
+    {
+      "path": "C:\\Games\\OneManStudio\\MyProject\\Saved\\BuildTemp",
+      "bytes": 17096,
+      "files": 3
+    },
+    {
+      "path": "C:\\Games\\OneManStudio\\MyProject\\Intermediate\\Build",
+      "bytes": 6739974747,
+      "files": 1185
+    },
+    {
+      "path": "C:\\Games\\OneManStudio\\MyProject\\Intermediate\\Staging",
+      "bytes": 312562,
+      "files": 2
+    }
+  ],
+  "applied": true,
+  "preserved": [
+    "Source",
+    "Content",
+    "SourceArt",
+    ".git",
+    "Binaries",
+    "DerivedDataCache",
+    "Saved/Autosaves",
+    "Saved/Config",
+    "Saved/Automation",
+    "Saved/Logs",
+    "Saved/Shaders",
+    "Saved/Collections",
+    "Saved/FinalTakeCheckpoints",
+    "all protected builds outside project"
+  ],
+  "verified_build": {
+    "kind": "build",
+    "archive": "C:\\Users\\diego\\OneDrive\\Documentos\\ChatGPT\\gamejam\\output\\release\\FINAL_TAKE_Final_UI_Windows.zip",
+    "source": "C:\\Users\\diego\\OneDrive\\Documentos\\ChatGPT\\gamejam\\output\\release\\FINAL_TAKE_Final_UI_2026-11-15\\Windows",
+    "files": 32,
+    "source_bytes": 711488357,
+    "folder_bytes": {
+      "Manifest_NonUFSFiles_Win64.txt": 1779,
+      "Manifest_UFSFiles_Win64.txt": 354822,
+      "MyProject.exe": 169472,
+      "Play-FINAL-TAKE.bat": 154,
+      "Engine": 65253065,
+      "Licenses": 4473,
+      "MyProject": 645704592
+    },
+    "archive_bytes": 573973894,
+    "sha256": "be2b12a2eaa0e8834597486a901ac7e7cfb2a65cee4d1fd80e5bbec57ec7217e",
+    "crc_verified": true,
+    "excludes": []
+  },
+  "after_folder_bytes": {
+    ".gitattributes": 607,
+    ".gitignore": 358,
+    "MyProject.uproject": 528,
+    "README.md": 2493,
+    ".git": 3702186802,
+    "Binaries": 1183525253,
+    "Build": 1051515,
+    "Config": 38108,
+    "Content": 1305563837,
+    "DerivedDataCache": 1627828,
+    "Docs": 246506,
+    "GameJam 2026": 53876909,
+    "Intermediate": 73692639,
+    "Saved": 4012713490,
+    "Scripts": 196935,
+    "Source": 1128459,
+    "SourceArt": 2393098201
+  },
+  "after_file_counts": {
+    ".gitattributes": 1,
+    ".gitignore": 1,
+    "MyProject.uproject": 1,
+    "README.md": 1,
+    ".git": 3606,
+    "Binaries": 19,
+    "Build": 2,
+    "Config": 8,
+    "Content": 706,
+    "DerivedDataCache": 5,
+    "Docs": 24,
+    "GameJam 2026": 140,
+    "Intermediate": 10,
+    "Saved": 4565,
+    "Scripts": 45,
+    "Source": 130,
+    "SourceArt": 561
+  },
+  "removed_bytes": 13693407363
+}

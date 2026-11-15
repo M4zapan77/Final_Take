@@ -42,7 +42,8 @@ struct FRun
     TWeakObjectPtr<UWorld> World;TWeakObjectPtr<AMovieManager> Movie;FTimerHandle Timer;
     FString Directory,Scenario=TEXT("Police");double Started=FPlatformTime::Seconds(),LastDiagnostic=-1;
     int32 LastTurn=0,Step=0,Turns=0,LastPreparation=INDEX_NONE,Wardrobes=0;
-    bool bSetup=false,bDone=false,bWalking=false,bResultsShot=false,bPremiereShot=false,bDirectorShot=false,bRepeatedMovie=false,bLanguageChanged=false,bReturningMenu=false;double ThrowAt=-1;FName ThrownId;
+    bool bSetup=false,bDone=false,bWalking=false,bResultsShot=false,bPremiereShot=false,bDirectorShot=false,bRepeatedMovie=false,bLanguageChanged=false,bReturningMenu=false,bHudShot=false;double ThrowAt=-1;FName ThrownId;
+    TArray<FCosmeticSelection> ExpectedLooks;int32 WardrobeShot=INDEX_NONE;
     TArray<FStorySceneEvent> OriginalEvents;FStoryWorldState OriginalFinal;double OriginalScore=0;
     FDelegateHandle FrameHandle;TArray<double> RecordingFrames,PremiereFrames;uint64 PeakWorkingSet=0;int32 SegmentSamples=0,FilmSamples=0,PropSamples=0;int64 PoseBytes=0;
     ~FRun(){FCoreDelegates::OnEndFrame.Remove(FrameHandle);}
@@ -70,7 +71,12 @@ struct FRun
             FFileHelper::SaveStringToFile(Events,*(Directory/TEXT("SceneEvents.csv")));
         }
         FFileHelper::SaveStringToFile(FString::Printf(TEXT("{\"passed\":%s,\"scenario\":\"%s\",\"turns\":%d,\"wardrobes\":%d,\"physicalThrow\":%s,\"moviePlaybacks\":%d,\"message\":\"%s\"}"),Success?TEXT("true"):TEXT("false"),*Scenario,Turns,Wardrobes,ThrownId.IsNone()?TEXT("false"):TEXT("true"),bRepeatedMovie?2:1,Message),*(Directory/TEXT("result.json")));
-        FFileHelper::SaveStringToFile(FString::Printf(TEXT("{\"runtime\":\"Development Editor game, offscreen\",\"segmentSamples\":%d,\"filmSamples\":%d,\"propSamples\":%d,\"allocatedPoseBytes\":%lld,\"peakWorkingSetMiB\":%.2f,\"recording\":%s,\"premiere\":%s}"),SegmentSamples,FilmSamples,PropSamples,PoseBytes,PeakWorkingSet/1048576.0,*FrameSummary(RecordingFrames),*FrameSummary(PremiereFrames)),*(Directory/TEXT("measurements.json")));
+#if WITH_EDITOR
+        const TCHAR* Runtime=TEXT("Development Editor game, offscreen");
+#else
+        const TCHAR* Runtime=TEXT("Packaged Windows Development, offscreen");
+#endif
+        FFileHelper::SaveStringToFile(FString::Printf(TEXT("{\"runtime\":\"%s\",\"segmentSamples\":%d,\"filmSamples\":%d,\"propSamples\":%d,\"allocatedPoseBytes\":%lld,\"peakWorkingSetMiB\":%.2f,\"recording\":%s,\"premiere\":%s}"),Runtime,SegmentSamples,FilmSamples,PropSamples,PoseBytes,PeakWorkingSet/1048576.0,*FrameSummary(RecordingFrames),*FrameSummary(PremiereFrames)),*(Directory/TEXT("measurements.json")));
         UE_LOG(LogTemp,Display,TEXT("StoryScenario %s %s: %s"),*Scenario,Success?TEXT("PASS"):TEXT("FAIL"),Message);
         if(Movie.IsValid()){Movie->StopMovie();}FPlatformMisc::RequestExitWithStatus(false,Success?0:1);
     }
@@ -87,7 +93,7 @@ struct FRun
         else{Key(false);}
         return false;
     }
-    void EndTurn(){Key(false);if(Movie->GetPhaseElapsedSeconds()>.12){Movie->EndCurrentTurn();}}
+    void EndTurn(){Key(false);const double Minimum=FParse::Param(FCommandLine::Get(),TEXT("StoryUICosmeticsCheck"))?.85:.12;if(Movie->GetPhaseElapsedSeconds()>Minimum){Movie->EndCurrentTurn();}}
     void Tick()
     {
         if(bDone || !World.IsValid()){return;}
@@ -129,11 +135,26 @@ struct FRun
         if(!Check(M->State!=EMovieState::Error && S->SceneState.HasUniqueMoney(),TEXT("Story error or duplicate money"))){return;}
         if(M->State==EMovieState::Preparation)
         {
-            if(LastPreparation!=M->PreparationId){LastPreparation=M->PreparationId;++Wardrobes;}
-            if(M->GetPhaseElapsedSeconds()>.15){M->ReadyForTake(LastPreparation);}
+            const bool Looks=FParse::Param(FCommandLine::Get(),TEXT("StoryUICosmeticsCheck"));
+            if(LastPreparation!=M->PreparationId)
+            {
+                LastPreparation=M->PreparationId;++Wardrobes;
+                if(Looks)
+                {
+                    const int32 Role=S->GetRoleIndex();ExpectedLooks.SetNum(3);
+                    const FName Hats[]={TEXT("Head.RobberMask"),TEXT("Head.PoliceCap"),TEXT("Head.Crown")};
+                    const FName Bodies[]={TEXT("Body.Robber"),TEXT("Body.Uniform"),TEXT("Body.Dress")};
+                    const FLinearColor Colors[]={FLinearColor(.45,.22,.85),FLinearColor::White,FLinearColor(.25,.8,.4)};
+                    if(!Check(M->SelectWardrobeItem(LastPreparation,ECosmeticCategory::Head,Hats[Role]) && M->SelectWardrobeItem(LastPreparation,ECosmeticCategory::Body,Bodies[Role]) && M->LiveWardrobeComponent->SetSkinColor(Colors[Role]),TEXT("Configured role cosmetics could not be selected"))){return;}
+                    ExpectedLooks[Role]=M->LiveWardrobeComponent->GetSelection();
+                }
+            }
+            if(Looks && WardrobeShot!=LastPreparation && M->GetPhaseElapsedSeconds()>.25){WardrobeShot=LastPreparation;Shot(*FString::Printf(TEXT("WardrobeRole%d"),S->GetRoleIndex()+1));return;}
+            if(M->GetPhaseElapsedSeconds()>(Looks?.4:.15)){M->ReadyForTake(LastPreparation);}
         }
         else if(M->State==EMovieState::Recording)
         {
+            if(!bHudShot && M->GetPhaseElapsedSeconds()>.65){bHudShot=true;Shot(TEXT("RecordingHUD"));}
             const int32 Turn=M->GetCurrentTakeNumber();
             if(M->GetPhaseElapsedSeconds()-LastDiagnostic>.5 || LastDiagnostic>M->GetPhaseElapsedSeconds())
             {
@@ -151,7 +172,16 @@ struct FRun
             {
                 LastTurn=Turn;++Turns;Step=0;Key(false);
                 if(!Check(Turn==Turns && Turn<=6,TEXT("Turn order broken"))){return;}
+                if(FParse::Param(FCommandLine::Get(),TEXT("StoryUICosmeticsCheck")) && Turn>=4)
+                {
+                    const auto Current=M->LiveWardrobeComponent->GetSelection();const auto& Expected=ExpectedLooks[S->GetRoleIndex()];
+                    if(!Check(Current.HeadId==Expected.HeadId && Current.BodyId==Expected.BodyId && Current.SkinColor.Equals(Expected.SkinColor),TEXT("Round two lost an actor's independent outfit"))){return;}
+                }
                 if(Turn==4 && Scenario==TEXT("Police") && !Check(S->SceneState.MoneyOwner()==S->Cast[1].ActorId,TEXT("Robber regained confiscated money on return"))){return;}
+                if(FParse::Param(FCommandLine::Get(),TEXT("StoryUICosmeticsCheck")) && Scenario!=TEXT("Failure"))
+                {
+                    if(!Check(M->LiveActingComponent && M->LiveActingComponent->TriggerGesture(EActingGesture::Dance) && M->LiveActingComponent->TriggerSound(EActingSound::EvilLaugh),TEXT("Live role did not record configured gesture and sound"))){return;}
+                }
                 Shot(Turn==1?TEXT("Robber"):Turn==4?TEXT("RoundTwo"):TEXT("Acting"));
             }
             if(Scenario==TEXT("Failure")){return;}
@@ -203,6 +233,19 @@ struct FRun
         {
             const EStoryOutcome Expected=Scenario==TEXT("Police")?EStoryOutcome::PoliceRecovered:Scenario==TEXT("Civilian")?EStoryOutcome::CivilianBetrayal:EStoryOutcome::FailedRobbery;
             if(!Check(S->Outcome==Expected && S->Segments.Num()==6,TEXT("Final outcome does not match actual actions"))){return;}
+            if(FParse::Param(FCommandLine::Get(),TEXT("StoryUICosmeticsCheck")))
+            {
+                for(int32 I=0;I<M->Performances.Num();++I)
+                {
+                    const auto& Look=M->Performances[I].Recording.Appearance.Selection;const auto& ExpectedLook=ExpectedLooks[I];
+                    if(!Check(Look.HeadId==ExpectedLook.HeadId && Look.BodyId==ExpectedLook.BodyId && Look.SkinColor.Equals(ExpectedLook.SkinColor),TEXT("Recorded performance lost independent cosmetic data"))){return;}
+                    if(M->ActiveReplays.IsValidIndex(I))
+                    {
+                        const auto Ghost=M->ActiveReplays[I]->Wardrobe->GetSelection();
+                        if(!Check(Ghost.HeadId==ExpectedLook.HeadId && Ghost.BodyId==ExpectedLook.BodyId && Ghost.SkinColor.Equals(ExpectedLook.SkinColor),TEXT("Premiere actor did not restore its own outfit"))){return;}
+                    }
+                }
+            }
             if(Scenario==TEXT("Civilian"))
             {
                 const auto* Track=S->PropTracks.FindByPredicate([this](const auto& T){return T.ObjectId==ThrownId;});
@@ -224,7 +267,11 @@ struct FRun
             if(!Check(Turns==6 && Wardrobes==3 && M->MovieResults.bAvailable,TEXT("Results or complete six-turn flow missing"))){return;}
             if(!Check(M->MovieDirector->GetCamera()!=nullptr && (S->GetTimelineDuration()<2.5 || M->MovieDirector->ShotCount>1),TEXT("Cinematic director did not create or select shots"))){return;}
             if(!Check(S->FinalSceneState.MoneyOwner()==OriginalFinal.MoneyOwner() && S->SceneEvents.Num()==OriginalEvents.Num() && M->MovieResults.FinalScore==OriginalScore,TEXT("Movie playback changed ownership, recording or score"))){return;}
-            for(int32 Index=0;Index<3;++Index){if(!Check(M->ActiveReplays[Index]->GetNextEventIndex()==M->Performances[Index].Recording.Events.Num(),TEXT("Chronological film missed actor events"))){return;}}
+            for(int32 Index=0;Index<3;++Index)
+            {
+                if(!Check(M->ActiveReplays[Index]->GetNextEventIndex()==M->Performances[Index].Recording.Events.Num(),TEXT("Chronological film missed actor events"))){return;}
+                if(FParse::Param(FCommandLine::Get(),TEXT("StoryUICosmeticsCheck")) && Scenario!=TEXT("Failure") && !Check(M->ActiveReplays[Index]->Acting->StartedSoundCount>0,TEXT("A cinematic actor did not reproduce its recorded sound"))){return;}
+            }
             for(TActorIterator<AActor> It(World.Get());It;++It)
             {
                 auto* Prop=It->FindComponentByClass<UGrabbablePropComponent>();if(!Prop){continue;}

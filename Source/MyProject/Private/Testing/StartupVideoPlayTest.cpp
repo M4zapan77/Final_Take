@@ -1,5 +1,7 @@
 #if !UE_BUILD_SHIPPING
 #include "StartupVideoComponent.h"
+#include "StudioUITheme.h"
+#include "Engine/Texture2D.h"
 #include "StartupVideoWidget.h"
 #include "StartupTravelSubsystem.h"
 #include "StudioFlowManager.h"
@@ -30,6 +32,7 @@
 #include "Misc/Paths.h"
 #include "UObject/StrongObjectPtr.h"
 #include "Widgets/SWindow.h"
+#include "Layout/WidgetPath.h"
 #include "UnrealClient.h"
 
 namespace StartupVideoPlayTest
@@ -44,6 +47,7 @@ namespace StartupVideoPlayTest
         TWeakObjectPtr<UMediaSoundComponent> HubSound;
         double Started=FPlatformTime::Seconds(),HubStarted=-1,StepStarted=-1,PointerStarted=0,ProbeStarted=-1,GameplayAt=-1,NotPlayingSince=-1;
         FVector2D PointerPosition;
+        bool bActionClickHeld=false;double ActionReleaseAt=0;
         FVector ProbePosition;
         int32 Step=0,PanelStep=0,FailuresBefore=0,FaultStep=0;
         bool bDone=false,bSetup=false,bStudio=false,bGame=false,bHub=false,bLoop=false,bPanels=false,bSkipped=false,bHeld=false,bReleased=false,bConsumed=false;
@@ -69,9 +73,10 @@ namespace StartupVideoPlayTest
         bool Check(bool Condition,const TCHAR* Message,UWorld* World) { if (!Condition) { Finish(false,Message,World); } return Condition; }
         void MouseDown(const FVector2D& Point)
         {
+            const FVector2D Previous=FSlateApplication::Get().GetCursorPos();
             PointerPosition=Point; auto Window=GEngine->GameViewport->GetWindow();
             FSlateApplication::Get().SetCursorPos(Point);
-            const TSet<FKey> Empty; FPointerEvent Move(0,Point,Point,Empty,EKeys::Invalid,0,FModifierKeysState()); FSlateApplication::Get().ProcessMouseMoveEvent(Move,true);
+            const TSet<FKey> Empty; FPointerEvent Move(0,Point,Previous,Empty,EKeys::Invalid,0,FModifierKeysState()); FSlateApplication::Get().ProcessMouseMoveEvent(Move,false);
             const TSet<FKey> Down={EKeys::LeftMouseButton}; FPointerEvent Event(0,Point,Point,Down,EKeys::LeftMouseButton,0,FModifierKeysState());
             FSlateApplication::Get().ProcessMouseButtonDownEvent(Window.IsValid()?Window->GetNativeWindow():nullptr,Event);
         }
@@ -82,11 +87,23 @@ namespace StartupVideoPlayTest
         }
         void Click(UButton* Button)
         {
-            const FGeometry Geometry=Button->GetCachedGeometry(); MouseDown(Geometry.LocalToAbsolute(Geometry.GetLocalSize()*.5)); MouseUp();
+            const FGeometry Geometry=Button->GetCachedGeometry();const FVector2D Point=Geometry.LocalToAbsolute(Geometry.GetLocalSize()*.5);
+            UE_LOG(LogTemp,Display,TEXT("UI smoke click: %s at %.1f %.1f size %s enabled %d visible %d"),*Button->GetName(),Point.X,Point.Y,*Geometry.GetLocalSize().ToString(),Button->GetIsEnabled(),Button->IsVisible());
+            const auto Path=FSlateApplication::Get().LocateWindowUnderMouse(Point,FSlateApplication::Get().GetInteractiveTopLevelWindows());FString Types;bool TargetFound=false;
+            for(int32 I=0;I<Path.Widgets.Num();++I){const auto& Entry=Path.Widgets[I];Types+=Entry.Widget->GetTypeAsString()+TEXT("/");TargetFound|=&Entry.Widget.Get()==Button->GetCachedWidget().Get();}
+            auto* Flow=AStudioFlowManager::Find(Button);const int32 Before=Flow?static_cast<int32>(Flow->Screen):-1;
+            MouseDown(Point);bActionClickHeld=true;ActionReleaseAt=FPlatformTime::Seconds()+.09;
+            if(Flow && Button==Flow->ActiveWidget->AudioButton){Capture(TEXT("ButtonPressed"));}
+            UE_LOG(LogTemp,Display,TEXT("UI smoke hit: target=%d path=%s screen=%d pressed=%d hovered=%d"),TargetFound,*Types,Before,Button->IsPressed(),Button->IsHovered());
         }
         void Setup(AStudioFlowManager* Flow,UWorld* World)
         {
             InitialWorld=World; InitialFlow=Flow; bSetup=true;
+            auto* Theme=Flow->ActiveWidget->UITheme.Get();
+            if(!Check(Theme && Theme->HeadingFace,TEXT("Approved UI theme or font was omitted from this runtime"),World)){return;}
+            for(const TCHAR* Id:{TEXT("Button.Normal"),TEXT("Button.Hover"),TEXT("Button.Pressed"),TEXT("Wardrobe.ActorPanel"),TEXT("Wardrobe.GridPanel"),TEXT("Wardrobe.Card.Selected"),TEXT("Icon.Eyes"),TEXT("Icon.Mouth"),TEXT("Icon.Eyebrows"),TEXT("Icon.Skin"),TEXT("Icon.Clothing"),TEXT("Icon.Hats"),TEXT("Icon.Accessories"),TEXT("Icon.Objects"),TEXT("Star")})
+            {if(!Check(Theme->Texture(Id)!=nullptr,TEXT("Required approved art was omitted from this runtime"),World)){return;}}
+            auto* Logo=Theme->Texture(TEXT("Logo"));if(!Check(Logo && Logo->GetSizeX()==4096 && Logo->GetSizeY()==2252,TEXT("Rendered logo resource lost its original dimensions"),World)){return;}
             OriginalStudio=Flow->StartupVideos->Settings.StudioIntro; OriginalGame=Flow->StartupVideos->Settings.GameIntroduction; OriginalHub=Flow->StartupVideos->Settings.HubBackground;
             if (Scenario==TEXT("Failures"))
             {
@@ -106,6 +123,9 @@ namespace StartupVideoPlayTest
     void FRun::Tick(UWorld* World)
     {
         if (bDone) { return; }
+        // Keep down/up on separate rendered frames, as a real pointer does. This
+        // exercises pressed feedback and avoids zero-duration layout-change clicks.
+        if(bActionClickHeld){if(FPlatformTime::Seconds()>=ActionReleaseAt){MouseUp();bActionClickHeld=false;}return;}
         if (FPlatformTime::Seconds()-Started>180) { Finish(false,TEXT("Video integration timed out"),World); return; }
         auto* Flow=AStudioFlowManager::Find(World); if (!Flow) { return; }
         if (!bSetup) { Setup(Flow,World); }
@@ -156,7 +176,13 @@ namespace StartupVideoPlayTest
             if (Scenario==TEXT("SkipGame") && !Check(bStudio && bGame && bConsumed,TEXT("Skipping game intro was not consumed"),World)) { return; }
             HubPlayer=Video->MediaPlayer; HubSound=Video->MediaSound; HubStarted=Now; StepStarted=Now; return;
         }
-        if (Step>0) { return; }
+        if(Step==1)
+        {
+            if(Flow->Screen==EStudioScreen::MovieIntroduction && Now-StepStarted>.4)
+            {Click(Flow->ActiveWidget->StartButton);Step=2;}
+            return;
+        }
+        if(Step>1){return;}
         if (!Check(Video->MediaPlayer==HubPlayer.Get(),TEXT("Options navigation reopened the hub player"),World)) { return; }
         // WMF briefly reports a non-playing state while its loop seek completes.
         // Require the same player and prompt resumption rather than a particular state on every frame.
@@ -175,21 +201,35 @@ namespace StartupVideoPlayTest
             auto* Widget=Flow->ActiveWidget.Get();
             switch (PanelStep)
             {
-            case 0: Capture(TEXT("Hub")); break;
-            case 1: Click(Widget->HowButton); break;
-            case 2: if (!Check(Flow->Screen==EStudioScreen::HowToPlay,TEXT("HUB How to Play not interactive above video"),World)) { return; } Capture(TEXT("Options")); break;
-            case 3: Click(Widget->BackButton); break;
-            case 4: Click(Widget->CreditsButton); break;
-            case 5: if (!Check(Flow->Screen==EStudioScreen::Credits,TEXT("Credits navigation failed"),World)) { return; } Click(Widget->BackButton); break;
-            case 6: Click(Widget->AudioButton); break;
-            case 7: if (!Check(Flow->Screen==EStudioScreen::AudioSettings,TEXT("Audio options failed"),World)) { return; } Click(Widget->BackButton); bPanels=true; break;
+            case 0: Capture(TEXT("MainMenu")); break;
+            case 1: Click(Widget->AudioButton); break;
+            case 2: if(!Check(Flow->Screen==EStudioScreen::AudioSettings,TEXT("Menu settings not interactive above video"),World)){return;}Click(Widget->EnglishButton);break;
+            case 3: Capture(TEXT("SettingsEnglish"));break;
+            case 4: Click(Widget->SpanishButton);break;
+            case 5: Capture(TEXT("SettingsSpanish"));break;
+            case 6: Click(Widget->BackButton);break;
+            case 7: Click(Widget->CreditsButton);break;
+            case 8: if(!Check(Flow->Screen==EStudioScreen::Credits,TEXT("Credits navigation failed"),World)){return;}Capture(TEXT("Credits"));break;
+            case 9: Click(Widget->BackButton);break;
+            case 10: Click(Widget->PlayButton);break;
+            case 11: if(!Check(Flow->Screen==EStudioScreen::MovieIntroduction && !Flow->Movie->HasActiveSession(),TEXT("Play did not open studio without starting the movie"),World)){return;}Capture(TEXT("Hub"));break;
+            case 12: Click(Widget->HubSettingsButton);break;
+            case 13: if(!Check(Flow->Screen==EStudioScreen::AudioSettings,TEXT("Studio settings failed"),World)){return;}Click(Widget->BackButton);break;
+            case 14: if(!Check(Flow->Screen==EStudioScreen::MovieIntroduction,TEXT("Settings did not return to studio"),World)){return;}Click(Widget->HowButton);break;
+            case 15: if(!Check(Flow->Screen==EStudioScreen::HowToPlay,TEXT("Tutorial not interactive above video"),World)){return;}Capture(TEXT("Tutorial"));break;
+            case 16: Click(Widget->BackButton);break;
+            case 17: if(!Check(Flow->Screen==EStudioScreen::MovieIntroduction,TEXT("Tutorial did not return to studio"),World)){return;}Click(Widget->BackButton);break;
+            case 18:
+                if(!Check(Flow->Screen==EStudioScreen::MainMenu,TEXT("Studio back did not reach main menu"),World)){return;}
+                {const auto G=Widget->PlayButton->GetCachedGeometry();const auto P=G.LocalToAbsolute(G.GetLocalSize()*.5);const auto Previous=FSlateApplication::Get().GetCursorPos();FSlateApplication::Get().SetCursorPos(P);const TSet<FKey> Empty;FPointerEvent Move(0,P,Previous,Empty,EKeys::Invalid,0,FModifierKeysState());FSlateApplication::Get().ProcessMouseMoveEvent(Move,false);}
+                Capture(TEXT("ButtonHover"));bPanels=true;break;
             }
             ++PanelStep; StepStarted=Now;
         }
-        if (Video->HubLoops>=2 && Now-HubStarted>16 && bPanels && Flow->Screen==EStudioScreen::MainMenu)
+        if (Video->HubLoops>=2 && Now-HubStarted>16 && bPanels && Flow->Screen==EStudioScreen::MainMenu && !FScreenshotRequest::IsScreenshotRequested())
         {
-            bLoop=true; bFailures=true; Click(Flow->ActiveWidget->PlayButton); Step=1;
-            Check(Flow->Screen==EStudioScreen::StartingGame,TEXT("Actual Start Game click did not begin fading"),World);
+            bLoop=true;Click(Flow->ActiveWidget->PlayButton);Step=1;StepStarted=Now;
+
         }
     }
 
@@ -199,9 +239,18 @@ namespace StartupVideoPlayTest
         if (FaultStep==0)
         {
             if (!Check(Video->MediaFailures>=3 && !Video->bHasVideoFrame && Flow->Screen==EStudioScreen::MainMenu,TEXT("Missing videos did not fall through to a black functional hub"),World)) { return; }
-            Capture(TEXT("MissingVideosHub")); Click(Flow->ActiveWidget->HowButton);
-            if (!Check(Flow->Screen==EStudioScreen::HowToPlay,TEXT("Black fallback menu did not accept mouse input"),World)) { return; }
-            Click(Flow->ActiveWidget->BackButton);
+            Capture(TEXT("MissingVideosHub"));Click(Flow->ActiveWidget->AudioButton);FaultStep=10;StepStarted=FPlatformTime::Seconds();return;
+        }
+        if(FaultStep==10)
+        {
+            if(FPlatformTime::Seconds()-StepStarted<.4){return;}
+            if(!Check(Flow->Screen==EStudioScreen::AudioSettings,TEXT("Black fallback menu did not accept mouse input"),World)){return;}
+            Click(Flow->ActiveWidget->BackButton);FaultStep=11;StepStarted=FPlatformTime::Seconds();return;
+        }
+        if(FaultStep==11)
+        {
+            if(FPlatformTime::Seconds()-StepStarted<.4){return;}
+            if(!Check(Flow->Screen==EStudioScreen::MainMenu,TEXT("Black fallback settings back failed"),World)){return;}
             Video->Settings.StudioIntro=Broken.Get(); Video->Settings.GameIntroduction=nullptr; Video->Settings.HubBackground=OriginalHub;
             FailuresBefore=Video->MediaFailures; Video->BeginSequence(false); FaultStep=1; return;
         }
@@ -221,7 +270,12 @@ namespace StartupVideoPlayTest
         {
             if (!Check(Video->MediaFailures>=FailuresBefore+3 && !Video->bHasVideoFrame,TEXT("Failed HUB decoder did not keep black menu usable"),World)) { return; }
             bFailures=true; bPanels=true;
-            Click(Flow->ActiveWidget->PlayButton); Step=1; FaultStep=4;
+            Click(Flow->ActiveWidget->PlayButton);Step=1;FaultStep=4;StepStarted=FPlatformTime::Seconds();return;
+        }
+        if(FaultStep==4 && FPlatformTime::Seconds()-StepStarted>.4)
+        {
+            if(!Check(Flow->Screen==EStudioScreen::MovieIntroduction,TEXT("Black fallback studio missing"),World)){return;}
+            Click(Flow->ActiveWidget->StartButton);FaultStep=5;
         }
     }
 
@@ -230,8 +284,6 @@ namespace StartupVideoPlayTest
         auto* Travel=UStartupTravelSubsystem::Find(World); if (!Travel || Travel->IsGameplayTransitionActive()) { return; }
         if(Flow->Screen==EStudioScreen::MovieIntroduction && Flow->ActiveWidget)
         {
-            // Exercise actual Slate hit testing after the cross-level input shield.
-            // Calling BeginMovie directly would miss a GameOnly focus regression.
             Click(Flow->ActiveWidget->StartButton);return;
         }
         if (!Check(Travel->GameplayLoads==1 && Travel->GetBlackOpacity()==0 && (Flow->Movie->IsWardrobeOpen() || (bReadyClicked && Flow->Movie->State==EMovieState::Recording))

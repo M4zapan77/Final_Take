@@ -1,5 +1,7 @@
 #if WITH_DEV_AUTOMATION_TESTS
 #include "StudioFlowManager.h"
+#include "StudioUITheme.h"
+#include "Engine/Texture2D.h"
 #include "StudioFlowWidget.h"
 #include "StudioAudioSubsystem.h"
 #include "ActingComponent.h"
@@ -169,6 +171,40 @@ bool FStudioUIAudioTest::RunTest(const FString& Parameters)
     TestTrue(TEXT("Nonfinite and out-of-range audio values are safe"),Audio->GetLevels().Master==0 && Audio->GetLevels().Music==1 && Audio->GetLevels().Effects==0);
     FStudioFlowSettings Settings; TestTrue(TEXT("Native flow settings valid"),Settings.IsValid()); const FDirectorAnnouncement Duplicate=Settings.Announcements[0]; Settings.Announcements.Add(Duplicate); TestFalse(TEXT("Duplicate director cue rejected"),Settings.IsValid());
     Settings=FStudioFlowSettings(); Settings.WrapSeconds=-1; TestFalse(TEXT("Negative transition rejected"),Settings.IsValid());
+    return true;
+}
+
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FStudioHubNavigationTest,"OneManStudio.Studio.HubNavigationAndCleanReturn",EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
+bool FStudioHubNavigationTest::RunTest(const FString& Parameters)
+{
+    StudioTests::FWorld C;auto* Flow=C.Flow;auto* Movie=C.Movie;
+    TestTrue(TEXT("Play opens studio before a movie session exists"),Flow->PlayMovie() && Flow->Screen==EStudioScreen::MovieIntroduction && !Movie->HasActiveSession());
+    TestTrue(TEXT("Studio exposes existing audio settings"),Flow->ShowAudioSettings() && Flow->Screen==EStudioScreen::AudioSettings);
+    TestTrue(TEXT("Settings return to their originating studio"),Flow->BackToMenu() && Flow->Screen==EStudioScreen::MovieIntroduction);
+    TestTrue(TEXT("Studio tutorial retains its return route"),Flow->ShowHowToPlay() && Flow->BackToMenu() && Flow->Screen==EStudioScreen::MovieIntroduction);
+    TestTrue(TEXT("Back reaches main menu"),Flow->BackToMenu() && Flow->Screen==EStudioScreen::MainMenu);
+    TestTrue(TEXT("Start Movie enters the existing first wardrobe"),C.Begin() && Movie->IsWardrobeOpen() && Movie->GetCurrentTakeNumber()==1);
+    TestFalse(TEXT("Repeated Start cannot bypass or duplicate preparation"),Flow->BeginIntroducedMovie());
+    TestTrue(TEXT("Returning to studio safely clears the active movie"),Flow->ReturnToHub() && Flow->Screen==EStudioScreen::MovieIntroduction && !Movie->HasActiveSession() && Movie->Performances.IsEmpty() && Movie->ActiveReplays.IsEmpty());
+    TestTrue(TEXT("Another movie enters a clean first wardrobe"),Flow->BeginIntroducedMovie() && Movie->IsWardrobeOpen() && Movie->GetCurrentTakeNumber()==1);
+    return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FStudioSuppliedUIAssetsTest,"OneManStudio.Studio.SuppliedArtReferences",EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
+bool FStudioSuppliedUIAssetsTest::RunTest(const FString& Parameters)
+{
+    auto* Theme=UStudioUITheme::LoadDefault();if(!TestNotNull(TEXT("Imported configurable UI theme"),Theme)){return false;}
+    TestNotNull(TEXT("Supplied Bungee font face"),Theme->HeadingFace.Get());
+    auto* Logo=Theme->Texture(TEXT("Logo"));if(TestNotNull(TEXT("Approved logo"),Logo))
+    {
+#if WITH_EDITORONLY_DATA
+        // NullRHI intentionally has no platform texture resource. Inspect the
+        // imported original here; the rendered integration also checks GetSizeX/Y.
+        TestEqual(TEXT("Original logo width retained"),static_cast<int32>(Logo->Source.GetSizeX()),4096);TestEqual(TEXT("Original logo height retained"),static_cast<int32>(Logo->Source.GetSizeY()),2252);
+        TestTrue(TEXT("UI compression retains alpha"),Logo->CompressionSettings==TC_EditorIcon && !Logo->CompressionNoAlpha && Logo->LODGroup==TEXTUREGROUP_UI);
+#endif
+    }
+    for(const TCHAR* Key:{TEXT("Button.Normal"),TEXT("Button.Hover"),TEXT("Button.Pressed"),TEXT("Wardrobe.ActorPanel"),TEXT("Wardrobe.GridPanel"),TEXT("Wardrobe.Card.Normal"),TEXT("Wardrobe.Card.Selected"),TEXT("Wardrobe.Tab.Normal"),TEXT("Wardrobe.Tab.Selected"),TEXT("Icon.Eyes"),TEXT("Icon.Mouth"),TEXT("Icon.Eyebrows"),TEXT("Icon.Skin"),TEXT("Icon.Clothing"),TEXT("Icon.Hats"),TEXT("Icon.Accessories"),TEXT("Icon.Objects"),TEXT("Star")})
+    {TestNotNull(FString::Printf(TEXT("Required supplied art: %s"),Key),Theme->Texture(Key));}
     return true;
 }
 #endif

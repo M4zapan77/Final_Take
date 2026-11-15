@@ -14,6 +14,8 @@ class UTextBlock;
 class UVerticalBox;
 class UHorizontalBox;
 class UTexture2D;
+class UStudioUITheme;
+class UImage;
 
 /** Native title card, letterbox and results. A Widget Blueprint with a Designer root keeps its own layout. */
 UCLASS(Blueprintable)
@@ -41,6 +43,7 @@ public:
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Style") FLinearColor LetterboxColor = FLinearColor::Black;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Style") TObjectPtr<UTexture2D> TitleBackgroundImage;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Style") TObjectPtr<UTexture2D> ResultsBackgroundImage;
+    UPROPERTY(EditDefaultsOnly,BlueprintReadWrite,Category="Style") TObjectPtr<UStudioUITheme> UITheme;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Texts") FText ReplayButtonText;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Texts") FText NewMovieButtonText;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Texts") FText MainMenuButtonText;
@@ -75,6 +78,8 @@ private:
     UPROPERTY(Transient) TObjectPtr<UTextBlock> ReviewLabel;
     UPROPERTY(Transient) TObjectPtr<UHorizontalBox> RoleColumns;
     UPROPERTY(Transient) TObjectPtr<UVerticalBox> AwardRows;
+    UPROPERTY(Transient) TArray<TObjectPtr<UImage>> RatingStars;
+    int32 LastStars=INDEX_NONE;
     int32 BoundPresentationId = 0;
     bool bResultRowsBuilt = false;
 };

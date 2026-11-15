@@ -1,0 +1,20 @@
+{
+  "kind": "build",
+  "archive": "C:\\Users\\diego\\OneDrive\\Documentos\\ChatGPT\\gamejam\\output\\release\\FINAL_TAKE_Final_UI_Windows.zip",
+  "source": "C:\\Users\\diego\\OneDrive\\Documentos\\ChatGPT\\gamejam\\output\\release\\FINAL_TAKE_Final_UI_2026-11-15\\Windows",
+  "files": 32,
+  "source_bytes": 711488357,
+  "folder_bytes": {
+    "Manifest_NonUFSFiles_Win64.txt": 1779,
+    "Manifest_UFSFiles_Win64.txt": 354822,
+    "MyProject.exe": 169472,
+    "Play-FINAL-TAKE.bat": 154,
+    "Engine": 65253065,
+    "Licenses": 4473,
+    "MyProject": 645704592
+  },
+  "archive_bytes": 573973894,
+  "sha256": "be2b12a2eaa0e8834597486a901ac7e7cfb2a65cee4d1fd80e5bbec57ec7217e",
+  "crc_verified": true,
+  "excludes": []
+}

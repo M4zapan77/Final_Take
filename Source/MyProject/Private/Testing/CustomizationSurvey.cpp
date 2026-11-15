@@ -8,6 +8,7 @@
 #include "Camera/CameraComponent.h"
 
 #include "Components/SkeletalMeshComponent.h"
+#include "Components/ScrollBox.h"
 #include "Engine/Engine.h"
 #include "Engine/GameViewportClient.h"
 #include "Engine/World.h"
@@ -45,6 +46,8 @@ public:
     int32 Step = 0, Shots = 0;
     bool bSetup = false, bDone = false;
     FString Directory;
+    TWeakObjectPtr<UCustomizationOptionButton> PreparedControl;
+    bool bPointerHeld=false;double ReleaseAt=0;FVector2D HeldPoint;
     const TArray<FString> Actions = {TEXT("Action.Reset"),
                                      TEXT("@Faceless"),
                                      TEXT("Item.Eyes.Classic"),
@@ -120,12 +123,15 @@ public:
         FPointerEvent Press(0, Point, Point, Down, EKeys::LeftMouseButton, 0, FModifierKeysState());
         const auto Window = GEngine->GameViewport->GetWindow();
         Slate.ProcessMouseButtonDownEvent(Window->GetNativeWindow(), Press);
-        FPointerEvent Release(0, Point, Point, Empty, EKeys::LeftMouseButton, 0, FModifierKeysState());
-        Slate.ProcessMouseButtonUpEvent(Release);
+        HeldPoint=Point;bPointerHeld=true;ReleaseAt=FPlatformTime::Seconds()+.09;
         return true;
     }
     void Tick(UWorld* World)
     {
+        if(bPointerHeld)
+        {
+            if(FPlatformTime::Seconds()>=ReleaseAt){const TSet<FKey> Empty;FPointerEvent Release(0,HeldPoint,HeldPoint,Empty,EKeys::LeftMouseButton,0,FModifierKeysState());FSlateApplication::Get().ProcessMouseButtonUpEvent(Release);bPointerHeld=false;}return;
+        }
         if (bDone)
         {
             return;
@@ -207,10 +213,19 @@ public:
                 FScreenshotRequest::RequestScreenshot(Directory / (Action.Mid(1) + TEXT(".png")), true, false);
                 ++Shots;
             }
-            else if (!Click(Widget->FindControl(FName(*Action))))
+            else
             {
-                Finish(false, TEXT("A native customization control was missing"), Movie);
-                return;
+                auto* Control=Widget->FindControl(FName(*Action));
+                if(!Control){Finish(false,TEXT("A native customization control was missing"),Movie);return;}
+                if(PreparedControl.Get()!=Control)
+                {
+                    for(UWidget* Parent=Control->GetParent();Parent;Parent=Parent->GetParent())
+                    {
+                        if(auto* Scroll=Cast<UScrollBox>(Parent)){Scroll->ScrollWidgetIntoView(Control,false,EDescendantScrollDestination::Center);PreparedControl=Control;At=FPlatformTime::Seconds();return;}
+                    }
+                }
+                if(!Click(Control)){Finish(false,TEXT("A customization control had no laid-out geometry"),Movie);return;}
+                PreparedControl.Reset();
             }
             ++Step;
             At = FPlatformTime::Seconds();

@@ -1,0 +1,495 @@
+{
+  "reportCreatedOn": "2026.11.15-21.43.32",
+  "succeeded": 68,
+  "succeededWithWarnings": 1,
+  "failed": 0,
+  "notRun": 0,
+  "inProcess": 0,
+  "totalDuration": 4.140275955200195,
+  "tests": [
+    {
+      "path": "OneManStudio.Acting.CompactIdleWithoutEarlyMotion",
+      "state": "Success",
+      "duration": 0.032334599643945694,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Acting.RecorderSampling",
+      "state": "Success",
+      "duration": 0.023175600916147232,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Acting.RecordingData",
+      "state": "Success",
+      "duration": 0.013937998563051224,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Acting.ReplayCollision",
+      "state": "Success",
+      "duration": 0.018455199897289276,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Acting.SharedClockAndReplay",
+      "state": "Success",
+      "duration": 0.017623700201511383,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.ActingEvents.AnimationPresentation",
+      "state": "Success",
+      "duration": 0.03532079979777336,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.ActingEvents.CaptureAndGating",
+      "state": "Success",
+      "duration": 0.01798029989004135,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.ActingEvents.DataValidation",
+      "state": "Success",
+      "duration": 0.015590101480484009,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.ActingEvents.PlaybackTimeline",
+      "state": "Success",
+      "duration": 0.01794540137052536,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.ActingEvents.RecordedFootstepTimeline",
+      "state": "Success",
+      "duration": 0.019288402050733566,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.ActingEvents.ThreeTakeMovieAndRestart",
+      "state": "Success",
+      "duration": 0.06404049694538116,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Customization.FacialSnapshotIsolation",
+      "state": "Success",
+      "duration": 0.019245397299528122,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Customization.ProductionAssetsAndHands",
+      "state": "Success",
+      "duration": 0.017557498067617416,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Customization.ProfileAndCatalog",
+      "state": "Success",
+      "duration": 0.01720390096306801,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Customization.TwoHandsAndReset",
+      "state": "Success",
+      "duration": 0.01857050135731697,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Customization.UnifiedInterfaceAndGuard",
+      "state": "Success",
+      "duration": 0.0756767988204956,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.FinalAssets.ReferenceAttachmentsAndSkinMasks",
+      "state": "Success",
+      "duration": 0.016162600368261337,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.FinalAssets.SuppliedAudioAndSnapshot",
+      "state": "Success",
+      "duration": 0.015921302139759064,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Localization.LiveFTextAndValidation",
+      "state": "Success",
+      "duration": 1.985999345779419,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Movie.CharacterMovementLifecycle",
+      "state": "Success",
+      "duration": 0.05645059794187546,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Movie.ConcurrentRecordingAndReplay",
+      "state": "Success",
+      "duration": 0.019104499369859695,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Movie.DefaultTimingAndFinishedRestart",
+      "state": "Success",
+      "duration": 0.18498580157756805,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Movie.RestartAndCleanup",
+      "state": "Success",
+      "duration": 0.032008301466703415,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Movie.ThreeTakeLoop",
+      "state": "Success",
+      "duration": 0.03951060026884079,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Objectives.AllRolesAndScores",
+      "state": "Success",
+      "duration": 0.051838599145412445,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Objectives.DefinitionsAndValidation",
+      "state": "Success",
+      "duration": 0.017013002187013626,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Objectives.NativeHUD",
+      "state": "Success",
+      "duration": 0.020254500210285187,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Objectives.PropReplayAndReset",
+      "state": "Success",
+      "duration": 0.031636301428079605,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Objectives.ProximityAtActionTime",
+      "state": "Success",
+      "duration": 0.022204402834177017,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Objectives.RobberRules",
+      "state": "Success",
+      "duration": 0.02505199983716011,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Objectives.ZeroAverageAndCap",
+      "state": "Success",
+      "duration": 0.08733150362968445,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Objectives.ZonesAndBadConfiguration",
+      "state": "Success",
+      "duration": 0.0546858012676239,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.PhysicalProps.CompactChronologicalTrajectory",
+      "state": "Success",
+      "duration": 0.015659600496292114,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.PhysicalProps.HoldPresentationAndRestore",
+      "state": "Success",
+      "duration": 0.029706399887800217,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.PhysicalProps.ThrowAndPause",
+      "state": "Success",
+      "duration": 0.03234250098466873,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Premiere.Configuration",
+      "state": "Success",
+      "duration": 0.03328840062022209,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Premiere.RestartAndCleanup",
+      "state": "Success",
+      "duration": 0.0981111004948616,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Premiere.ResultsButtons",
+      "state": "Success",
+      "duration": 0.14556199312210083,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Premiere.TitleAndReplay",
+      "state": "Success",
+      "duration": 0.0313493013381958,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Premiere.ZeroScore",
+      "state": "Success",
+      "duration": 0.029918700456619263,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Ratings.AwardsAndTies",
+      "state": "Success",
+      "duration": 0.01725979894399643,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Ratings.ConditionalAwards",
+      "state": "Success",
+      "duration": 0.016062401235103607,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Ratings.ScoreThresholds",
+      "state": "Success",
+      "duration": 0.017198901623487473,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Startup.DefaultsAndValidation",
+      "state": "Success",
+      "duration": 0.016163699328899384,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Startup.MissingMediaFallback",
+      "state": "Success",
+      "duration": 0.019223801791667938,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Startup.SkipAndInputGuard",
+      "state": "Success",
+      "duration": 0.018821798264980316,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Startup.TravelSessionState",
+      "state": "Success",
+      "duration": 0.015757203102111816,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Story.BriefDetentionInputCleanup",
+      "state": "Success",
+      "duration": 0.023582901805639267,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Story.ChronologicalAssembly",
+      "state": "Success",
+      "duration": 0.016141299158334732,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Story.EarlyCutAndClock",
+      "state": "Success",
+      "duration": 0.0187733992934227,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Story.FrozenScenarioAndValidation",
+      "state": "Success",
+      "duration": 0.01968039944767952,
+      "warnings": 1,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Story.LiveActingAcrossSixTurns",
+      "state": "Success",
+      "duration": 0.03584659844636917,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Story.MoneyOwnershipAndContext",
+      "state": "Success",
+      "duration": 0.021695498377084732,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Story.MovementCameraRestoration",
+      "state": "Success",
+      "duration": 0.02105880156159401,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Story.NarrativeScoreValidation",
+      "state": "Success",
+      "duration": 0.01706179976463318,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Story.OutcomesAndNoActionFilm",
+      "state": "Success",
+      "duration": 0.03514450043439865,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Story.SixPersistentTurns",
+      "state": "Success",
+      "duration": 0.04077669978141785,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Studio.FrontEndAndIntroduction",
+      "state": "Success",
+      "duration": 0.01937660202383995,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Studio.HubNavigationAndCleanReturn",
+      "state": "Success",
+      "duration": 0.020969700068235397,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Studio.RestartAndInputOwnership",
+      "state": "Success",
+      "duration": 0.022019702941179276,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Studio.SuppliedArtReferences",
+      "state": "Success",
+      "duration": 0.015406697988510132,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Studio.TransitionsReplayAndMenu",
+      "state": "Success",
+      "duration": 0.0355352982878685,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Studio.UIAudioAndConfiguration",
+      "state": "Success",
+      "duration": 0.01967870071530342,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Wardrobe.CatalogAndFallback",
+      "state": "Success",
+      "duration": 0.01863979920744896,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Wardrobe.ExistingSkeleton",
+      "state": "Success",
+      "duration": 0.018265198916196823,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Wardrobe.NativeWidget",
+      "state": "Success",
+      "duration": 0.02040639892220497,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Wardrobe.ReadyAndTimeout",
+      "state": "Success",
+      "duration": 0.019328702241182327,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Wardrobe.SnapshotIsolation",
+      "state": "Success",
+      "duration": 0.018446899950504303,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "path": "OneManStudio.Wardrobe.ThreeTakeOutfits",
+      "state": "Success",
+      "duration": 0.04190899804234505,
+      "warnings": 0,
+      "errors": 0
+    }
+  ],
+  "warning_note": "FrozenScenarioAndValidation deliberately rejects invalid cast configuration; its expected manager warning is retained."
+}

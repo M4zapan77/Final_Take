@@ -1,4 +1,8 @@
 #include "StudioFlowWidget.h"
+#include "StudioUITheme.h"
+#include "Components/Image.h"
+#include "Components/ScaleBox.h"
+#include "Components/SizeBox.h"
 #include "StudioFlowManager.h"
 #include "StudioLanguageSubsystem.h"
 #include "StartupVideoComponent.h"
@@ -33,6 +37,8 @@ UStudioFlowWidget::UStudioFlowWidget(const FObjectInitializer& Initializer):Supe
 void UStudioFlowWidget::NativeOnInitialized()
 {
     Super::NativeOnInitialized();
+    if(!UITheme){UITheme=UStudioUITheme::LoadDefault();}
+    if(UITheme){HeadingFont=UITheme->Heading(28);TextColor=UITheme->Cream;AccentColor=UITheme->Gold;}
     if (!WidgetTree) { WidgetTree=NewObject<UWidgetTree>(this,TEXT("WidgetTree")); }
     if (!WidgetTree->RootWidget) { BuildLayout(); }
 }
@@ -43,16 +49,17 @@ UTextBlock* UStudioFlowWidget::Text(UVerticalBox* Parent,const FSlateFontInfo& F
 }
 UButton* UStudioFlowWidget::Button(UHorizontalBox* Parent,const FText& Label)
 {
-    auto* Control=WidgetTree->ConstructWidget<UButton>(); Control->SetBackgroundColor(AccentColor);
+    auto* Control=WidgetTree->ConstructWidget<UStudioArtButton>(); Control->SetBackgroundColor(AccentColor);
     FButtonStyle Style=Control->GetStyle(); Style.NormalPadding=FMargin(12,14); Style.PressedPadding=FMargin(12,15,12,13); Control->SetStyle(Style);
-    auto* Caption=WidgetTree->ConstructWidget<UTextBlock>(); Caption->SetFont(BodyFont); Caption->SetText(Label);
-    Caption->SetColorAndOpacity(FSlateColor(FLinearColor(.015f,.02f,.025f))); Control->SetContent(Caption);
-    auto* ControlSlot=Parent->AddChildToHorizontalBox(Control); ControlSlot->SetPadding(FMargin(6,14)); ControlSlot->SetSize(FSlateChildSize(ESlateSizeRule::Fill));
+    auto* Caption=WidgetTree->ConstructWidget<UTextBlock>(); Caption->SetFont(BodyFont); Caption->SetText(Label);Caption->SetAutoWrapText(true);Caption->SetJustification(ETextJustify::Center);
+    Caption->SetColorAndOpacity(FSlateColor::UseForeground()); Control->SetContent(Caption);
+    if(UITheme){UITheme->StyleButton(Control);Caption->SetFont(UITheme->Heading(18));}
+    auto* ControlSlot=Parent->AddChildToHorizontalBox(Control); ControlSlot->SetPadding(FMargin(5,8)); ControlSlot->SetSize(FSlateChildSize(ESlateSizeRule::Fill));
     return Control;
 }
 USlider* UStudioFlowWidget::AudioRow(UVerticalBox* Parent,const FText& Label,TObjectPtr<UTextBlock>& ValueLabel)
 {
-    auto* Row=WidgetTree->ConstructWidget<UHorizontalBox>(); Parent->AddChildToVerticalBox(Row)->SetPadding(FMargin(0,20));
+    auto* Row=WidgetTree->ConstructWidget<UHorizontalBox>(); Parent->AddChildToVerticalBox(Row)->SetPadding(FMargin(0,8));
     ValueLabel=WidgetTree->ConstructWidget<UTextBlock>(); ValueLabel->SetFont(BodyFont); ValueLabel->SetColorAndOpacity(FSlateColor(TextColor));
     ValueLabel->SetText(Label); auto* NameSlot=Row->AddChildToHorizontalBox(ValueLabel); NameSlot->SetSize(FSlateChildSize(ESlateSizeRule::Fill));
     auto* Control=WidgetTree->ConstructWidget<USlider>(); Control->SetStepSize(.05f);
@@ -61,34 +68,69 @@ USlider* UStudioFlowWidget::AudioRow(UVerticalBox* Parent,const FText& Label,TOb
 }
 void UStudioFlowWidget::BuildLayout()
 {
-    auto* Canvas=WidgetTree->ConstructWidget<UCanvasPanel>(); WidgetTree->RootWidget=Canvas;
-    Backdrop=WidgetTree->ConstructWidget<UBorder>(); Backdrop->SetBrushColor(BackgroundImage?FLinearColor::White:BackgroundColor);
-    if (BackgroundImage) { Backdrop->SetBrushFromTexture(BackgroundImage); }
-    auto* BackdropSlot=Canvas->AddChildToCanvas(Backdrop); BackdropSlot->SetAnchors(FAnchors(0,0,1,1)); BackdropSlot->SetOffsets(FMargin(0));
-    PageColumn=WidgetTree->ConstructWidget<UVerticalBox>();
-    auto* PageSlot=Canvas->AddChildToCanvas(PageColumn); PageSlot->SetAnchors(FAnchors(.09f,.12f,.91f,.91f)); PageSlot->SetOffsets(FMargin(0));
-    Heading=Text(PageColumn,HeadingFont); Heading->SetColorAndOpacity(FSlateColor(AccentColor));
-    PageScroll=WidgetTree->ConstructWidget<UScrollBox>(); auto* ScrollSlot=PageColumn->AddChildToVerticalBox(PageScroll); ScrollSlot->SetSize(FSlateChildSize(ESlateSizeRule::Fill));
-    auto* Details=WidgetTree->ConstructWidget<UVerticalBox>(); PageScroll->AddChild(Details);
-    Detail=Text(Details,BodyFont); RoleRows=WidgetTree->ConstructWidget<UVerticalBox>(); Details->AddChildToVerticalBox(RoleRows);
-    Tutorial=Text(Details,BodyFont); AudioRows=WidgetTree->ConstructWidget<UVerticalBox>(); Details->AddChildToVerticalBox(AudioRows);
-    MasterSlider=AudioRow(AudioRows,MasterLabel,MasterValue); MusicSlider=AudioRow(AudioRows,MusicLabel,MusicValue); EffectsSlider=AudioRow(AudioRows,EffectsLabel,EffectsValue);
-    MasterSlider->OnValueChanged.AddDynamic(this,&UStudioFlowWidget::MasterChanged); MusicSlider->OnValueChanged.AddDynamic(this,&UStudioFlowWidget::MusicChanged); EffectsSlider->OnValueChanged.AddDynamic(this,&UStudioFlowWidget::EffectsChanged);
-    AmbientSlider=AudioRow(AudioRows,AmbientLabel,AmbientValue); UISlider=AudioRow(AudioRows,UILabel,UIValue);
-    AmbientSlider->OnValueChanged.AddDynamic(this,&UStudioFlowWidget::AmbientChanged); UISlider->OnValueChanged.AddDynamic(this,&UStudioFlowWidget::UIChanged);
+    auto* Canvas=WidgetTree->ConstructWidget<UCanvasPanel>();WidgetTree->RootWidget=Canvas;
+    const auto Full=[](UCanvasPanel* Parent,UWidget* Child){auto* S=Parent->AddChildToCanvas(Child);S->SetAnchors(FAnchors(0,0,1,1));S->SetOffsets(FMargin(0));return S;};
+    Backdrop=WidgetTree->ConstructWidget<UBorder>();Backdrop->SetBrushColor(BackgroundColor);Full(Canvas,Backdrop);
+    auto* Scale=WidgetTree->ConstructWidget<UScaleBox>();Scale->SetStretch(EStretch::ScaleToFit);
+    auto* ScaleSlot=Full(Canvas,Scale);ScaleSlot->SetAnchors(FAnchors(.035,.035,.965,.965));
+    auto* Size=WidgetTree->ConstructWidget<USizeBox>();Size->SetWidthOverride(1240);Size->SetHeightOverride(680);Scale->SetContent(Size);
+    auto* Pages=WidgetTree->ConstructWidget<UCanvasPanel>();Size->SetContent(Pages);
+    MainMenuColumn=WidgetTree->ConstructWidget<UVerticalBox>();
+    auto* MenuSlot=Pages->AddChildToCanvas(MainMenuColumn);MenuSlot->SetAnchors(FAnchors(.5));MenuSlot->SetAlignment(FVector2D(.5));MenuSlot->SetOffsets(FMargin(0,0,400,610));
+    if(UITheme && UITheme->Texture(TEXT("Logo")))
+    {
+        auto* Image=WidgetTree->ConstructWidget<UImage>();Image->SetBrushFromTexture(UITheme->Texture(TEXT("Logo")),true);
+        auto* LogoScale=WidgetTree->ConstructWidget<UScaleBox>();LogoScale->SetStretch(EStretch::ScaleToFit);LogoScale->SetContent(Image);
+        auto* LogoSize=WidgetTree->ConstructWidget<USizeBox>();LogoSize->SetWidthOverride(460);LogoSize->SetHeightOverride(250);LogoSize->SetContent(LogoScale);
+        MainMenuColumn->AddChildToVerticalBox(LogoSize)->SetPadding(FMargin(-30,0,-30,12));
+    }
+    else{Text(MainMenuColumn,HeadingFont)->SetText(FText::FromString(TEXT("FINAL TAKE")));}
+    const auto MenuButton=[&](const FText& Label,bool Primary)
+    {
+        auto* Row=WidgetTree->ConstructWidget<UHorizontalBox>();MainMenuColumn->AddChildToVerticalBox(Row);
+        auto* B=Button(Row,Label);if(UITheme && Primary){UITheme->StyleButton(B,TEXT("Primary"));}return B;
+    };
+    PlayButton=MenuButton(PlayText,true);AudioButton=MenuButton(AudioText,false);CreditsButton=MenuButton(CreditsText,false);QuitButton=MenuButton(QuitText,false);
+    PlayButton->OnClicked.AddDynamic(this,&UStudioFlowWidget::ClickPlay);AudioButton->OnClicked.AddDynamic(this,&UStudioFlowWidget::ClickAudio);
+    CreditsButton->OnClicked.AddDynamic(this,&UStudioFlowWidget::ClickCredits);QuitButton->OnClicked.AddDynamic(this,&UStudioFlowWidget::ClickQuit);
+
+    PageFrame=WidgetTree->ConstructWidget<UBorder>();PageFrame->SetPadding(FMargin(48,42,48,30));
+    if(UITheme){PageFrame->SetBrush(UITheme->Brush(TEXT("Wardrobe.GridPanel"),FMargin(.08,.12,.08,.12)));}else{PageFrame->SetBrushColor(BackgroundColor);}
+    Full(Pages,PageFrame);PageColumn=WidgetTree->ConstructWidget<UVerticalBox>();PageFrame->SetContent(PageColumn);
+    Heading=Text(PageColumn,HeadingFont);Heading->SetColorAndOpacity(AccentColor);
+    auto* PageRow=WidgetTree->ConstructWidget<UHorizontalBox>();PageColumn->AddChildToVerticalBox(PageRow)->SetSize(FSlateChildSize(ESlateSizeRule::Fill));
+    auto* CoverSize=WidgetTree->ConstructWidget<USizeBox>();CoverSize->SetWidthOverride(360);
+    CoverPanel=WidgetTree->ConstructWidget<UBorder>();CoverSize->SetContent(CoverPanel);CoverPanel->SetPadding(FMargin(28,42,28,44));
+    if(UITheme){CoverPanel->SetBrush(UITheme->Brush(TEXT("Wardrobe.ActorPanel"),FMargin(.1,.18,.1,.14)));}else{CoverPanel->SetBrushColor(AccentColor);}
+    PageRow->AddChildToHorizontalBox(CoverSize)->SetPadding(FMargin(0,0,24,0));
+    auto* CoverColumn=WidgetTree->ConstructWidget<UVerticalBox>();CoverPanel->SetContent(CoverColumn);
+    auto* CoverImage=WidgetTree->ConstructWidget<UImage>();
+    if(UITheme){CoverImage->SetBrushFromTexture(UITheme->MovieCover?UITheme->MovieCover.Get():UITheme->Texture(TEXT("Logo")),true);}
+    auto* CoverScale=WidgetTree->ConstructWidget<UScaleBox>();CoverScale->SetStretch(EStretch::ScaleToFit);CoverScale->SetContent(CoverImage);
+    CoverColumn->AddChildToVerticalBox(CoverScale)->SetSize(FSlateChildSize(ESlateSizeRule::Fill));
+    CoverTitle=Text(CoverColumn,HeadingFont);CoverTitle->SetJustification(ETextJustify::Center);CoverTitle->SetColorAndOpacity(UITheme?UITheme->Navy:FLinearColor::Black);
+    auto* MovieInfo=Text(CoverColumn,BodyFont);MovieInfo->SetText(NSLOCTEXT("FinalUI","OneMovieInfo","BANK COMEDY\n1 player · 3 roles · 6 turns"));auto InfoFont=BodyFont;InfoFont.Size=14;MovieInfo->SetFont(InfoFont);MovieInfo->SetJustification(ETextJustify::Center);MovieInfo->SetColorAndOpacity(UITheme?UITheme->Navy:FLinearColor::Black);
+    PageScroll=WidgetTree->ConstructWidget<UScrollBox>();PageRow->AddChildToHorizontalBox(PageScroll)->SetSize(FSlateChildSize(ESlateSizeRule::Fill));
+    auto* Details=WidgetTree->ConstructWidget<UVerticalBox>();PageScroll->AddChild(Details);
+    Detail=Text(Details,BodyFont);RoleRows=WidgetTree->ConstructWidget<UVerticalBox>();Details->AddChildToVerticalBox(RoleRows);
+    Tutorial=Text(Details,BodyFont);AudioRows=WidgetTree->ConstructWidget<UVerticalBox>();Details->AddChildToVerticalBox(AudioRows);
+    MasterSlider=AudioRow(AudioRows,MasterLabel,MasterValue);MusicSlider=AudioRow(AudioRows,MusicLabel,MusicValue);EffectsSlider=AudioRow(AudioRows,EffectsLabel,EffectsValue);
+    MasterSlider->OnValueChanged.AddDynamic(this,&UStudioFlowWidget::MasterChanged);MusicSlider->OnValueChanged.AddDynamic(this,&UStudioFlowWidget::MusicChanged);EffectsSlider->OnValueChanged.AddDynamic(this,&UStudioFlowWidget::EffectsChanged);
+    AmbientSlider=AudioRow(AudioRows,AmbientLabel,AmbientValue);UISlider=AudioRow(AudioRows,UILabel,UIValue);
+    AmbientSlider->OnValueChanged.AddDynamic(this,&UStudioFlowWidget::AmbientChanged);UISlider->OnValueChanged.AddDynamic(this,&UStudioFlowWidget::UIChanged);
     Text(AudioRows,BodyFont)->SetText(NSLOCTEXT("StudioUI","LanguageLabel","Language / Idioma"));
     auto* Languages=WidgetTree->ConstructWidget<UHorizontalBox>();AudioRows->AddChildToVerticalBox(Languages);
     SpanishButton=Button(Languages,NSLOCTEXT("StudioUI","SpanishLanguage","Español"));EnglishButton=Button(Languages,NSLOCTEXT("StudioUI","EnglishLanguage","English"));
     SpanishButton->OnClicked.AddDynamic(this,&UStudioFlowWidget::ClickSpanish);EnglishButton->OnClicked.AddDynamic(this,&UStudioFlowWidget::ClickEnglish);
-    auto* Controls=WidgetTree->ConstructWidget<UHorizontalBox>(); PageColumn->AddChildToVerticalBox(Controls);
-    PlayButton=Button(Controls,PlayText); HowButton=Button(Controls,HowToPlayText); CreditsButton=Button(Controls,CreditsText);
-    AudioButton=Button(Controls,AudioText); QuitButton=Button(Controls,QuitText); StartButton=Button(Controls,StartText); BackButton=Button(Controls,BackText);
-    PlayButton->OnClicked.AddDynamic(this,&UStudioFlowWidget::ClickPlay); HowButton->OnClicked.AddDynamic(this,&UStudioFlowWidget::ClickHow);
-    CreditsButton->OnClicked.AddDynamic(this,&UStudioFlowWidget::ClickCredits); AudioButton->OnClicked.AddDynamic(this,&UStudioFlowWidget::ClickAudio);
-    QuitButton->OnClicked.AddDynamic(this,&UStudioFlowWidget::ClickQuit); StartButton->OnClicked.AddDynamic(this,&UStudioFlowWidget::ClickStart); BackButton->OnClicked.AddDynamic(this,&UStudioFlowWidget::ClickBack);
-    DirectorPanel=WidgetTree->ConstructWidget<UBorder>(); DirectorPanel->SetBrushColor(FLinearColor(.01f,.01f,.015f,.85f)); DirectorPanel->SetPadding(FMargin(12));
-    auto* DirectorSlot=Canvas->AddChildToCanvas(DirectorPanel); DirectorSlot->SetAnchors(FAnchors(.5f,.025f)); DirectorSlot->SetAlignment(FVector2D(.5f,0)); DirectorSlot->SetOffsets(FMargin(0,0,520,62));
-    DirectorLabel=WidgetTree->ConstructWidget<UTextBlock>(); DirectorLabel->SetFont(HeadingFont); DirectorLabel->SetJustification(ETextJustify::Center); DirectorLabel->SetColorAndOpacity(FSlateColor(AccentColor)); DirectorPanel->SetContent(DirectorLabel);
+    auto* Controls=WidgetTree->ConstructWidget<UHorizontalBox>();PageColumn->AddChildToVerticalBox(Controls)->SetPadding(FMargin(0,10,0,0));
+    BackButton=Button(Controls,BackText);HowButton=Button(Controls,HowToPlayText);HubSettingsButton=Button(Controls,AudioText);StartButton=Button(Controls,NSLOCTEXT("FinalUI","StartMovie","Start Movie"));
+    FSlateChildSize StartSize(ESlateSizeRule::Fill);StartSize.Value=2;CastChecked<UHorizontalBoxSlot>(StartButton->Slot)->SetSize(StartSize);
+    if(UITheme){UITheme->StyleButton(StartButton,TEXT("Primary"));}
+    HowButton->OnClicked.AddDynamic(this,&UStudioFlowWidget::ClickHow);HubSettingsButton->OnClicked.AddDynamic(this,&UStudioFlowWidget::ClickAudio);
+    StartButton->OnClicked.AddDynamic(this,&UStudioFlowWidget::ClickStart);BackButton->OnClicked.AddDynamic(this,&UStudioFlowWidget::ClickBack);
+    DirectorPanel=WidgetTree->ConstructWidget<UBorder>();DirectorPanel->SetBrushColor(FLinearColor(.01,.01,.015,.85));DirectorPanel->SetPadding(FMargin(12));
+    auto* DirectorSlot=Canvas->AddChildToCanvas(DirectorPanel);DirectorSlot->SetAnchors(FAnchors(.5,.025));DirectorSlot->SetAlignment(FVector2D(.5,0));DirectorSlot->SetOffsets(FMargin(0,0,520,62));
+    DirectorLabel=WidgetTree->ConstructWidget<UTextBlock>();DirectorLabel->SetFont(HeadingFont);DirectorLabel->SetJustification(ETextJustify::Center);DirectorLabel->SetColorAndOpacity(AccentColor);DirectorPanel->SetContent(DirectorLabel);
 }
 void UStudioFlowWidget::BindFlow(AStudioFlowManager* Manager)
 {
@@ -135,11 +177,14 @@ void UStudioFlowWidget::RefreshFlow()
         Backdrop->SetBrushFromTexture(nullptr);
         Backdrop->SetBrushColor(FLinearColor(0,0,0,Flow->StartupVideos->Settings.HubDimmerOpacity));
     }
-    if (PageColumn) { PageColumn->SetVisibility(bFront||bNext?ESlateVisibility::SelfHitTestInvisible:ESlateVisibility::Collapsed); PageColumn->SetRenderOpacity(Page==EStudioScreen::StartingGame?1.f:ViewData.PageOpacity); }
+    if(MainMenuColumn){MainMenuColumn->SetVisibility(bMain?ESlateVisibility::SelfHitTestInvisible:ESlateVisibility::Collapsed);MainMenuColumn->SetRenderOpacity(ViewData.PageOpacity);}
+    if(PageFrame){PageFrame->SetVisibility((bFront && !bMain)||bNext?ESlateVisibility::SelfHitTestInvisible:ESlateVisibility::Collapsed);PageFrame->SetRenderOpacity(ViewData.PageOpacity);}
+    if(CoverPanel){CoverPanel->GetParent()->SetVisibility(bIntro?ESlateVisibility::HitTestInvisible:ESlateVisibility::Collapsed);}
+    if(CoverTitle){CoverTitle->SetText(ViewData.MovieTitle);}
     if (Heading)
     {
         FText Label=ViewData.GameTitle;
-        if (bIntro) { Label=ViewData.MovieTitle; }
+        if (bIntro) { Label=NSLOCTEXT("FinalUI","StudioHeading","MOVIE STUDIO"); }
         else if (Page==EStudioScreen::HowToPlay) { Label=HowToPlayText; }
         else if (Page==EStudioScreen::Credits) { Label=CreditsText; }
         else if (bAudio) { Label=AudioText; }
@@ -150,7 +195,7 @@ void UStudioFlowWidget::RefreshFlow()
     if (Detail)
     {
         FText Body=MenuTagline;
-        if (bIntro) { Body=ViewData.Synopsis; }
+        if (bIntro) { Body=FText::Format(NSLOCTEXT("FinalUI","HubBrief","{0}\n\n{1}"),UITheme && !UITheme->HubDescription.IsEmpty()?UITheme->HubDescription:NSLOCTEXT("FinalUI","HubDescription","One player, three roles, six chaotic acting turns. Create your own bank robbery movie."),ViewData.Synopsis); }
         else if (Page==EStudioScreen::HowToPlay) { Body=ViewData.HowToPlay; }
         else if (Page==EStudioScreen::Credits) { Body=ViewData.Credits; }
         else if (bAudio) { Body=NSLOCTEXT("StudioUI","AudioHint","Adjust the mix for this game session. Music, sound effects and the director use these levels."); }
@@ -188,14 +233,16 @@ void UStudioFlowWidget::RefreshFlow()
         if(AmbientValue){AmbientValue->SetText(Caption(AmbientLabel,ViewData.Audio.Ambient));UIValue->SetText(Caption(UILabel,ViewData.Audio.UI));}
     }
     if(SpanishButton && EnglishButton)
-    {const auto* Language=UStudioLanguageSubsystem::Find(this);const bool Spanish=!Language || Language->GetLanguage()==TEXT("es");SpanishButton->SetBackgroundColor(Spanish?AccentColor:FLinearColor(.35,.35,.4));EnglishButton->SetBackgroundColor(!Spanish?AccentColor:FLinearColor(.35,.35,.4));}
+    {const auto* Language=UStudioLanguageSubsystem::Find(this);const bool Spanish=!Language || Language->GetLanguage()==TEXT("es");if(UITheme){if(LastRevision!=ViewData.Revision){UITheme->StyleButton(SpanishButton,Spanish?TEXT("Primary"):TEXT("Secondary"));UITheme->StyleButton(EnglishButton,!Spanish?TEXT("Primary"):TEXT("Secondary"));}}else{SpanishButton->SetBackgroundColor(Spanish?AccentColor:FLinearColor(.35,.35,.4));EnglishButton->SetBackgroundColor(!Spanish?AccentColor:FLinearColor(.35,.35,.4));}}
     if (PlayButton)
     {
-        if (auto* Caption=Cast<UTextBlock>(PlayButton->GetContent())) { Caption->SetText(Flow->bStartupPresentation?StartGameText:PlayText); }
+        if (auto* Caption=Cast<UTextBlock>(PlayButton->GetContent())) { Caption->SetText(PlayText); }
         const bool bEnabled=!Flow->bStartupPresentation || Flow->StartupVideos->IsHubInteractive();
         for (UButton* Control:{PlayButton.Get(),HowButton.Get(),CreditsButton.Get(),AudioButton.Get(),QuitButton.Get(),BackButton.Get()}) { Control->SetIsEnabled(bEnabled); }
         BackButton->SetIsEnabled(bEnabled || bIntro);
-        for (UButton* Control:{PlayButton.Get(),HowButton.Get(),CreditsButton.Get(),AudioButton.Get(),QuitButton.Get()}) { Control->SetVisibility(bMain?ESlateVisibility::Visible:ESlateVisibility::Collapsed); }
+        for(UButton* Control:{PlayButton.Get(),CreditsButton.Get(),AudioButton.Get(),QuitButton.Get()}){Control->SetVisibility(bMain?ESlateVisibility::Visible:ESlateVisibility::Collapsed);}
+        HowButton->SetVisibility(bIntro?ESlateVisibility::Visible:ESlateVisibility::Collapsed);
+        if(HubSettingsButton){HubSettingsButton->SetVisibility(bIntro?ESlateVisibility::Visible:ESlateVisibility::Collapsed);HubSettingsButton->SetIsEnabled(bEnabled);}
         StartButton->SetVisibility(bIntro?ESlateVisibility::Visible:ESlateVisibility::Collapsed); BackButton->SetVisibility(bFront && !bMain?ESlateVisibility::Visible:ESlateVisibility::Collapsed);
     }
     if (DirectorPanel)

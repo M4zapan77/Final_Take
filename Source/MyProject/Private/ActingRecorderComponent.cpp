@@ -46,11 +46,14 @@ bool UActingRecorderComponent::StartRecording(double MaxDurationSeconds, bool bU
     Recording.Events.Reset();
     Recording.ActingSettings = FActingPlaybackSettings();
     Recording.Appearance = FRecordedAppearance();
-    if (UWardrobeComponent* Wardrobe = GetOwner()->FindComponentByClass<UWardrobeComponent>();Wardrobe && bCapturePresentationSnapshot)
+    if (UWardrobeComponent* Wardrobe = GetOwner()->FindComponentByClass<UWardrobeComponent>())
     {
         Recording.Appearance = Wardrobe->CaptureAppearance();
     }
-    if (UActingComponent* Acting = GetOwner()->FindComponentByClass<UActingComponent>();Acting && bCapturePresentationSnapshot)
+    // Live gestures, soundboard and footsteps resolve immutable settings from this
+    // active recording. Story segments discard redundant presentation data only
+    // after the turn has finished; skipping this snapshot disables live events.
+    if (UActingComponent* Acting = GetOwner()->FindComponentByClass<UActingComponent>())
     {
         Recording.ActingSettings = Acting->CapturePlaybackSettings();
     }

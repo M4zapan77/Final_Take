@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FinalTake\n"
-"POT-Creation-Date: 2026-11-15 15:37\n"
-"PO-Revision-Date: 2026-11-15 15:37\n"
+"POT-Creation-Date: 2026-11-15 20:39\n"
+"PO-Revision-Date: 2026-11-15 20:39\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -245,92 +245,92 @@ msgid "Could not create results UI."
 msgstr "No se pudo crear la pantalla de resultados."
 
 #. Key:	RoleScore
-#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(107)
-#: Source/MyProject/Private/MoviePresentationWidget.cpp(107)
+#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(132)
+#: Source/MyProject/Private/MoviePresentationWidget.cpp(132)
 msgctxt "MovieResults,RoleScore"
 msgid "{0}: {1}/100"
 msgstr "{0}: {1}/100"
 
 #. Key:	CompletedCount
-#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(108)
-#: Source/MyProject/Private/MoviePresentationWidget.cpp(108)
+#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(133)
+#: Source/MyProject/Private/MoviePresentationWidget.cpp(133)
 msgctxt "MovieResults,CompletedCount"
 msgid "Objectives: {0}/{1}"
 msgstr "Objetivos: {0}/{1}"
 
 #. Key:	CompletedName
-#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(110)
-#: Source/MyProject/Private/MoviePresentationWidget.cpp(110)
+#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(135)
+#: Source/MyProject/Private/MoviePresentationWidget.cpp(135)
 msgctxt "MovieResults,CompletedName"
 msgid "+ {0}"
 msgstr "+ {0}"
 
 #. Key:	AwardWinners
-#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(122)
-#: Source/MyProject/Private/MoviePresentationWidget.cpp(122)
+#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(147)
+#: Source/MyProject/Private/MoviePresentationWidget.cpp(147)
 msgctxt "MovieResults,AwardWinners"
 msgid "{0} - {1}"
 msgstr "{0} - {1}"
 
 #. Key:	FinalScore
-#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(150)
-#: Source/MyProject/Private/MoviePresentationWidget.cpp(150)
+#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(175)
+#: Source/MyProject/Private/MoviePresentationWidget.cpp(175)
 msgctxt "MovieResults,FinalScore"
 msgid "{0} / 100"
 msgstr "{0} / 100"
 
 #. Key:	Rating
-#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(154)
-#: Source/MyProject/Private/MoviePresentationWidget.cpp(154)
+#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(179)
+#: Source/MyProject/Private/MoviePresentationWidget.cpp(179)
 msgctxt "MovieResults,Rating"
 msgid "{0}  {1}"
 msgstr "{0}  {1}"
 
 #. Key:	StoryResultSummary
-#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(160)
-#: Source/MyProject/Private/MoviePresentationWidget.cpp(160)
+#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(186)
+#: Source/MyProject/Private/MoviePresentationWidget.cpp(186)
 msgctxt "FinalTake,StoryResultSummary"
 msgid "{0}\nStory {1}/40 · Interactions {2}/30 · Comedy {3}/20 · Props/NPCs {4}/10\n{5}"
 msgstr "{0}\nHistoria {1}/40 · Interacciones {2}/30 · Comedia {3}/20 · Objetos/NPCs {4}/10\n{5}"
 
 #. Key:	ReplayButton
-#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(24)
-#: Source/MyProject/Private/MoviePresentationWidget.cpp(24)
+#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(29)
+#: Source/MyProject/Private/MoviePresentationWidget.cpp(29)
 msgctxt "MovieResults,ReplayButton"
 msgid "Replay Movie"
 msgstr "Volver a ver la película"
 
 #. Key:	NewButton
-#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(25)
-#: Source/MyProject/Private/MoviePresentationWidget.cpp(25)
+#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(30)
+#: Source/MyProject/Private/MoviePresentationWidget.cpp(30)
 msgctxt "MovieResults,NewButton"
 msgid "Record New Movie"
 msgstr "Grabar otra película"
 
-#. Key:	MenuButton
-#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(26)
-#: Source/MyProject/Private/MoviePresentationWidget.cpp(26)
-msgctxt "MovieResults,MenuButton"
-msgid "Return to Main Menu"
-msgstr "Volver al menú principal"
+#. Key:	BackToHub
+#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(31)
+#: Source/MyProject/Private/MoviePresentationWidget.cpp(31)
+msgctxt "FinalUI,BackToHub"
+msgid "Back to Studio"
+msgstr "Volver al estudio"
 
 #. Key:	Awards
-#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(27)
-#: Source/MyProject/Private/MoviePresentationWidget.cpp(27)
+#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(32)
+#: Source/MyProject/Private/MoviePresentationWidget.cpp(32)
 msgctxt "MovieResults,Awards"
 msgid "THE EXTREMELY PRESTIGIOUS AWARDS"
 msgstr "LOS PREMIOS EXTREMADAMENTE PRESTIGIOSOS"
 
 #. Key:	NoAwards
-#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(28)
-#: Source/MyProject/Private/MoviePresentationWidget.cpp(28)
+#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(33)
+#: Source/MyProject/Private/MoviePresentationWidget.cpp(33)
 msgctxt "MovieResults,NoAwards"
 msgid "The jury is still recovering."
 msgstr "El jurado todavía se está recuperando."
 
 #. Key:	NoObjectives
-#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(29)
-#: Source/MyProject/Private/MoviePresentationWidget.cpp(29)
+#. SourceLocation:	Source/MyProject/Private/MoviePresentationWidget.cpp(34)
+#: Source/MyProject/Private/MoviePresentationWidget.cpp(34)
 msgctxt "MovieResults,NoObjectives"
 msgid "No objectives completed. A bold artistic choice."
 msgstr "Ningún objetivo completado. Una decisión artística audaz."
@@ -489,89 +489,131 @@ msgctxt "FinalTakeUI,MovieResultsTypes.Reviews.c68afe625f"
 msgid "The audience asked for a refund. Admission was free."
 msgstr "El público pidió un reembolso. La entrada era gratis."
 
-#. Key:	Gesture
+#. Key:	MoneyBag
 #. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(100)
 #: Source/MyProject/Private/ObjectiveHUDWidget.cpp(100)
-msgctxt "MovieHUD,Gesture"
-msgid "Acting: {0}"
-msgstr "Actuación: {0}"
+msgctxt "FinalUI,MoneyBag"
+msgid "Money bag"
+msgstr "Bolsa de dinero"
 
-#. Key:	Score
-#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(101)
-#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(101)
-msgctxt "MovieHUD,Score"
-msgid "{0} / 100"
-msgstr "{0} / 100"
+#. Key:	HeldProp
+#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(102)
+#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(102)
+msgctxt "FinalUI,HeldProp"
+msgid "Prop"
+msgstr "Objeto"
 
-#. Key:	CompleteCheck
-#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(114)
-#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(114)
-msgctxt "FinalTake,CompleteCheck"
-msgid "[DONE]"
-msgstr "[HECHO]"
+#. Key:	HeldHands
+#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(104)
+#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(104)
+msgctxt "FinalUI,HeldHands"
+msgid "LEFT: {0} · RIGHT: {1}"
+msgstr "IZQUIERDA: {0} · DERECHA: {1}"
 
-#. Key:	Locked
-#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(114)
-#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(114)
-msgctxt "MovieHUD,Locked"
-msgid "[LOCKED]"
-msgstr "[BLOQUEADO]"
-
-#. Key:	ObjectiveRow
-#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(114)
-#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(114)
-msgctxt "MovieHUD,ObjectiveRow"
-msgid "{0} {1} ({2})"
-msgstr "{0} {1} ({2})"
-
-#. Key:	PrimaryObjectiveRow
-#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(116)
-#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(116)
-msgctxt "FinalTake,PrimaryObjectiveRow"
-msgid "{0} {1}"
-msgstr "{0} {1}"
-
-#. Key:	MovieSummary
-#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(125)
-#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(125)
-msgctxt "MovieHUD,MovieSummary"
-msgid "{0}\nMovie score: {1} / 100"
-msgstr "{0}\nPuntuación de la película: {1} / 100"
-
-#. Key:	StoryControlsM3
-#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(83)
-#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(83)
-msgctxt "FinalTake,StoryControlsM3"
-msgid "WASD Move | Mouse Look | Space Jump\nE Interact | Click Throw | Q Drop\nT Cut! | 1 Dance | 2 Point\n3 Scared | 4 Faint | 5 Arrest\nZ Laugh | X Scream | C Cry\nV Siren | B Kiss | N Failure"
-msgstr "WASD Mover | Ratón Mirar | Espacio Saltar\nE Interactuar | Clic Lanzar | Q Soltar\nT ¡Corten! | 1 Bailar | 2 Señalar\n3 Asustarse | 4 Desmayarse | 5 Arrestar\nZ Risa | X Grito | C Llanto\nV Sirena | B Beso | N Fracaso"
+#. Key:	HeldControls
+#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(106)
+#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(106)
+msgctxt "FinalUI,HeldControls"
+msgid "{0}\n[{1}] Drop · [{2}] Throw"
+msgstr "{0}\n[{1}] Soltar · [{2}] Lanzar"
 
 #. Key:	TurnHUD
-#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(90)
-#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(90)
+#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(113)
+#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(113)
 msgctxt "FinalTake,TurnHUD"
 msgid "{0} — Round {1}/2\nTurn {2}/6"
 msgstr "{0} — Ronda {1}/2\nTurno {2}/6"
 
 #. Key:	LegacyTake
-#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(91)
-#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(91)
+#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(114)
+#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(114)
 msgctxt "MovieHUD,LegacyTake"
 msgid "TAKE {0}/3 - {1}"
 msgstr "TOMA {0}/3 - {1}"
 
+#. Key:	SecondsLeft
+#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(118)
+#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(118)
+msgctxt "FinalUI,SecondsLeft"
+msgid "{0} s"
+msgstr "{0} s"
+
 #. Key:	Challenges
-#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(95)
-#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(95)
+#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(118)
+#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(118)
 msgctxt "MovieHUD,Challenges"
 msgid "Your acting challenges"
 msgstr "Tu escena"
 
-#. Key:	RecordingTimer
-#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(95)
-#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(95)
-msgctxt "MovieHUD,RecordingTimer"
-msgid "RECORDING: {0}s"
-msgstr "GRABANDO: {0}s"
+#. Key:	Gesture
+#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(125)
+#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(125)
+msgctxt "MovieHUD,Gesture"
+msgid "Acting: {0}"
+msgstr "Actuación: {0}"
+
+#. Key:	Score
+#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(126)
+#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(126)
+msgctxt "MovieHUD,Score"
+msgid "{0} / 100"
+msgstr "{0} / 100"
+
+#. Key:	CompleteCheck
+#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(139)
+#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(139)
+msgctxt "FinalTake,CompleteCheck"
+msgid "[DONE]"
+msgstr "[HECHO]"
+
+#. Key:	Locked
+#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(139)
+#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(139)
+msgctxt "MovieHUD,Locked"
+msgid "[LOCKED]"
+msgstr "[BLOQUEADO]"
+
+#. Key:	ObjectiveRow
+#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(139)
+#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(139)
+msgctxt "MovieHUD,ObjectiveRow"
+msgid "{0} {1} ({2})"
+msgstr "{0} {1} ({2})"
+
+#. Key:	PrimaryObjectiveRow
+#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(141)
+#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(141)
+msgctxt "FinalTake,PrimaryObjectiveRow"
+msgid "{0} {1}"
+msgstr "{0} {1}"
+
+#. Key:	MovieSummary
+#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(150)
+#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(150)
+msgctxt "MovieHUD,MovieSummary"
+msgid "{0}\nMovie score: {1} / 100"
+msgstr "{0}\nPuntuación de la película: {1} / 100"
+
+#. Key:	RecBadge
+#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(46)
+#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(46)
+msgctxt "FinalUI,RecBadge"
+msgid "● REC"
+msgstr "● REC"
+
+#. Key:	ActingControls
+#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(94)
+#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(94)
+msgctxt "FinalUI,ActingControls"
+msgid "WASD Move · Mouse Look · Space Jump\n[{0}] Cut! · [E] Interact\n1 Dance · 2 Point · 3 Scared\n4 Faint · 5 Arrest\nZ Laugh · X Scream · C Cry\nV Siren · B Kiss · N Failure"
+msgstr "WASD Mover · Ratón Mirar · Espacio Saltar\n[{0}] ¡Corten! · [E] Interactuar\n1 Bailar · 2 Señalar · 3 Asustarse\n4 Desmayarse · 5 Arrestar\nZ Risa · X Grito · C Llanto\nV Sirena · B Beso · N Fracaso"
+
+#. Key:	EmptyHand
+#. SourceLocation:	Source/MyProject/Private/ObjectiveHUDWidget.cpp(99)
+#: Source/MyProject/Private/ObjectiveHUDWidget.cpp(99)
+msgctxt "FinalUI,EmptyHand"
+msgid "Empty"
+msgstr "Vacía"
 
 #. Key:	PointsFeedback
 #. SourceLocation:	Source/MyProject/Private/ObjectiveManagerComponent.cpp(162)
@@ -749,64 +791,64 @@ msgid "A teller, a guard and two witnesses share the bank with three suspiciousl
 msgstr "Un cajero, un guardia y dos testigos comparten el banco con tres actores sospechosamente parecidos. Quien tenga el dinero cambia el final."
 
 #. Key:	InvalidCast
-#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(175)
-#: Source/MyProject/Private/StorySessionComponent.cpp(175)
+#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(180)
+#: Source/MyProject/Private/StorySessionComponent.cpp(180)
 msgctxt "FinalTake,InvalidCast"
 msgid "Could not prepare the next character."
 msgstr "No se pudo preparar el siguiente personaje."
 
 #. Key:	InvalidOutfit
-#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(185)
-#: Source/MyProject/Private/StorySessionComponent.cpp(185)
+#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(190)
+#: Source/MyProject/Private/StorySessionComponent.cpp(190)
 msgctxt "FinalTake,InvalidOutfit"
 msgid "Could not prepare the outfit."
 msgstr "No se pudo preparar el vestuario."
 
 #. Key:	InvalidWardrobe
-#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(191)
-#: Source/MyProject/Private/StorySessionComponent.cpp(191)
+#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(196)
+#: Source/MyProject/Private/StorySessionComponent.cpp(196)
 msgctxt "FinalTake,InvalidWardrobe"
 msgid "Could not open the wardrobe."
 msgstr "No se pudo abrir el camerino."
 
 #. Key:	RecordFailed
-#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(213)
-#: Source/MyProject/Private/StorySessionComponent.cpp(213)
+#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(218)
+#: Source/MyProject/Private/StorySessionComponent.cpp(218)
 msgctxt "FinalTake,RecordFailed"
 msgid "Could not start the performance."
 msgstr "No se pudo iniciar la actuación."
 
 #. Key:	InvalidSegment
-#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(241)
-#: Source/MyProject/Private/StorySessionComponent.cpp(241)
+#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(246)
+#: Source/MyProject/Private/StorySessionComponent.cpp(246)
 msgctxt "FinalTake,InvalidSegment"
 msgid "The recorded turn is invalid."
 msgstr "La grabación del turno no es válida."
 
 #. Key:	AssembleFailed
-#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(276)
-#: Source/MyProject/Private/StorySessionComponent.cpp(276)
+#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(281)
+#: Source/MyProject/Private/StorySessionComponent.cpp(281)
 msgctxt "FinalTake,AssembleFailed"
 msgid "Could not assemble the movie."
 msgstr "No se pudo montar la película."
 
 #. Key:	InvalidStoryResults
-#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(279)
-#: Source/MyProject/Private/StorySessionComponent.cpp(279)
+#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(284)
+#: Source/MyProject/Private/StorySessionComponent.cpp(284)
 msgctxt "FinalTake,InvalidStoryResults"
 msgid "Could not calculate the story results."
 msgstr "No se pudo calcular el resultado de la historia."
 
 #. Key:	PossessionLost
-#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(291)
-#: Source/MyProject/Private/StorySessionComponent.cpp(291)
+#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(296)
+#: Source/MyProject/Private/StorySessionComponent.cpp(296)
 msgctxt "FinalTake,PossessionLost"
 msgid "Lost control of the character."
 msgstr "Se perdió el control del personaje."
 
 #. Key:	RecorderCancelled
-#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(294)
-#: Source/MyProject/Private/StorySessionComponent.cpp(294)
+#. SourceLocation:	Source/MyProject/Private/StorySessionComponent.cpp(299)
+#: Source/MyProject/Private/StorySessionComponent.cpp(299)
 msgctxt "FinalTake,RecorderCancelled"
 msgid "Another system cancelled the recording."
 msgstr "Otro sistema canceló la grabación."
@@ -1085,8 +1127,8 @@ msgid "Distract the guard or help the police. Your last turn can change who gets
 msgstr "Distrae al guardia o ayuda a la policía. Tu último turno puede cambiar quién se queda con el dinero."
 
 #. Key:	StudioFlowManager.6bb6936865
-#. SourceLocation:	Source/MyProject/Private/StudioFlowManager.cpp(318)
-#: Source/MyProject/Private/StudioFlowManager.cpp(318)
+#. SourceLocation:	Source/MyProject/Private/StudioFlowManager.cpp(333)
+#: Source/MyProject/Private/StudioFlowManager.cpp(333)
 msgctxt "FinalTakeUI,StudioFlowManager.6bb6936865"
 msgid "Could not load the starting level."
 msgstr "No se pudo cargar el nivel inicial."
@@ -1154,201 +1196,236 @@ msgctxt "FinalTakeUI,StudioFlowTypes.Lines.fecb10209b"
 msgid "Next actor!"
 msgstr "¡Siguiente actor!"
 
-#. Key:	Error
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(147)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(147)
-msgctxt "StudioUI,Error"
-msgid "The director needs a moment."
-msgstr "El director necesita un momento."
-
-#. Key:	AudioHint
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(156)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(156)
-msgctxt "StudioUI,AudioHint"
-msgid "Adjust the mix for this game session. Music, sound effects and the director use these levels."
-msgstr "Ajusta la música, los efectos, el ambiente, la interfaz y la voz del director. También puedes cambiar el idioma."
-
-#. Key:	NextRole
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(160)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(160)
-msgctxt "StudioUI,NextRole"
-msgid "TAKE {0}/3 - {1}\n{2}\n\nWardrobe opens in {3} seconds."
-msgstr "TOMA {0}/3 - {1}\n{2}\n\nEl camerino abre en {3} segundos."
-
-#. Key:	WrapBody
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(161)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(161)
-msgctxt "StudioUI,WrapBody"
-msgid "All three performances are in the can. Your movie premiere is about to begin."
-msgstr "Las tres actuaciones están grabadas. El estreno está por comenzar."
-
-#. Key:	NextStoryRole
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(164)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(164)
-msgctxt "FinalTake,NextStoryRole"
-msgid "Round {0}/2 · Turn {1}/6 · {2}\n{3}\n\nNext character in {4} s."
-msgstr "Ronda {0}/2 · Turno {1}/6 · {2}\n{3}\n\nSiguiente personaje en {4} s."
-
-#. Key:	StoryWrap
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(165)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(165)
-msgctxt "FinalTake,StoryWrap"
-msgid "All six performances are ready. Let the premiere begin!"
-msgstr "Las seis actuaciones están listas. ¡Que empiece el estreno!"
-
-#. Key:	RoleBrief
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(177)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(177)
-msgctxt "StudioUI,RoleBrief"
-msgid "{0}. {1}: {2}"
-msgstr "{0}. {1}: {2}"
-
-#. Key:	Level
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(186)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(186)
-msgctxt "StudioUI,Level"
-msgid "{0}: {1}%"
-msgstr "{0}: {1}%"
-
-#. Key:	Tagline
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(23)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(23)
-msgctxt "StudioUI,Tagline"
-msgid "One actor. Three roles. One questionable movie."
-msgstr "Un actor. Tres papeles. Una película cuestionable."
-
-#. Key:	IntroControlsStory
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(24)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(24)
-msgctxt "StudioUI,IntroControlsStory"
-msgid "BEFORE THE CAMERA ROLLS\nWardrobe: up to 30 seconds per character, only in round one. Ready starts early.\nSix turns of up to 10 seconds; the next actor inherits your consequences.\nWASD / Mouse: move / look | Space: jump | E: interact / grab\nQ: drop | Left click: throw | T: Cut | 1-5: gestures | Z X C V B N: sounds\nYour current objective and full controls stay visible while recording."
-msgstr "ANTES DE QUE RUEDE LA CÁMARA\nVestuario: hasta 30 segundos por personaje, solo en la primera ronda. Listo comienza antes.\nSeis turnos de hasta 10 segundos; el siguiente actor hereda tus consecuencias.\nWASD / Ratón: mover / mirar | Espacio: saltar | E: interactuar / agarrar\nQ: soltar | Clic izquierdo: lanzar | T: ¡Corten! | 1-5: gestos | Z X C V B N: sonidos\nEl objetivo actual y los controles permanecen visibles al grabar."
-
-#. Key:	How
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(25)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(25)
-msgctxt "StudioUI,How"
-msgid "How to Play"
-msgstr "Cómo jugar"
-
-#. Key:	Play
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(25)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(25)
-msgctxt "StudioUI,Play"
-msgid "Play"
-msgstr "Jugar"
-
-#. Key:	StartGame
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(25)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(25)
-msgctxt "StudioUI,StartGame"
-msgid "Start Game"
-msgstr "Comenzar"
-
-#. Key:	Credits
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(26)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(26)
-msgctxt "StudioUI,Credits"
-msgid "Credits"
-msgstr "Créditos"
-
-#. Key:	Settings
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(26)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(26)
-msgctxt "StudioUI,Settings"
-msgid "Settings"
-msgstr "Ajustes"
-
-#. Key:	Quit
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(27)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(27)
-msgctxt "StudioUI,Quit"
-msgid "Quit"
-msgstr "Salir"
-
-#. Key:	Start
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(27)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(27)
-msgctxt "StudioUI,Start"
-msgid "Choose My Costume"
-msgstr "Elegir mi vestuario"
-
-#. Key:	Back
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(28)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(28)
-msgctxt "StudioUI,Back"
-msgid "Back"
-msgstr "Volver"
-
-#. Key:	Next
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(28)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(28)
-msgctxt "StudioUI,Next"
-msgid "NEXT ACTOR"
-msgstr "SIGUIENTE ACTOR"
-
-#. Key:	Wrap
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(29)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(29)
-msgctxt "StudioUI,Wrap"
-msgid "THAT'S A WRAP!"
-msgstr "¡TERMINAMOS!"
-
-#. Key:	Effects
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(30)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(30)
-msgctxt "StudioUI,Effects"
-msgid "Effects / Director"
-msgstr "Efectos / Director"
-
-#. Key:	Master
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(30)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(30)
-msgctxt "StudioUI,Master"
-msgid "Master"
-msgstr "General"
-
-#. Key:	Music
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(30)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(30)
-msgctxt "StudioUI,Music"
-msgid "Music"
-msgstr "Música"
-
-#. Key:	Ambient
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(31)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(31)
-msgctxt "StudioUI,Ambient"
-msgid "Ambience"
-msgstr "Ambiente"
-
-#. Key:	InterfaceAudio
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(31)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(31)
-msgctxt "StudioUI,InterfaceAudio"
-msgid "Interface"
-msgstr "Interfaz"
+#. Key:	OneMovieInfo
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(112)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(112)
+msgctxt "FinalUI,OneMovieInfo"
+msgid "BANK COMEDY\n1 player · 3 roles · 6 turns"
+msgstr "COMEDIA EN EL BANCO\n1 jugador · 3 papeles · 6 turnos"
 
 #. Key:	LanguageLabel
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(79)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(79)
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(121)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(121)
 msgctxt "StudioUI,LanguageLabel"
 msgid "Language / Idioma"
 msgstr "Language / Idioma"
 
 #. Key:	EnglishLanguage
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(81)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(81)
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(123)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(123)
 msgctxt "StudioUI,EnglishLanguage"
 msgid "English"
 msgstr "English"
 
 #. Key:	SpanishLanguage
-#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(81)
-#: Source/MyProject/Private/StudioFlowWidget.cpp(81)
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(123)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(123)
 msgctxt "StudioUI,SpanishLanguage"
 msgid "Español"
 msgstr "Español"
+
+#. Key:	StartMovie
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(126)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(126)
+msgctxt "FinalUI,StartMovie"
+msgid "Start Movie"
+msgstr "Comenzar película"
+
+#. Key:	StudioHeading
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(187)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(187)
+msgctxt "FinalUI,StudioHeading"
+msgid "MOVIE STUDIO"
+msgstr "ESTUDIO CINEMATOGRÁFICO"
+
+#. Key:	Error
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(192)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(192)
+msgctxt "StudioUI,Error"
+msgid "The director needs a moment."
+msgstr "El director necesita un momento."
+
+#. Key:	HubBrief
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(198)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(198)
+msgctxt "FinalUI,HubBrief"
+msgid "{0}\n\n{1}"
+msgstr "{0}\n\n{1}"
+
+#. Key:	HubDescription
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(198)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(198)
+msgctxt "FinalUI,HubDescription"
+msgid "One player, three roles, six chaotic acting turns. Create your own bank robbery movie."
+msgstr "Un jugador, tres papeles y seis turnos caóticos. Crea tu propia película de un robo al banco."
+
+#. Key:	AudioHint
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(201)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(201)
+msgctxt "StudioUI,AudioHint"
+msgid "Adjust the mix for this game session. Music, sound effects and the director use these levels."
+msgstr "Ajusta la música, los efectos, el ambiente, la interfaz y la voz del director. También puedes cambiar el idioma."
+
+#. Key:	NextRole
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(205)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(205)
+msgctxt "StudioUI,NextRole"
+msgid "TAKE {0}/3 - {1}\n{2}\n\nWardrobe opens in {3} seconds."
+msgstr "TOMA {0}/3 - {1}\n{2}\n\nEl camerino abre en {3} segundos."
+
+#. Key:	WrapBody
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(206)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(206)
+msgctxt "StudioUI,WrapBody"
+msgid "All three performances are in the can. Your movie premiere is about to begin."
+msgstr "Las tres actuaciones están grabadas. El estreno está por comenzar."
+
+#. Key:	NextStoryRole
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(209)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(209)
+msgctxt "FinalTake,NextStoryRole"
+msgid "Round {0}/2 · Turn {1}/6 · {2}\n{3}\n\nNext character in {4} s."
+msgstr "Ronda {0}/2 · Turno {1}/6 · {2}\n{3}\n\nSiguiente personaje en {4} s."
+
+#. Key:	StoryWrap
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(210)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(210)
+msgctxt "FinalTake,StoryWrap"
+msgid "All six performances are ready. Let the premiere begin!"
+msgstr "Las seis actuaciones están listas. ¡Que empiece el estreno!"
+
+#. Key:	RoleBrief
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(222)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(222)
+msgctxt "StudioUI,RoleBrief"
+msgid "{0}. {1}: {2}"
+msgstr "{0}. {1}: {2}"
+
+#. Key:	Level
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(231)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(231)
+msgctxt "StudioUI,Level"
+msgid "{0}: {1}%"
+msgstr "{0}: {1}%"
+
+#. Key:	Tagline
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(27)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(27)
+msgctxt "StudioUI,Tagline"
+msgid "One actor. Three roles. One questionable movie."
+msgstr "Un actor. Tres papeles. Una película cuestionable."
+
+#. Key:	IntroControlsStory
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(28)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(28)
+msgctxt "StudioUI,IntroControlsStory"
+msgid "BEFORE THE CAMERA ROLLS\nWardrobe: up to 30 seconds per character, only in round one. Ready starts early.\nSix turns of up to 10 seconds; the next actor inherits your consequences.\nWASD / Mouse: move / look | Space: jump | E: interact / grab\nQ: drop | Left click: throw | T: Cut | 1-5: gestures | Z X C V B N: sounds\nYour current objective and full controls stay visible while recording."
+msgstr "ANTES DE QUE RUEDE LA CÁMARA\nVestuario: hasta 30 segundos por personaje, solo en la primera ronda. Listo comienza antes.\nSeis turnos de hasta 10 segundos; el siguiente actor hereda tus consecuencias.\nWASD / Ratón: mover / mirar | Espacio: saltar | E: interactuar / agarrar\nQ: soltar | Clic izquierdo: lanzar | T: ¡Corten! | 1-5: gestos | Z X C V B N: sonidos\nEl objetivo actual y los controles permanecen visibles al grabar."
+
+#. Key:	How
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(29)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(29)
+msgctxt "StudioUI,How"
+msgid "How to Play"
+msgstr "Cómo jugar"
+
+#. Key:	Play
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(29)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(29)
+msgctxt "StudioUI,Play"
+msgid "Play"
+msgstr "Jugar"
+
+#. Key:	StartGame
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(29)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(29)
+msgctxt "StudioUI,StartGame"
+msgid "Start Game"
+msgstr "Comenzar"
+
+#. Key:	Credits
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(30)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(30)
+msgctxt "StudioUI,Credits"
+msgid "Credits"
+msgstr "Créditos"
+
+#. Key:	Settings
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(30)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(30)
+msgctxt "StudioUI,Settings"
+msgid "Settings"
+msgstr "Ajustes"
+
+#. Key:	Quit
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(31)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(31)
+msgctxt "StudioUI,Quit"
+msgid "Quit"
+msgstr "Salir"
+
+#. Key:	Start
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(31)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(31)
+msgctxt "StudioUI,Start"
+msgid "Choose My Costume"
+msgstr "Elegir mi vestuario"
+
+#. Key:	Back
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(32)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(32)
+msgctxt "StudioUI,Back"
+msgid "Back"
+msgstr "Volver"
+
+#. Key:	Next
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(32)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(32)
+msgctxt "StudioUI,Next"
+msgid "NEXT ACTOR"
+msgstr "SIGUIENTE ACTOR"
+
+#. Key:	Wrap
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(33)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(33)
+msgctxt "StudioUI,Wrap"
+msgid "THAT'S A WRAP!"
+msgstr "¡TERMINAMOS!"
+
+#. Key:	Effects
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(34)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(34)
+msgctxt "StudioUI,Effects"
+msgid "Effects / Director"
+msgstr "Efectos / Director"
+
+#. Key:	Master
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(34)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(34)
+msgctxt "StudioUI,Master"
+msgid "Master"
+msgstr "General"
+
+#. Key:	Music
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(34)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(34)
+msgctxt "StudioUI,Music"
+msgid "Music"
+msgstr "Música"
+
+#. Key:	Ambient
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(35)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(35)
+msgctxt "StudioUI,Ambient"
+msgid "Ambience"
+msgstr "Ambiente"
+
+#. Key:	InterfaceAudio
+#. SourceLocation:	Source/MyProject/Private/StudioFlowWidget.cpp(35)
+#: Source/MyProject/Private/StudioFlowWidget.cpp(35)
+msgctxt "StudioUI,InterfaceAudio"
+msgid "Interface"
+msgstr "Interfaz"
 
 #. Key:	Dance
 #. SourceLocation:	Source/MyProject/Private/StudioLanguageSubsystem.cpp(46)
@@ -1428,193 +1505,200 @@ msgid "Failure"
 msgstr "Fracaso"
 
 #. Key:	UnifiedWardrobeWidget.3510866e16
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(152)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(152)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(161)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(161)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.3510866e16"
 msgid "FINAL TAKE  /  CASTING SHEET"
-msgstr "ONE MAN STUDIO  /  FICHA DE REPARTO"
+msgstr "FINAL TAKE  /  FICHA DE REPARTO"
 
 #. Key:	UnifiedWardrobeWidget.d9f0d7528a
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(153)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(153)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(162)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(162)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.d9f0d7528a"
 msgid "ACTOR WARDROBE"
 msgstr "CAMERINO DEL ACTOR"
 
 #. Key:	UnifiedWardrobeWidget.1302ceb294
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(172)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(172)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(183)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(183)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.1302ceb294"
 msgid "●  CASTING"
 msgstr "●  EN CASTING"
 
 #. Key:	UnifiedWardrobeWidget.969e2cc476
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(189)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(189)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(200)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(200)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.969e2cc476"
 msgid "LEFT"
 msgstr "IZQUIERDA"
 
 #. Key:	UnifiedWardrobeWidget.95253203f7
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(193)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(193)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(204)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(204)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.95253203f7"
 msgid "RIGHT"
 msgstr "DERECHA"
 
 #. Key:	UnifiedWardrobeWidget.Names.62be7f5142
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(202)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(202)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(215)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(215)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.Names.62be7f5142"
 msgid "Eyes"
 msgstr "Ojos"
 
 #. Key:	UnifiedWardrobeWidget.Names.748d59f0b5
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(202)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(202)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(215)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(215)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.Names.748d59f0b5"
 msgid "Eyebrows"
 msgstr "Cejas"
 
 #. Key:	UnifiedWardrobeWidget.Names.8b89346ec1
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(202)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(202)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(215)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(215)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.Names.8b89346ec1"
 msgid "Mouth"
 msgstr "Boca"
 
 #. Key:	UnifiedWardrobeWidget.Names.8f57bd6132
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(202)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(202)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(215)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(215)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.Names.8f57bd6132"
 msgid "Skin"
 msgstr "Piel"
 
 #. Key:	UnifiedWardrobeWidget.Names.72a83add2c
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(203)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(203)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(216)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(216)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.Names.72a83add2c"
 msgid "Objects"
 msgstr "Objetos"
 
 #. Key:	UnifiedWardrobeWidget.Names.9d3045a4d1
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(203)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(203)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(216)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(216)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.Names.9d3045a4d1"
 msgid "Hats"
-msgstr "Sombreros"
+msgstr "Gorros"
 
 #. Key:	UnifiedWardrobeWidget.Names.d31d367bc5
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(203)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(203)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(216)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(216)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.Names.d31d367bc5"
 msgid "Clothing"
 msgstr "Ropa"
 
 #. Key:	UnifiedWardrobeWidget.Names.f3b50cd53c
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(203)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(203)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(216)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(216)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.Names.f3b50cd53c"
 msgid "Accessories"
 msgstr "Accesorios"
 
 #. Key:	UnifiedWardrobeWidget.ac66d21b47
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(220)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(220)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(242)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(242)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.ac66d21b47"
 msgid "LEFT HAND"
 msgstr "MANO IZQUIERDA"
 
 #. Key:	UnifiedWardrobeWidget.d6afc6a304
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(224)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(224)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(246)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(246)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.d6afc6a304"
 msgid "RIGHT HAND"
 msgstr "MANO DERECHA"
 
 #. Key:	UnifiedWardrobeWidget.995f2d9ddf
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(241)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(241)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(259)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(259)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.995f2d9ddf"
 msgid "RESET"
 msgstr "RESTABLECER"
 
 #. Key:	UnifiedWardrobeWidget.16c79c5fdd
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(245)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(245)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(263)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(263)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.16c79c5fdd"
 msgid "RANDOMIZE"
 msgstr "ALEATORIO"
 
 #. Key:	UnifiedWardrobeWidget.aa7a094e7b
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(247)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(247)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(265)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(265)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.aa7a094e7b"
 msgid "READY!"
 msgstr "¡LISTO!"
 
 #. Key:	UnifiedWardrobeWidget.6eef664840
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(458)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(458)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(462)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(462)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.6eef664840"
 msgid "None"
 msgstr "Ninguno"
 
 #. Key:	UnifiedWardrobeWidget.Names.32576f4fed
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(48)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(48)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(49)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(49)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.Names.32576f4fed"
 msgid "Purple"
 msgstr "Morado"
 
 #. Key:	UnifiedWardrobeWidget.Names.37619fc130
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(48)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(48)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(49)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(49)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.Names.37619fc130"
 msgid "White"
 msgstr "Blanco"
 
 #. Key:	UnifiedWardrobeWidget.Names.be96829112
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(48)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(48)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(49)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(49)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.Names.be96829112"
 msgid "Sky blue"
 msgstr "Azul cielo"
 
 #. Key:	UnifiedWardrobeWidget.Names.3526f607bc
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(49)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(49)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(50)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(50)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.Names.3526f607bc"
 msgid "Yellow"
 msgstr "Amarillo"
 
 #. Key:	UnifiedWardrobeWidget.Names.54076359fd
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(49)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(49)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(50)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(50)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.Names.54076359fd"
 msgid "Pink"
 msgstr "Rosa"
 
 #. Key:	UnifiedWardrobeWidget.Names.933bf21afd
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(49)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(49)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(50)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(50)
 msgctxt "FinalTakeUI,UnifiedWardrobeWidget.Names.933bf21afd"
 msgid "Green"
 msgstr "Verde"
 
+#. Key:	WardrobeRoundCompact
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(538)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(538)
+msgctxt "FinalUI,WardrobeRoundCompact"
+msgid "Round {0}/2\nTurn {1}/6"
+msgstr "Ronda {0}/2\nTurno {1}/6"
+
 #. Key:	Turn
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(534)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(534)
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(538)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(538)
 msgctxt "WardrobeUI,Turn"
 msgid "TURN {0} / {1}"
 msgstr "TURNO {0} / {1}"
 
-#. Key:	YourScene
-#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(550)
-#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(550)
-msgctxt "WardrobeUI,YourScene"
-msgid "YOUR SCENE\n{0}"
-msgstr "TU ESCENA\n{0}"
+#. Key:	WardrobeInstruction
+#. SourceLocation:	Source/MyProject/Private/UnifiedWardrobeWidget.cpp(553)
+#: Source/MyProject/Private/UnifiedWardrobeWidget.cpp(553)
+msgctxt "FinalUI,WardrobeInstruction"
+msgid "Your scene: {0}"
+msgstr "Tu escena: {0}"
 
 #. Key:	WardrobeComponent.ce56b2f6ed
 #. SourceLocation:	Source/MyProject/Private/WardrobeComponent.cpp(287)
@@ -2058,8 +2142,8 @@ msgid "READY - START TAKE"
 msgstr "LISTO - COMENZAR TOMA"
 
 #. Key:	Controls
-#. SourceLocation:	Source/MyProject/Public/ObjectiveHUDWidget.h(44)
-#: Source/MyProject/Public/ObjectiveHUDWidget.h(44)
+#. SourceLocation:	Source/MyProject/Public/ObjectiveHUDWidget.h(47)
+#: Source/MyProject/Public/ObjectiveHUDWidget.h(47)
 msgctxt "MovieHUD,Controls"
 msgid "WASD Move | Mouse Look | Space Jump\nE Pick up / use prop | R Restart movie\nGESTURES\n1 Dance | 2 Point | 3 Scared\n4 Faint | 5 Arrest\nSOUNDS\nZ Evil laugh | X Scream | C Cry\nV Siren | B Kiss | N Failure"
 msgstr "WASD Mover | Ratón Mirar | Espacio Saltar\nE Agarrar / usar objeto | R Reiniciar película\nGESTOS\n1 Bailar | 2 Señalar | 3 Asustarse\n4 Desmayarse | 5 Arrestar\nSONIDOS\nZ Risa malvada | X Grito | C Llanto\nV Sirena | B Beso | N Fracaso"
