@@ -21,6 +21,8 @@
 #include "Components/SceneComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Engine/World.h"
+#include "Misc/CommandLine.h"
+#include "Misc/Parse.h"
 
 UStorySessionComponent::UStorySessionComponent() { PrimaryComponentTick.bCanEverTick=false; }
 bool UStorySessionComponent::IsCurrent() const { return bActive && Movie && Movie->bSessionActive && Movie->SessionGeneration==Generation; }
@@ -45,6 +47,7 @@ bool UStorySessionComponent::ConfigureActor(APawn* Pawn)
     auto* Acting=Ensure.operator()<UActingComponent>();
     auto* Wardrobe=Ensure.operator()<UWardrobeComponent>();
     auto* Recorder=Ensure.operator()<UActingRecorderComponent>();
+    Recorder->bCompactStationarySamples=!FParse::Param(FCommandLine::Get(),TEXT("StoryNoCompaction"));Recorder->bCapturePresentationSnapshot=false;
     Ensure.operator()<UPropInteractionComponent>();
     if(Movie->CharacterProfile)
     {
@@ -80,7 +83,17 @@ bool UStorySessionComponent::BeginSession()
     if(!Movie || !Movie->bSessionActive || Movie->SessionRoles.Num()!=3 || !Movie->Controller.IsValid()) { return false; }
     if(!FMath::IsFinite(Movie->StoryWardrobeDurationSeconds) || Movie->StoryWardrobeDurationSeconds<0 ||
        !FMath::IsFinite(Movie->StoryTurnDurationSeconds) || Movie->StoryTurnDurationSeconds<.05 || Movie->StoryTurnDurationSeconds>10.0) { return false; }
+    SessionScenario=FStoryScenarioDefinition();const UStoryScenarioData* Chosen=nullptr;TSet<FName> ScenarioIds;
+    for(const UStoryScenarioData* Entry:Movie->ScenarioLibrary)
+    {
+        if(!Entry || !Entry->Definition.IsValid() || ScenarioIds.Contains(Entry->Definition.Id)){return false;}ScenarioIds.Add(Entry->Definition.Id);
+        if((!Chosen && Movie->SelectedScenarioId.IsNone()) || Entry->Definition.Id==Movie->SelectedScenarioId){Chosen=Entry;}
+    }
+    if(Chosen){SessionScenario=Chosen->Definition;}
+    if(!Movie->SelectedScenarioId.IsNone() && SessionScenario.Id!=Movie->SelectedScenarioId){return false;}
+    if(!SessionScenario.InitialMoneyOwner.IsNone() && !Movie->SessionRoles.ContainsByPredicate([this](const auto& Role){return Role.RoleId==SessionScenario.InitialMoneyOwner;})){return false;}
     bActive=true; Generation=Movie->SessionGeneration; OriginalPawn=Movie->LivePerformer;
+    bOriginalCompact=Movie->Recorder->bCompactStationarySamples;bOriginalCaptureSnapshot=Movie->Recorder->bCapturePresentationSnapshot;
     bOriginalActorTick=OriginalPawn->IsActorTickEnabled();
     if(auto* Character=::Cast<ACharacter>(OriginalPawn)) { bOriginalPauseAnims=Character->GetMesh()->bPauseAnims; }
     bOriginalAutoCamera=Movie->Controller->bAutoManageActiveCameraTarget;
@@ -205,7 +218,13 @@ void UStorySessionComponent::BeginRecording()
     Movie->SceneClock->ResumeClock(); Movie->PhaseStartWorldTime=GetWorld()->GetTimeSeconds();
     Movie->ChangeState(EMovieState::Recording);
     if(!IsCurrent() || Generation!=ExpectedGeneration || Movie->State!=EMovieState::Recording) { return; }
+    SetDetentionInput(SceneState.DetainedUntil.FindRef(Member.ActorId)>Movie->GetSceneTimeSeconds());
     Movie->ObjectiveManager->BeginTake(Movie->LivePerformer,Movie->LiveActingComponent);
+    if(Segments.IsEmpty() && SceneEvents.IsEmpty())
+    {
+        if(SessionScenario.bAlarmInitiallyActive){AddSceneEvent(EStoryEventType::AlarmChanged,NAME_None,NAME_None,TEXT("On"));}
+        if(SessionScenario.bGuardInitiallyDistracted){SetNPCMood(TEXT("NPC.Guard"),EStoryNPCMood::Distracted,GuardDistractionSeconds,TEXT("Dance"));}
+    }
     if(bFirstOutfit){InitializeOutfitProps();}SetPhysicsPaused(false);
     if(!SceneState.MoneyOwner().IsNone()){ApplyMoneyPresentation(SceneState.MoneyOwner(),SceneState.FindObject(SceneState.MoneyObjectId)->WorldTransform,false);}else{UpdateHandSuppression(false);}
     Movie->ShowObjectiveHUD(); Movie->LiveActingComponent->SetLiveActionsEnabled(true);
@@ -234,6 +253,7 @@ void UStorySessionComponent::CaptureFinishedSegment(const FActingRecording& Reco
     TimelineDuration=Segment.EndSeconds;
     Movie->LivePerformer->SetActorTransform(Segment.FinalTransform,false,nullptr,ETeleportType::TeleportPhysics);
     Movie->SceneClock->PauseClockAt(TimelineDuration);
+    SetDetentionInput(false);
     for(const auto& Object:SceneState.Objects){if(Object.OwnerId.IsNone()){ObserveProp(Object.ObjectId,true);}}SetPhysicsPaused(true);
     AddSceneEvent(EStoryEventType::PresentationStop,Movie->GetCurrentRoleId(),NAME_None,TEXT("TurnEnd"));
     Movie->SetPerformerFrozen(true); FreezeCast(true);
@@ -333,6 +353,7 @@ void UStorySessionComponent::PreparePremiere()
 void UStorySessionComponent::ResetSession(bool bRestorePlayer)
 {
     if(!bActive) { return; }
+    SetDetentionInput(false);
     ClearScene();
     if(Movie) { Movie->SetPerformerFrozen(false); }
     for(auto& Member:Cast)
@@ -347,6 +368,7 @@ void UStorySessionComponent::ResetSession(bool bRestorePlayer)
         Movie->LivePerformer=OriginalPawn; Movie->Recorder=OriginalPawn->FindComponentByClass<UActingRecorderComponent>();
         Movie->LiveWardrobeComponent=OriginalPawn->FindComponentByClass<UWardrobeComponent>(); Movie->LiveActingComponent=OriginalPawn->FindComponentByClass<UActingComponent>();
         Movie->Movement=OriginalPawn->GetMovementComponent(); Movie->bFrozen=true;
+        Movie->Recorder->bCompactStationarySamples=bOriginalCompact;Movie->Recorder->bCapturePresentationSnapshot=bOriginalCaptureSnapshot;
         OriginalPawn->SetActorTickEnabled(bOriginalActorTick);
         if(auto* Character=::Cast<ACharacter>(OriginalPawn)) { Character->GetMesh()->bPauseAnims=bOriginalPauseAnims; }
         if(auto* Character=::Cast<ACharacter>(OriginalPawn);Character && OriginalControls.bSaved)

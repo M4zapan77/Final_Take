@@ -56,7 +56,7 @@ void UMovieDirectorComponent::Update(float DeltaSeconds)
     const double Time=Movie->GetSceneTimeSeconds();
     while(Story->SceneEvents.IsValidIndex(EventCursor) && Story->SceneEvents[EventCursor].TimeSeconds<=Time)
     {
-        const auto& Event=Story->SceneEvents[EventCursor++];const int32 Priority=EventPriority(Event.Type);
+        const auto& Event=Story->SceneEvents[EventCursor++];const int32* ConfiguredPriority=Story->SessionScenario.CinematicPriorities.Find(Event.Type);const int32 Priority=ConfiguredPriority?*ConfiguredPriority:EventPriority(Event.Type);
         if(Priority>0 && Priority>=PendingPriority){Pending=Event;PendingPriority=Priority;}
     }
     const bool bCanCut=Time-LastCutTime>=FMath::Max(MinimumShotSeconds,CutCooldownSeconds);
@@ -74,7 +74,7 @@ void UMovieDirectorComponent::Update(float DeltaSeconds)
     bool bTracking=false;FVector Focus;
     if(CurrentShot==TEXT("Rail") && Rail.IsValid() && Rail->GetRailCamera())
     {
-        auto* Source=Rail->GetRailCamera()->GetCameraComponent();const FVector Center=Story->Cast.IsEmpty()?FVector::ZeroVector:Story->Cast[0].InitialTransform.GetLocation()+FVector(180,0,0);
+        auto* Source=Rail->GetRailCamera()->GetCameraComponent();const FVector Center=Story->Cast.IsEmpty()?FVector::ZeroVector:Story->Cast[0].InitialTransform.GetLocation()-Story->SessionScenario.RoleOffsets[0];
         if(IsVisible(Source->GetComponentLocation(),Center))
         {Location=Source->GetComponentLocation();Rotation=(Center-Location).Rotation();FOV=Source->FieldOfView;}
     }

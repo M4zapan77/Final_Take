@@ -1,5 +1,6 @@
 #include "StartupTravelSubsystem.h"
 #include "StudioFlowManager.h"
+#include "StudioFlowWidget.h"
 #include "StudioGameMode.h"
 #include "WardrobeWidget.h"
 #include "Components/Button.h"
@@ -109,6 +110,11 @@ void UStartupTravelSubsystem::RemoveBlack(bool bRestoreFocus)
         UWardrobeWidget* Wardrobe=Flow->Movie->ActiveWardrobeWidget;
         FInputModeGameAndUI Input; Input.SetWidgetToFocus(Wardrobe->TakeWidget()); Input.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock); Player->SetInputMode(Input);
         if (Wardrobe->ReadyButton) { Wardrobe->ReadyButton->SetKeyboardFocus(); } else { Wardrobe->SetKeyboardFocus(); }
+    }
+    else if(Flow && Flow->IsFrontEndOpen() && Flow->ActiveWidget)
+    {
+        FInputModeUIOnly Input;Input.SetWidgetToFocus(Flow->ActiveWidget->TakeWidget());Input.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
+        Player->SetInputMode(Input);Player->bShowMouseCursor=true;Flow->ActiveWidget->FocusPage();
     }
     else { Player->SetInputMode(FInputModeGameOnly()); Player->bShowMouseCursor=false; }
 }

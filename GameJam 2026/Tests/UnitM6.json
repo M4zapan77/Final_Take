@@ -1,0 +1,267 @@
+{
+  "succeeded": 64,
+  "succeededWithWarnings": 1,
+  "failed": 0,
+  "tests": [
+    {
+      "fullTestPath": "OneManStudio.Acting.RecorderSampling",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Acting.RecordingData",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Acting.ReplayCollision",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Acting.SharedClockAndReplay",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.ActingEvents.AnimationPresentation",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.ActingEvents.CaptureAndGating",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.ActingEvents.DataValidation",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.ActingEvents.PlaybackTimeline",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.ActingEvents.RecordedFootstepTimeline",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.ActingEvents.ThreeTakeMovieAndRestart",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Customization.FacialSnapshotIsolation",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Customization.ProductionAssetsAndHands",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Customization.ProfileAndCatalog",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Customization.TwoHandsAndReset",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Customization.UnifiedInterfaceAndGuard",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.FinalAssets.ReferenceAttachmentsAndSkinMasks",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.FinalAssets.SuppliedAudioAndSnapshot",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Localization.LiveFTextAndValidation",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Movie.CharacterMovementLifecycle",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Movie.ConcurrentRecordingAndReplay",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Movie.DefaultTimingAndFinishedRestart",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Movie.RestartAndCleanup",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Movie.ThreeTakeLoop",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Objectives.AllRolesAndScores",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Objectives.DefinitionsAndValidation",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Objectives.NativeHUD",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Objectives.PropReplayAndReset",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Objectives.ProximityAtActionTime",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Objectives.RobberRules",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Objectives.ZeroAverageAndCap",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Objectives.ZonesAndBadConfiguration",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.PhysicalProps.CompactChronologicalTrajectory",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.PhysicalProps.HoldPresentationAndRestore",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.PhysicalProps.ThrowAndPause",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Premiere.Configuration",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Premiere.RestartAndCleanup",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Premiere.ResultsButtons",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Premiere.TitleAndReplay",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Premiere.ZeroScore",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Ratings.AwardsAndTies",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Ratings.ConditionalAwards",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Ratings.ScoreThresholds",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Startup.DefaultsAndValidation",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Startup.MissingMediaFallback",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Startup.SkipAndInputGuard",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Startup.TravelSessionState",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Story.BriefDetentionInputCleanup",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Story.ChronologicalAssembly",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Story.EarlyCutAndClock",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Story.FrozenScenarioAndValidation",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Story.MoneyOwnershipAndContext",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Story.MovementCameraRestoration",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Story.NarrativeScoreValidation",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Story.OutcomesAndNoActionFilm",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Story.SixPersistentTurns",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Studio.FrontEndAndIntroduction",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Studio.RestartAndInputOwnership",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Studio.TransitionsReplayAndMenu",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Studio.UIAudioAndConfiguration",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Wardrobe.CatalogAndFallback",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Wardrobe.ExistingSkeleton",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Wardrobe.NativeWidget",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Wardrobe.ReadyAndTimeout",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Wardrobe.SnapshotIsolation",
+      "state": "Success"
+    },
+    {
+      "fullTestPath": "OneManStudio.Wardrobe.ThreeTakeOutfits",
+      "state": "Success"
+    }
+  ]
+}

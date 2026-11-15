@@ -1,0 +1,375 @@
+{
+  "files": [
+    {
+      "path": "Content/LevelPrototyping/Interactable/Door/Assets/Meshes/SM_Door.uasset",
+      "bytes": 59168,
+      "reason": "unreferenced template package",
+      "sha256": "26a7645f404dda23a1e4c8d20d7940473f208fee1d5f679581bc3842aa6d7499"
+    },
+    {
+      "path": "Content/LevelPrototyping/Interactable/Door/Assets/Meshes/SM_DoorFrame_Corner.uasset",
+      "bytes": 87039,
+      "reason": "unreferenced template package",
+      "sha256": "e5eb7f498c362682323ea61161e3e16f5a309e9123bf0ac73cfedd0606ae8d6c"
+    },
+    {
+      "path": "Content/LevelPrototyping/Interactable/Door/Assets/Meshes/SM_DoorFrame_Edge.uasset",
+      "bytes": 68880,
+      "reason": "unreferenced template package",
+      "sha256": "7fa5c503cf28ae0764f2e515e1579dcce9ee9575c7b3304bdc50ab19194c3e3e"
+    },
+    {
+      "path": "Content/LevelPrototyping/Interactable/Door/BP_DoorFrame.uasset",
+      "bytes": 452952,
+      "reason": "unreferenced template package",
+      "sha256": "75e7a6fb96adce1861523995692e5ff5800a03e292a8bdf895d7d200663cfd02"
+    },
+    {
+      "path": "Content/LevelPrototyping/Interactable/JumpPad/Assets/Materials/MI_GlowNT.uasset",
+      "bytes": 4145,
+      "reason": "unreferenced template package",
+      "sha256": "6fd40bc38bfea9418fa54fe365732a1219e615169542a0a4d2e1d518318c864b"
+    },
+    {
+      "path": "Content/LevelPrototyping/Interactable/JumpPad/Assets/Materials/M_GradientGlow.uasset",
+      "bytes": 17587,
+      "reason": "unreferenced template package",
+      "sha256": "c1b29ad29c2eac3dba6dd6a90aed9de8c6147a13b6288a42bd73fe14b78970a8"
+    },
+    {
+      "path": "Content/LevelPrototyping/Interactable/JumpPad/Assets/Materials/M_SimpleGlow.uasset",
+      "bytes": 15213,
+      "reason": "unreferenced template package",
+      "sha256": "e6098242541b34be6aba19ea1fbfa35107f891e8f55d30d4061aa11b065b8bd8"
+    },
+    {
+      "path": "Content/LevelPrototyping/Interactable/JumpPad/Assets/Meshes/SM_CircularBand.uasset",
+      "bytes": 70608,
+      "reason": "unreferenced template package",
+      "sha256": "97fbe3da2d907279dcbfbbf285e1b111ceb8d5f4a1c9d6bd48fcb8defc86842b"
+    },
+    {
+      "path": "Content/LevelPrototyping/Interactable/JumpPad/Assets/Meshes/SM_CircularGlow.uasset",
+      "bytes": 71705,
+      "reason": "unreferenced template package",
+      "sha256": "6ddb27bf7020f4980d3f8435cb0928fb48b32c1ab3ea24bac7e253435081bf6b"
+    },
+    {
+      "path": "Content/LevelPrototyping/Interactable/JumpPad/Assets/NS_JumpPad.uasset",
+      "bytes": 795908,
+      "reason": "unreferenced template package",
+      "sha256": "2e76849cbb139160e5e73c226fe6aaa66a63fbf75cbd1213f871cca65e409817"
+    },
+    {
+      "path": "Content/LevelPrototyping/Interactable/JumpPad/BP_JumpPad.uasset",
+      "bytes": 94431,
+      "reason": "unreferenced template package",
+      "sha256": "f2391d7202ae0a6253c37a3748bd5e199f4ebfa3009a671a188b3a30aa257f4c"
+    },
+    {
+      "path": "Content/LevelPrototyping/Interactable/Target/Assets/SM_TargetBaseMesh.uasset",
+      "bytes": 283425,
+      "reason": "unreferenced template package",
+      "sha256": "378ace355b8f5e71a12e459d9f8cf4958626884142fec34be8630db6d8412cad"
+    },
+    {
+      "path": "Content/LevelPrototyping/Interactable/Target/BP_WobbleTarget.uasset",
+      "bytes": 46553,
+      "reason": "unreferenced template package",
+      "sha256": "240597303b2a40daf25ea58ad412da988b3b66a3db78e077eb58aca66aee26f8"
+    },
+    {
+      "path": "Content/LevelPrototyping/Materials/MI_PrototypeGrid_Gray_02.uasset",
+      "bytes": 11922,
+      "reason": "unreferenced template package",
+      "sha256": "fa0f2a06a7d937127d7d737c13bacb3f8fe88c8e0479f5e6b7cda81fd225d077"
+    },
+    {
+      "path": "Content/LevelPrototyping/Materials/MI_PrototypeGrid_TopDark.uasset",
+      "bytes": 11957,
+      "reason": "unreferenced template package",
+      "sha256": "838034e5afc7ab3a70bfff6de2e1237aa02337fb423e95c1b536b3e30c61c982"
+    },
+    {
+      "path": "Content/LevelPrototyping/Meshes/SM_ChamferCube.uasset",
+      "bytes": 119178,
+      "reason": "unreferenced template package",
+      "sha256": "59d3675438e3972b4bf249a2a6aec3aaebf7b45f82867364e64998881253814f"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/accesorios_cara/accesorios_cara/Meshy_AI_Black_Masquerade_Mask_20261114_texture_fbx.zip",
+      "bytes": 47499649,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "ee13b504f9cf78a987bd5534d22835b50b299a14b432dac2569244fada6e3d6d"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/accesorios_cara/accesorios_cara/Meshy_AI_Curled_Black_Mustache_20261114_texture_fbx.zip",
+      "bytes": 29850950,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "dd56f29008f41f09e21888c1f7e8abbb6d87bc55c4c531b5fd6351b6d2ba6fd3"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/accesorios_cara/accesorios_cara/Meshy_AI_Horizon_Shades_20260527_texture_fbx.zip",
+      "bytes": 21814711,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "5e685cc2e7001d10e92c14c1b7e98305b344a2f49829733c197a0543c4704354"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/accesorios_cara/accesorios_cara/Meshy_AI_Round_Black_Glasses_20261114_texture_fbx.zip",
+      "bytes": 50668408,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "6370b03dc58e0c8af247b7dc2f3684efd191c71e9eeb5b58373fe387581ff3d7"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Banco/Banquito_Amarillo.zip",
+      "bytes": 14990947,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "a9caf091d61cdb44522907279372b641c6e16c24a880460a79aaa64039d06a70"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Banco/Escritorio.zip",
+      "bytes": 27810993,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "0f7c0a0a9832f371f87062f77ef6e059c52bc07f37d2af1e97b513e82b8d6f49"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Banco/Estanteria.zip",
+      "bytes": 4587719,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "f13e42463d8cb93299c3f7c62d7f345ff97cf09b2d2417101b667f5811d74ec7"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Banco/Laptop.zip",
+      "bytes": 13408546,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "7b6422f7bf477dbce731f1e7050680a5f5cf1eff2233f508c7d25d02d6232f0b"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Banco/Libreta.zip",
+      "bytes": 16076422,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "bcbad32887b1c0efdc89ede19180b99f196fb06a895d78b1b4ac6943cefd6da1"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Banco/Libro.zip",
+      "bytes": 6086269,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "16a1b8f0bb43aa9106f6fd7aebdddbb043554842a6d12f285e9c5de19521e7b6"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Banco/Libros_Estanteria.zip",
+      "bytes": 8774681,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "1ebd9032b6d817357e36608d7a68c764b7791455a3ca85d714f65e9fc19b7df0"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Banco/Libros_Estanteria2.zip",
+      "bytes": 55865002,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "1af35f48b2cdee01739b3f765b62e80c9e6f8fcb81815a95aba501556b5bab44"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Banco/Planta_1.zip",
+      "bytes": 18507839,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "f78efde1ab8a6ba26dbdfe6db488abc534af3d69c39b98eba4492f1134b41f7e"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Banco/Planta_2.zip",
+      "bytes": 5586217,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "b48d75531c6e9c2d844f9797f6a206c4915255bb3810761e01d1b5df99ce9258"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Banco/Planta_3.zip",
+      "bytes": 34936636,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "01f3796eac008ddaf422e77cb1c2c8a23e22d0a3ef8c72253729316ccee8b722"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Banco/Planta_4.zip",
+      "bytes": 18845154,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "a7102f5b1afa98f11cfea058c81203b3b133a64b467114be29cfc74a9793c77e"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Banco/Puerta_Vidrio.zip",
+      "bytes": 19618338,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "53fd4104c98d9cd04dc9b2386ea8eb68cb806693c81fb9d275cb8a162cb38249"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Banco/Sillon_Amarillo.zip",
+      "bytes": 13123342,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "1b88d53256a79d01555eebaf82d53f1b52898c4c6db79c07817ffa5e71c41449"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Banco/Sillon_Azul.zip",
+      "bytes": 20931552,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "a9972ee3e7d95e82fd9f01e9f9af345cff31e99d958ab0232760502ec9ba41d8"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Banco/Tasa.zip",
+      "bytes": 4271884,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "35bd8484485831e06e0868e1262b66320cbd48fd98eaf084bc53e9912cd05a66"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Cine/Camara1_Alta.zip",
+      "bytes": 39850547,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "4eb191f38283b75490de5ca6987a430349f881b75759dbd15f6c884a00ce8161"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Cine/Camara2_Baja.zip",
+      "bytes": 13129985,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "dec1739de6c9a5df7a58eb3ba738a74207a14571ab395372909102395d774a20"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Cine/CamaraMan.zip",
+      "bytes": 5694096,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "91736c45762bfe936198c84e904e0cc09e7e2ba9b8f801dd56d137f035ac3cf4"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Cine/Clapperboard.zip",
+      "bytes": 23675209,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "e9e5b9e1b45e2ee916b49fa93c75bd0f1b2496e0850033f623c08f14a5a6f6ea"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Cine/Lampara_Colgante1.zip",
+      "bytes": 19730524,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "02adb457837fbc1f03f8f445d543941413d7dea05989a1de006a77e523a0b439"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Cine/Palomitas.zip",
+      "bytes": 38277599,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "dda46b41ebcb0c8da653a26de61fe7fc539b1f7c09ac397f8baf47016b66d8b4"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Cine/Silla_Director.zip",
+      "bytes": 24314599,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "ec6f367336123be51d172840aa8c6a0827fc5005d34fb3da40712c74af8bbc66"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/banco_obj/Objetos/Sala_Cine/Sillon_SalaDeCine.zip",
+      "bytes": 9747293,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "aac1bd40f3b6185baff20c65c328f60026d2fa47a8a63e221965eea4a8c98121"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/gorros/gorros/Meshy_AI_Black_Ribbed_Beanie_20261114_texture_fbx.zip",
+      "bytes": 94044612,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "19d482b65811a440fa8b2f935542346379edccae98906617a34393b94a34fee6"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/gorros/gorros/Meshy_AI_Blue_Police_Cap_20261114_texture_fbx.zip",
+      "bytes": 59048036,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "fd00edd14d9b109c58a67d0660b768b8d6fb4aad5fa70d1def51832d1eccb63e"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/gorros/gorros/Meshy_AI_Pink_Princess_Crown_20261114_texture_fbx.zip",
+      "bytes": 77331767,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "87af8dac0e62500a526a125936cadd51fe88590fb4061142996bc30ea058653c"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/gorros/gorros/Meshy_AI_Sleepy_Rubber_Rooster_20261114_texture_fbx.zip",
+      "bytes": 43394644,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "791c56e02dc40c1e4813c9969f65b3f52fbf276dad42985bdee163e61f22ef65"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/gorros/gorros/Meshy_AI_Starband_Cowboy_Hat_20261114_texture_fbx.zip",
+      "bytes": 112060778,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "c1709b6e8af0050f1983632723953484b8dd8c9b5d002172e1f6096faa97d64f"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/objetos/objetos/tripo_convert_05bff37b-db39-4b91-9888-582628814629.zip",
+      "bytes": 66378114,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "edc3b9452da69528dcbf454d57ee1bd0f42a6804013894d52cbeddd9c5ab3223"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/objetos/objetos/tripo_convert_31e9699b-3a38-4dc0-b943-a3185a69eb52.zip",
+      "bytes": 66453059,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "29265e61a1a7474dfaa9dfba01f8200c8ba69646ddf064a0a9fcbac7bd540d77"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/objetos/objetos/tripo_convert_60f95aea-3003-4049-a614-134a927b7678 (1).zip",
+      "bytes": 64696420,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "38244ce6caa012463dad1e7a37221712d916662077bd5e436a73cfbf885aaa2f"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/objetos/objetos/tripo_convert_65198062-da54-45ae-93f8-ef725f92b69a.zip",
+      "bytes": 65617847,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "3d69fc49ede50277ae6c82d07470912cfded91922374bcb9645a476728175faf"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/objetos/objetos/tripo_convert_a8a2c8ac-1b5e-427c-be56-c128e619f024.zip",
+      "bytes": 63446882,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "0f20e76ed4f85377883962b09301c6ad0488bb996fa66807f1bd318858dcb0a6"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/objetos/objetos/tripo_convert_a9924939-45e6-4c92-a5a2-e63997f1e45b.zip",
+      "bytes": 67950828,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "7dc900270bbe167d85ad92c380e65a8f3c862d254ba0b540b63c7fd3f6e43019"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/ropas/ropas/02fb7247-51c5-49a6-9a9f-fd73ced12d63.zip",
+      "bytes": 60549126,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "e5e53e81a945567bf20a043e192bb16ab49eb1b3476ab67460e8bc8575c08908"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/ropas/ropas/0629c304-a677-4f78-ae5e-94e9cc986cd0.zip",
+      "bytes": 65460537,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "1cfeabea6601858eababd5ce38312e3f5b21edd30dfd881396a4eb6019e8727a"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/ropas/ropas/4f3481c9-217e-4099-8616-6da4b754cdf1.zip",
+      "bytes": 72659835,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "5e53773b12cafe75ee9c6a1b6e2431b7d76589c3e7f7a94323f52ad7ba0b6bd5"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/ropas/ropas/6d76132a-0c8e-4bcb-a0a1-b36021bf45dc.zip",
+      "bytes": 22746194,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "08c77720ee4234097db5704c178e0af5c6b14b4848773956d97e0018fb8c2275"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/ropas/ropas/b29c29ff-69d0-4a1a-b1d8-60050e8aebfb.zip",
+      "bytes": 72272811,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "f9c234441040158aa1d569b9cd0b75db4924b31348c0f98d83d6646150ee87cb"
+    },
+    {
+      "path": "SourceArt/ProductionArt20261113/ropas/ropas/b37fff0d-485a-48f0-a3e1-53b35e664129.zip",
+      "bytes": 54374992,
+      "reason": "input archive duplicate; extracted reimport sources retained",
+      "sha256": "fe639010af1d352f0ce7cfc0cf8d28fbaf741a0ea12d469c8215e0911c014cd5"
+    }
+  ],
+  "count": 61,
+  "bytes": 1738372264,
+  "applied": true,
+  "recovery_archive": "C:\\Users\\diego\\OneDrive\\Documentos\\ChatGPT\\gamejam\\output\\recovery\\FINAL_TAKE_RemovedCandidates_20261115.zip",
+  "backup_crc_and_sha256_verified": true
+}

@@ -73,6 +73,8 @@ bool AStudioFlowManager::InitializeFlow(AMovieManager* Manager,APlayerController
     if (Travel && Travel->ConsumeGameplayIntent())
     {
         SetScreen(EStudioScreen::MovieIntroduction);
+        if(Movie->bUseChronologicalGameplay)
+        {SetMusic(Settings.IntroductionMusic?Settings.IntroductionMusic.Get():Settings.MenuMusic.Get());Travel->MarkGameplayReady();return EnsureWidget();}
         const bool bStarted=BeginIntroducedMovie();
         Travel->MarkGameplayReady();
         return bStarted;
@@ -255,6 +257,7 @@ bool AStudioFlowManager::ShowAudioSettings() { return ShowMenuPage(EStudioScreen
 bool AStudioFlowManager::BackToMenu()
 {
     if (!bInitialized || bNavigating || !IsFrontEndOpen() || Screen==EStudioScreen::MainMenu) { return false; }
+    if(Screen==EStudioScreen::MovieIntroduction && bStartupPresentation){return ReturnToMainMenu();}
     if (bStartupPresentation && !StartupVideos->IsHubInteractive()) { return false; }
     TGuardValue<bool> Guard(bNavigating,true); SetScreen(EStudioScreen::MainMenu); SetMusic(Settings.MenuMusic); PlayClick(); return true;
 }
@@ -321,6 +324,7 @@ FStudioFlowView AStudioFlowManager::GetView() const
     View.Synopsis=Settings.MovieSynopsis; View.HowToPlay=Settings.HowToPlay; View.Credits=Settings.Credits; View.Error=FlowError;
     if (Movie)
     {
+        if(Movie->bUseChronologicalGameplay){for(const UStoryScenarioData* Entry:Movie->ScenarioLibrary){if(Entry && (Movie->SelectedScenarioId.IsNone() || Entry->Definition.Id==Movie->SelectedScenarioId)){View.Synopsis=Entry->Definition.Synopsis;break;}}}
         View.MovieTitle=Movie->ResultsSettings.MovieTitle; View.CurrentRole=Movie->GetCurrentRoleName(); View.CurrentScript=Movie->GetCurrentScriptInstruction();
         View.RoundNumber=Movie->GetRoundNumber();View.bChronologicalMovie=Movie->IsChronologicalMovie();
         View.TakeNumber=Movie->GetCurrentTakeNumber(); View.RemainingSeconds=Movie->GetPhaseRemainingSeconds();

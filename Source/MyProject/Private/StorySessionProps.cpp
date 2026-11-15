@@ -17,16 +17,7 @@
 
 void FStoryPropTrack::Observe(double Time,const FTransform& Transform,bool bBoundary)
 {
-    if(!FMath::IsFinite(Time) || Time<0 || !Transform.IsValid() || (!Samples.IsEmpty() && Time<Samples.Last().TimeSeconds)){return;}
-    if(!Samples.IsEmpty())
-    {
-        auto& Last=Samples.Last();
-        if(FMath::IsNearlyEqual(Last.TimeSeconds,Time,1.e-8)){Last.WorldTransform=Transform;PendingHoldTime=Time;return;}
-        if(!bBoundary && Last.WorldTransform.Equals(Transform,.05)){PendingHoldTime=Time;return;}
-        if(PendingHoldTime>Last.TimeSeconds && PendingHoldTime<Time)
-        {auto Hold=Last;Hold.TimeSeconds=PendingHoldTime;Samples.Add(Hold);}
-    }
-    auto& Sample=Samples.AddDefaulted_GetRef();Sample.TimeSeconds=Time;Sample.WorldTransform=Transform;PendingHoldTime=Time;
+    FActingRecording::AppendPose(Samples,Time,Transform,PendingHoldTime,true,bBoundary);
 }
 bool FStoryPropTrack::Evaluate(double Time,FTransform& Out) const
 {
@@ -145,7 +136,7 @@ void UStorySessionComponent::ObserveProp(FName Id,bool bBoundary)
 bool UStorySessionComponent::GrabObject(FName Id)
 {
     auto* State=SceneState.FindObject(Id);const auto* Prop=PhysicalProps.Find(Id);
-    if(!CanAct() || !State || !Prop || !State->OwnerId.IsNone() || !IsReachable((*Prop)->GetOwner()->GetActorLocation(),(*Prop)->GetOwner())){return false;}
+    if(!CanAct() || !SessionScenario.AvailablePropActions.Contains(TEXT("Grab")) || !State || !Prop || !State->OwnerId.IsNone() || !IsReachable((*Prop)->GetOwner()->GetActorLocation(),(*Prop)->GetOwner())){return false;}
     const FName Role=Movie->GetCurrentRoleId();const bool Left=!GetHeldObject(Role).IsNone();if(Left && !GetHeldObject(Role,true).IsNone()){return false;}
     ObserveProp(Id,true);if(!(*Prop)->Hold(Movie->LivePerformer,Left)){return false;}State->OwnerId=Role;State->bLeftHand=Left;
     State->WorldTransform=(*Prop)->GetBodyTransform();AddSceneEvent(EStoryEventType::PropGrabbed,Role,Id,Role,State->WorldTransform,Left);UpdateHandSuppression(false);return true;
@@ -163,9 +154,9 @@ bool UStorySessionComponent::ReleaseObject(FName Id,bool bThrow)
 }
 bool UStorySessionComponent::ThrowHeldObject()
 {
-    if(!CanAct()){return false;}FName Id=GetHeldObject(Movie->GetCurrentRoleId());if(Id.IsNone()){Id=GetHeldObject(Movie->GetCurrentRoleId(),true);}return !Id.IsNone() && ReleaseObject(Id,true);
+    if(!CanAct() || !SessionScenario.AvailablePropActions.Contains(TEXT("Throw"))){return false;}FName Id=GetHeldObject(Movie->GetCurrentRoleId());if(Id.IsNone()){Id=GetHeldObject(Movie->GetCurrentRoleId(),true);}return !Id.IsNone() && ReleaseObject(Id,true);
 }
-void UStorySessionComponent::SetPhysicsPaused(bool Paused){for(auto& Pair:PhysicalProps){if(IsValid(Pair.Value)){Pair.Value->SetScenePaused(Paused);}}}
+void UStorySessionComponent::SetPhysicsPaused(bool Paused){if(Paused){QueuedImpacts.Reset();}for(auto& Pair:PhysicalProps){if(IsValid(Pair.Value)){Pair.Value->SetScenePaused(Paused);}}}
 void UStorySessionComponent::HandlePropImpact(UGrabbablePropComponent* Prop,AActor* Target,float Speed,const FVector& Location)
 {if(Prop && Target && CanAct() && Speed>=Prop->MinimumImpactSpeed){QueuedImpacts.Add({Prop->ObjectId,Target,Speed,Location});}}
 void UStorySessionComponent::UpdatePhysicalProps()
@@ -175,6 +166,7 @@ void UStorySessionComponent::UpdatePhysicalProps()
     {
         auto* Prop=Pair.Value.Get();auto* State=SceneState.FindObject(Pair.Key);if(!Prop || !State){continue;}Prop->UpdateCollisionIgnore(Time);
         if(!State->OwnerId.IsNone()){continue;}
+        if(Time<NextPropSampleTime){continue;}
         const FVector Position=Prop->GetOwner()->GetActorLocation();const FVector Floor=GroundLocation(Position,0);
         if(Position.ContainsNaN() || FVector::DistSquared2D(Position,SceneAnchor)>FMath::Square(1500.0) || Position.Z<Floor.Z-150 || Position.Z>Floor.Z+1400)
         {

@@ -1,5 +1,20 @@
 #include "ActingRecording.h"
 
+bool FActingRecording::AppendPose(TArray<FActingTransformSample>& Target,double Time,const FTransform& Transform,double& PendingHoldTime,bool Compact,bool Boundary)
+{
+    if(!FMath::IsFinite(Time) || Time<0 || !Transform.IsValid() || (!Target.IsEmpty() && Time<Target.Last().TimeSeconds)){return false;}
+    if(!Target.IsEmpty())
+    {
+        auto& Last=Target.Last();
+        // A manual stop can be a few ULPs after the fixed sample grid. Keep its
+        // exact endpoint so an event recorded at that instant remains in range.
+        if(FMath::IsNearlyEqual(Last.TimeSeconds,Time,1.e-8)){Last.TimeSeconds=Time;Last.WorldTransform=Transform;PendingHoldTime=Time;return true;}
+        if(Compact && !Boundary && Last.WorldTransform.Equals(Transform,.0001)){PendingHoldTime=Time;return true;}
+        if(Compact && PendingHoldTime>Last.TimeSeconds && PendingHoldTime<Time){auto Hold=Last;Hold.TimeSeconds=PendingHoldTime;Target.Add(Hold);}
+    }
+    auto& Sample=Target.AddDefaulted_GetRef();Sample.TimeSeconds=Time;Sample.WorldTransform=Transform;PendingHoldTime=Time;return true;
+}
+
 bool FActingRecording::IsValid() const
 {
     if (Samples.IsEmpty() || Samples[0].TimeSeconds != 0.0 || !ActingSettings.MeshRelativeTransform.IsValid() || !Appearance.IsValid())

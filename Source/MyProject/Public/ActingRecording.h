@@ -46,4 +46,6 @@ struct MYPROJECT_API FActingRecording
     bool Evaluate(double TimeSeconds, FTransform& OutTransform) const;
 
     static FTransform InterpolateTransforms(const FTransform& From, const FTransform& To, double Alpha);
+    /** Optional lossless idle-span compaction; retain the last idle instant before motion. */
+    static bool AppendPose(TArray<FActingTransformSample>& Target,double Time,const FTransform& Transform,double& PendingHoldTime,bool bCompact,bool bBoundary=false);
 };

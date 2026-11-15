@@ -1,0 +1,966 @@
+﻿{
+	"devices": [
+		{
+			"deviceName": "DR_PC",
+			"instance": "EBF165814C5C74074ECAF5969D765D03",
+			"instanceName": "DR_PC-41992",
+			"platform": "WindowsEditor",
+			"oSVersion": "Windows 11 (26H2) [10.0.26300.9818] ",
+			"model": "Default",
+			"gPU": "AMD Radeon(TM) 780M",
+			"cPUModel": "AMD Ryzen 7 7840HS w/ Radeon 780M Graphics     ",
+			"rAMInGB": 16,
+			"renderMode": "SM6",
+			"rHI": "",
+			"appInstanceLog": ""
+		}
+	],
+	"reportCreatedOn": "2026.11.15-17.12.16",
+	"succeeded": 65,
+	"succeededWithWarnings": 1,
+	"failed": 0,
+	"notRun": 0,
+	"inProcess": 0,
+	"totalDuration": 4.129575252532959,
+	"comparisonExported": false,
+	"comparisonExportDirectory": "",
+	"tests": [
+		{
+			"testDisplayName": "CompactIdleWithoutEarlyMotion",
+			"fullTestPath": "OneManStudio.Acting.CompactIdleWithoutEarlyMotion",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.035197902470827103,
+			"dateTime": "2026.11.15-17.12.10",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "RecorderSampling",
+			"fullTestPath": "OneManStudio.Acting.RecorderSampling",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.021188098937273026,
+			"dateTime": "2026.11.15-17.12.10",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "RecordingData",
+			"fullTestPath": "OneManStudio.Acting.RecordingData",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.014431100338697433,
+			"dateTime": "2026.11.15-17.12.10",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ReplayCollision",
+			"fullTestPath": "OneManStudio.Acting.ReplayCollision",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.02521209791302681,
+			"dateTime": "2026.11.15-17.12.10",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "SharedClockAndReplay",
+			"fullTestPath": "OneManStudio.Acting.SharedClockAndReplay",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.018036600202322006,
+			"dateTime": "2026.11.15-17.12.10",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "AnimationPresentation",
+			"fullTestPath": "OneManStudio.ActingEvents.AnimationPresentation",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.041507400572299957,
+			"dateTime": "2026.11.15-17.12.10",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "CaptureAndGating",
+			"fullTestPath": "OneManStudio.ActingEvents.CaptureAndGating",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.019378200173377991,
+			"dateTime": "2026.11.15-17.12.10",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "DataValidation",
+			"fullTestPath": "OneManStudio.ActingEvents.DataValidation",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.016623999923467636,
+			"dateTime": "2026.11.15-17.12.10",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "PlaybackTimeline",
+			"fullTestPath": "OneManStudio.ActingEvents.PlaybackTimeline",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.018496602773666382,
+			"dateTime": "2026.11.15-17.12.10",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "RecordedFootstepTimeline",
+			"fullTestPath": "OneManStudio.ActingEvents.RecordedFootstepTimeline",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.019543599337339401,
+			"dateTime": "2026.11.15-17.12.10",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ThreeTakeMovieAndRestart",
+			"fullTestPath": "OneManStudio.ActingEvents.ThreeTakeMovieAndRestart",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.062105398625135422,
+			"dateTime": "2026.11.15-17.12.10",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "FacialSnapshotIsolation",
+			"fullTestPath": "OneManStudio.Customization.FacialSnapshotIsolation",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.018376901745796204,
+			"dateTime": "2026.11.15-17.12.11",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ProductionAssetsAndHands",
+			"fullTestPath": "OneManStudio.Customization.ProductionAssetsAndHands",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.016796201467514038,
+			"dateTime": "2026.11.15-17.12.11",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ProfileAndCatalog",
+			"fullTestPath": "OneManStudio.Customization.ProfileAndCatalog",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.019933398813009262,
+			"dateTime": "2026.11.15-17.12.11",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "TwoHandsAndReset",
+			"fullTestPath": "OneManStudio.Customization.TwoHandsAndReset",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.01864590123295784,
+			"dateTime": "2026.11.15-17.12.11",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "UnifiedInterfaceAndGuard",
+			"fullTestPath": "OneManStudio.Customization.UnifiedInterfaceAndGuard",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.02388560026884079,
+			"dateTime": "2026.11.15-17.12.11",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ReferenceAttachmentsAndSkinMasks",
+			"fullTestPath": "OneManStudio.FinalAssets.ReferenceAttachmentsAndSkinMasks",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.015340898185968399,
+			"dateTime": "2026.11.15-17.12.11",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "SuppliedAudioAndSnapshot",
+			"fullTestPath": "OneManStudio.FinalAssets.SuppliedAudioAndSnapshot",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.016134101897478104,
+			"dateTime": "2026.11.15-17.12.11",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "LiveFTextAndValidation",
+			"fullTestPath": "OneManStudio.Localization.LiveFTextAndValidation",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 2.0686984062194824,
+			"dateTime": "2026.11.15-17.12.11",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "CharacterMovementLifecycle",
+			"fullTestPath": "OneManStudio.Movie.CharacterMovementLifecycle",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.069715701043605804,
+			"dateTime": "2026.11.15-17.12.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ConcurrentRecordingAndReplay",
+			"fullTestPath": "OneManStudio.Movie.ConcurrentRecordingAndReplay",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.020179998129606247,
+			"dateTime": "2026.11.15-17.12.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "DefaultTimingAndFinishedRestart",
+			"fullTestPath": "OneManStudio.Movie.DefaultTimingAndFinishedRestart",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.18853610754013062,
+			"dateTime": "2026.11.15-17.12.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "RestartAndCleanup",
+			"fullTestPath": "OneManStudio.Movie.RestartAndCleanup",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.030603900551795959,
+			"dateTime": "2026.11.15-17.12.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ThreeTakeLoop",
+			"fullTestPath": "OneManStudio.Movie.ThreeTakeLoop",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.0410940982401371,
+			"dateTime": "2026.11.15-17.12.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "AllRolesAndScores",
+			"fullTestPath": "OneManStudio.Objectives.AllRolesAndScores",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.054646000266075134,
+			"dateTime": "2026.11.15-17.12.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "DefinitionsAndValidation",
+			"fullTestPath": "OneManStudio.Objectives.DefinitionsAndValidation",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.016458898782730103,
+			"dateTime": "2026.11.15-17.12.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "NativeHUD",
+			"fullTestPath": "OneManStudio.Objectives.NativeHUD",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.018875401467084885,
+			"dateTime": "2026.11.15-17.12.13",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "PropReplayAndReset",
+			"fullTestPath": "OneManStudio.Objectives.PropReplayAndReset",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.02874390035867691,
+			"dateTime": "2026.11.15-17.12.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ProximityAtActionTime",
+			"fullTestPath": "OneManStudio.Objectives.ProximityAtActionTime",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.020729001611471176,
+			"dateTime": "2026.11.15-17.12.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "RobberRules",
+			"fullTestPath": "OneManStudio.Objectives.RobberRules",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.023651700466871262,
+			"dateTime": "2026.11.15-17.12.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ZeroAverageAndCap",
+			"fullTestPath": "OneManStudio.Objectives.ZeroAverageAndCap",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.0807390958070755,
+			"dateTime": "2026.11.15-17.12.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ZonesAndBadConfiguration",
+			"fullTestPath": "OneManStudio.Objectives.ZonesAndBadConfiguration",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.047127198427915573,
+			"dateTime": "2026.11.15-17.12.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "CompactChronologicalTrajectory",
+			"fullTestPath": "OneManStudio.PhysicalProps.CompactChronologicalTrajectory",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.015859898179769516,
+			"dateTime": "2026.11.15-17.12.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "HoldPresentationAndRestore",
+			"fullTestPath": "OneManStudio.PhysicalProps.HoldPresentationAndRestore",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.037359602749347687,
+			"dateTime": "2026.11.15-17.12.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ThrowAndPause",
+			"fullTestPath": "OneManStudio.PhysicalProps.ThrowAndPause",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.028464797884225845,
+			"dateTime": "2026.11.15-17.12.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "Configuration",
+			"fullTestPath": "OneManStudio.Premiere.Configuration",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.025853902101516724,
+			"dateTime": "2026.11.15-17.12.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "RestartAndCleanup",
+			"fullTestPath": "OneManStudio.Premiere.RestartAndCleanup",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.044599700719118118,
+			"dateTime": "2026.11.15-17.12.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ResultsButtons",
+			"fullTestPath": "OneManStudio.Premiere.ResultsButtons",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.2169291079044342,
+			"dateTime": "2026.11.15-17.12.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "TitleAndReplay",
+			"fullTestPath": "OneManStudio.Premiere.TitleAndReplay",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.032647300511598587,
+			"dateTime": "2026.11.15-17.12.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ZeroScore",
+			"fullTestPath": "OneManStudio.Premiere.ZeroScore",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.03288080170750618,
+			"dateTime": "2026.11.15-17.12.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "AwardsAndTies",
+			"fullTestPath": "OneManStudio.Ratings.AwardsAndTies",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.016931299120187759,
+			"dateTime": "2026.11.15-17.12.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ConditionalAwards",
+			"fullTestPath": "OneManStudio.Ratings.ConditionalAwards",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.015746399760246277,
+			"dateTime": "2026.11.15-17.12.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ScoreThresholds",
+			"fullTestPath": "OneManStudio.Ratings.ScoreThresholds",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.017015296965837479,
+			"dateTime": "2026.11.15-17.12.14",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "DefaultsAndValidation",
+			"fullTestPath": "OneManStudio.Startup.DefaultsAndValidation",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.01692890003323555,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "MissingMediaFallback",
+			"fullTestPath": "OneManStudio.Startup.MissingMediaFallback",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.018593199551105499,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "SkipAndInputGuard",
+			"fullTestPath": "OneManStudio.Startup.SkipAndInputGuard",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.019995197653770447,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "TravelSessionState",
+			"fullTestPath": "OneManStudio.Startup.TravelSessionState",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.016757696866989136,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "BriefDetentionInputCleanup",
+			"fullTestPath": "OneManStudio.Story.BriefDetentionInputCleanup",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.020620699971914291,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ChronologicalAssembly",
+			"fullTestPath": "OneManStudio.Story.ChronologicalAssembly",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.015974599868059158,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "EarlyCutAndClock",
+			"fullTestPath": "OneManStudio.Story.EarlyCutAndClock",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.020033400505781174,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "FrozenScenarioAndValidation",
+			"fullTestPath": "OneManStudio.Story.FrozenScenarioAndValidation",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.01976810023188591,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [
+				{
+					"event":
+					{
+						"type": "Warning",
+						"message": "LogMovieManager: Could not prepare the movie cast.",
+						"context": "log",
+						"artifact": "00000000000000000000000000000000"
+					},
+					"filename": "",
+					"lineNumber": -1,
+					"timestamp": "2026.11.15-17.12.15"
+				}
+			],
+			"warnings": 1,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "MoneyOwnershipAndContext",
+			"fullTestPath": "OneManStudio.Story.MoneyOwnershipAndContext",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.021113000810146332,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "MovementCameraRestoration",
+			"fullTestPath": "OneManStudio.Story.MovementCameraRestoration",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.0220148004591465,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "NarrativeScoreValidation",
+			"fullTestPath": "OneManStudio.Story.NarrativeScoreValidation",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.01555899903178215,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "OutcomesAndNoActionFilm",
+			"fullTestPath": "OneManStudio.Story.OutcomesAndNoActionFilm",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.037189900875091553,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "SixPersistentTurns",
+			"fullTestPath": "OneManStudio.Story.SixPersistentTurns",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.040451500564813614,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "FrontEndAndIntroduction",
+			"fullTestPath": "OneManStudio.Studio.FrontEndAndIntroduction",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.019260302186012268,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "RestartAndInputOwnership",
+			"fullTestPath": "OneManStudio.Studio.RestartAndInputOwnership",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.018048200756311417,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "TransitionsReplayAndMenu",
+			"fullTestPath": "OneManStudio.Studio.TransitionsReplayAndMenu",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.031831599771976471,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "UIAudioAndConfiguration",
+			"fullTestPath": "OneManStudio.Studio.UIAudioAndConfiguration",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.018524400889873505,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "CatalogAndFallback",
+			"fullTestPath": "OneManStudio.Wardrobe.CatalogAndFallback",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.019513901323080063,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ExistingSkeleton",
+			"fullTestPath": "OneManStudio.Wardrobe.ExistingSkeleton",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.018471799790859222,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "NativeWidget",
+			"fullTestPath": "OneManStudio.Wardrobe.NativeWidget",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.021148402243852615,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ReadyAndTimeout",
+			"fullTestPath": "OneManStudio.Wardrobe.ReadyAndTimeout",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.020493097603321075,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "SnapshotIsolation",
+			"fullTestPath": "OneManStudio.Wardrobe.SnapshotIsolation",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.019533298909664154,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		},
+		{
+			"testDisplayName": "ThreeTakeOutfits",
+			"fullTestPath": "OneManStudio.Wardrobe.ThreeTakeOutfits",
+			"state": "Success",
+			"deviceInstance": [
+				"EBF165814C5C74074ECAF5969D765D03"
+			],
+			"duration": 0.042828802019357681,
+			"dateTime": "2026.11.15-17.12.15",
+			"entries": [],
+			"warnings": 0,
+			"errors": 0,
+			"artifacts": []
+		}
+	]
+}

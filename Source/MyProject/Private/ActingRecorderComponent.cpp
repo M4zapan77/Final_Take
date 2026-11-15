@@ -46,11 +46,11 @@ bool UActingRecorderComponent::StartRecording(double MaxDurationSeconds, bool bU
     Recording.Events.Reset();
     Recording.ActingSettings = FActingPlaybackSettings();
     Recording.Appearance = FRecordedAppearance();
-    if (UWardrobeComponent* Wardrobe = GetOwner()->FindComponentByClass<UWardrobeComponent>())
+    if (UWardrobeComponent* Wardrobe = GetOwner()->FindComponentByClass<UWardrobeComponent>();Wardrobe && bCapturePresentationSnapshot)
     {
         Recording.Appearance = Wardrobe->CaptureAppearance();
     }
-    if (UActingComponent* Acting = GetOwner()->FindComponentByClass<UActingComponent>())
+    if (UActingComponent* Acting = GetOwner()->FindComponentByClass<UActingComponent>();Acting && bCapturePresentationSnapshot)
     {
         Recording.ActingSettings = Acting->CapturePlaybackSettings();
     }
@@ -64,6 +64,7 @@ bool UActingRecorderComponent::StartRecording(double MaxDurationSeconds, bool bU
     PreviousObservedTime = 0.0;
     PreviousObservedTransform = GetOwner()->GetActorTransform();
     NextSampleIndex = 1;
+    PendingHoldTime=0;bUseCompaction=bCompactStationarySamples;
 
     FActingTransformSample& FirstSample = Recording.Samples.AddDefaulted_GetRef();
     FirstSample.TimeSeconds = 0.0;
@@ -86,6 +87,7 @@ bool UActingRecorderComponent::StopRecording()
 void UActingRecorderComponent::ClearRecording()
 {
     bRecording = false;
+    PendingHoldTime=0;
     SetComponentTickEnabled(false);
     Recording.Samples.Reset();
     Recording.Events.Reset();
@@ -158,9 +160,7 @@ void UActingRecorderComponent::UpdateRecording(bool bStopRequested)
     double NextSampleTime = NextSampleIndex * SampleIntervalSeconds;
     while (NextSampleTime <= EndTime)
     {
-        FActingTransformSample& Sample = Recording.Samples.AddDefaulted_GetRef();
-        Sample.TimeSeconds = NextSampleTime;
-        Sample.WorldTransform = TransformAtTime(NextSampleTime);
+        FActingRecording::AppendPose(Recording.Samples,NextSampleTime,TransformAtTime(NextSampleTime),PendingHoldTime,bUseCompaction);
         NextSampleTime = ++NextSampleIndex * SampleIntervalSeconds;
     }
 
@@ -168,16 +168,7 @@ void UActingRecorderComponent::UpdateRecording(bool bStopRequested)
     if (bFinished)
     {
         // A manual stop need not land on the 20 Hz grid. Preserve its exact final pose/time.
-        if (EndTime > Recording.Samples.Last().TimeSeconds)
-        {
-            FActingTransformSample& LastSample = Recording.Samples.AddDefaulted_GetRef();
-            LastSample.TimeSeconds = EndTime;
-            LastSample.WorldTransform = TransformAtTime(EndTime);
-        }
-        else
-        {
-            Recording.Samples.Last().WorldTransform = TransformAtTime(EndTime);
-        }
+        FActingRecording::AppendPose(Recording.Samples,EndTime,TransformAtTime(EndTime),PendingHoldTime,bUseCompaction,true);
     }
 
     PreviousObservedTime = ObservedTime;

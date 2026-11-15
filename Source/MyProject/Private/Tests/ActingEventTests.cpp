@@ -175,6 +175,7 @@ bool FActingEventCaptureTest::RunTest(const FString& Parameters)
     const FActingRecording Saved = Context.Recorder->GetRecording();
     TestEqual(TEXT("Every accepted live event appended once"), Saved.Events.Num(), 12);
     TestTrue(TEXT("Completed take is valid"), Saved.IsValid());
+    TestTrue(TEXT("Manual stop includes events between floating-point grid endpoints"), Saved.GetDurationSeconds() >= Saved.Events.Last().TimeSeconds);
     TestEqual(TEXT("Time zero is exact"), Saved.Events[0].TimeSeconds, 0.0);
     TestEqual(TEXT("Sound timestamp is independent of the 20 Hz movement grid"), Saved.Events[1].TimeSeconds, PausedTime);
     Context.Acting->StopAllActions();

@@ -131,5 +131,5 @@ void UObjectiveHUDWidget::RefreshObjectives()
 
 void UObjectiveHUDWidget::NativeTick(const FGeometry& Geometry, float Delta)
 {
-    Super::NativeTick(Geometry,Delta); RefreshObjectives();
+    Super::NativeTick(Geometry,Delta);if(!Movie.IsValid() || Movie->ActiveObjectiveHUD!=this){RefreshObjectives();}
 }

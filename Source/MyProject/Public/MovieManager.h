@@ -30,6 +30,7 @@ class UStudioCharacterProfile;
 class UStudioAudioProfile;
 class UStorySessionComponent;
 class UMovieDirectorComponent;
+class UStoryScenarioData;
 struct FKey;
 
 UENUM(BlueprintType)
@@ -118,6 +119,9 @@ public:
     UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Movie|Story") FKey ThrowObjectKey=EKeys::LeftMouseButton;
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Movie|Story") TObjectPtr<UStorySessionComponent> StorySession;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Movie|Director") TObjectPtr<UMovieDirectorComponent> MovieDirector;
+    UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Movie|Scenarios") TArray<TObjectPtr<UStoryScenarioData>> ScenarioLibrary;
+    /** None selects the first valid library entry, or the built-in verified bank scenario. */
+    UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Movie|Scenarios") FName SelectedScenarioId;
     UFUNCTION(BlueprintPure, Category="Movie|Story") bool IsChronologicalMovie() const;
     UFUNCTION(BlueprintPure, Category="Movie|Story") int32 GetRoundNumber() const;
     UFUNCTION(BlueprintCallable, Category="Movie|Story") bool EndCurrentTurn();

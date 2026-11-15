@@ -17,6 +17,7 @@ public:
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Movie") TSubclassOf<AMovieManager> MovieManagerClass;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Movie") bool bStartMovieAutomatically = true;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Studio") bool bUseFrontEnd = true;
+    UPROPERTY(EditDefaultsOnly,BlueprintReadWrite,Category="Studio") bool bUseChronologicalStory=true;
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Studio") TSubclassOf<AStudioFlowManager> StudioFlowClass;
     UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Transient, Category="Studio") TObjectPtr<AStudioFlowManager> ActiveStudioFlow;
     UFUNCTION(BlueprintPure, Category="Studio") bool ShouldUseFrontEnd() const;

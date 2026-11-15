@@ -6,6 +6,7 @@
 #include "Engine/StaticMesh.h"
 #include "GameFramework/Character.h"
 #include "GameFramework/Actor.h"
+#include "Engine/World.h"
 
 UGrabbablePropComponent::UGrabbablePropComponent(){PrimaryComponentTick.bCanEverTick=false;}
 bool UGrabbablePropComponent::InitializeBody()
@@ -80,11 +81,16 @@ void UGrabbablePropComponent::PresentWorld(const FTransform& Transform)
 bool UGrabbablePropComponent::Release(AActor* Holder,bool bThrow,FVector Direction,double SceneTime)
 {
     if(!bInitialized || !Holder || (bThrow && !bCanThrow)){return false;}
-    GetOwner()->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);Direction=Direction.GetSafeNormal();if(Direction.IsNearlyZero()){Direction=Holder->GetActorForwardVector();}
+    Direction=Direction.GetSafeNormal();if(Direction.IsNearlyZero()){Direction=Holder->GetActorForwardVector();}
     const float Radius=Cast<ACharacter>(Holder)?Cast<ACharacter>(Holder)->GetCapsuleComponent()->GetScaledCapsuleRadius():45;
     const float Clearance=Radius+PhysicsBody->Bounds.BoxExtent.Size2D()+15;
     const FVector Flat=FVector(Direction.X,Direction.Y,0).GetSafeNormal();
-    GetOwner()->SetActorLocation(Holder->GetActorLocation()+Flat*Clearance+FVector(0,0,20),false,nullptr,ETeleportType::TeleportPhysics);
+    const FVector Sides[]={Flat,FVector(-Flat.Y,Flat.X,0),FVector(Flat.Y,-Flat.X,0),-Flat};FVector ReleaseLocation;bool FoundSpace=false;
+    FCollisionQueryParams Query(SCENE_QUERY_STAT(ScenePropRelease),false,GetOwner());Query.AddIgnoredActor(Holder);
+    for(FVector Side:Sides)
+    {const FVector Candidate=Holder->GetActorLocation()+Side*Clearance+FVector(0,0,20);if(!GetWorld()->OverlapBlockingTestByProfile(Candidate,PhysicsBody->GetComponentQuat(),CollisionProfile,FCollisionShape::MakeBox(PhysicsBody->GetScaledBoxExtent()),Query)){ReleaseLocation=Candidate;FoundSpace=true;break;}}
+    if(!FoundSpace){return false;}
+    GetOwner()->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);GetOwner()->SetActorLocation(ReleaseLocation,false,nullptr,ETeleportType::TeleportPhysics);
     PhysicsBody->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);GetOwner()->SetActorEnableCollision(true);PhysicsBody->SetSimulatePhysics(true);
     PhysicsBody->SetPhysicsLinearVelocity(FVector::ZeroVector);PhysicsBody->SetPhysicsAngularVelocityInRadians(FVector::ZeroVector);
     if(bThrow){PhysicsBody->AddImpulse((Direction+FVector(0,0,.18)).GetSafeNormal()*FMath::Clamp(ThrowSpeed,200.f,1200.f),NAME_None,true);}

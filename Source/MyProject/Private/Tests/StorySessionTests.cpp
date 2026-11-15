@@ -196,4 +196,28 @@ bool FStoryMovementCameraLifecycle::RunTest(const FString& Parameters)
     TestTrue(TEXT("Original physics interaction restored"),Move->bEnablePhysicsInteraction);TestEqual(TEXT("Original arm length restored"),Arm->TargetArmLength,520.f);
     TestTrue(TEXT("Original camera setup preserved"),!Arm->bEnableCameraLag && Arm->SocketOffset.Equals(FVector(0,10,20),.001));return true;
 }
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FStoryScenarioSnapshotTest,"OneManStudio.Story.FrozenScenarioAndValidation",EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
+bool FStoryScenarioSnapshotTest::RunTest(const FString& Parameters)
+{
+    StorySessionTests::FWorld C;auto* Data=NewObject<UStoryScenarioData>(C.Movie);Data->Definition.Id=TEXT("Bank.TestSnapshot");Data->Definition.bAlarmInitiallyActive=true;Data->Definition.bGuardInitiallyDistracted=true;
+    C.Movie->ScenarioLibrary={Data};C.Movie->SelectedScenarioId=Data->Definition.Id;
+    TestTrue(TEXT("Validated scenario starts"),C.Movie->StartMovie());
+    const FVector Offset=Data->Definition.MoneyOffset;Data->Definition.MoneyOffset=FVector(800,800,0);Data->Definition.bAlarmInitiallyActive=false;
+    TestTrue(TEXT("Active movie has its own position snapshot"),C.Movie->StorySession->SessionScenario.MoneyOffset.Equals(Offset));TestTrue(TEXT("Initial alarm snapshot applied"),C.Movie->StorySession->SceneState.bAlarmActive);
+    C.Movie->ReadyForTake(C.Movie->PreparationId);C.Tick(.08f);
+    TestTrue(TEXT("Configured distraction begins on the shared timeline"),C.Movie->StorySession->SceneState.NPCs[1].Mood==EStoryNPCMood::Distracted);
+    TestTrue(TEXT("Initial condition is recorded once"),C.Movie->StorySession->SceneEvents.ContainsByPredicate([](const auto& E){return E.Type==EStoryEventType::NPCStateChanged && E.TargetId==TEXT("NPC.Guard");}));
+    C.Movie->StopMovie();Data->Definition.RoleOffsets.Reset();
+    TestFalse(TEXT("Invalid layout is rejected before actors spawn"),C.Movie->StartMovie());TestTrue(TEXT("Bad configuration leaves no cast"),C.Movie->StorySession->Cast.IsEmpty());
+    return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FStoryDetentionInputTest,"OneManStudio.Story.BriefDetentionInputCleanup",EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
+bool FStoryDetentionInputTest::RunTest(const FString& Parameters)
+{
+    StorySessionTests::FWorld C;C.Movie->StoryTurnDurationSeconds=2;C.Movie->StartMovie();C.Movie->StorySession->SceneState.DetainedUntil.Add(C.Movie->GetCurrentRoleId(),.25);
+    C.Movie->ReadyForTake(C.Movie->PreparationId);C.Tick(.05f);TestTrue(TEXT("A retained brief detention stops movement input"),C.Player->IsMoveInputIgnored());
+    C.Tick(.3f);TestFalse(TEXT("Shared scene time releases detention"),C.Player->IsMoveInputIgnored());
+    C.Movie->StorySession->SceneState.DetainedUntil.Add(C.Movie->GetCurrentRoleId(),1);C.Tick(.05f);TestTrue(TEXT("Second consequence holds its own input lock"),C.Player->IsMoveInputIgnored());
+    C.Movie->StopMovie();TestFalse(TEXT("Leaving story releases its detention lock"),C.Player->IsMoveInputIgnored());return true;
+}
 #endif

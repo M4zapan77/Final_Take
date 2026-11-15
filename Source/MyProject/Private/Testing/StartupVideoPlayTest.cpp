@@ -228,6 +228,12 @@ namespace StartupVideoPlayTest
     void FRun::Gameplay(AStudioFlowManager* Flow,UWorld* World)
     {
         auto* Travel=UStartupTravelSubsystem::Find(World); if (!Travel || Travel->IsGameplayTransitionActive()) { return; }
+        if(Flow->Screen==EStudioScreen::MovieIntroduction && Flow->ActiveWidget)
+        {
+            // Exercise actual Slate hit testing after the cross-level input shield.
+            // Calling BeginMovie directly would miss a GameOnly focus regression.
+            Click(Flow->ActiveWidget->StartButton);return;
+        }
         if (!Check(Travel->GameplayLoads==1 && Travel->GetBlackOpacity()==0 && (Flow->Movie->IsWardrobeOpen() || (bReadyClicked && Flow->Movie->State==EMovieState::Recording))
             && Flow->StartupVideos->Stage==EStartupVideoStage::Inactive,TEXT("Level did not become ready with videos stopped"),World)) { return; }
         bLoaded=true; bMediaStopped=(!HubPlayer.IsValid() || (!HubPlayer->IsPlaying() && HubPlayer->GetUrl().IsEmpty()))

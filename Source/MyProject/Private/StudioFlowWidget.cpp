@@ -194,6 +194,7 @@ void UStudioFlowWidget::RefreshFlow()
         if (auto* Caption=Cast<UTextBlock>(PlayButton->GetContent())) { Caption->SetText(Flow->bStartupPresentation?StartGameText:PlayText); }
         const bool bEnabled=!Flow->bStartupPresentation || Flow->StartupVideos->IsHubInteractive();
         for (UButton* Control:{PlayButton.Get(),HowButton.Get(),CreditsButton.Get(),AudioButton.Get(),QuitButton.Get(),BackButton.Get()}) { Control->SetIsEnabled(bEnabled); }
+        BackButton->SetIsEnabled(bEnabled || bIntro);
         for (UButton* Control:{PlayButton.Get(),HowButton.Get(),CreditsButton.Get(),AudioButton.Get(),QuitButton.Get()}) { Control->SetVisibility(bMain?ESlateVisibility::Visible:ESlateVisibility::Collapsed); }
         StartButton->SetVisibility(bIntro?ESlateVisibility::Visible:ESlateVisibility::Collapsed); BackButton->SetVisibility(bFront && !bMain?ESlateVisibility::Visible:ESlateVisibility::Collapsed);
     }

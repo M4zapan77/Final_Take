@@ -29,3 +29,4 @@ for culture in ('en','es'):
 (root/'Saved/Automation/Localization').mkdir(parents=True,exist_ok=True)
 (root/'Saved/Automation/Localization/coverage.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf8')
 print(json.dumps(report,ensure_ascii=False,indent=2))
+if report['missing']:raise SystemExit(2)

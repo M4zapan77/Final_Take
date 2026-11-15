@@ -4,6 +4,7 @@
 #include "Components/ActorComponent.h"
 #include "ActingRecording.h"
 #include "StoryWorldTypes.h"
+#include "StoryScenarioData.h"
 #include "ObjectiveTypes.h"
 #include "StorySessionComponent.generated.h"
 
@@ -79,6 +80,7 @@ public:
     UPROPERTY(BlueprintReadOnly, Transient, Category="Story") TArray<FStoryCastMember> Cast;
     UPROPERTY(BlueprintReadOnly, Transient, Category="Story") TArray<FStorySegment> Segments;
     UPROPERTY(BlueprintReadOnly, Transient, Category="Story") FStoryWorldState SceneState;
+    UPROPERTY(BlueprintReadOnly,Transient,Category="Story|Scenario") FStoryScenarioDefinition SessionScenario;
     UPROPERTY(BlueprintReadOnly, Transient, Category="Story") FStoryWorldState InitialSceneState;
     UPROPERTY(BlueprintReadOnly, Transient, Category="Story") FStoryWorldState FinalSceneState;
     UPROPERTY(BlueprintReadOnly, Transient, Category="Story") TArray<FStorySceneEvent> SceneEvents;
@@ -141,6 +143,7 @@ private:
     void InitializeOutfitProps();
     void UpdatePhysicalProps();
     void SetPhysicsPaused(bool bPaused);
+    void SetDetentionInput(bool bHeld);
     bool GrabObject(FName ObjectId);
     bool ReleaseObject(FName ObjectId,bool bThrow);
     void ObserveProp(FName ObjectId,bool bBoundary=false);
@@ -189,6 +192,8 @@ private:
     bool bOriginalAutoCamera=true;
     bool bOriginalActorTick=true;
     bool bOriginalPauseAnims=false;
+    bool bOriginalCompact=false,bOriginalCaptureSnapshot=true;
+    bool bDetentionInputHeld=false;
     UPROPERTY(Transient) TObjectPtr<ACameraActor> PossessionCamera;
     struct FOriginalMovementCamera
     {

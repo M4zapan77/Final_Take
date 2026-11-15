@@ -56,6 +56,8 @@ public:
     /** Snapshotted at StartRecording so changing this during a take cannot alter its sample grid. */
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Acting|Recording", meta = (ClampMin = "1.0", ClampMax = "120.0"))
     float SampleRateHz = 20.0f;
+    UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Acting|Recording") bool bCompactStationarySamples=false;
+    UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Acting|Recording") bool bCapturePresentationSnapshot=true;
 
     UPROPERTY(BlueprintAssignable, Category = "Acting|Recording")
     FActingRecordingFinished OnRecordingFinished;
@@ -83,4 +85,6 @@ private:
     int32 NextSampleIndex = 1;
     double PreviousObservedTime = 0.0;
     FTransform PreviousObservedTransform = FTransform::Identity;
+    double PendingHoldTime=0;
+    bool bUseCompaction=false;
 };

@@ -8,6 +8,9 @@
 #include "GrabbablePropComponent.h"
 #include "MovieDirectorComponent.h"
 #include "StudioLanguageSubsystem.h"
+#include "StudioFlowManager.h"
+#include "StudioFlowWidget.h"
+#include "StartupVideoComponent.h"
 #include "Components/BoxComponent.h"
 #include "Engine/World.h"
 #include "EngineUtils.h"
@@ -25,18 +28,35 @@
 #include "HAL/FileManager.h"
 #include "HAL/PlatformTime.h"
 #include "HAL/PlatformMisc.h"
+#include "HAL/PlatformMemory.h"
+#include "Misc/App.h"
+#include "Misc/CoreDelegates.h"
 #include "TimerManager.h"
 #include "UnrealClient.h"
 
 namespace StoryScenarioPlay
 {
+bool bSawHub=false,bSawIntroduction=false;
 struct FRun
 {
     TWeakObjectPtr<UWorld> World;TWeakObjectPtr<AMovieManager> Movie;FTimerHandle Timer;
     FString Directory,Scenario=TEXT("Police");double Started=FPlatformTime::Seconds(),LastDiagnostic=-1;
     int32 LastTurn=0,Step=0,Turns=0,LastPreparation=INDEX_NONE,Wardrobes=0;
-    bool bSetup=false,bDone=false,bWalking=false,bResultsShot=false,bPremiereShot=false,bDirectorShot=false,bRepeatedMovie=false,bLanguageChanged=false;double ThrowAt=-1;FName ThrownId;
+    bool bSetup=false,bDone=false,bWalking=false,bResultsShot=false,bPremiereShot=false,bDirectorShot=false,bRepeatedMovie=false,bLanguageChanged=false,bReturningMenu=false;double ThrowAt=-1;FName ThrownId;
     TArray<FStorySceneEvent> OriginalEvents;FStoryWorldState OriginalFinal;double OriginalScore=0;
+    FDelegateHandle FrameHandle;TArray<double> RecordingFrames,PremiereFrames;uint64 PeakWorkingSet=0;int32 SegmentSamples=0,FilmSamples=0,PropSamples=0;int64 PoseBytes=0;
+    ~FRun(){FCoreDelegates::OnEndFrame.Remove(FrameHandle);}
+    void ObserveFrame()
+    {
+        if(bDone || !bSetup || !Movie.IsValid()){return;}const double Milliseconds=FApp::GetDeltaTime()*1000;if(!FMath::IsFinite(Milliseconds) || Milliseconds<=0){return;}
+        if(Movie->State==EMovieState::Recording){RecordingFrames.Add(Milliseconds);}else if(Movie->IsMoviePlayback()){PremiereFrames.Add(Milliseconds);}
+        PeakWorkingSet=FMath::Max(PeakWorkingSet,FPlatformMemory::GetStats().UsedPhysical);
+    }
+    FString FrameSummary(TArray<double> Values)
+    {
+        if(Values.IsEmpty()){return TEXT("{}");}Values.Sort();double Sum=0;for(double Value:Values){Sum+=Value;}const double Mean=Sum/Values.Num();
+        return FString::Printf(TEXT("{\"frames\":%d,\"meanMs\":%.4f,\"fpsFromMean\":%.2f,\"p95Ms\":%.4f,\"p99Ms\":%.4f,\"maxMs\":%.4f}"),Values.Num(),Mean,1000/Mean,Values[FMath::Min(Values.Num()-1,FMath::FloorToInt(Values.Num()*.95))],Values[FMath::Min(Values.Num()-1,FMath::FloorToInt(Values.Num()*.99))],Values.Last());
+    }
     void Key(bool Press){if(auto* PC=World->GetFirstPlayerController()){PC->InputKey(FInputKeyParams(EKeys::W,Press?IE_Pressed:IE_Released,Press?1.0:0.0,false));}bWalking=Press;}
     void Finish(bool Success,const TCHAR* Message)
     {
@@ -45,10 +65,12 @@ struct FRun
         if(Movie.IsValid())
         {
             FString Events=TEXT("sequence,time,type,instigator,target,payload\n");
-            for(const auto& E:Movie->StorySession->SceneEvents){Events+=FString::Printf(TEXT("%d,%.6f,%d,%s,%s,%s\n"),E.Sequence,E.TimeSeconds,static_cast<int32>(E.Type),*E.InstigatorId.ToString(),*E.TargetId.ToString(),*E.Payload.ToString());}
+            const auto& SavedEvents=OriginalEvents.IsEmpty()?Movie->StorySession->SceneEvents:OriginalEvents;
+            for(const auto& E:SavedEvents){Events+=FString::Printf(TEXT("%d,%.6f,%d,%s,%s,%s\n"),E.Sequence,E.TimeSeconds,static_cast<int32>(E.Type),*E.InstigatorId.ToString(),*E.TargetId.ToString(),*E.Payload.ToString());}
             FFileHelper::SaveStringToFile(Events,*(Directory/TEXT("SceneEvents.csv")));
         }
         FFileHelper::SaveStringToFile(FString::Printf(TEXT("{\"passed\":%s,\"scenario\":\"%s\",\"turns\":%d,\"wardrobes\":%d,\"physicalThrow\":%s,\"moviePlaybacks\":%d,\"message\":\"%s\"}"),Success?TEXT("true"):TEXT("false"),*Scenario,Turns,Wardrobes,ThrownId.IsNone()?TEXT("false"):TEXT("true"),bRepeatedMovie?2:1,Message),*(Directory/TEXT("result.json")));
+        FFileHelper::SaveStringToFile(FString::Printf(TEXT("{\"runtime\":\"Development Editor game, offscreen\",\"segmentSamples\":%d,\"filmSamples\":%d,\"propSamples\":%d,\"allocatedPoseBytes\":%lld,\"peakWorkingSetMiB\":%.2f,\"recording\":%s,\"premiere\":%s}"),SegmentSamples,FilmSamples,PropSamples,PoseBytes,PeakWorkingSet/1048576.0,*FrameSummary(RecordingFrames),*FrameSummary(PremiereFrames)),*(Directory/TEXT("measurements.json")));
         UE_LOG(LogTemp,Display,TEXT("StoryScenario %s %s: %s"),*Scenario,Success?TEXT("PASS"):TEXT("FAIL"),Message);
         if(Movie.IsValid()){Movie->StopMovie();}FPlatformMisc::RequestExitWithStatus(false,Success?0:1);
     }
@@ -69,17 +91,39 @@ struct FRun
     void Tick()
     {
         if(bDone || !World.IsValid()){return;}
-        if(FPlatformTime::Seconds()-Started>220){Finish(false,TEXT("Scene playtest timed out"));return;}
+        if(FPlatformTime::Seconds()-Started>300){Finish(false,TEXT("Scene playtest timed out"));return;}
         if(!Movie.IsValid()){for(TActorIterator<AMovieManager> It(World.Get());It;++It){Movie=*It;break;}if(!Movie.IsValid()){return;}}
         AMovieManager* M=Movie.Get();
+        const bool Front=FParse::Param(FCommandLine::Get(),TEXT("StoryFrontEndCheck"));
+        if(bReturningMenu)
+        {
+            auto* Flow=AStudioFlowManager::Find(M);if(!Flow || Flow->Screen!=EStudioScreen::MainMenu || !Flow->StartupVideos->IsHubInteractive()){return;}
+            if(!Check(!M->HasActiveSession() && M->StorySession->Cast.IsEmpty() && M->StorySession->SceneEvents.IsEmpty(),TEXT("Returning to menu retained story actors or events"))){return;}
+            Finish(true,TEXT("Normal HUB, script introduction, wardrobe, six turns, two films, new movie and return to interactive HUB verified"));return;
+        }
         if(!bSetup)
         {
+            if(Front && !M->HasActiveSession())
+            {
+                auto* Flow=AStudioFlowManager::Find(M);if(!Flow || !Flow->ActiveWidget){return;}
+                if(Flow->StartupVideos->IsIntro()){Flow->StartupVideos->SkipIntroductions();return;}
+                if(Flow->Screen==EStudioScreen::MainMenu && Flow->StartupVideos->IsHubInteractive())
+                {bSawHub=true;Shot(TEXT("NormalHub"));Flow->ActiveWidget->PlayMovie();return;}
+                if(Flow->Screen==EStudioScreen::MovieIntroduction)
+                {
+                    bSawIntroduction=true;Shot(TEXT("ScriptIntroduction"));
+                    if(!FParse::Param(FCommandLine::Get(),TEXT("StoryDefaultTimes"))){M->StoryWardrobeDurationSeconds=.6;M->BetweenActorsSeconds=.15;M->WrapSeconds=.15;}
+                    Flow->ActiveWidget->BeginMovie();return;
+                }
+                return;
+            }
             if(!M->HasActiveSession()){return;}
-            M->StopMovie();M->bUseChronologicalGameplay=true;
+            if(Front){if(!Check(M->IsChronologicalMovie() && bSawHub && bSawIntroduction,TEXT("Normal menu did not enter the new story mode through its introduction"))){return;}bSetup=true;}
+            else{M->StopMovie();M->bUseChronologicalGameplay=true;
             if(!FParse::Param(FCommandLine::Get(),TEXT("StoryDefaultTimes"))){M->StoryWardrobeDurationSeconds=.6;M->StoryTurnDurationSeconds=10;}
             M->bUseTakeTransitions=true;M->BetweenActorsSeconds=.15;M->WrapSeconds=.15;M->bShowDebugOverlay=false;
             M->PremiereSettings.TitleFadeInSeconds=.1;M->PremiereSettings.TitleHoldSeconds=.15;M->PremiereSettings.TitleFadeOutSeconds=.1;
-            if(!Check(M->StartMovie(),TEXT("Could not start contextual story"))){return;}bSetup=true;
+            if(!Check(M->StartMovie(),TEXT("Could not start contextual story"))){return;}bSetup=true;}
         }
         UStorySessionComponent* S=M->StorySession;
         if(!Check(M->State!=EMovieState::Error && S->SceneState.HasUniqueMoney(),TEXT("Story error or duplicate money"))){return;}
@@ -164,7 +208,13 @@ struct FRun
                 const auto* Track=S->PropTracks.FindByPredicate([this](const auto& T){return T.ObjectId==ThrownId;});
                 if(!Check(Track && Track->Samples.Num()>4 && S->SceneEvents.ContainsByPredicate([this](const auto& E){return E.Type==EStoryEventType::PropThrown && E.ObjectId==ThrownId;}),TEXT("Required physical throw was not recorded"))){return;}
             }
-            if(OriginalEvents.IsEmpty()){OriginalEvents=S->SceneEvents;OriginalFinal=S->FinalSceneState;OriginalScore=M->MovieResults.FinalScore;}
+            if(OriginalEvents.IsEmpty())
+            {
+                OriginalEvents=S->SceneEvents;OriginalFinal=S->FinalSceneState;OriginalScore=M->MovieResults.FinalScore;
+                for(const auto& Segment:S->Segments){SegmentSamples+=Segment.Recording.Samples.Num();PoseBytes+=Segment.Recording.Samples.GetAllocatedSize();}
+                for(const auto& Film:M->Performances){FilmSamples+=Film.Recording.Samples.Num();PoseBytes+=Film.Recording.Samples.GetAllocatedSize();}
+                for(const auto& Track:S->PropTracks){PropSamples+=Track.Samples.Num();PoseBytes+=Track.Samples.GetAllocatedSize();}
+            }
             if(!bPremiereShot && M->IsMoviePlayback()){bPremiereShot=true;Shot(TEXT("Premiere"));}
             if(!bDirectorShot && M->IsMoviePlayback() && M->MovieDirector->ShotCount>1){bDirectorShot=true;Shot(TEXT("DirectedShot"));}
         }
@@ -196,6 +246,8 @@ struct FRun
             if(!Check(M->RecordNewMovie(),TEXT("New movie failed"))){return;}
             if(bLanguageChanged && !Check(UStudioLanguageSubsystem::Find(M)->GetLanguage()==TEXT("en") && M->GetCurrentRoleName().ToString()==TEXT("Robber"),TEXT("New movie lost English preference"))){return;}
             if(!Check(S->SceneEvents.IsEmpty() && S->Segments.IsEmpty() && S->SceneState.MoneyOwner().IsNone() && !S->SceneState.bMoneyWasTaken && !S->SceneState.bAlarmActive && !S->SceneState.bMoneySecured && S->SceneState.NPCs.Num()==4,TEXT("New movie kept old scene state"))){return;}
+            if(Front)
+            {auto* Flow=AStudioFlowManager::Find(M);if(!Check(Flow && Flow->ReturnToMainMenu(),TEXT("Return to main menu failed after new movie"))){return;}bReturningMenu=true;return;}
             Finish(true,TEXT("Six-turn bank story, real movement, unique money, NPC consequences, chronological event replay, outcome, score and clean new movie verified"));
         }
     }
@@ -204,6 +256,7 @@ void OnWorld(UWorld* World,const UWorld::InitializationValues Values)
 {
     if(!World || !World->IsGameWorld() || !FParse::Param(FCommandLine::Get(),TEXT("game")) || !FParse::Param(FCommandLine::Get(),TEXT("FinalTakeSceneSmoke"))){return;}
     auto Run=MakeShared<FRun>();Run->World=World;FParse::Value(FCommandLine::Get(),TEXT("StoryScenario="),Run->Scenario);
+    TWeakPtr<FRun> Weak=Run;Run->FrameHandle=FCoreDelegates::OnEndFrame.AddLambda([Weak](){if(auto Value=Weak.Pin()){Value->ObserveFrame();}});
     Run->Directory=FPaths::ProjectSavedDir()/TEXT("Automation")/(TEXT("StoryScene")+Run->Scenario);FParse::Value(FCommandLine::Get(),TEXT("StoryReportDir="),Run->Directory);
     IFileManager::Get().MakeDirectory(*Run->Directory,true);World->GetTimerManager().SetTimer(Run->Timer,FTimerDelegate::CreateLambda([Run](){const TSharedRef<FRun> Keep=Run;Keep->Tick();}),.033f,true);
 }

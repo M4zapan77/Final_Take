@@ -33,6 +33,7 @@ void AStudioGameMode::Tick(float DeltaSeconds)
     TActorIterator<AMovieManager> Existing(GetWorld());
     AMovieManager* Manager=Existing?*Existing:GetWorld()->SpawnActor<AMovieManager>(MovieManagerClass);
     if (!Manager) { return; }
+    Manager->bUseChronologicalGameplay=bUseChronologicalStory && !FParse::Param(FCommandLine::Get(),TEXT("StudioLegacyMovie"));
     if(Manager->CharacterProfile){Manager->CharacterProfile->ApplyModel(Cast<ACharacter>(Player->GetPawn()));}
     bMovieInitialized=true;
     if (ShouldUseFrontEnd())

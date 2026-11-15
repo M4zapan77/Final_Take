@@ -1,22 +1,23 @@
 # FINAL TAKE — GameJam 2026 progress
 
-## Verified starting point
+## Current verified gameplay
 
-The original simultaneous-replay game is playable: wardrobe, three 30-second takes, previous actors, gestures/sounds/props, independent appearance, objectives, score, cinema, results, replay and new movie. Final asset corrections and 34 supplied audio assets are integrated. Development Editor and Windows packaging succeeded. 52 unit tests and packaged playtests passed; see `Tests/Checkpoint.md` and `../Docs/FinalCorrectionsVerification.md`.
+The game now defaults to three persistent characters, two rounds and six chronological turns. Wardrobe is first-only (30 seconds maximum); acting turns last up to 10 seconds with early Cut. Movement, gestures, sounds, physical props, NPC consequences, objectives and scores feed the actual recorded movie. The original simultaneous mode remains a temporary fallback. See Gameplay documents and Tests/Screenshots for evidence.
 
 Protected Windows backup: `output/release/FINAL_TAKE_PreGameplayUpdate_2026-11-14/Windows` in the Codex workspace, outside project caches. ZIP `FINAL_TAKE_PreGameplayUpdate_Windows_2026-11-14.zip`, SHA256 `a834d542ce2d22dd5c687db90ab8bb4514cf93fd9088a42c356d2b987e6124f2`.
 
 ## Development status
 
-1. **Verified foundation:** exactly two rounds / six turns, 30-second first-only wardrobe, default10-second turns, persistent characters and shared scene clock. 55 unit tests and real-bank integration passed; see Gameplay/SixTurns.md. Opt-in until subsequent milestones pass.
-2. **Verified:** contextual objectives, unique money ownership, transfers/confiscation, persistent consequences, teller/guard/two witnesses and narrative scoring. 58 unit tests plus native Police/Civilian/Failure movies passed; see Gameplay/ContextAndMoney.md. Throwing/physical comedy remains next.
-3. Physical props and deterministic recorded trajectories.
-4. Chronological premiere, camera director, movement/camera tuning.
-5. Spanish/English localization, persistent language option.
-6. Reference-checked cleanup, measured optimization, Shipping Windows build and regression tests.
+1. Verified six-turn persistence, continuous shared clock and first-only wardrobe.
+2. Verified contextual objectives, exclusive money ownership, reactive NPCs and 40/30/20/10 scoring.
+3. Verified actual grab/drop/throw and deterministic recorded prop trajectories.
+4. Verified camera/movement tuning and read-only cinematic direction inside the cinema.
+5. Verified Spanish/English live localization and saved preference across process restart.
+6. Verified configurable bank scenario and normal menu-to-movie-to-menu flow. Development Editor and 65 automated tests passed. Native police, civilian with actual throw, and failure movies each played twice with clean restart.
+7. In progress: measured optimization, reference-checked cleanup, Shipping packaging and the newly supplied final UI artwork. These are not claimed complete.
 
-Each milestone must compile and pass its regression checks before the next one. Existing visual assets, menus and simultaneous replay remain protected during implementation. No final HUD artwork integration or generated art is part of this phase.
+Each milestone is checked before the next. The complete original backups remain protected outside caches. A recoverable six-turn gameplay package will be preserved before applying the newly approved final UI. No unrelated generated art or new maps are planned.
 
 ## Repository access
 
-The actual project had no Git repository or remote. The connected GitHub account is `M4zapan77`; accessible installed repositories were empty and a public-account search did not identify FINAL TAKE. Local checkpoint b2844fa75e7f9ddf122eeb567e76ec0e58981acb was created and tagged pre-gameplay-update-2026-11-14 on final-take/gameplay-redesign; Git LFS fsck passed; remote verification/push is blocked by unavailable repository identification/access. No new remote repository will be created without authorization. No progress is described as uploaded.
+The user supplied [M4zapan77/Final_Take](https://github.com/M4zapan77/Final_Take). Source and verified evidence were pushed to main at 56bcd4faffa2b28130bac86b98fd804c83dcc06b from full-project local checkpoint c3b417734302430166b040d8eb335b7fae2b3655. The remote progress snapshot excludes multi-gigabyte art/media and generated/build files; complete assets remain in the local project and editable backups. LFS asset upload awaits account availability verification. The local full-project branch is final-take/gameplay-redesign; publication uses a separate source-only delivery branch and does not rewrite its history.

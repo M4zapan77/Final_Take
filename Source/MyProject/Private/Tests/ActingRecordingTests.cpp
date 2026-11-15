@@ -261,4 +261,19 @@ bool FActingReplayCollisionTest::RunTest(const FString& Parameters)
     return true;
 }
 
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FActingIdleCompactionTest,"OneManStudio.Acting.CompactIdleWithoutEarlyMotion",EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
+bool FActingIdleCompactionTest::RunTest(const FString& Parameters)
+{
+    ActingRecordingTests::FTestWorld C;auto* Actor=C.World->SpawnActor<AActor>();auto* Root=NewObject<USceneComponent>(Actor);Actor->AddInstanceComponent(Root);Actor->SetRootComponent(Root);Root->RegisterComponent();
+    auto* Recorder=NewObject<UActingRecorderComponent>(Actor);Actor->AddInstanceComponent(Recorder);Recorder->RegisterComponent();Recorder->bCompactStationarySamples=true;
+    TestTrue(TEXT("Compact recorder starts"),Recorder->StartRecording(0));for(int32 Index=0;Index<20;++Index){C.Tick(.05f);}
+    TestEqual(TEXT("One second stationary retains one start pose"),Recorder->GetRecordingData().Samples.Num(),1);
+    Actor->SetActorLocation(FVector(100,0,0));C.Tick(.05f);Recorder->StopRecording();FTransform Pose;
+    const auto& Recording=Recorder->GetRecordingData();TestTrue(TEXT("Compact recording retains a valid exact duration"),Recording.IsValid() && Recording.GetDurationSeconds()>1);
+    Recording.Evaluate(.75,Pose);TestTrue(TEXT("Idle actor does not drift before actual movement"),Pose.GetLocation().IsNearlyZero());
+    Recording.Evaluate(Recording.GetDurationSeconds(),Pose);TestTrue(TEXT("Movement endpoint retained"),Pose.GetLocation().Equals(FVector(100,0,0),.001));
+    TestTrue(TEXT("Idle compaction saves movement storage"),Recording.Samples.Num()<8);
+    Recorder->ClearRecording();Recorder->StartRecording(.5);for(int32 Index=0;Index<20 && Recorder->IsRecording();++Index){C.Tick(.05f);}
+    TestTrue(TEXT("An entirely idle take still ends at its configured duration"),Recorder->GetRecordingData().IsValid() && FMath::IsNearlyEqual(Recorder->GetRecordedDurationSeconds(),.5));return true;
+}
 #endif // WITH_DEV_AUTOMATION_TESTS
