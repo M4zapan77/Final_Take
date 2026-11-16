@@ -1,5 +1,10 @@
 #if WITH_DEV_AUTOMATION_TESTS
 #include "StorySessionComponent.h"
+#include "StudioNPCPerformanceComponent.h"
+#include "StudioCinemaPresenter.h"
+#include "Components/SceneCaptureComponent2D.h"
+#include "Components/PointLightComponent.h"
+#include "EngineUtils.h"
 #include "MovieManager.h"
 #include "ActingSceneClockSubsystem.h"
 #include "ActingRecorderComponent.h"
@@ -286,5 +291,47 @@ bool FStoryDetentionInputTest::RunTest(const FString& Parameters)
     C.Tick(.3f);TestFalse(TEXT("Shared scene time releases detention"),C.Player->IsMoveInputIgnored());
     C.Movie->StorySession->SceneState.DetainedUntil.Add(C.Movie->GetCurrentRoleId(),1);C.Tick(.05f);TestTrue(TEXT("Second consequence holds its own input lock"),C.Player->IsMoveInputIgnored());
     C.Movie->StopMovie();TestFalse(TEXT("Leaving story releases its detention lock"),C.Player->IsMoveInputIgnored());return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FNPCFaceVariationTest,"OneManStudio.Polish.NPCFaceVariation",EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
+bool FNPCFaceVariationTest::RunTest(const FString&)
+{
+    FCosmeticSelection Base;Base.HeadId=TEXT("Head.PoliceCap");Base.BodyId=TEXT("Body.Uniform");Base.PropId=TEXT("Prop.Donut");
+    TArray<FCosmeticDefinition> Catalog;
+    for(ECosmeticCategory Category:{ECosmeticCategory::Eyes,ECosmeticCategory::Mouth,ECosmeticCategory::Eyebrows})
+    {for(int32 I=0;I<4;++I){auto& Item=Catalog.AddDefaulted_GetRef();Item.Category=Category;Item.Id=FName(*FString::Printf(TEXT("Face%d.%d"),static_cast<int32>(Category),I));}}
+    const auto A=UStudioNPCPerformanceComponent::VaryFace(Base,Catalog,42),B=UStudioNPCPerformanceComponent::VaryFace(Base,Catalog,42);
+    TestTrue(TEXT("Same seed restores the same face"),A.EyeId==B.EyeId && A.MouthId==B.MouthId && A.EyebrowId==B.EyebrowId);
+    TestTrue(TEXT("Face randomization preserves role outfit and inventory"),A.HeadId==Base.HeadId && A.BodyId==Base.BodyId && A.PropId==Base.PropId);
+    TSet<FName> Eyes;for(int32 I=1;I<=20;++I){Eyes.Add(UStudioNPCPerformanceComponent::VaryFace(Base,Catalog,I).EyeId);}
+    TestTrue(TEXT("Different seeds provide varied valid eyes"),Eyes.Num()>1 && !Eyes.Contains(NAME_None));return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FNPCTimelineReplayTest,"OneManStudio.Polish.NPCPauseAndReplay",EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
+bool FNPCTimelineReplayTest::RunTest(const FString&)
+{
+    StorySessionTests::FWorld C;C.Movie->StoryTurnDurationSeconds=5;C.Movie->StorySession->NPCVariationSeed=42;
+    TestTrue(TEXT("Start"),C.Movie->StartMovie());C.Movie->ReadyForTake(C.Movie->PreparationId);
+    TArray<UStudioNPCPerformanceComponent*> NPCs;for(TActorIterator<ACharacter> It(C.World);It;++It){if(auto* N=It->FindComponentByClass<UStudioNPCPerformanceComponent>()){NPCs.Add(N);}}
+    TestEqual(TEXT("Four independently recorded background actors"),NPCs.Num(),4);if(NPCs.Num()!=4){return false;}
+    for(int32 I=0;I<70;++I){C.Tick(.05);}
+    auto* Clock=C.World->GetSubsystem<UActingSceneClockSubsystem>();const double Time=Clock->GetSceneTimeSeconds();Clock->PauseClock();
+    bool Moved=false;for(auto* N:NPCs)
+    {
+        const FTransform Pose=N->GetOwner()->GetActorTransform();Moved|=FVector::DistSquared(Pose.GetLocation(),N->Performance.Samples[0].WorldTransform.GetLocation())>1;
+        N->ObserveBoundary(Time);const int32 Count=N->Performance.Samples.Num();C.Tick(.05);
+        TestTrue(TEXT("Preparation freezes NPC position and recorded data"),N->GetOwner()->GetActorTransform().Equals(Pose,.0001) && N->Performance.Samples.Num()==Count);
+        N->BeginPlayback();N->UpdatePlayback(Time,false);TestTrue(TEXT("Playback restores exact recorded pose"),N->GetOwner()->GetActorTransform().Equals(Pose,.0001));
+        N->BeginPlayback();N->UpdatePlayback(Time,false);TestEqual(TEXT("Repeated replay cannot append live samples"),N->Performance.Samples.Num(),Count);
+    }
+    TestTrue(TEXT("Witnesses take short steps while anchored roles remain in their zones"),Moved);return true;
+}
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FCinemaLightingSettingsTest,"OneManStudio.Polish.CinemaExposureAndCleanup",EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
+bool FCinemaLightingSettingsTest::RunTest(const FString&)
+{
+    StorySessionTests::FWorld C;auto* Cinema=C.World->SpawnActor<AStudioCinemaPresenter>();Cinema->FilmExposureEV=10.75;Cinema->ConfigureFilmExposure();
+    TestEqual(TEXT("Capture has its own stable exposure"),Cinema->FilmCapture->PostProcessSettings.AutoExposureMinBrightness,10.75f);
+    TestEqual(TEXT("Capture cannot adapt darker across cuts"),Cinema->FilmCapture->PostProcessSettings.AutoExposureMaxBrightness,10.75f);
+    TestEqual(TEXT("Capture postprocess is applied at full weight"),Cinema->FilmCapture->PostProcessBlendWeight,1.f);
+    Cinema->PremiereFill->SetVisibility(true);Cinema->VaultFill->SetVisibility(true);Cinema->StopPresentation();
+    TestFalse(TEXT("Leaving premiere stops its temporary fill"),Cinema->PremiereFill->IsVisible() || Cinema->VaultFill->IsVisible());return true;
 }
 #endif

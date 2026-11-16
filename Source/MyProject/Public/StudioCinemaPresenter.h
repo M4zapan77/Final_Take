@@ -11,6 +11,7 @@ class UMaterialInterface;
 class UChildActorComponent;
 class ACameraActor;
 class APlayerController;
+class UPointLightComponent;
 
 /** Presents the existing bank camera on a theater screen; owns no recording or movie clock. */
 UCLASS(Blueprintable)
@@ -38,6 +39,13 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cinema|Lighting",
               meta = (ClampMin = "-5", ClampMax = "20"))
     float AudienceExposureEV = 9;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Cinema|Lighting",meta=(ClampMin="-3",ClampMax="4")) float AudienceExposureCompensation=1.5f;
+    /** Fixed exposure for the actual film render target, independent from the theater. */
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Cinema|Lighting",meta=(ClampMin="5",ClampMax="16")) float FilmExposureEV=11.75f;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Cinema|Lighting",meta=(ClampMin="0",ClampMax="20000")) float PremiereFillLumens=6500.f;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Cinema|Lighting") TObjectPtr<UPointLightComponent> PremiereFill;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Cinema|Lighting") TObjectPtr<UPointLightComponent> VaultFill;
+    void ConfigureFilmExposure();
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Cinema|Camera", meta=(ClampMin="20",ClampMax="120"))
     float AudienceFieldOfView=55;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cinema")

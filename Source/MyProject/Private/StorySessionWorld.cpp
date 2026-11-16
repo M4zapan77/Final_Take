@@ -13,6 +13,7 @@
 #include "GrabbablePropComponent.h"
 #include "StudioSetDoor.h"
 #include "StudioBankBounds.h"
+#include "StudioNPCPerformanceComponent.h"
 #include "Components/BoxComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -105,6 +106,7 @@ bool UStorySessionComponent::InitializeScene()
     SceneState.MoneyObjectId=MoneyProp->PickupId;
     auto& Object=SceneState.Objects.AddDefaulted_GetRef();Object.ObjectId=MoneyProp->PickupId;Object.CosmeticId=MoneyProp->PropId;Object.WorldTransform=MoneyProp->GetActorTransform();
     const FName IDs[]={TEXT("NPC.Teller"),TEXT("NPC.Guard"),TEXT("NPC.Witness1"),TEXT("NPC.Witness2")};
+    const int32 CastSeed=NPCVariationSeed!=0?NPCVariationSeed:FMath::Rand();
     for(int32 Index=0;Index<4;++Index)
     {
         FVector NPCLocation=GroundLocation(SceneAnchor+SessionScenario.NPCOffsets[Index]);FRotator NPCRotation(0,Index==0?90:180,0);
@@ -124,10 +126,17 @@ bool UStorySessionComponent::InitializeScene()
         Outfit.HeadId=Index==1?FName(TEXT("Head.PoliceCap")):NAME_None;
         Outfit.EyeId=TEXT("Eyes.Classic");Outfit.MouthId=Index==1?FName(TEXT("Mouth.Teeth")):FName(TEXT("Mouth.Smile"));Outfit.EyebrowId=TEXT("Eyebrows.Neutral");
         if(Index==0){Outfit.FaceId=TEXT("Face.Glasses");}if(Index==3){Outfit.BodyId=TEXT("Body.Dress");Outfit.SkinColor=FLinearColor(.65,.82,1);}
+        const int32 Seed=static_cast<int32>(static_cast<uint32>(CastSeed)+Index*397u);
+        if(bRandomNPCFaces){Outfit=UStudioNPCPerformanceComponent::VaryFace(Outfit,Wardrobe->Catalog,Seed);}
         Wardrobe->BeginSelection(Outfit);Wardrobe->SetSelectionEnabled(false);
         auto* Acting=NewObject<UActingComponent>(NPC);NPC->AddInstanceComponent(Acting);Acting->RegisterComponent();
         if(Movie->CharacterProfile){Movie->CharacterProfile->ConfigureActing(Acting);}if(Movie->AudioProfile){Movie->AudioProfile->ConfigureActing(Acting);}Acting->SetLiveActionsEnabled(false);
         NPC->GetMesh()->bPauseAnims=true;
+        if(bAnimateNPCs)
+        {
+            auto* Background=NewObject<UStudioNPCPerformanceComponent>(NPC);NPC->AddInstanceComponent(Background);Background->RegisterComponent();
+            Background->Initialize(NPC,Seed,Index>=2);
+        }
         auto& Data=SceneState.NPCs.AddDefaulted_GetRef();Data.Id=IDs[Index];Data.Type=Index==0?EStoryNPCType::Teller:Index==1?EStoryNPCType::Guard:EStoryNPCType::Witness;Data.WorldTransform=NPC->GetActorTransform();
     }
     if(!InitializePhysicalProps()){return false;}
@@ -454,6 +463,20 @@ void UStorySessionComponent::UpdateScene()
     for(int32 Index=0;Index<NPCActors.Num();++Index)
     {
         if(auto* Acting=NPCActors[Index]->FindComponentByClass<UActingComponent>()){Acting->UpdateScenePresentation(Time,Running);}
+        if(auto* Background=NPCActors[Index]->FindComponentByClass<UStudioNPCPerformanceComponent>())
+        {
+            const auto Mood=SceneState.NPCs[Index].Mood;const bool Calm=Mood==EStoryNPCMood::Idle || Mood==EStoryNPCMood::Helpful;
+            Background->UpdateLive(Time,Running,Calm);SceneState.NPCs[Index].WorldTransform=NPCActors[Index]->GetActorTransform();
+            if(Running && !bPendingEnd)
+            {
+                const FName Gesture=Background->ConsumeAmbientGesture(Time,Calm);
+                if(!Gesture.IsNone())
+                {
+                    if(auto* Acting=NPCActors[Index]->FindComponentByClass<UActingComponent>();Acting && Acting->ActiveGestureId.IsNone())
+                    {Acting->PresentSceneGesture(Gesture,Time,true);AddSceneEvent(EStoryEventType::NPCReaction,SceneState.NPCs[Index].Id,NAME_None,Gesture);}
+                }
+            }
+        }
         NPCActors[Index]->GetMesh()->bPauseAnims=!Running;
         if(Running && !bPendingEnd && SceneState.NPCs[Index].EffectUntilSeconds>0 && Time>=SceneState.NPCs[Index].EffectUntilSeconds)
         {SetNPCMood(SceneState.NPCs[Index].Id,SceneState.bAlarmActive?EStoryNPCMood::Alert:EStoryNPCMood::Idle,0);}
@@ -496,6 +519,7 @@ void UStorySessionComponent::BeginScenePlayback()
     {
         NPCActors[Index]->SetActorTransform(InitialSceneState.NPCs[Index].WorldTransform,false,nullptr,ETeleportType::TeleportPhysics);NPCActors[Index]->GetMesh()->bPauseAnims=false;
         if(auto* A=NPCActors[Index]->FindComponentByClass<UActingComponent>()){A->ResetPlaybackState();}
+        if(auto* Background=NPCActors[Index]->FindComponentByClass<UStudioNPCPerformanceComponent>()){Background->BeginPlayback();}
     }
     const auto* InitialMoney=InitialSceneState.FindObject(InitialSceneState.MoneyObjectId);
     if(InitialMoney){ApplyMoneyPresentation(InitialMoney->OwnerId,InitialMoney->WorldTransform,true);}UpdateHandSuppression(true);
@@ -534,7 +558,12 @@ void UStorySessionComponent::UpdateScenePlayback()
     const double Time=Movie->GetSceneTimeSeconds();
     while(SceneEvents.IsValidIndex(SceneEventCursor) && SceneEvents[SceneEventCursor].TimeSeconds<=Time){ApplyPlaybackEvent(SceneEvents[SceneEventCursor++]);}
     UpdatePropPlayback();
-    for(ACharacter* NPC:NPCActors){if(auto* Acting=NPC->FindComponentByClass<UActingComponent>()){Acting->UpdateScenePresentation(Time,Movie->SceneClock->IsClockRunning());}}
+    for(ACharacter* NPC:NPCActors)
+    {
+        const bool Running=Movie->SceneClock->IsClockRunning();
+        if(auto* Acting=NPC->FindComponentByClass<UActingComponent>()){Acting->UpdateScenePresentation(Time,Running);}
+        if(auto* Background=NPC->FindComponentByClass<UStudioNPCPerformanceComponent>()){Background->UpdatePlayback(Time,Running);}
+    }
 }
 
 FStoryScoreBreakdown UStorySessionComponent::GetScoreBreakdown() const

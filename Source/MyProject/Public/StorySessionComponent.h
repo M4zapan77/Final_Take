@@ -89,6 +89,10 @@ public:
     UPROPERTY(BlueprintReadOnly, Transient, Category="Story") TArray<FStoryPropTrack> PropTracks;
     UPROPERTY(BlueprintReadOnly, Transient, Category="Story") EStoryOutcome Outcome=EStoryOutcome::Unresolved;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Story|Interactions",meta=(ClampMin="50")) double InteractionDistance=360;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Story|NPC") bool bRandomNPCFaces=true;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Story|NPC") bool bAnimateNPCs=true;
+    /** Zero chooses a fresh cast per new movie. Nonzero is reproducible for art/tests. */
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Story|NPC") int32 NPCVariationSeed=0;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Story|Interactions",meta=(ClampMin="1")) double GuardDistractionSeconds=12;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Story|Interactions",meta=(ClampMin="0.1",ClampMax="2")) double DetentionSeconds=.8;
     UFUNCTION(BlueprintPure, Category="Story") bool CanAct() const;

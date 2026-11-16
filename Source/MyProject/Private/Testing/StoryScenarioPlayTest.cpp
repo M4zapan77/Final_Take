@@ -8,6 +8,9 @@
 #include "GrabbablePropComponent.h"
 #include "MovieDirectorComponent.h"
 #include "StudioLanguageSubsystem.h"
+#include "StudioNPCPerformanceComponent.h"
+#include "StudioCinemaPresenter.h"
+#include "Components/SceneCaptureComponent2D.h"
 #include "StudioFlowManager.h"
 #include "StudioFlowWidget.h"
 #include "StartupVideoComponent.h"
@@ -292,6 +295,22 @@ struct FRun
         else if(M->State==EMovieState::Finished)
         {
             if(M->GetPresentationView().ResultsOpacity<.999f){return;}
+            {
+                int32 NPCCount=0;TSet<FString> Faces;
+                for(TActorIterator<ACharacter> It(World.Get());It;++It)
+                {
+                    auto* N=It->FindComponentByClass<UStudioNPCPerformanceComponent>();if(!N){continue;}++NPCCount;
+                    FTransform Recorded;
+                    if(!Check(N->Performance.Samples.Num()>2 && N->Performance.Evaluate(S->GetTimelineDuration(),Recorded) && It->GetActorTransform().Equals(Recorded,.05),TEXT("Background NPC did not end at its recorded pose"))){return;}
+                    const auto Frozen=N->Performance.Appearance.Selection;
+                    auto* W=It->FindComponentByClass<UWardrobeComponent>();const auto Current=W->GetSelection();
+                    if(!Check(Current.EyeId==Frozen.EyeId && Current.MouthId==Frozen.MouthId && Current.EyebrowId==Frozen.EyebrowId,TEXT("NPC face changed while replaying the film"))){return;}
+                    Faces.Add(Frozen.EyeId.ToString()+TEXT("|")+Frozen.MouthId.ToString()+TEXT("|")+Frozen.EyebrowId.ToString());
+                }
+                if(!Check(NPCCount==4 && Faces.Num()>1,TEXT("Expected four animated NPCs with varied faces"))){return;}
+                for(TActorIterator<AStudioCinemaPresenter> It(World.Get());It;++It)
+                {if(!Check(It->IsPresenting() && It->FilmCapture->PostProcessSettings.AutoExposureMaxBrightness==It->FilmExposureEV,TEXT("Cinema capture did not retain its fixed exposure"))){return;}}
+            }
             if(!Check(Turns==6 && Wardrobes==3 && M->MovieResults.bAvailable,TEXT("Results or complete six-turn flow missing"))){return;}
             if(!Check(M->MovieDirector->GetCamera()!=nullptr && (S->GetTimelineDuration()<2.5 || M->MovieDirector->ShotCount>1),TEXT("Cinematic director did not create or select shots"))){return;}
             if(!Check(S->FinalSceneState.MoneyOwner()==OriginalFinal.MoneyOwner() && S->SceneEvents.Num()==OriginalEvents.Num() && M->MovieResults.FinalScore==OriginalScore,TEXT("Movie playback changed ownership, recording or score"))){return;}

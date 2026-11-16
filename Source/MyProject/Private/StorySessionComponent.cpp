@@ -1,4 +1,5 @@
 #include "StorySessionComponent.h"
+#include "StudioNPCPerformanceComponent.h"
 #include "MovieManager.h"
 #include "ActingRecorderComponent.h"
 #include "ActingSceneClockSubsystem.h"
@@ -346,7 +347,11 @@ bool UStorySessionComponent::AssembleMovie()
 void UStorySessionComponent::PreparePremiere()
 {
     bScenePlayback=false;SetPhysicsPaused(true);
-    for(ACharacter* NPC:NPCActors){NPC->GetMesh()->bPauseAnims=true;if(auto* Acting=NPC->FindComponentByClass<UActingComponent>()){Acting->ResetPlaybackState();}}
+    for(ACharacter* NPC:NPCActors)
+    {
+        if(auto* Background=NPC->FindComponentByClass<UStudioNPCPerformanceComponent>()){Background->ObserveBoundary(TimelineDuration);}
+        NPC->GetMesh()->bPauseAnims=true;if(auto* Acting=NPC->FindComponentByClass<UActingComponent>()){Acting->ResetPlaybackState();}
+    }
     FreezeCast(true);
     for(auto& Member:Cast) { if(IsValid(Member.Pawn)) { Member.Pawn->SetActorHiddenInGame(true); Member.Pawn->SetActorEnableCollision(false); } }
 }

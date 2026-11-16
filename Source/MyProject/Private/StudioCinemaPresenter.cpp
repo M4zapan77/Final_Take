@@ -7,6 +7,8 @@
 #include "Components/SceneCaptureComponent2D.h"
 #include "Components/SceneComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/PointLightComponent.h"
+#include "Engine/TargetPoint.h"
 #include "Engine/StaticMesh.h"
 #include "Engine/TextureRenderTarget2D.h"
 #include "Engine/World.h"
@@ -41,6 +43,13 @@ AStudioCinemaPresenter::AStudioCinemaPresenter()
     AudienceCamera->SetChildActorClass(ACameraActor::StaticClass());
     AudienceCamera->SetRelativeLocation(FVector(-1200, 0, -70));
     AudienceCamera->SetRelativeRotation(FRotator(3.34, 0, 0));
+    PremiereFill=CreateDefaultSubobject<UPointLightComponent>(TEXT("PremiereSoftFill"));PremiereFill->SetupAttachment(RootComponent);
+    VaultFill=CreateDefaultSubobject<UPointLightComponent>(TEXT("PremiereVaultFill"));VaultFill->SetupAttachment(RootComponent);
+    for(UPointLightComponent* Light:{PremiereFill.Get(),VaultFill.Get()})
+    {
+        Light->SetMobility(EComponentMobility::Movable);Light->SetCastShadows(false);Light->SetVisibility(false);
+        Light->IntensityUnits=ELightUnits::Lumens;Light->SetAttenuationRadius(1700);Light->SetLightColor(FLinearColor(1,.91,.77));
+    }
 }
 void AStudioCinemaPresenter::OnConstruction(const FTransform& Transform)
 {
@@ -58,6 +67,8 @@ void AStudioCinemaPresenter::BeginPlay()
         Camera->PostProcessSettings.bOverride_AutoExposureMaxBrightness = true;
         Camera->PostProcessSettings.AutoExposureMinBrightness = AudienceExposureEV;
         Camera->PostProcessSettings.AutoExposureMaxBrightness = AudienceExposureEV;
+        Camera->PostProcessSettings.bOverride_AutoExposureBias=true;
+        Camera->PostProcessSettings.AutoExposureBias=AudienceExposureCompensation;
         Camera->PostProcessSettings.bOverride_BloomIntensity = true;
         Camera->PostProcessSettings.BloomIntensity = 0;
         Camera->PostProcessSettings.bOverride_MotionBlurAmount = true;
@@ -148,6 +159,12 @@ bool AStudioCinemaPresenter::StartPresentation(AMovieManager* Movie)
     FilmCapture->SetWorldTransform(FilmCamera->GetCameraComponent()->GetComponentTransform());
     FilmCapture->FOVAngle = FilmCamera->GetCameraComponent()->FieldOfView;
     FilmCapture->PostProcessSettings = FilmCamera->GetCameraComponent()->PostProcessSettings;
+    ConfigureFilmExposure();
+    FVector Anchor=FVector(0,0,140);
+    for(TActorIterator<ATargetPoint> It(GetWorld());It;++It){if(It->ActorHasTag(TEXT("StorySceneAnchor"))){Anchor=It->GetActorLocation();break;}}
+    PremiereFill->SetWorldLocation(Anchor+FVector(0,-100,280));VaultFill->SetWorldLocation(Anchor+FVector(-60,650,200));
+    PremiereFill->SetIntensity(PremiereFillLumens);VaultFill->SetIntensity(PremiereFillLumens*.7f);
+    PremiereFill->SetVisibility(true);VaultFill->SetVisibility(true);
     FilmCapture->bCameraCutThisFrame = true;
     LastDirectorShot = Movie->MovieDirector ? Movie->MovieDirector->ShotCount : INDEX_NONE;
     FilmCapture->bCaptureEveryFrame = true;
@@ -168,6 +185,7 @@ void AStudioCinemaPresenter::StopPresentation()
 {
     const bool WasPresenting = bPresenting;
     bPresenting = false;
+    PremiereFill->SetVisibility(false);VaultFill->SetVisibility(false);
     FilmCapture->bCaptureEveryFrame = false;
     FilmCapture->SetComponentTickEnabled(false);
     if (bOwnsListener && Player.IsValid())
@@ -214,4 +232,14 @@ void AStudioCinemaPresenter::EndPlay(const EEndPlayReason::Type Reason)
         BoundMovie->OnStateChanged.RemoveDynamic(this, &AStudioCinemaPresenter::MovieStateChanged);
     }
     Super::EndPlay(Reason);
+}
+void AStudioCinemaPresenter::ConfigureFilmExposure()
+{
+    auto& PP=FilmCapture->PostProcessSettings;
+    PP.bOverride_AutoExposureMinBrightness=PP.bOverride_AutoExposureMaxBrightness=true;
+    PP.AutoExposureMinBrightness=PP.AutoExposureMaxBrightness=FilmExposureEV;
+    PP.bOverride_AutoExposureBias=true;PP.AutoExposureBias=0;
+    PP.bOverride_AutoExposureApplyPhysicalCameraExposure=true;PP.AutoExposureApplyPhysicalCameraExposure=false;
+    PP.bOverride_MotionBlurAmount=true;PP.MotionBlurAmount=0;
+    FilmCapture->PostProcessBlendWeight=1;
 }
